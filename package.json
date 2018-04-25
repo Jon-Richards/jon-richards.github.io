@@ -1,0 +1,30 @@
+{
+  "name": "jon-richards_github",
+  "version": "1.0.0",
+  "description": "Front-end for my github repository.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jon-Richards/jon-richards.github.io.git"
+  },
+  "author": "Jon Richards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jon-Richards/jon-richards.github.io/issues"
+  },
+  "homepage": "https://github.com/Jon-Richards/jon-richards.github.io#readme",
+  "devDependencies": {
+    "commander": "^2.15.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "sass-loader": "^7.0.1",
+    "ts-loader": "^4.2.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  }
+}
