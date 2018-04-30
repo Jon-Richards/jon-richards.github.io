@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   devtool: 'inline-source-map',
   stats: 'verbose',
-  entry: './src/typescript/app.ts',
+  entry: './src/javascript/typescript/app.ts',
   output: {
     path: Path.resolve(__dirname, 'prod', 'assets', 'js'),
     filename: 'app.js'
