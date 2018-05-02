@@ -4,8 +4,9 @@ declare var require: any;
 
 /// <reference path="./../vanilla/test.d.ts">
 const myTest = require('./../vanilla/test.js');
+console.log(myTest);
 
-myTest.sayHi();
+myTest.sayHi('Jon');
 
 function greeter(person: string) {
     return "Hello, " + person;
@@ -17,3 +18,5 @@ let user_3 = "Jessica";
 
 document.body.innerHTML = greeter(user);
 document.body.innerHTML = greeter(user_2);
+
+console.log('test');

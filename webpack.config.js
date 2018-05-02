@@ -2,7 +2,7 @@ const Path = require('path');
 
 module.exports = {
   mode: 'production',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   stats: 'verbose',
   entry: './src/javascript/typescript/app.ts',
   output: {

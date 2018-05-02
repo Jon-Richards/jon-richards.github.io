@@ -9,3 +9,5 @@
     sayHi: sayHi
   }
 })();
+
+module.exports = test;
