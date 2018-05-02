@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
 const Path = require('path');
+const Fs = require('fs');
 const Cmd = require('commander');
 const Webpack = require('Webpack');
+const Sass = require('node-sass');
 const WebpackConfig = require('./../webpack.config.js');
 const Watcher = require('watch');
+const Colors = require('colors');
 
-/*
+/**
  * Parameters used for deciding which assets to build
  * and if source files should be watched for further
  * changes.
@@ -17,7 +20,18 @@ Cmd
   .option('-w, --watch', 'Watch')
   .parse(process.argv);
 
-/*
+/**
+ * Logs a formatted message to the console.
+ * 
+ * @param {string} message Message to log to the console.
+ * @param {string} color Color in which to display the message.
+ */
+function log(message, color) {
+  let _d = new Date();
+  console.log( _d.toLocaleTimeString() + ' - ' + Colors[color](message) );
+}
+
+/**
  * Instantiates Webpack, applies the
  * config and runs a build.
  *
@@ -40,19 +54,41 @@ function build_js() {
   });
 }
 
-/*
- * Builds CSS
+/**
+ * Builds CSS and a corresponding map file.
+ * 
+ * TODO: Add dynamic file functionality.
  */
 function build_css() {
-  console.log('Build CSS!');
+  // Render CSS
+  let css = Sass.renderSync({
+    file: Path.resolve(__dirname, '..', 'src', 'css', 'app.scss'),
+    outputStyle: 'compressed',
+    outFile: Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css'),
+    sourceMap: true
+  });
+  
+  // Write the CSS file
+  Fs.writeFile(Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css'), css.css, (err) => {
+    if (err) {
+      log(err + '\r\n', 'red');
+    } else {
+      log('CSS compiled to ' + Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css') + '\r\n', 'green');
+    }
+  });
+  
+  // Write sourcemap
+  Fs.writeFile(Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css.map'), css.map, (err) => {
+    if (err) log(err + '\r\n', 'red');
+  });
 }
 
-/*
+/**
  * Determines which directory to watch when
  * the '-w' or '-watch' arguments are passed
  * to this script.
  * 
- * @return  string  The directory to watch.
+ * @return {string}  The directory to watch.
  */
 function parseWatch() {
   let dirs = [];
@@ -67,32 +103,34 @@ function parseWatch() {
     dir = Path.resolve(__dirname, '..', 'src');
   }
 
-  console.log('Watching ' + dir + ' for changes...');
+  log('Watching ' + dir + ' for changes...', 'white');
   return dir;
 }
 
-/*
+/**
  * Initializes Watcher and begins watching
  * a given directory for changes.
+ * 
+ * @param path {path} Path of the directory to watch.
  */
 function watch (dir) {
   Watcher.createMonitor(dir, (monitor) => {
     monitor.on('changed', (file, current, previous) => {
-      console.log('Detected change on: ' + file);
+      log('Detected change on: ' + file, 'green');
       build();
     });
     monitor.on('created', (file, status) => {
-      console.log('New file created: ' + file);
+      log('New file created: ' + file, 'green');
       build();
     });
     monitor.on('removed', (file, status) => {
-      console.log(file + ' removed...');
+      log(file + ' removed...', 'green');
       build();
     });
   });
 }
 
-/*
+/**
  * Builds assets depending on which parameters
  * were passed to this script.  If no options
  * are passed, build everything.
@@ -112,12 +150,13 @@ function build() {
   }
 }
 
-/*
+/**
  * Initializes this script.  If the watch option
  * was passed, begins watching the appropriate
  * directories for changes.
  */
-(function init() {
+function init() {
   build();
   if (Cmd.watch) watch( parseWatch() );
-})();
+}
+init();

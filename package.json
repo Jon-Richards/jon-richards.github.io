@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/Jon-Richards/jon-richards.github.io#readme",
   "devDependencies": {
+    "colors": "^1.2.3",
     "commander": "^2.15.1",
+    "node-sass": "^4.9.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "sass-loader": "^7.0.1",
     "ts-loader": "^4.2.0",
     "typescript": "^2.8.3",
     "watch": "^1.0.2",
