@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 const Path = require('path');
-const Fs = require('fs');
 const Cmd = require('commander');
-const Webpack = require('Webpack');
-const Sass = require('node-sass');
-const WebpackConfig = require('./../webpack.config.js');
 const Watcher = require('watch');
-const Colors = require('colors');
+const Dir = require('node-dir');
+
+const Echo = require('./utils/echo.js');
+const Config = require('./../compiler-config.js');
+const Css = require('./compilers/css_compiler');
+const Js = require('./compilers/js_compiler');
 
 /**
  * Parameters used for deciding which assets to build
@@ -17,95 +18,8 @@ const Colors = require('colors');
 Cmd
   .option('-j, --javascript', 'Build Javascript')
   .option('-c, --css', 'Build CSS')
-  .option('-w, --watch', 'Watch')
+  .option('-w <directory>, --watch <directory>', 'Watch')
   .parse(process.argv);
-
-/**
- * Logs a formatted message to the console.
- * 
- * @param {string} message Message to log to the console.
- * @param {string} color Color in which to display the message.
- */
-function log(message, color) {
-  let _d = new Date();
-  console.log( _d.toLocaleTimeString() + ' - ' + Colors[color](message) );
-}
-
-/**
- * Instantiates Webpack, applies the
- * config and runs a build.
- *
- * For callback configuration options, see: 
- * https://github.com/webpack/docs/wiki/node.js-api
- */
-function build_js() {
-  let _wp = Webpack(WebpackConfig);
-  _wp.run((err, status) => {
-    console.log(status.toString({
-      assets: true,
-      chunks: false,
-      timings: false,
-      version: false,
-      hash: false,
-      modules: true,
-      errorDetails: true,
-      colors: true,
-    }));
-  });
-}
-
-/**
- * Builds CSS and a corresponding map file.
- * 
- * TODO: Add dynamic file functionality.
- */
-function build_css() {
-  // Render CSS
-  let css = Sass.renderSync({
-    file: Path.resolve(__dirname, '..', 'src', 'css', 'app.scss'),
-    outputStyle: 'compressed',
-    outFile: Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css'),
-    sourceMap: true
-  });
-  
-  // Write the CSS file
-  Fs.writeFile(Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css'), css.css, (err) => {
-    if (err) {
-      log(err + '\r\n', 'red');
-    } else {
-      log('CSS compiled to ' + Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css') + '\r\n', 'green');
-    }
-  });
-  
-  // Write sourcemap
-  Fs.writeFile(Path.resolve(__dirname, '..', 'prod', 'assets', 'css', 'app.css.map'), css.map, (err) => {
-    if (err) log(err + '\r\n', 'red');
-  });
-}
-
-/**
- * Determines which directory to watch when
- * the '-w' or '-watch' arguments are passed
- * to this script.
- * 
- * @return {string}  The directory to watch.
- */
-function parseWatch() {
-  let dirs = [];
-  let dir = null;
-
-  if (Cmd.javascript) dirs.push( Path.resolve(__dirname, '..', 'src', 'javascript') );
-  if (Cmd.css) dirs.push( Path.resolve(__dirname, '..', 'src', 'css') );
-
-  if (dirs.length === 1) {
-    dir = dirs[0];
-  } else {
-    dir = Path.resolve(__dirname, '..', 'src');
-  }
-
-  log('Watching ' + dir + ' for changes...', 'white');
-  return dir;
-}
 
 /**
  * Initializes Watcher and begins watching
@@ -116,18 +30,41 @@ function parseWatch() {
 function watch (dir) {
   Watcher.createMonitor(dir, (monitor) => {
     monitor.on('changed', (file, current, previous) => {
-      log('Detected change on: ' + file, 'green');
+      Echo('Detected change on: ' + file, 'green');
       build();
     });
     monitor.on('created', (file, status) => {
-      log('New file created: ' + file, 'green');
+      Echo('New file created: ' + file, 'green');
       build();
     });
     monitor.on('removed', (file, status) => {
-      log(file + ' removed...', 'green');
+      Echo(file + ' removed...', 'green');
       build();
     });
+    Echo('Watching ' + dir + ' for changes...', 'green');
   });
+}
+
+/**
+ * Initiates Javascript compilation based on
+ * the input/output entries in compiler-config.js.
+ */
+function build_js() {
+  for (var i = 0; i < Config.js.length; i++) {
+    let _conf = Config.js[i];
+    Js.build(_conf.input, _conf.output, _conf.sourcemap);
+  }
+}
+
+/**
+ * Initiates a SASS compilation based on
+ * the input/output entries in compiler-config.js.
+ */
+function build_css() {
+  for (var i = 0; i < Config.css.length; i++) {
+    let _conf = Config.css[i];
+    Css.build(_conf.input, _conf.output, _conf.sourcemap);
+  }
 }
 
 /**
@@ -157,6 +94,6 @@ function build() {
  */
 function init() {
   build();
-  if (Cmd.watch) watch( parseWatch() );
+  if (Cmd.watch) watch(Cmd.watch);
 }
 init();

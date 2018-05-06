@@ -1,2 +1,4 @@
 node_modules/
 *.map
+.vscode/
+npm-debug.log

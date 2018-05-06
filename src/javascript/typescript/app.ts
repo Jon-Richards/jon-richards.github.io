@@ -14,7 +14,6 @@ function greeter(person: string) {
 
 let user = "Jon";
 let user_2 = "Amanda";
-let user_3 = "Jessica";
 
 document.body.innerHTML = greeter(user);
 document.body.innerHTML = greeter(user_2);
