@@ -24,12 +24,12 @@ module.exports = env => {
     },
 
     output: {
-      filename: '[name].dev.js',
+      filename: '[name].dist.js',
       path: Path.resolve(__dirname, '..', 'dist', 'assets'),
       publicPath: '/assets/'
     },
 
-    mode: 'development',
+    mode: 'production',
     
     devtool: 'source-map',
 
@@ -111,12 +111,8 @@ module.exports = env => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            // {
-            //   loader: MiniCSSExtractPlugin.loader,
-            //   options: {}
-            // },
             {
-              loader: 'style-loader',
+              loader: MiniCSSExtractPlugin.loader,
               options: {}
             },
             {
@@ -181,12 +177,12 @@ module.exports = env => {
         }
       ),
       new MiniCSSExtractPlugin({
-        filename: '[name].dev.css'
+        filename: '[name].dist.css'
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
         template: './dev/html/index.hbs',
-        minify: false
+        minify: true
       }),
       new Webpack.HotModuleReplacementPlugin()
     ],

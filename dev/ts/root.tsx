@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as CSS from './../css/mod.scss';
+import './../css/app.scss';
+import './../css/mod.scss';
 
 
 export class Root extends React.Component<any, any>{
