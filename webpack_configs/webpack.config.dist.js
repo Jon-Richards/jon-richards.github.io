@@ -20,7 +20,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', 'dev', 'ts', 'app.tsx')
+      'app': Path.resolve(__dirname, '..', 'dev', 'components', 'app', 'app.tsx')
     },
 
     output: {

@@ -1,7 +1,5 @@
 import * as React from 'react';
-import './../css/app.scss';
-import './../css/mod.scss';
-
+import './root.scss';
 
 export class Root extends React.Component<any, any>{
   constructor (props:any) {
@@ -10,7 +8,10 @@ export class Root extends React.Component<any, any>{
 
   render ():JSX.Element {
     return (
-      <div>Test</div>
+      <React.Fragment>
+        <div>Test</div>
+        <div>Test again</div>
+      </React.Fragment>
     );
   }
 }

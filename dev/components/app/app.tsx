@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const ROOT = require('./root').Root; // CommonJS syntax for HMR
+const ROOT = require('./../root').Root; // CommonJS syntax for HMR
 
 
 ReactDOM.render(
@@ -14,7 +14,7 @@ if (module.hot) {
   module.hot.accept(ROOT, () => {
     console.log('update root');
     
-    const NEW_ROOT = require('./root').Root;
+    const NEW_ROOT = require('./../root').Root;
     ReactDOM.render(
       <NEW_ROOT />,
       document.getElementById('root')
