@@ -6,10 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack --config=./webpack_configs/webpack.config.dev.js --env.NODE_ENV=development --clean",
-    "build:dist": "webpack --config=./webpack_configs/webpack.config.dist.js --env.NODE_ENV=production --clean",
-    "start": "webpack-dev-server --config=./webpack_configs/webpack.config.dev.js --env.NODE_ENV=development",
-    "start:dist": "webpack-dev-server --config=./webpack_configs/webpack.config.dist.js --env.NODE_ENV=production"
+    "build:dev": "webpack --config=./config/webpack/dev.js --env.NODE_ENV=development --clean",
+    "build:dist": "webpack --config=./config/webpack/dist.js --env.NODE_ENV=production --clean",
+    "start": "webpack-dev-server --config=./config/webpack/dev.js --env.NODE_ENV=development",
+    "start:dist": "webpack-dev-server --config=./config/dist.js --env.NODE_ENV=production"
   },
   "repository": {
     "type": "git",
@@ -46,6 +46,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.2.0",
+    "tslint": "^5.11.0",
+    "tslint-loader": "^3.5.4",
     "typescript": "^3.0.3",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.1",

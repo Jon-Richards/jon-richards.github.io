@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Path = require('path');
 const Webpack = require('webpack');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
@@ -20,21 +21,21 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', 'dev', 'components', 'app', 'app.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'components', 'app', 'app.tsx')
     },
 
     output: {
-      filename: '[name].dev.js',
-      path: Path.resolve(__dirname, '..', 'dist', 'assets'),
+      filename: '[name].dist.js',
+      path: Path.resolve(__dirname, '..', '..', 'dist', 'assets'),
       publicPath: '/assets/'
     },
 
-    mode: 'development',
+    mode: 'production',
     
     devtool: 'source-map',
 
     devServer: {
-      contentBase: Path.resolve(__dirname, '..', 'dist'),
+      contentBase: Path.resolve(__dirname, '..', '..', 'dist'),
       port: 3000,
       hot: true,
       index: 'index.html',
@@ -72,10 +73,19 @@ module.exports = env => {
          */
         {
           test: /\.tsx$/,
+          enforce: 'pre',
           use: [
             {
               loader: 'ts-loader',
               options: {}
+            },
+            {
+              loader: 'tslint-loader',
+              options: {
+                configFile: Path.resolve(__dirname, '..', 'tslint', 'dist.json'),
+                failtOnHint: true,
+                tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
+              }
             }
           ]
         },
@@ -111,12 +121,8 @@ module.exports = env => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            // {
-            //   loader: MiniCSSExtractPlugin.loader,
-            //   options: {}
-            // },
             {
-              loader: 'style-loader',
+              loader: MiniCSSExtractPlugin.loader,
               options: {}
             },
             {
@@ -176,17 +182,17 @@ module.exports = env => {
           './dist/index.html'
         ],
         {
-          root: Path.resolve(__dirname, '..'),
+          root: Path.resolve(__dirname, '..', '..'),
           dry: Argv.clean ? false : true
         }
       ),
       new MiniCSSExtractPlugin({
-        filename: '[name].dev.css'
+        filename: '[name].dist.css'
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
         template: './dev/html/index.hbs',
-        minify: false
+        minify: true
       }),
       new Webpack.HotModuleReplacementPlugin()
     ],

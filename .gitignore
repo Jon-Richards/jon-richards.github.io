@@ -4,3 +4,4 @@ dist/
 *.map
 .vscode/
 npm-debug.log
+.env
