@@ -1,15 +1,14 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint:recommended"
+        "./dev.json"
     ],
     "jsRules": {},
     "rules": {
         "no-console": {
             "severity": "warning",
             "options": ["log"]
-        },
-        "quotemark": [true, "single", "avoid-escape"]
+        }
     },
     "rulesDirectory": []
 }
