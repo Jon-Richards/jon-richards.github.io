@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Path = require('path');
 const Webpack = require('webpack');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
@@ -20,21 +21,21 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', 'dev', 'components', 'app', 'app.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'components', 'app', 'app.tsx')
     },
 
     output: {
-      filename: '[name].dist.js',
-      path: Path.resolve(__dirname, '..', 'dist', 'assets'),
+      filename: '[name].dev.js',
+      path: Path.resolve(__dirname, '..', '..', 'dist', 'assets'),
       publicPath: '/assets/'
     },
 
-    mode: 'production',
+    mode: 'development',
     
     devtool: 'source-map',
 
     devServer: {
-      contentBase: Path.resolve(__dirname, '..', 'dist'),
+      contentBase: Path.resolve(__dirname, '..', '..', 'dist'),
       port: 3000,
       hot: true,
       index: 'index.html',
@@ -72,10 +73,19 @@ module.exports = env => {
          */
         {
           test: /\.tsx$/,
+          enforce: 'pre',
           use: [
             {
               loader: 'ts-loader',
               options: {}
+            },
+            {
+              loader: 'tslint-loader',
+              options: {
+                configFile: Path.resolve(__dirname, '..', 'tslint', 'dev.json'),
+                failtOnHint: true,
+                tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
+              }
             }
           ]
         },
@@ -111,8 +121,12 @@ module.exports = env => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
+            // {
+            //   loader: MiniCSSExtractPlugin.loader,
+            //   options: {}
+            // },
             {
-              loader: MiniCSSExtractPlugin.loader,
+              loader: 'style-loader',
               options: {}
             },
             {
@@ -177,12 +191,12 @@ module.exports = env => {
         }
       ),
       new MiniCSSExtractPlugin({
-        filename: '[name].dist.css'
+        filename: '[name].dev.css'
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
         template: './dev/html/index.hbs',
-        minify: true
+        minify: false
       }),
       new Webpack.HotModuleReplacementPlugin()
     ],
