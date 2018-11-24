@@ -1,0 +1,10 @@
+@import '~reset-css/sass/reset';
+@import '../../scss/index';
+
+html, body {
+  background-color: $swatch-1;
+
+  @include font-1--regular;
+  font-size: 100%;
+  color: $swatch-1--lt-100;
+}
