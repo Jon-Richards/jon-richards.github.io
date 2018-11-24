@@ -21,7 +21,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'components', 'app', 'app.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'components', 'app', 'app.tsx')
     },
 
     output: {
@@ -191,7 +191,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/html/index.hbs',
+        template: './dev/views/html/index.hbs',
         minify: true
       }),
       new Webpack.HotModuleReplacementPlugin()
