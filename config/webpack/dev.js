@@ -21,7 +21,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'components', 'app', 'app.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'root', 'index.tsx')
     },
 
     output: {
@@ -72,7 +72,7 @@ module.exports = env => {
          * Typescript Handling
          */
         {
-          test: /\.tsx$/,
+          test: /\.(ts|tsx)$/,
           enforce: 'pre',
           use: [
             {

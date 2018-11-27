@@ -1,5 +1,3 @@
-import * as Redux from 'redux';
-
 /*
  * ---------------  State  ---------------
  */
@@ -10,7 +8,7 @@ export interface IBootstrapState {
 }
 
 const defaultBootstrapState: IBootstrapState = {
-    foo: '',
+    foo: 'bar',
 };
 
 /*
@@ -18,20 +16,20 @@ const defaultBootstrapState: IBootstrapState = {
  */
 
 /** Changes the "foo" property of the bootstrap state tree. */
-export interface ITestActionAction {
+export interface ITestAction {
     type: string;
     foo: string;
 }
 
 /** Just a test action. */
-export function testAction(): ITestActionAction {
+export function test(): ITestAction {
     return {
         foo: 'bar',
         type: 'TEST_ACTION',
     };
 }
 
-type Actions = ITestActionAction;
+type Actions = ITestAction;
 
 /*
  * ---------------  Reducer  ---------------
@@ -44,6 +42,7 @@ export function bootstrapReducer(state: IBootstrapState = defaultBootstrapState,
                 ...state,
                 foo: action.foo,
             };
+        default:
+            return state;
     }
-    return state;
 }
