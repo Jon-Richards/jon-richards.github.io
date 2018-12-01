@@ -1,4 +1,5 @@
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+import {composeWithDevTools, devToolsEnhancer} from 'redux-devtools-extension';
 import {bootstrapReducer as bootstrap, IBootstrapState} from './bootstrap';
 import {default as reducers} from './reducers';
 
@@ -14,7 +15,11 @@ export interface IStore {
  * @returns The constructed store object.
  */
 export function configureStore() {
-    const store = createStore(reducers);
+
+    const store = createStore(
+        reducers, // initial state
+        devToolsEnhancer({}), // redux devtools
+    );
 
     if (module.hot) {
         module.hot.accept(require('./reducers'), () => {
