@@ -2,6 +2,7 @@ require('dotenv').config();
 const Path = require('path');
 const Webpack = require('webpack');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Argv = require('yargs').argv;
@@ -21,7 +22,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'root', 'index.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'index.tsx')
     },
 
     output: {
@@ -121,15 +122,15 @@ module.exports = env => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            {
-              loader: MiniCSSExtractPlugin.loader,
-              options: {}
-            },
+            // {
+            //   loader: MiniCSSExtractPlugin.loader,
+            //   options: {}
+            // },
             {
               loader: 'css-loader',
               options: {
                 modules: true,
-                localIdentName:'[name]__[local]'
+                localIdentName:'[local]'
               } 
             },
             {
@@ -186,6 +187,12 @@ module.exports = env => {
           dry: Argv.clean ? false : true
         }
       ),
+      new OptimizeCSSAssetsPlugin({
+        cssPreprocessor: require('cssnano'),
+        cssPreprocessorPluginOptions: {
+          preset: ['default', {discardComments: { removeAll: true } }]
+        }
+      }),
       new MiniCSSExtractPlugin({
         filename: '[name].dist.css'
       }),

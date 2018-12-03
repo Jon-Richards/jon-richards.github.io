@@ -21,7 +21,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'root', 'index.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'index.tsx')
     },
 
     output: {
@@ -133,7 +133,7 @@ module.exports = env => {
               loader: 'css-loader',
               options: {
                 modules: true,
-                localIdentName:'[name]__[local]'
+                localIdentName:'[local]'
               } 
             },
             {

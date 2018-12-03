@@ -15,18 +15,15 @@ export interface IStore {
  * @returns The constructed store object.
  */
 export function configureStore() {
-
     const store = createStore(
         reducers, // initial state
         devToolsEnhancer({}), // redux devtools
     );
-
     if (module.hot) {
         module.hot.accept(require('./reducers'), () => {
             const nextReducers = require('./reducers');
             store.replaceReducer(nextReducers);
         });
     }
-
     return store;
 }
