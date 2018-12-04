@@ -1,35 +1,27 @@
-$font-family-1: 'Roboto', 'Arial', 'Helvetica', sans-serif !default;
-
-@mixin font-1--light {
-    font-family: $font-family-1;
-    font-weight: 300;
-}
-
-@mixin font-1--regular {
-    font-family: $font-family-1;
+@mixin font-1 {
+    font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
     font-weight: 400;
 }
 
+@mixin font-1--light {
+    font-weight: 300;
+}
+
 @mixin font-1--bold {
-    font-family: $font-family-1;
     font-weight: 700;
 }
 
 
-$font-family-2: 'Frank Ruhl Libre', 'Georgia', 'Times New Roman', serif !default;
-
-@mixin font-2--light {
-    font-family: $font-family-2;
-    font-weight: 300;
-}
-
-@mixin font-2--regular {
-    font-family: $font-family-2;
+@mixin font-2 {
+    font-family: 'Frank Ruhl Libre', 'Georgia', 'Times New Roman', serif;
     font-weight: 400;
 }
 
+@mixin font-2--light {
+    font-weight: 300;
+}
+
 @mixin font-2--bold {
-    font-family: $font-family-2;
     font-weight: 700;
 }
 
