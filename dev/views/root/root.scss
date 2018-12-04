@@ -1,7 +1,7 @@
 @import '~reset-css/sass/reset';
 @import '../scss/index';
-@import '~@jon-richards/grid/src/flex_based/grid';
-// @import './../scss/grid';
+// @import '~@jon-richards/grid/src/flex_based/grid';
+@import './../scss/grid';
 
 html, body {
     background-color: $swatch-1;

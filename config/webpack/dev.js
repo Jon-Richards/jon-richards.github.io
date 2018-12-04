@@ -196,6 +196,7 @@ module.exports = env => {
       new HtmlWebpackPlugin({
         filename: './../index.html',
         template: './dev/views/html/index.hbs',
+        title: 'Jon Richards - Frontend Engineer',
         minify: false
       }),
       new Webpack.HotModuleReplacementPlugin()

@@ -8,11 +8,8 @@ export class Root extends React.Component<IStore, never> {
         console.log(this.props.bootstrap.foo);
         return (
             <div className='grid-container-fluid'>
-                <div className='grid-xs-6'>
-                    Hello
-                </div>
-                <div className='grid-xs-6'>
-                    World!!
+                <div className='grid-xs-12'>
+                    Test
                 </div>
             </div>
         );
