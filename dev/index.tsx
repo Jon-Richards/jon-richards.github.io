@@ -13,7 +13,7 @@ ReactDOM.render(
 
 if (module.hot) {
     module.hot.accept(RootContainer, () => {
-        const NEW_ROOT = require('./views/root/root').RootContaienr;
+        const NEW_ROOT = require('./views/root/root').RootContaienr; // tslint:disable-line:no-var-requires
         ReactDOM.render(
             <Provider store={configureStore()}>
                 <NEW_ROOT />

@@ -17,11 +17,11 @@ $grid-settings: (
     columns: 12,
     gutter: 20px,
     breakpoints: (
-      ('0', 0px),
-      ('375', 375px),
-      ('640', 640px),
-      ('960', 960px),
-      ('1280', 1280px)
+        ('0', 0px),
+        ('375', 375px),
+        ('640', 640px),
+        ('960', 960px),
+        ('1280', 1280px)
     )
 );
 @include grid-generate();

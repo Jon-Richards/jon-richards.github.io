@@ -24,9 +24,3 @@
 @mixin font-2--bold {
     font-weight: 700;
 }
-
-
-/** Laxy loads fonts from a given URL only at a specified min-width. */
-@mixin font-lazyload ($url, $breakpoint: 1000px) {
-    @import url(#{$url}) (min-width: $breakpoint);
-}
