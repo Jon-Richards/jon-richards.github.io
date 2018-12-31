@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Argv = require('yargs').argv;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
 /** Console output settings. */
@@ -44,11 +45,15 @@ module.exports = env => {
     },
 
     resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.runtime.esm.js'
+      },
       extensions: [
         '.js', 
         '.jsx', 
         '.ts', 
-        '.tsx', 
+        '.tsx',
+        '.vue',
         '.css', 
         '.scss', 
         '.sass', 
@@ -68,6 +73,15 @@ module.exports = env => {
 
     module: {
       rules: [
+        /** Vue handling */
+        {
+          test: /\.vue$/,
+          use: [
+            {
+              loader: 'vue-loader'
+            }
+          ]
+        },
         /**
          * Typescript Handling
          */
@@ -79,14 +93,15 @@ module.exports = env => {
               loader: 'ts-loader',
               options: {}
             },
-            {
-              loader: 'tslint-loader',
-              options: {
-                configFile: Path.resolve(__dirname, '..', 'tslint', 'dev.json'),
-                failtOnHint: true,
-                tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
-              }
-            }
+            // Commented due to incompatibilities with Vue's single file components.
+            // {
+            //   loader: 'tslint-loader',
+            //   options: {
+            //     configFile: Path.resolve(__dirname, '..', 'tslint', 'dev.json'),
+            //     failtOnHint: true,
+            //     tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
+            //   }
+            // }
           ]
         },
         /**
@@ -200,7 +215,8 @@ module.exports = env => {
         title: 'Jon Richards - Frontend Engineer',
         minify: false
       }),
-      new Webpack.HotModuleReplacementPlugin()
+      new Webpack.HotModuleReplacementPlugin(),
+      new VueLoaderPlugin()
     ],
 
     stats: output_stats
