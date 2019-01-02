@@ -1,10 +1,11 @@
 // @ts-check
-'use strict';
 
 /**
  * A simple phrase.
  * @typedef {string | number} Phrase
  */
+
+'use strict';
 
 /** A simple test class. */
 export class Test {
