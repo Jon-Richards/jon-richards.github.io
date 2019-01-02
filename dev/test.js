@@ -40,6 +40,8 @@ export class Test {
     constructor(phrase) {
         /** @type {Phrase} */
         this.phrase = phrase;
+
+        this.blah = 'party';
     }
 
     /** Says hello. */
