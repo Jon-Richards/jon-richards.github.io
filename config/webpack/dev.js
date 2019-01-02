@@ -21,7 +21,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'index.tsx')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'index.js')
     },
 
     output: {
@@ -69,6 +69,26 @@ module.exports = env => {
     module: {
       rules: [
         /**
+         * Vanilla JS Handling
+         */
+        {
+          test: /\.js$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  '@babel/preset-env'
+                ]
+              }
+            },
+            {
+              loader: 'eslint-loader',
+              options: {}
+            }
+          ]
+        },
+        /**
          * Typescript Handling
          */
         {
@@ -96,7 +116,7 @@ module.exports = env => {
           test: /\.jsx$/,
           use: [
             {
-              loader: '@babel/babel-loader',
+              loader: 'babel-loader',
               options: {
                 presets: [
                   '@babel/preset-env',
@@ -107,6 +127,9 @@ module.exports = env => {
             }
           ]
         },
+        /**
+         * Handlebars Handling
+         */
         {
           test: /\.(hbs|handlebars)$/,
           use: [
