@@ -4,14 +4,14 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "google"],
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
         "indent": [
-            "warn",
+            "error",
             4
         ],
         "linebreak-style": [
@@ -27,7 +27,13 @@ module.exports = {
             "always"
         ],
         "no-console": [
-            "warn"
+            "warn",
+            {
+                allow: [
+                    "warn",
+                    "error"
+                ]
+            }
         ]
     }
 };
