@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const Argv = require('yargs').argv;
 
 
@@ -142,10 +143,10 @@ module.exports = env => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            // {
-            //   loader: MiniCSSExtractPlugin.loader,
-            //   options: {}
-            // },
+            {
+              loader: MiniCSSExtractPlugin.loader,
+              options: {}
+            },
             {
               loader: 'css-loader',
               options: {
@@ -220,8 +221,12 @@ module.exports = env => {
         filename: './../index.html',
         template: './dev/views/html/index.hbs',
         title: 'Jon Richards - Frontend Engineer',
-        minify: true
+        minify: {
+          collapseWhitespace: true
+        },
+        inlineSource: '.(js|css)$'
       }),
+      new HtmlWebpackInlineSourcePlugin(),
       new Webpack.HotModuleReplacementPlugin()
     ],
 

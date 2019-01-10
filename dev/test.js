@@ -23,7 +23,7 @@
 
 /**
  * A slightly less complex object.
- * @typedef {Readonly< Partial< Complex<boolean> > >} LessComplex
+ * @typedef {Readonly<Partial<Complex<boolean>>>} LessComplex
  */
 
 

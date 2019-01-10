@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{> ../partials/meta }}
+        {{> ../partials/fonts }}
+        <title>{{ htmlWebpackPlugin.options.title }}</title>
+    </head>
+    <body>
+        {{> ../partials/noscript }}
+    
+        {{> ../sections/header/header 
+            sub=subtitle
+        }}
+    
+        <main>
+            {{> @partial-block }}
+        </main>
+
+        {{> ../sections/footer/footer}}
+  </body>
+</html>

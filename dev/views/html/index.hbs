@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {{> ./partials/meta }}
-    <title>{{ htmlWebpackPlugin.options.title }}</title>
-    {{> ./partials/fonts }}
- </head>
-  <body>
-    {{> ./partials/noscript }}
-    <div id="root"></div>
-  </body>
-</html>
+{{#> templates/page 
+  subtitle='mushroom'
+  head='buttercup'
+  foot='wallflower'
+}}
+  Hello world!
+{{/ templates/page}}

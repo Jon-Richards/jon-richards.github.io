@@ -4,6 +4,7 @@ const Webpack = require('webpack');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const Argv = require('yargs').argv;
 
 
@@ -40,7 +41,8 @@ module.exports = env => {
       hot: true,
       index: 'index.html',
       overlay: true,
-      stats: output_stats
+      stats: output_stats,
+      writeToDisk: true
     },
 
     resolve: {
@@ -221,8 +223,10 @@ module.exports = env => {
         filename: './../index.html',
         template: './dev/views/html/index.hbs',
         title: 'Jon Richards - Frontend Engineer',
-        minify: false
+        minify: false,
+        inlineSource: '.(js|css)$'
       }),
+      new HtmlWebpackInlineSourcePlugin(),
       new Webpack.HotModuleReplacementPlugin()
     ],
 
