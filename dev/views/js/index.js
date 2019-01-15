@@ -5,6 +5,11 @@
 
 // @ts-check
 
+
+// @ts-ignore
+import '../scss/index.scss';
+
+
 /**
  * A simple phrase.
  * @typedef {string | number} Phrase
@@ -47,3 +52,6 @@ export class Test {
         console.log(this.phrase);
     }
 }
+
+const test = new Test('hello world!');
+test.sayHi();

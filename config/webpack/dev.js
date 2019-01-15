@@ -22,12 +22,12 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'index.js')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'js', 'index.js')
     },
 
     output: {
       filename: '[name].dev.js',
-      path: Path.resolve(__dirname, '..', '..', 'dist', 'assets'),
+      path: Path.resolve(__dirname, '..', '..', 'dist', 'js'),
       publicPath: '/assets/'
     },
 
@@ -183,7 +183,7 @@ module.exports = env => {
             {
               loader: 'file-loader',
               options: {
-                name: './img/[name].[ext]'
+                name: '../img/[name].[ext]'
               }
             }
           ]
@@ -197,7 +197,7 @@ module.exports = env => {
             {
               loader: 'file-loader',
               options: {
-                name: './font/[name].[ext]'
+                name: '../font/[name].[ext]'
               }
             }
           ]
@@ -208,8 +208,7 @@ module.exports = env => {
     plugins: [
       new CleanWebpackPlugin(
         [
-          './dist/assets',
-          './dist/index.html'
+          './dist'
         ],
         {
           root: Path.resolve(__dirname, '..', '..'),
@@ -217,7 +216,7 @@ module.exports = env => {
         }
       ),
       new MiniCSSExtractPlugin({
-        filename: '[name].dev.css'
+        filename: '../css/[name].dev.css'
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
