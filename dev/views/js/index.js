@@ -53,5 +53,5 @@ export class Test {
     }
 }
 
-const test = new Test('hello world!');
+const test = new Test('Hello world!');
 test.sayHi();
