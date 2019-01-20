@@ -23,7 +23,7 @@ const output_stats = {
 module.exports = env => {
   return {    
     entry: {
-      'app': Path.resolve(__dirname, '..', '..', 'dev', 'views', 'js', 'index.js')
+      'app': Path.resolve(__dirname, '..', '..', 'dev', 'bundle.js')
     },
 
     output: {
@@ -218,8 +218,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/views/html/index.hbs',
-        title: 'Jon Richards - Frontend Engineer',
+        template: './dev/views/pages/home/home.hbs',
         minify: {
           collapseWhitespace: true
         },

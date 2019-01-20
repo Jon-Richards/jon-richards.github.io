@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {{> ../partials/meta }}
-        {{> ../partials/fonts }}
+        {{> ../../components/meta }}
+        {{> ../../components/fonts }}
         <title>{{ htmlWebpackPlugin.options.title }}</title>
     </head>
     <body>
-        {{> ../partials/noscript }}
+        {{> ../../components/noscript }}
     
-        {{> ../sections/header/header 
+        {{> ../../sections/header/header 
             sub=subtitle
         }}
     
@@ -16,6 +16,6 @@
             {{> @partial-block }}
         </main>
 
-        {{> ../sections/footer/footer}}
+        {{> ../../sections/footer/footer}}
   </body>
 </html>

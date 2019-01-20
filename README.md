@@ -91,6 +91,15 @@ It should:
 
 ## Notes
 
+### 1/19/2019
+
+#### MCPV Pattern
+
+- Model -> Controller -> Presentor -> View
+    - Promotes clean separation of business and aesthetic concerns.
+    - Makes views extremely portable.
+    - 
+
 ### 1/1/2019
 
 - At the time of this writing, eslint-loader throws an error when using config files in custom paths.  Files but be in the root directory.
