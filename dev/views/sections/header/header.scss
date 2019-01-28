@@ -1,0 +1,38 @@
+@import '../../utils/scss/fonts';
+@import '../../utils/scss/colors';
+@import '../../modules/navigation/nav.scss';
+
+
+.header {
+    padding: 0rem 1rem 1rem 1rem;
+
+    &__title {
+        display: block;
+        margin: 1rem 0rem 0.5rem 0rem;
+
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: $swatch-2;
+    }
+
+    &__subtitle {
+        display: block;
+
+        font-size: 1rem;
+        color: $swatch-2;
+    }
+    &__subtitle::before {
+        content: '// ';
+    }
+}
+
+
+@media (min-width: $grid-md) {
+    .nav-container {
+        padding-bottom: 0.5rem;
+        background-image: linear-gradient(
+            $swatch-1-lt-100 75%, 
+            rgba($swatch-1-lt-100, 0) 100%)
+        ;
+    }
+}

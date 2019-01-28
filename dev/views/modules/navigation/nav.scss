@@ -1,0 +1,86 @@
+@import '../../utils/scss/fonts';
+@import '../../utils/scss/colors';
+@import '../../utils/scss/noselect';
+
+
+.nav {
+    &__list {
+        display: flex;
+        position: fixed;
+        flex-wrap: wrap;
+        left: 0rem;
+        bottom: 0rem;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0rem 1rem;
+        border-top: 1px solid $swatch-1-lt-80;
+    }
+
+
+    &__link {
+        display: inline-flex;
+        margin: 0rem 1rem;
+
+        padding: 1rem 0rem 0.65rem 0rem;
+        border-bottom-width: 0.3rem;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0);
+
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: $swatch-2;
+        font-weight: 900;
+
+        cursor: pointer;
+        @include noselect;
+    }
+    &__link:first-of-type {
+        margin-left: 0rem;
+    }
+    &__link:last-of-type {
+        margin-right: 0rem;
+    }
+    &__link:hover {
+        border-color: $swatch-2;
+    }
+    &__link:active {
+        border-color: $swatch-2;
+    }
+}
+
+
+@media (min-width: $grid-sm) {
+    .nav {
+        &__list {
+            justify-content: space-around;
+        }
+    }
+}
+
+
+@media (min-width: $grid-md) {
+    .nav {
+
+        &__list {
+            position: relative;
+            bottom: auto;
+            border: none;
+        }
+        &__link {
+            border-top-width: 0.3rem;
+            border-bottom-width: 0rem;
+            font-size: 0.8rem;
+            margin: 0rem 0.5rem;
+        }
+    }
+}
+
+
+@media (min-width: $grid-lg) {
+    .nav {
+        &__link {
+            font-size: 0.9rem;
+        }
+    }
+}

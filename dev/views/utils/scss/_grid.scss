@@ -54,25 +54,7 @@
   * Flex container element.
   */
   .#{$NS}-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    
-    -webkit-align-items: flex-start;
-    align-items: flex-start;
-
-    -webkit-align-content: flex-start;
-    align-content: flex-start;
-    
-    clear: both;
+    display: block;
     width: 100%;
     max-width: map-get($grid-settings, max-width);
     margin-left:auto;
@@ -88,6 +70,26 @@
     max-width: none;
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .#{$NS}-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
   }
 }
 
@@ -170,6 +172,41 @@
       -ms-grid-row-align: stretch;
       align-self: stretch;
     }
+  } @else if $mode == 'justify-start' { // flex justify-content: start for this breakpoint
+    .#{$NS}-#{$prefix}-justify-start {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+    }
+  } @else if $mode == 'justify-end' { // flex justify-content: end for this breakpoint
+    .#{$NS}-#{$prefix}-justify-end {
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+    }
+  } @else if $mode == 'justify-center' { // flex justify-content: center for this breakpoint
+    .#{$NS}-#{$prefix}-justify-center {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+  } @else if $mode == 'justify-between' { // flex justify-content: space-between for this breakpoint
+    .#{$NS}-#{$prefix}-justify-between {
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+  } @else if $mode == 'justify-around' { // flex justify-content: space-around for this breakpoint
+    .#{$NS}-#{$prefix}-justify-around {
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+    }
+  } @else if $mode == 'justify-evenly' { // flex justify-content: space-evenly for this breakpoint
+    .#{$NS}-#{$prefix}-justify-evenly {
+      -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+    }
   } @else if $mode == 'order' { // changes the column's order by a given number
     .#{$NS}-#{$prefix}-order-#{$i} {
       -webkit-box-ordinal-group: $i + 1;
@@ -227,6 +264,12 @@
       @include grid-column($prefix, null, null, 'align-center');
       @include grid-column($prefix, null, null, 'align-baseline');
       @include grid-column($prefix, null, null, 'align-stretch');
+      @include grid-column($prefix, null, null, 'justify-start');
+      @include grid-column($prefix, null, null, 'justify-end');
+      @include grid-column($prefix, null, null, 'justify-center');
+      @include grid-column($prefix, null, null, 'justify-between');
+      @include grid-column($prefix, null, null, 'justify-around');
+      @include grid-column($prefix, null, null, 'justify-evenly');
     }
   }
 }
