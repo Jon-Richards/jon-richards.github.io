@@ -15,6 +15,7 @@
         justify-content: space-between;
         padding: 0rem 1rem;
         border-top: 1px solid $swatch-1-lt-80;
+        background-color: $swatch-1-lt-100;
     }
 
 
@@ -66,6 +67,13 @@
             position: relative;
             bottom: auto;
             border: none;
+            background-color: transparent;
+
+            padding-bottom: 0.5rem;
+            background-image: linear-gradient(
+                $swatch-1-lt-100 75%, 
+                rgba($swatch-1-lt-100, 0) 100%)
+            ;
         }
         &__link {
             border-top-width: 0.3rem;

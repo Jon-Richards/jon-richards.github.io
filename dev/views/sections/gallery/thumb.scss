@@ -1,0 +1,63 @@
+@import '../../utils/scss/fonts';
+@import '../../utils/scss/colors';
+@import '../../utils/scss/transitions';
+
+
+/**
+ * @description
+ * Generic styling for a single thumbnail.
+ */
+.thumb {
+    display: block;
+    position: relative;
+    background-color: #f00;
+    height: auto;
+    min-height: 20rem;
+    &:nth-of-type(even) {
+        background-color: #0f0;
+    }
+
+
+    /**
+     * @description
+     * Styling for the thumnail's image.
+     */
+    .thumb__image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity $transition linear;
+    }
+    .thumb__image--loaded {
+        opacity: 1;
+    }
+
+
+
+    /**
+    * @description
+    * Styles positioning of a thumbnail's title.
+    */
+    .thumb__title {
+        display: flex;
+        position: absolute;
+        bottom: 0rem;
+        width: 100%;
+        height: auto;
+        justify-content: baseline;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem;
+    }
+
+
+    /**
+    * @description
+    * Text styling for a thumbnail's title.
+    */
+    .thumb__title__text {
+        display: inline-block;
+        @include font-1;
+        font-size: 2rem;
+    }
+}
