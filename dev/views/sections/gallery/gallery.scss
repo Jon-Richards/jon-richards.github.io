@@ -1,8 +1,43 @@
+@import '../../utils/scss/grid-settings';
 @import './thumb';
 
 
-.gallery {
-    // display: flex;
-    // flex-wrap: wrap;
-    width: 100%;
+@mixin gallery() {
+
+    /** The whitespace around the group of thumbnails. */
+    $dimension-gutter: 0.25rem;
+
+    /**
+    * @description
+    * Root element for the gallery section.
+    */
+    .gallery {
+        width: 100%;
+
+        /**
+        * @description
+        * Applies dimensional formatting without interfering with scaffolding.
+        */
+        &__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 0rem;
+        }
+    }
+
+
+    @media (min-width: $grid-md) {
+        .gallery .gallery__content {
+            padding: $dimension-gutter;
+        }
+    }
+
+
+    @media (min-width: $grid-lg) {
+        .gallery .gallery__content {
+            padding: ($dimension-gutter) ($dimension-gutter * 2);
+        }
+    }
 }
+@include gallery();

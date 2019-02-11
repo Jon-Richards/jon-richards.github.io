@@ -162,7 +162,8 @@ module.exports = env => {
               loader: 'css-loader',
               options: {
                 modules: true, // key for hmr
-                localIdentName:'[local]'
+                localIdentName:'[local]',
+                sourceMap: true
               } 
             },
             {

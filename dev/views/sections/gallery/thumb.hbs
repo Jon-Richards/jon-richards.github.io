@@ -4,12 +4,16 @@
     grid-md-4 
     grid-md-flush 
     grid-lg-3 
-    grid-lg-flush"
+    grid-lg-flush
+    thumb
+    "
 >
-    <figure class="thumb">
-        <img class="thumb__image" />
-        <figcaption class="thumb__title">
-            {{> @partial-block }}
-        </figcaption>
-    </figure>
+    <div class="thumb__content">
+        <figure class="thumb__figure">
+            <img class="thumb__image" />
+            <figcaption class="thumb__title">
+                {{> @partial-block }}
+            </figcaption>
+        </figure>
+    </div>
 </div>

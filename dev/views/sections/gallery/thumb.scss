@@ -1,63 +1,95 @@
+@import '../../utils/scss/grid-settings';
 @import '../../utils/scss/fonts';
 @import '../../utils/scss/colors';
 @import '../../utils/scss/transitions';
 
 
-/**
- * @description
- * Generic styling for a single thumbnail.
- */
-.thumb {
-    display: block;
-    position: relative;
-    background-color: #f00;
-    height: auto;
-    min-height: 20rem;
-    &:nth-of-type(even) {
-        background-color: #0f0;
-    }
+@mixin thumb () {
 
-
-    /**
-     * @description
-     * Styling for the thumnail's image.
-     */
-    .thumb__image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity $transition linear;
-    }
-    .thumb__image--loaded {
-        opacity: 1;
-    }
-
-
+    /** The space around individual thumbnails. */
+    $dimension-gutter: 0.25rem;
 
     /**
     * @description
-    * Styles positioning of a thumbnail's title.
+    * Styling for the thumbnail container.  This acts as scaffolding for the
+    * figure element's placement on the page.
     */
-    .thumb__title {
-        display: flex;
-        position: absolute;
-        bottom: 0rem;
-        width: 100%;
-        height: auto;
-        justify-content: baseline;
-        background-color: rgba(0, 0, 0, 0.3);
-        padding: 0.5rem;
+    .thumb {
+
+        /**
+        * @description
+        * Applies container formatting without directly affecting the 
+        * scaffolding.
+        */
+        &__content {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 20rem;
+            margin: 0rem;
+            padding: 0;
+        }
+
+        /**
+        * @description
+        * The figure element (for html semantics) containing the thumbnail's 
+        * data, this can be safely animated as it is not concerned with the 
+        * overall layout.
+        */
+        &__figure {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 20rem;
+
+            background-color: #f00;
+        }
+
+        /**
+        * @description
+        * The thumbnail's image.  Used primarily for SEO purposes.
+        */
+        &__image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity $transition linear;
+        }
+
+        /**
+        * @description
+        * Styles positioning of a thumbnail's title.
+        */
+        &__title {
+            display: flex;
+            position: absolute;
+            bottom: 0rem;
+            width: 100%;
+            height: auto;
+            justify-content: baseline;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+        }
+
+        /**
+        * @description
+        * Text styling for a thumbnail's title.
+        */
+        &__title__text {
+            display: inline-block;
+            @include font-1;
+            font-size: 2rem;
+        }
     }
 
 
-    /**
-    * @description
-    * Text styling for a thumbnail's title.
-    */
-    .thumb__title__text {
-        display: inline-block;
-        @include font-1;
-        font-size: 2rem;
+    @media (min-width: $grid-md) {
+        .thumb__content {
+            padding: $dimension-gutter;
+        }
     }
 }
+@include thumb();

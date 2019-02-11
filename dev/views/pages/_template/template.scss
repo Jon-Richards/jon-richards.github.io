@@ -1,45 +1,34 @@
 @import '../../utils/scss/reset';
 @import '../../utils/scss/grid';
+@import '../../utils/scss/grid-settings';
 @import '../../utils/scss/fonts';
 @import '../../utils/scss/colors';
-
-
-/** Instantiates the grid system and helper classes. */
-$grid-sm: 375px !default;
-$grid-md: 768px !default;
-$grid-lg: 1200px !default;
-
-$grid-settings: (
-    namespace: 'grid',
-    max-width: 1200px,
-    columns: 12,
-    gutter: 20px,
-    breakpoints: (
-        ('xs', 0px), // (start with 0)
-        ('sm', $grid-sm),
-        ('md', $grid-md),
-        ('lg', $grid-lg)
-    )
-);
-@include grid-generate();
-
-
-html, body {
-    width: 100%;
-    height: 100%;
-    
-    background-color: $swatch-1-lt-100;
-    background-image: radial-gradient(
-        circle at 30% 20%,
-        $swatch-1-lt-80,
-        $swatch-1-lt-60
-    );
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
-    @include font-1;
-    font-size: 100%;
-}
-
-
 @import '../../sections/header/header';
+
+
+@mixin template () {
+
+    /**
+    * @description
+    * Base classes for the entire page.
+    */
+    html, body {
+        width: 100%;
+        height: 100%;
+        
+        background-color: $swatch-1-lt-100;
+        background-image: radial-gradient(
+            circle at 30% 20%,
+            $swatch-1-lt-80,
+            $swatch-1-lt-60
+        );
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        
+        @include font-1;
+        font-size: 100%;
+    }
+
+    @include grid-generate();
+}
+@include template();

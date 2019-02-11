@@ -45,7 +45,8 @@ module.exports = env => {
       hot: true,
       index: 'index.html',
       overlay: true,
-      stats: output_stats
+      stats: output_stats,
+      writeToDisk: true
     },
 
     resolve: {
