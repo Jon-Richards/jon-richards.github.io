@@ -29,8 +29,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 0rem 1rem;
-            border-top: 1px solid $swatch-1-lt-80;
-            background-color: $swatch-1-lt-100;
+            border-top: 1px solid $swatch-1--lt-80;
+            background-color: $swatch-1--lt-100;
         }
 
 
@@ -86,8 +86,8 @@
 
             padding-bottom: 0.5rem;
             background-image: linear-gradient(
-                $swatch-1-lt-100 75%, 
-                rgba($swatch-1-lt-100, 0) 100%)
+                $swatch-1--lt-100 75%, 
+                rgba($swatch-1--lt-100, 0) 100%)
             ;
         }
         .nav__link {
