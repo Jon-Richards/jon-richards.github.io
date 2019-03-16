@@ -10,3 +10,5 @@
 'use strict';
 
 import './controllers/main';
+
+import './views/assets/img/test/water.jpg';

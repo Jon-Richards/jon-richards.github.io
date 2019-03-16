@@ -10,9 +10,12 @@
 >
     <div class="thumb__content">
         <figure class="thumb__figure">
-            <img class="thumb__image" />
-            <figcaption class="thumb__title">
-                {{> @partial-block }}
+            <img class="thumb__image" src="{{src}}">
+            <figcaption class="thumb__caption">
+                <p class="thumb__title">{{title}}</p>
+                <ul class="thumb__tools">
+                    {{> @partial-block}}
+                </ul>
             </figcaption>
         </figure>
     </div>

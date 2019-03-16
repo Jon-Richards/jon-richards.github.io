@@ -5,54 +5,9 @@
 @import '../../utils/scss/transitions';
 
 
-/**
-* @description
-* Generates color helper classes for editorialized content.
-*/
-@mixin thumb-color-helpers($namespace: 'thumb') {
-    $colors: 
-        $swatch-1--lt-100, 
-        $swatch-1--dk-100;
-
-    @for $i from 1 through length($colors) {
-        .#{$namespace}-color-#{$i} {
-            color: nth($colors, $i);
-        }
-        .#{$namespace}-background-color-#{$i} {
-            background-color: nth($colors, $i);
-        }
-        .#{$namespace}-border-color-#{$i} {
-            border-color: nth($colors, $i);
-        }
-        .#{$namespace}-fill-#{$i} {
-            fill: nth($colors, $i);
-        }
-        .#{$namespace}-stroke-#{$i} {
-            stroke: nth($colors, $i);
-        }
-    }
-}
-
-
-/**
- * @desccription
- * Generates font helper classes for editorialized content.  SASS doesn't seem
- * to support dynamic mixin calls, so classes are generated manually.
- */
-@mixin thumb-font-helpers($namespace: 'thumb') {
-    .#{$namespace}-font-1 { @include font-1; }
-    .#{$namespace}-font-1--light { @include font-1--light; }
-    .#{$namespace}-font-1--bold { @include font-1--bold; }
-    
-    .#{$namespace}-font-2 { @include font-2; }
-    .#{$namespace}-font-2--light { @include font-2--light; }
-    .#{$namespace}-font-2--bold { @include font-2--bold; }
-}
-
-
 @mixin thumb () {
     /** The space around individual thumbnails. */
-    $dimension-gutter: 0.15rem;
+    $dimension-gutter: 0.1rem;
 
     /**
     * @description
@@ -71,7 +26,6 @@
             display: block;
             width: 100%;
             height: auto;
-            min-height: 20rem;
             margin: 0rem;
             padding: 0;
         }
@@ -86,9 +40,7 @@
             position: relative;
             display: block;
             width: 100%;
-            height: auto;
-            min-height: 20rem;
-
+            height: 100%;
             cursor: pointer;
         }
 
@@ -97,11 +49,12 @@
         * The thumbnail's image.  Used primarily for SEO purposes.
         */
         &__image {
-            position: absolute;
+            display: block;
             width: 100%;
-            height: 100%;
-            opacity: 0;
+            height: auto;
+            // opacity: 0;
             transition: opacity $transition linear;
+            background-color: $swatch-1--lt-100;
         }
 
         /**
@@ -111,20 +64,12 @@
         &__title {
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 0rem;
-            left: 0rem;
+            justify-content: flex-start;
             width: 100%;
-            height: 100%;
-            justify-content: baseline;
+            height: auto;
             background-color: rgba(0, 0, 0, 0.3);
             padding: 0.5rem;
         }
-
-
-        @include thumb-color-helpers('thumb');
-        @include thumb-font-helpers('thumb');
     }
 
 

@@ -9,7 +9,7 @@
     "build:dev": "webpack --config=./config/webpack/dev.js --env.NODE_ENV=development --clean",
     "build:dist": "webpack --config=./config/webpack/dist.js --env.NODE_ENV=production --clean",
     "start": "webpack-dev-server --config=./config/webpack/dev.js --env.NODE_ENV=development",
-    "start:dist": "webpack-dev-server --config=./config/dist.js --env.NODE_ENV=production",
+    "start:dist": "webpack-dev-server --config=./config/webpack/dist.js --env.NODE_ENV=production",
     "tsc": "tsc && echo Type Check Complete - No errors found. || echo Type Check Complete - See above."
   },
   "repository": {
