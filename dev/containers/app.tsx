@@ -6,10 +6,9 @@
  */
 
 import * as React from 'react';
-import { render } from 'react-dom';
-import { Provider, connect } from 'react-redux';
-import { configureStore, StoreShape } from '../store/store';
-import { Message } from '../views/message';
+import { connect } from 'react-redux';
+import { StoreShape } from '../store/store';
+import { IndexPage } from '../views/index_page';
 
 type StateProps = StoreShape;
 type DispatchProps = {};
@@ -20,7 +19,7 @@ class App extends React.Component<Props> {
     render(): JSX.Element {
         return (
             <>
-                <Message {...this.props.messages} />
+                <IndexPage {...this.props.messages} />
             </>
         );
     }
