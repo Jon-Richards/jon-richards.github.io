@@ -4,12 +4,24 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": ["eslint:recommended", "google"],
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "extends": [
+        "eslint:recommended", 
+        "google", 
+        "plugin:react/recommended",
+    ],
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "rules": {
+        "prettier/prettier": "error",
         "indent": [
             "error",
             4
@@ -34,6 +46,17 @@ module.exports = {
                     "error"
                 ]
             }
-        ]
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "comma-dangle": ["error", {
+            "arrays": "always",
+            "objects": "always",
+            "imports": "ignore",
+            "exports": "ignore",
+            "functions": "ignore"
+        }]
     }
 };
