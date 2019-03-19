@@ -24,8 +24,7 @@ module.exports = env => {
   return {    
     entry: {
       'app': [
-        Path.resolve(__dirname, '..', '..', 'dev', 'bundle.js'),
-        Path.resolve(__dirname, '..', '..', 'dev', 'bundle.scss')
+        Path.resolve(__dirname, '..', '..', 'dev', 'index.tsx')
       ]
     },
 
@@ -87,10 +86,6 @@ module.exports = env => {
                   '@babel/preset-env'
                 ]
               }
-            },
-            {
-              loader: 'eslint-loader',
-              options: {}
             }
           ]
         },
@@ -108,7 +103,7 @@ module.exports = env => {
             {
               loader: 'tslint-loader',
               options: {
-                configFile: Path.resolve(__dirname, '..', 'tslint', 'dist.json'),
+                configFile: Path.resolve(__dirname, '..', '..', 'tslint.json'),
                 failtOnHint: true,
                 tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
               }
@@ -222,7 +217,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/views/pages/home/home.hbs',
+        template: './dev/views/assets/templates/index.hbs',
         minify: {
           collapseWhitespace: true
         },
