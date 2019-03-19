@@ -16,6 +16,7 @@ type Props = StateProps & DispatchProps;
 
 /** Accepts the Store as props and passes them down to the application. */
 class App extends React.Component<Props> {
+    /** Returns the rendered component as JSX. */
     render(): JSX.Element {
         return (
             <>

@@ -1,0 +1,16 @@
+/**
+ * @fileoverview
+ * Standardized fonts and variants. The link tag to include the fonts
+ * themselves are in a template partial.
+ * @see ../../templates/fonts
+ */
+
+@mixin std-font-1 {
+    font-family: 'Saira Extra Condensed', sans-serif;
+    font-weight: 200;
+}
+
+@mixin std-font-2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
