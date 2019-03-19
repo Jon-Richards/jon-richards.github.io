@@ -52,4 +52,9 @@
         border-collapse: collapse;
         border-spacing: 0;
     }
+
+    /* End Meyerweb */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
 }

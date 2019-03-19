@@ -1,0 +1,41 @@
+/**
+ * @fileoverview
+ * Establishes the base CSS for the page.
+ */
+
+@import '../../assets/scss/standards/index';
+@import '../about/public';
+@import '../contact/public';
+
+@include std-css-reset();
+
+.html, body {
+    font-size: 1rem;
+    padding: 0rem;
+    margin: 0rem;
+    background-color: $std-swatch-2;
+    color: $std-swatch-1;
+    @include std-font-2;
+}
+
+.page {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(150deg, $std-swatch-2--lt-20, $std-swatch-2);
+    background-attachment: fixed;
+
+    @media (min-width: $std-breakpoint-1080) {
+        background-image: radial-gradient(at 40% 0%, $std-swatch-2--lt-20, $std-swatch-2);
+    }
+}
+
+.page__content {
+    @media (min-width: $std-breakpoint-1080) {
+        margin-left: $about-bar-width;
+        margin-right: $contact-bar-width;
+    }
+}

@@ -1,0 +1,36 @@
+/**
+ * @fileoverview
+ * Styling for the contact section.
+ */
+
+@import '../../assets/scss/standards/index';
+@import './public';
+@import '../about/public';
+
+/**
+ * @description
+ * Styling for the root element of the contact section.
+ */
+.contact {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: $std-dimension-gap;
+    color: $std-swatch-1;
+
+    @media (min-width: $std-breakpoint-1080) {
+        width: calc(100% - #{$about-bar-width});
+        margin-left: $about-bar-width;
+    }
+
+    @media (min-width: $std-breakpoint-1440) {
+        position: absolute;
+        top: 0rem;
+        right: 0rem;
+        width: $contact-bar-width;
+        height: auto;
+        min-height: 100%;
+    }
+}

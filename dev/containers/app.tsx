@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { StoreShape } from '../store/store';
-import { IndexPage } from '../views/index_page';
+import { IndexPage } from '../views/components/index_page';
 
 type StateProps = StoreShape;
 type DispatchProps = {};

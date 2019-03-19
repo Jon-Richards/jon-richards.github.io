@@ -1,0 +1,33 @@
+/**
+ * @fileoverview
+ * Styling for the about section.
+ */
+
+@import '../../assets/scss/standards/index';
+@import './public';
+
+/**
+ * @description
+ * Styling for the root about element.
+ */
+.about {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    flex-direction: column;
+    margin: 0rem;
+    padding: $std-dimension-gap;
+
+    color: $std-swatch-2;
+    background-color: $std-swatch-1;
+
+    @media (min-width: $std-breakpoint-1080) {
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+        width: $about-bar-width;
+        height: auto;
+    }
+}
