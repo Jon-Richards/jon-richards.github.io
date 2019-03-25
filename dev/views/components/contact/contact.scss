@@ -20,11 +20,6 @@
     padding: $std-dimension-gap;
     color: $std-swatch-1;
 
-    @media (min-width: $std-breakpoint-1080) {
-        width: calc(100% - #{$about-bar-width});
-        margin-left: $about-bar-width;
-    }
-
     @media (min-width: $std-breakpoint-1440) {
         position: absolute;
         top: 0rem;

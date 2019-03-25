@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Page } from '../page';
 import { Message } from '../message';
+import { LoremIpsum } from '../../../../test/content/lorem_ipsum';
 
 type Props = {
     /** A simple test message. */
@@ -18,6 +19,7 @@ export class IndexPage extends React.Component<Props, never> {
                     <Message 
                         message={this.props.message}
                     />
+                    <LoremIpsum />
                 </div>
             </Page>
         );

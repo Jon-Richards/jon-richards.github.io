@@ -34,15 +34,18 @@
 }
 
 .page__content {
-    width: 100%;
-    padding: $std-dimension-gap;
-    color: $std-swatch-1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     @media (min-width: $std-breakpoint-1080) {
         width: calc(100vw - #{$about-bar-width});
         margin-left: $about-bar-width;
     }
-    @media (min-width: $std-breakpoint-1440) {
-        margin-right: $contact-bar-width;
-    }
+}
+
+.main {
+    width: 100%;
+    padding: $std-dimension-gap;
+    color: $std-swatch-1;
 }

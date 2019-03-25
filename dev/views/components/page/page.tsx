@@ -12,15 +12,15 @@ import { Footer } from '../footer';
 /** The base layout used by every page. */
 export const PAGE: React.FunctionComponent<{}> = (props):JSX.Element => {
     return (
-        <>
-            <div className="page">
+        <div className="page">
+            <div className="page__content">
                 <About name="Jon" />
-                <main className="page__content">
+                <main className="main">
                     {props.children}
                 </main>
                 <Contact />
             </div>
             <Footer />
-        </>
+        </div>
     );
 };

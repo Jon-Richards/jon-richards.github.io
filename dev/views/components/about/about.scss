@@ -15,7 +15,6 @@
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 100%;
     flex-direction: column;
     margin: 0rem;
     padding: $std-dimension-gap;
@@ -36,8 +35,13 @@
 .about__content {
     display: block;
     width: calc(100% + 5rem);
-    height: 100%;
+    height: auto;
     padding-right: 5rem;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
+
+    @media (min-width: $std-breakpoint-1080) {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
 }
