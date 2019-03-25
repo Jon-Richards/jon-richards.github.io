@@ -1,0 +1,19 @@
+/**
+ * @fileoverview
+ * Styling for the footer.
+ */
+
+@import '../../assets/scss/standards/index';
+@import '../about/public.scss';
+
+.footer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: $std-dimension-gap;
+
+    @media (min-width: $std-breakpoint-1080) {
+        width: calc(100% - #{$about-bar-width});
+        margin-left: $about-bar-width;
+    }
+}

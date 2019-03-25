@@ -21,7 +21,8 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run check"
+    "posttest": "npm run check",
+    "api": "json-server ./test/json-server/api.json --port 3004"
   },
   "repository": {
     "type": "git",
