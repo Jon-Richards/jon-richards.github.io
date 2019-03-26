@@ -48,4 +48,8 @@
     width: 100%;
     padding: $std-dimension-gap;
     color: $std-swatch-1;
+
+    @media (min-width: $std-breakpoint-1440) {
+        width: calc(100% - #{$contact-bar-width});
+    }
 }
