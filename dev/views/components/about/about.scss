@@ -10,7 +10,7 @@
  * @description
  * Styling for the root about element.
  */
-.about {
+.root {
     display: flex;
     position: relative;
     width: 100%;
@@ -32,9 +32,14 @@
     }
 }
 
-.about__content {
+/**
+ * @description
+ * Frames the about section's content.  The desktop variant allows for scrolling, but hides the
+ * scroll bar outside of the visible content area.
+ */
+.content {
     display: block;
-    width: calc(100% + 5rem);
+    width: calc(100% + 6rem);
     height: auto;
     padding-right: 5rem;
     overflow: hidden;

@@ -149,8 +149,10 @@ module.exports = env => {
             {
               loader: 'css-loader',
               options: {
-                modules: false, // true = css in js
-                localIdentName:'[local]'
+                modules: true, // use exportOnlyLocals (see docs)
+                exportOnlyLocals: true,
+                localIdentName:'[name]__[local]__[hash:base64:5]',
+                sourceMap: false
               } 
             },
             {

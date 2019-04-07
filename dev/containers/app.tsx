@@ -1,6 +1,6 @@
 /**
  * @fileoverview
- * Connects the Store to the root of the presentational component tree.  This 
+ * Connects the Store to the root of the presentational component tree.  This
  * React component serves no other purpose than to connect the view layer to the
  * Store, ergo it doesn't have a corresponding presentational component.
  */
@@ -28,16 +28,17 @@ class App extends React.Component<Props> {
 
 /** Maps properties from the state to those of the App component. */
 const mapStateToProps = (state: StoreShape): StateProps => ({
-    messages: state.messages
+    messages: state.messages,
 });
 
 /** Maps dispatchabale actions to additional properties of the App component. */
-const mapDispatchToProps = (dispatches: DispatchProps) => ({
+const mapDispatchToProps = (dispatches: DispatchProps) => ({});
 
-});
-
-/** 
+/**
  * Creates an augmented version of the App component that recieves its props
  * directly from the store.
  */
-export const APP = connect(mapStateToProps, mapDispatchToProps)(App);
+export const APP = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

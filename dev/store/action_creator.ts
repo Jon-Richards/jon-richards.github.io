@@ -13,12 +13,12 @@
 export class ActionCreator<T extends string, P extends object> {
     /** The type designation for the action. */
     type: T;
-    /** 
+    /**
      * Properties that will appear in the action, with exception to the
      * payload, that is assigned via the constructor.
      */
     payload: P;
-    
+
     /**
      * Assignes the type mmeber for the action corresponding to this action
      * creator.
@@ -26,7 +26,7 @@ export class ActionCreator<T extends string, P extends object> {
      * @param defaultPayload Default values for the payload, can be
      * overwritten later.
      */
-    constructor (type:T, defaultPayload: P) {
+    constructor(type: T, defaultPayload: P) {
         this.type = type;
         this.payload = defaultPayload;
     }
@@ -42,14 +42,14 @@ export class ActionCreator<T extends string, P extends object> {
         return this.action;
     }
 
-    /** 
+    /**
      * The assembled action corresponding to this Action Creator.
      * @return A complete action for use by the Store.
      */
-    get action(): {type: T} & P {
+    get action(): { type: T } & P {
         return {
             ...this.payload,
-            type: this.type
+            type: this.type,
         };
     }
 }

@@ -3,5 +3,4 @@
  * Entrypoint for the footer component.
  */
 
- export { FOOTER as Footer } from './footer';
- 
+export { FOOTER as Footer } from './footer';

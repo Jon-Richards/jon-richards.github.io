@@ -1,6 +1,6 @@
 # CSS Standardizations
 
-Contains standardized SCSS variables and mixins.  All variables and mixins are 
+Contains standardized SCSS variables and mixins. All variables and mixins are
 prefixed with "std-" to indicate that they should NOT be overwritten directly,
 though they can be used as values in equations.
 

@@ -9,7 +9,8 @@
 
 @include std-css-reset();
 
-.html, body {
+html,
+body {
     font-size: 1rem;
     padding: 0rem;
     margin: 0rem;
@@ -18,7 +19,7 @@
     @include std-font-2;
 }
 
-.page {
+.root {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -33,7 +34,7 @@
     }
 }
 
-.page__content {
+.content {
     display: flex;
     flex-direction: column;
     flex-grow: 1;

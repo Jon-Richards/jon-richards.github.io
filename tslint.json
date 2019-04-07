@@ -1,6 +1,14 @@
 {
-  "extends": "gts/tslint.json",
-  "rules": {
-    "completed-docs": true
-  }
+    "extends": "gts/tslint.json",
+    "rules": {
+        "completed-docs": true,
+        "max-line-length": [
+            true,
+            {
+                "severity": "warning",
+                "limit": 100,
+                "ignore-pattern": "^import |^export {(.*?)}"
+            }
+        ]
+    }
 }

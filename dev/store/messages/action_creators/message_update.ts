@@ -20,16 +20,13 @@ type PayloadShape = {
  * @example
  * dispatch( new MessageUpdate('hello world!').action );
  */
-export class MessageUpdate extends ActionCreator<
-    'ROOT_UPDATE_MESSAGE', 
-    PayloadShape
->  {
+export class MessageUpdate extends ActionCreator<'ROOT_UPDATE_MESSAGE', PayloadShape> {
     /**
      * @constructor
      * Instantiate a new MessageUpdate with a default message value.
      * @param message The message to write to the store.
      */
-    constructor(message: string){
-        super('ROOT_UPDATE_MESSAGE', {message});
+    constructor(message: string) {
+        super('ROOT_UPDATE_MESSAGE', { message });
     }
 }

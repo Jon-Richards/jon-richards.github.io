@@ -20,16 +20,15 @@ export type MessagesState = {
  */
 export function messagesReducer(
     state: MessagesState = {
-        message: 'Hello world!'
+        message: 'Hello world!',
     },
-    action: 
-        | MessageUpdate['action']
-) : MessagesState {
+    action: MessageUpdate['action']
+): MessagesState {
     switch (action.type) {
         case 'ROOT_UPDATE_MESSAGE':
             return {
                 ...state,
-                message: action.message
+                message: action.message,
             };
         default:
             return state;
