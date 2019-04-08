@@ -4,6 +4,10 @@
   "description": "Front-end for my github repository.",
   "private": true,
   "main": "index.js",
+  "browserslist": [
+    "> 1%",
+    "ie > 10"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --config=./config/webpack/dev.js --env.NODE_ENV=development --clean",
@@ -44,6 +48,7 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.10",
     "@types/webpack-env": "^1.13.6",
+    "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^0.1.19",
     "colors": "^1.3.0",

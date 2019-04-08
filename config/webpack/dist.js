@@ -156,6 +156,14 @@ module.exports = env => {
               } 
             },
             {
+              loader: 'postcss-loader',
+              options: { // emulates a postcss.config.js file
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
+            },
+            {
               loader: 'resolve-url-loader',
               options: {}
             },
