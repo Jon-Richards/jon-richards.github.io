@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const Argv = require('yargs').argv;
 
 
@@ -222,6 +223,9 @@ module.exports = env => {
           dry: Argv.clean ? false : true
         }
       ),
+      new StyleLintPlugin({
+        emitErrors: false
+      }),
       new MiniCSSExtractPlugin({
         filename: '../css/[name].dev.css'
       }),

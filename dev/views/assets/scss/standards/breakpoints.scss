@@ -3,8 +3,11 @@
  * Standard responsive breakpoint values.  These are explicit in the event
  * that more need to be added.
  */
+
+/* stylelint-disable */
 $std-breakpoint-375: 375px;
 $std-breakpoint-480: 480px;
 $std-breakpoint-720: 720px;
 $std-breakpoint-1080: 1080px;
 $std-breakpoint-1440: 1440px;
+/* stylelint-enable */
