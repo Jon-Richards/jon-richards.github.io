@@ -11,7 +11,7 @@
     "block-no-empty": null,
     "unit-whitelist": ["em", "rem", "%", "s", "deg", "vh", "vw"],
     "max-empty-lines": 1,
-    "max-line-length": 1000,
+    "max-line-length": 100,
     "indentation": 4,
     "max-nesting-depth": 3,
     "selector-combinator-blacklist": ["+", "~", ">", "*"]

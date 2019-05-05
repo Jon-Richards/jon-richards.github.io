@@ -231,7 +231,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/views/assets/templates/index.hbs',
+        template: './dev/views/lib/templates/index.hbs',
         minify: false,
         inlineSource: '.(js|css)$'
       }),

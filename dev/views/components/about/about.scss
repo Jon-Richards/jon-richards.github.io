@@ -3,12 +3,12 @@
  * Styling for the about section.
  */
 
-@import '../../assets/scss/standards/index';
+@import '../../lib/scss/standards/index';
 @import './public';
 
 /**
  * @description
- * Styling for the root about element.
+ * Places the root About element on the page and applies baseline styling.
  */
 .root {
     display: flex;
@@ -17,7 +17,11 @@
     height: auto;
     flex-direction: column;
     margin: 0rem;
-    padding: $std-dimension-gap;
+    padding: 
+        $std-dimension-gap 
+        $std-dimension-gap 
+        $std-dimension-gap * 2 
+        $std-dimension-gap;
 
     color: $std-swatch-2;
     background-color: $std-swatch-1;
@@ -34,19 +38,68 @@
 
 /**
  * @description
- * Frames the about section's content.  The desktop variant allows for scrolling, but hides the
+ * Scaffolds the about section's content.  The desktop variant allows for scrolling, but hides the
  * scroll bar outside of the visible content area.
  */
 .content {
     display: block;
     width: calc(100% + 6rem);
     height: auto;
-    padding-right: 5rem;
+    padding-right: 6rem;
     overflow: hidden;
 
     @media (min-width: $std-breakpoint-1080) {
         height: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
+        padding-right: 5rem;
+    }
+}
+
+/**
+ * @description
+ * Scaffolding and sizing of the avatar component.
+ */
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: $std-dimension-gap * 2;
+
+    &__component {
+        width: 8rem;
+    }
+}
+
+/**
+ * @description
+ * Scaffolding and formatting for the introduction copy.
+ */
+.intro {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__title {
+        display: block;
+        @include std-font-1;
+        font-size: 2rem;
+        margin-bottom: $std-dimension-gap;    
+    }
+
+    &__text {
+        display: block;
+        @include std-font-1;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+    }
+
+    @media (min-width: $std-breakpoint-1080) {
+        &__text {
+            font-size: 1.8rem;
+        }
     }
 }

@@ -30,13 +30,15 @@ export const AVATAR = React.memo<{
     return (
         <div className={styles.avatar}>
             <div className={styles.frame}>
-                <img
-                    className={styles.image}
-                    src={`https://www.gravatar.com/avatar/${props.gravatarHash}?s=${
-                        props.imageSize
-                    }`}
-                    alt={props.altText}
-                />
+                <div className={styles.frame__crop}>
+                    <img
+                        className={styles.image}
+                        src={`https://www.gravatar.com/avatar/${props.gravatarHash}?s=${
+                            props.imageSize
+                        }`}
+                        alt={props.altText}
+                    />
+                </div>
             </div>
         </div>
     );
