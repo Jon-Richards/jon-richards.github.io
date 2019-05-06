@@ -8,7 +8,6 @@ const CSS = require('./about.scss');
 import { Avatar } from '../avatar';
 import { NBSP, NBHP } from '../../lib/ts/html_entities';
 import { SVGWrapper } from '../svg_wrapper';
-import { LoremIpsum } from '../../../../test/content/lorem_ipsum';
 
 /**
  * Renders the about section.
@@ -39,7 +38,6 @@ export const ABOUT: React.FunctionComponent<{
                             based in{ NBSP }Boston.
                         </p>
                     </div>
-                    <LoremIpsum />
                 </div>
             </div>
             <div className={CSS['down']} aria-hidden>
@@ -51,9 +49,11 @@ export const ABOUT: React.FunctionComponent<{
                 >
                     <polygon
                         points="
-                            0   0 
-                            300 0 
-                            150 100"
+                            0   0
+                            300 0
+                            300 25 
+                            150 100
+                            0   25"
                         className={CSS['down__background']}
                     />
                 </SVGWrapper>

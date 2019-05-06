@@ -68,7 +68,7 @@
     @media (min-width: $std-breakpoint-1080) {
         position: absolute;
         width: calc(#{$about-bar-width});
-        height: auto;
+        min-height: 100vh;
         overflow: hidden;
         padding: $std-dimension-gap * 2 1rem;
     }
@@ -124,23 +124,27 @@
         @include std-font-1;
         font-size: 1.8rem;
         line-height: 2.2rem;
+        text-align: center;
     }
 
     @media (min-width: $std-breakpoint-1080) {
         &__text {
             font-size: 1.8rem;
+            text-align: left;
         }
     }
 }
 
 /**
  * @description
- * Scaffolding and styling for the down arrow (SVG) that leads to the next session
- * on screens where the layout is stacked.
+ * Scaffolding and styling for the down arrow (SVG) that appears on small screens
  */
 .down {
+    display: block;
     width: 100%;
     height: 2rem;
+    padding: 0rem;
+    margin: -0.2rem 0rem 0rem 0rem;
 
     &__background {
         fill: $std-swatch-1;
