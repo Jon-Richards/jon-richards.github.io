@@ -21,18 +21,18 @@
  * The frame is comporised of a an inner and outer elements.  The outer frame
  * renders affects for the frame itself, e.g. borders; while the inner frame
  * crops the image accordingly.
+ *
+ * @modifiers
+ * .frame--circle - Crops the image to a circle.
  */
 .frame {
-    border: 0.05rem solid $std-swatch-2--dk-20;
-    border-radius: 50%;
-    padding: 0.6rem;
+    overflow: hidden;
+    padding: 0rem;
+    margin: 0rem;
+    width: auto;
+    height: auto;
 
-    &__crop {
-        overflow: hidden;
-        padding: 0rem;
-        margin: 0rem;
-        width: auto;
-        height: auto;
+    &--circle {
         border-radius: 50%;
     }
 }

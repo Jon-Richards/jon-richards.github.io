@@ -4,8 +4,7 @@
  */
 
 import * as React from 'react';
-// import './avatar.scss';
-import * as styles from './avatar.scss';
+const CSS = require('./avatar.scss');
 
 /**
  * Renders the avatar.
@@ -28,11 +27,13 @@ export const AVATAR = React.memo<{
     altText: string;
 }>(props => {
     return (
-        <div className={styles.avatar}>
-            <div className={styles.frame}>
-                <div className={styles.frame__crop}>
+        <div className={CSS['avatar']}>
+            <div className={CSS['frame']}>
+                <div 
+                    className={`${CSS['frame']} ${CSS['frame--circle']}`}
+                >
                     <img
-                        className={styles.image}
+                        className={CSS['image']}
                         src={`https://www.gravatar.com/avatar/${props.gravatarHash}?s=${
                             props.imageSize
                         }`}

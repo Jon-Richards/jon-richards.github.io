@@ -4,9 +4,9 @@
  */
 
 import * as React from 'react';
-import * as styles from './footer.scss';
+const CSS = require('./footer.scss');
 
 /** Renders the footer component. */
 export const FOOTER: React.FunctionComponent<{}> = (props): JSX.Element => {
-    return <footer className={styles.root}>Footer</footer>;
+    return <footer className={CSS['root']}>Footer</footer>;
 };
