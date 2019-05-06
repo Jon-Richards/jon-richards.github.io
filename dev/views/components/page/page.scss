@@ -25,7 +25,6 @@ body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    overflow: hidden;
     background-image: linear-gradient(150deg, $std-swatch-2--lt-20, $std-swatch-2);
     background-attachment: fixed;
 
@@ -40,7 +39,7 @@ body {
     flex-grow: 1;
 
     @media (min-width: $std-breakpoint-1080) {
-        width: calc(100vw - #{$about-bar-width});
+        // width: calc(100vw - #{$about-bar-width});
         margin-left: $about-bar-width;
     }
 }

@@ -8,7 +8,8 @@
 
 /**
  * @description
- * Places the root About element on the page and applies baseline styling.
+ * Places the root About element on the page and applies baseline styling.  On larger screens,
+ * this element is fixed to the left side of the page and scrolls independently.
  */
 .root {
     display: flex;
@@ -23,35 +24,53 @@
         top: 0rem;
         left: 0rem;
         width: $about-bar-width;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
     }
 }
 
 /**
  * @description
- * Scaffolds the about section's content.  The desktop variant allows for scrolling,
- * but hides the scroll bar outside of the visible content area.
+ * Scaffolds the about section so that the scroll bar is placed out of the users' view.
+ */
+.scroller {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    @media (min-width: $std-breakpoint-1080) {
+        height: 100%;
+        width: calc(100% + 6rem);
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+/**
+ * @description
+ * Styles the content for the about section.  Since the parent element handles scrolling,
+ * the width of this element is not affected by the size of the browser's scroll bar, but must be
+ * set manually.
  */
 .content {
-    display: block;
-    width: calc(100% + 6rem);
+    position: relative;
+    width: 100%;
     height: auto;
-    overflow: hidden;
     padding: 
         $std-dimension-gap 
-        $std-dimension-gap * 6
+        $std-dimension-gap
         $std-dimension-gap
         $std-dimension-gap;
     color: $std-swatch-2;
     background-color: $std-swatch-1;
 
     @media (min-width: $std-breakpoint-1080) {
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        padding-right: 5rem;
-        padding-bottom: $std-dimension-gap * 2;
+        position: absolute;
+        width: calc(#{$about-bar-width});
+        height: auto;
+        overflow: hidden;
+        padding: $std-dimension-gap * 2 1rem;
     }
 }
 
