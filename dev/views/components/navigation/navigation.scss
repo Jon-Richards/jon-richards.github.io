@@ -1,0 +1,51 @@
+/**
+ * @fileoverview
+ * Styling for the navigation.
+ */
+
+@import '../../lib/scss/standards/index';
+
+.root {
+    display: flex;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: auto;
+    bottom: 0rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    background-color: $std-swatch-1;
+}
+
+.links-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.links-list__item {
+    display: flex;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.link {
+    display: block;
+    padding: 1rem;
+    border-width: 0.2rem 0rem 0rem 0rem;
+    border-style: solid;
+    border-color: $std-swatch-1;
+    background-color: $std-swatch-1;
+    color: $std-swatch-2;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover, &:active, &--active {
+        border-color: $std-swatch-3;
+        color: $std-swatch-3;
+    }
+}
