@@ -4,17 +4,21 @@
  */
 
 @import '../../lib/scss/standards/index';
-@import '../about/public.scss';
+@import '../overview/public.scss';
 
 .root {
     display: flex;
     width: 100%;
     height: auto;
-    padding: $std-dimension-gap;
-    background-color: $std-swatch-1;
+    padding: 
+        $std-dimension-gap
+        $std-dimension-gap
+        $std-dimension-gap * 10
+        $std-dimension-gap;
+    background-color: std-get-swatch(1);
 
-    @media (min-width: $std-breakpoint-1080) {
-        width: calc(100% - #{$about-bar-width});
-        margin-left: $about-bar-width;
+    @media (min-width: std-get-breakpoint(1080)) {
+        width: calc(100% - #{$overview-bar-width});
+        margin-left: $overview-bar-width;
     }
 }

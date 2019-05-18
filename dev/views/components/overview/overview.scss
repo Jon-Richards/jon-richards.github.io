@@ -19,11 +19,11 @@
     flex-direction: column;
     margin: 0rem;
 
-    @media (min-width: $std-breakpoint-1080) {
+    @media (min-width: std-get-breakpoint(1080)) {
         position: fixed;
         top: 0rem;
         left: 0rem;
-        width: $about-bar-width;
+        width: $overview-bar-width;
         height: 100%;
         overflow: hidden;
     }
@@ -39,7 +39,7 @@
     width: 100%;
     height: auto;
 
-    @media (min-width: $std-breakpoint-1080) {
+    @media (min-width: std-get-breakpoint(1080)) {
         height: 100%;
         width: calc(100% + 6rem);
         overflow-x: hidden;
@@ -62,12 +62,12 @@
         $std-dimension-gap
         $std-dimension-gap
         $std-dimension-gap;
-    color: $std-swatch-2;
-    background-color: $std-swatch-1;
+    color: std-get-swatch(2);
+    background-color: std-get-swatch(1);
 
-    @media (min-width: $std-breakpoint-1080) {
+    @media (min-width: std-get-breakpoint(1080)) {
         position: absolute;
-        width: calc(#{$about-bar-width});
+        width: calc(#{$overview-bar-width});
         min-height: 100vh;
         overflow: hidden;
         padding: $std-dimension-gap * 2 1rem;
@@ -87,7 +87,7 @@
 
     &__component {
         width: 8rem;
-        border: 0.05rem solid $std-swatch-3;
+        border: 0.05rem solid std-get-swatch(3);
         border-radius: 50%;
         padding: 0.6rem;
     }
@@ -114,7 +114,7 @@
         content: ' ';
         display: block;
         width: 50%;
-        border-bottom: 0.05rem solid $std-swatch-3;
+        border-bottom: 0.05rem solid std-get-swatch(3);
         padding-top: 1rem;
         margin: 0rem auto;
     }
@@ -127,7 +127,7 @@
         text-align: center;
     }
 
-    @media (min-width: $std-breakpoint-1080) {
+    @media (min-width: std-get-breakpoint(1080)) {
         &__text {
             font-size: 1.8rem;
             text-align: left;
@@ -147,15 +147,15 @@
     margin: -0.2rem 0rem 0rem 0rem;
 
     &__background {
-        fill: $std-swatch-1;
+        fill: std-get-swatch(1);
         stroke: 0;
     }
 
-    @media (min-width: $std-breakpoint-720) {
+    @media (min-width: std-get-breakpoint(720)) {
         height: 2.5rem;
     }
 
-    @media (min-width: $std-breakpoint-1080) {
+    @media (min-width: std-get-breakpoint(1080)) {
         display: none;
     }
 }

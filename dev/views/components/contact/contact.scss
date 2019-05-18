@@ -5,7 +5,6 @@
 
 @import '../../lib/scss/standards/index';
 @import './public';
-@import '../about/public';
 
 /**
  * @description
@@ -18,9 +17,9 @@
     height: auto;
     flex-direction: column;
     padding: $std-dimension-gap;
-    color: $std-swatch-1;
+    color: std-get-swatch(1);
 
-    @media (min-width: $std-breakpoint-1440) {
+    @media (min-width: std-get-breakpoint(1440)) {
         position: absolute;
         top: 0rem;
         right: 0rem;

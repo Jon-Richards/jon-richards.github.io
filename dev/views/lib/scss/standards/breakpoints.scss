@@ -4,10 +4,19 @@
  * that more need to be added.
  */
 
-/* stylelint-disable */
-$std-breakpoint-375: 375px;
-$std-breakpoint-480: 480px;
-$std-breakpoint-720: 720px;
-$std-breakpoint-1080: 1080px;
-$std-breakpoint-1440: 1440px;
-/* stylelint-enable */
+@function std-get-breakpoint( $breakpoint ) {
+    $_breakpoints: (
+        375: 375px,
+        480: 480px,
+        720: 720px,
+        1080: 1080px,
+        1440: 1400px
+    );
+
+    @if (map-has-key($map: $_breakpoints, $key: $breakpoint)) {
+        @return map-get($map: $_breakpoints, $key: $breakpoint);
+    }
+    @else {
+        @error 'Unknown breakpoint: #{$breakpoint}.';
+    }
+}

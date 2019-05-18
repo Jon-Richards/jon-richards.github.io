@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-const CSS = require('./about.scss');
+const CSS = require('./overview.scss');
 import { Avatar } from '../avatar';
 import { NBSP, NBHP } from '../../lib/ts/html_entities';
 import { SVGWrapper } from '../svg_wrapper';
@@ -12,12 +12,9 @@ import { SVGWrapper } from '../svg_wrapper';
 /**
  * Renders the about section.
  */
-export const ABOUT: React.FunctionComponent<{
-    /** Just a test prop. */
-    name: string;
-}> = ({ name }): JSX.Element => {
+export const OVERVIEW: React.FunctionComponent<{}> = (): JSX.Element => {
     return (
-        <div className={CSS['root']} role="region" aria-label="About">
+        <div id="overview" className={CSS['root']} role="region" aria-label="About">
             <div className={CSS['scroller']}>
                 <div className={CSS['content']}>
                     <div className={CSS['avatar']}>

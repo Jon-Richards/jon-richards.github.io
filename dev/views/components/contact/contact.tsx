@@ -9,7 +9,7 @@ const CSS = require('./contact.scss');
 /** Renders the contact section. */
 export const CONTACT: React.FunctionComponent<{}> = (props): JSX.Element => {
     return (
-        <div className={CSS['root']} role="region" aria-label="Contact">
+        <div id="contact" className={CSS['root']} role="region" aria-label="Contact">
             Contact
         </div>
     );

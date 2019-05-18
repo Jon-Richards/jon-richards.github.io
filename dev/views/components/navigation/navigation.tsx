@@ -40,6 +40,11 @@ export class Navigation extends React.Component<
             uuid: String(Math.floor( Math.random() * 1000000 )),
             displayText: 'Resume',
             href: '#resume'
+        },
+        {
+            uuid: String(Math.floor( Math.random() * 1000000 )),
+            displayText: 'Contact',
+            href: '#contact'
         }
     ];
 

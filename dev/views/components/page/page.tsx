@@ -5,7 +5,7 @@
 
 import * as React from 'react';
 const CSS = require('./page.scss');
-import { About } from '../about';
+import { Overview } from '../overview';
 import { Contact } from '../contact';
 import { Footer } from '../footer';
 import { Navigation } from '../navigation';
@@ -16,7 +16,7 @@ export const PAGE: React.FunctionComponent<{}> = (props): JSX.Element => {
         <div className={CSS['root']}>
             <Navigation />
             <div className={CSS['content']}>
-                <About name="Jon" />
+                <Overview />
                 <main className={CSS['main']}>{props.children}</main>
                 <Contact />
             </div>

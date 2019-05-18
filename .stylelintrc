@@ -5,7 +5,11 @@
       "ignoreAtRules": [
         "extends",
         "mixin",
-        "include"
+        "include",
+        "error",
+        "warn",
+        "function",
+        "return"
       ]
     }],
     "block-no-empty": null,
