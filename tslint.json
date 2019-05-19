@@ -9,6 +9,8 @@
                 "limit": 100,
                 "ignore-pattern": "^import |^export {(.*?)}"
             }
-        ]
+        ],
+        "no-consecutive-blank-lines": [true],
+        "indent": [true, "spaces", 4]
     }
 }

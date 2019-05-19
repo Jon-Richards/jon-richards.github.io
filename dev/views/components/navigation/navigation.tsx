@@ -5,6 +5,7 @@
 
 import * as React from 'react';
 const CSS = require('./navigation.scss');
+import { kebabCase } from 'lodash';
 
 interface NavigationLink {
     /** UUID for this link in the array. */
@@ -17,7 +18,10 @@ interface NavigationLink {
 
 /** Renders the main navigation. */
 export class Navigation extends React.Component<
-    {},
+    {
+        /** Visual format in which the navigation should render. */
+        format: 'LARGE_DEVICE' | 'SMALL_DEVICE'
+    },
     {
         /** The active link's hash value. */
         activeLink: NavigationLink['href']
@@ -26,11 +30,6 @@ export class Navigation extends React.Component<
     
     /** The links that will be rendered by the navigation. */
     static readonly links: NavigationLink[] = [
-        {
-            uuid: String(Math.floor( Math.random() * 1000000 )),
-            displayText: 'About',
-            href: '#about'
-        },
         {
             uuid: String(Math.floor( Math.random() * 1000000 )),
             displayText: 'Work',
@@ -55,31 +54,37 @@ export class Navigation extends React.Component<
         this.state = {
             activeLink
         };
-
-        this.setupHistoryAPIFeedback();
-    }
-
-    /** Adds event listeners and handling for the html history API */
-    private setupHistoryAPIFeedback = (): void => {
-        window.addEventListener('popstate', (e:PopStateEvent) => this.handlePopstateEvent(e));
-        window.onpopstate = (e:PopStateEvent): void => {
-            this.setState({
-                activeLink: window.location.hash
-            });
-        };
     }
 
     /** Window.popstate event handler. */
-    private handlePopstateEvent = (e: PopStateEvent): void => {
+    private handlePopstateEvent = (): void => {
         this.setState({
             activeLink: window.location.hash
         });
     }
+    
+    /** Add event listeners and handling. */
+    componentDidMount(): void {
+        window.addEventListener('popstate', this.handlePopstateEvent, false);
+    }
+
+    /** Unsubscribe from window event listeners should this component unmount. */
+    componentWillUnmount(): void {
+        window.removeEventListener('popstate', this.handlePopstateEvent, false);
+    }
 
     /** Renders the navigation to the DOM */
     render(): JSX.Element {
+        const { format } = this.props;
+
         return (
-            <nav id="navigation" className={CSS['root']}>
+            <nav 
+                id="navigation" 
+                className={
+                    `${ CSS['root'] } ` + 
+                    `${ CSS['root--' + kebabCase(format)] }`
+                }
+            >
                 <ul className={CSS['links-list']}>
                     {Navigation.links.map( link => (
                         <li key={link.uuid} className={CSS['links-list__item']}>
