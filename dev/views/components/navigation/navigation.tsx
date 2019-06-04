@@ -63,12 +63,12 @@ export class Navigation extends React.Component<
         });
     }
     
-    /** Add event listeners and handling. */
+    /** @inheritdoc */
     componentDidMount(): void {
         window.addEventListener('popstate', this.handlePopstateEvent, false);
     }
 
-    /** Unsubscribe from window event listeners should this component unmount. */
+    /** @inheritdoc */
     componentWillUnmount(): void {
         window.removeEventListener('popstate', this.handlePopstateEvent, false);
     }

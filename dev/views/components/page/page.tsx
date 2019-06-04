@@ -10,7 +10,7 @@ import { Contact } from '../contact';
 import { Footer } from '../footer';
 import { Navigation } from '../navigation';
 import { debounce } from 'lodash';
-import { DeviceUtils } from '../../lib/ts/device_utils';
+import { isSmallScreen } from '../../lib/ts/browser_utils';
 import { WINDOW_RESIZE_DELAY } from '../../lib/ts/constants';
 
 /** The base layout used by every page. */
@@ -21,21 +21,17 @@ export class Page extends React.Component<
         hasMobileNavigation: boolean,
     }
 > {
-    /** Utility for interacting with the viewport. */
-    device: DeviceUtils;
-
     constructor(props: Page['props']) {
         super(props);
-        this.device = new DeviceUtils();
         this.state = {
-            hasMobileNavigation: this.device.hasSmallScreen
+            hasMobileNavigation: isSmallScreen()
         };
     }
 
     /** Handles viewport resize events. */
     handleResizeEvent = debounce(() => {
         this.setState({
-            hasMobileNavigation: this.device.hasSmallScreen
+            hasMobileNavigation: isSmallScreen()
         });
     }, WINDOW_RESIZE_DELAY);
 

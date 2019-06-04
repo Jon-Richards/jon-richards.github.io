@@ -10,7 +10,7 @@ import { NBSP, NBHP } from '../../lib/ts/html_entities';
 import { SVGWrapper } from '../svg_wrapper';
 import { Navigation } from '../navigation';
 import { debounce } from 'lodash';
-import { DeviceUtils } from '../../lib/ts/device_utils';
+import { isSmallScreen } from '../../lib/ts/browser_utils';
 import { WINDOW_RESIZE_DELAY } from '../../lib/ts/constants';
 
 /**
@@ -23,14 +23,10 @@ export class Overview extends React.Component<
         hasNavigation: boolean;
     }
 > {
-    /** Reference to the DeviceUtils class for interacting directly with the device. */
-    device: DeviceUtils;
-
     constructor(props: Overview['props']) {
         super(props);
-        this.device = new DeviceUtils();
         this.state = {
-            hasNavigation: this.device.hasSmallScreen === false
+            hasNavigation: isSmallScreen() === false
         };
     }
 
@@ -47,7 +43,7 @@ export class Overview extends React.Component<
     /** Safely fires am event handler when the window resized. */
     handleResize = debounce(() => {
         this.setState({
-            hasNavigation: this.device.hasSmallScreen === false
+            hasNavigation: isSmallScreen() === false
         });
     }, WINDOW_RESIZE_DELAY);
 
