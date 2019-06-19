@@ -1,0 +1,33 @@
+/**
+ * @fileoverview
+ * Styling for the main navigation.
+ */
+
+@import '../../lib/scss/standards/index';
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.link {
+    display: inline-block;
+    padding: 1.25rem 1rem 1.5rem 1rem;
+    text-decoration: none;
+    color: std-get-swatch(3);
+    @include std-font-2;
+    @include std-font-2--bold;
+
+    border-top: 0.25rem solid transparent;
+    border-right: thin solid transparent;
+    border-left: thin solid transparent;
+}
+.link:hover {
+    border-top: 0.25rem solid std-get-swatch(3);
+    border-right: thin solid transparent;
+    border-left: thin solid transparent;
+}

@@ -1,0 +1,34 @@
+/**
+ * @fileoverview
+ * Styling for the header of the page.
+ */
+
+@import '../../lib/scss/standards/index';
+
+.header {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    bottom: 0rem;
+    left: 0rem;
+    align-items: center;
+    justify-content: center;
+    background-color: std-get-swatch(1, -20);
+    transform: translateY(5rem);
+}
+:global(.app--ready) .header {
+    animation-name: header-entry;
+    animation-direction: normal;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes header-entry {
+    0% {
+        transform: translateY(5rem);
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}

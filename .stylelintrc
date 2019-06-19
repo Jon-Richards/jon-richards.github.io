@@ -18,6 +18,11 @@
     "max-line-length": 100,
     "indentation": 4,
     "max-nesting-depth": 3,
-    "selector-combinator-blacklist": ["+", "~", ">", "*"]
+    "selector-combinator-blacklist": ["+", "~", ">", "*"],
+    "selector-pseudo-class-no-unknown": [ true, {
+      "ignorePseudoClasses": [
+        "global"
+      ]
+    }]
   }
 }

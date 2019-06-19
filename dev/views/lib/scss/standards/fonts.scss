@@ -14,3 +14,15 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
+
+@mixin std-font-2--semi-bold {
+    font-weight: 600;
+}
+
+@mixin std-font-2--bold {
+    font-weight: 700;
+}
+
+@mixin std-font-2--extra-bold {
+    font-weight: 800;
+}

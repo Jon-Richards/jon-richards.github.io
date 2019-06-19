@@ -5,59 +5,55 @@
 
 import * as React from 'react';
 const CSS = require('./page.scss');
-import { Overview } from '../overview';
-import { Contact } from '../contact';
-import { Footer } from '../footer';
-import { Navigation } from '../navigation';
-import { debounce } from 'lodash';
-import { isSmallScreen } from '../../lib/ts/browser_utils';
-import { WINDOW_RESIZE_DELAY } from '../../lib/ts/constants';
+import { Header } from '../header';
+import { Preloader } from '../preloader';
 
 /** The base layout used by every page. */
 export class Page extends React.Component<
     {},
     {
-        /** If the mobile navigation should be rendered to the DOM. */
-        hasMobileNavigation: boolean,
+        /** The overall status of the app. */
+        status: 'ready' | '';
     }
 > {
-    constructor(props: Page['props']) {
+    /** 
+     * Timeout used for flagging the app as ready.
+     * @todo remove when using actual data.
+     */
+    private initTimout = 0;
+
+    constructor(props:Page['props']) {
         super(props);
+
         this.state = {
-            hasMobileNavigation: isSmallScreen()
+            status: '',
         };
     }
 
-    /** Handles viewport resize events. */
-    handleResizeEvent = debounce(() => {
-        this.setState({
-            hasMobileNavigation: isSmallScreen()
-        });
-    }, WINDOW_RESIZE_DELAY);
-
-    /** @inheritdoc */
-    componentDidMount(): void {
-        window.addEventListener('resize', this.handleResizeEvent, false);
+    /** 
+     * Waits before setting the app ready flag.
+     * @todo Replace response handler when bootstrapping the app.
+     */
+    componentDidMount() {
+        this.initTimout = window.setTimeout(() => {
+            this.setState({ status: 'ready' });
+        }, 3000);
     }
 
-    /** @inheritdoc */
-    componentWillUnmount(): void {
-        window.removeEventListener('resize', this.handleResizeEvent, false);
+    /** Unsubscribe from timeouts etc. before unmounting. */
+    componentWillUnmount() {
+        clearTimeout(this.initTimout);
     }
 
     /** Renders the page. */
     render(): JSX.Element {
         return (
-            <div className={CSS['root']}>
-                {this.state.hasMobileNavigation && <Navigation format="SMALL_DEVICE" />}
-                <div className={CSS['content']}>
-                    <Overview />
-                    <main className={CSS['main']}>
-                        {this.props.children}
-                    </main>
-                    <Contact />
-                </div>
-                <Footer />
+            <div className={`${CSS['root']} ${'app--' + this.state.status}`}>
+                <Preloader />
+                <Header />
+                <main>
+                    Main - test
+                </main>
             </div>
         );
     }
