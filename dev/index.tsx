@@ -6,16 +6,16 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from './store/store';
-import { APP } from './containers/app';
+import { create } from './store/root';
+import { ROOT } from './views/containers/root';
 
 /**
  * Applies the store to the root of the application tree as props and renders
  * it to the DOM.
  */
 render(
-    <Provider store={configureStore()}>
-        <APP />
+    <Provider store={create()}>
+        <ROOT />
     </Provider>,
     document.getElementById('app')
 );

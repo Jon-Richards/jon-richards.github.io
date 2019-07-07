@@ -19,6 +19,17 @@ body {
 
 .root {
     display: flex;
-    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
     flex-wrap: wrap;
+}
+
+.main {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
 }

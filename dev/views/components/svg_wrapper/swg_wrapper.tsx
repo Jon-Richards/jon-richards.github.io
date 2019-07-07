@@ -10,8 +10,6 @@ import * as React from 'react';
  * @example
  * <SVGWrapper
  * viewBox="0 0 300 100"
- * width="100%"
- * height="100%"
  * preserveAspectRatio="none"
  * className="my-svg"
  * >
@@ -24,10 +22,6 @@ export const SVG_WRAPPER = React.memo<{
      * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
      */
     viewBox: string;
-    /** Value of the rendered SVG element's width attribute. */
-    width: string;
-    /** Value of the rendered SVG element's height attribute. */
-    height: string;
     /** 
      * Value of the rendered SVG element's preserveAspectRatio attribute.
      * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
@@ -40,8 +34,6 @@ export const SVG_WRAPPER = React.memo<{
 }>(props => {
     const {
         viewBox,
-        width,
-        height,
         preserveAspectRatio,
         className = '',
     } = props;
@@ -53,8 +45,6 @@ export const SVG_WRAPPER = React.memo<{
             version="1.1"
             viewBox={viewBox}
             preserveAspectRatio={preserveAspectRatio}
-            width={width}
-            height={height}
             className={className}
         >
             {props.children}

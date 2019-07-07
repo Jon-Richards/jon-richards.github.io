@@ -17,7 +17,7 @@
     "tslint": "tslint",
     "prettier:write": "prettier --write \"./dev/**/*.ts\" && echo All is pretty!",
     "prettier:check": "prettier --check \"./dev/**/*\" && echo All is pretty! || echo Found prettier errors - See above.",
-    "api": "json-server --watch ./test/json-server/api.json --port 3004",
+    "api": "json-server --watch ./test/json-server/api.json --port 3004 --static ./test/content/",
     "browserslist": "browserslist"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.10",
+    "@types/uuid": "^3.4.4",
     "@types/webpack-env": "^1.13.6",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
@@ -80,6 +81,7 @@
     "tslint": "^5.14.0",
     "tslint-loader": "^3.5.4",
     "typescript": "3.3.3333",
+    "uuid": "^3.3.2",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.1",
     "webpack-dev-middleware": "^3.4.0",

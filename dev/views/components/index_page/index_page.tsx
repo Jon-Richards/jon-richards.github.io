@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Page } from '../page';
-import { LoremIpsum } from '../../../../test/content/lorem_ipsum';
+/**
+ * @fileoverview
+ * Conatains the component for the index page.
+ */
 
-type Props = {
-    /** A simple test message. */
-    message: string;
-};
+import { React, Page, LoremIpsum } from './mediator';
+
+type Props = {};
 
 /** The root component of the index page. */
 export class IndexPage extends React.Component<Props, never> {

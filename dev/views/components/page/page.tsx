@@ -7,6 +7,7 @@ import * as React from 'react';
 const CSS = require('./page.scss');
 import { Header } from '../header';
 import { Preloader } from '../preloader';
+import { Gallery } from '../gallery';
 
 /** The base layout used by every page. */
 export class Page extends React.Component<
@@ -37,7 +38,7 @@ export class Page extends React.Component<
     componentDidMount() {
         this.initTimout = window.setTimeout(() => {
             this.setState({ status: 'ready' });
-        }, 3000);
+        }, 500);
     }
 
     /** Unsubscribe from timeouts etc. before unmounting. */
@@ -48,11 +49,32 @@ export class Page extends React.Component<
     /** Renders the page. */
     render(): JSX.Element {
         return (
-            <div className={`${CSS['root']} ${'app--' + this.state.status}`}>
+            <div className={`${CSS['root']} ${'page--' + this.state.status}`}>
                 <Preloader />
                 <Header />
-                <main>
-                    Main - test
+                <main className={CSS['main']}>
+                    <Gallery 
+                        pieces={[
+                            {
+                                text: 'One In X',
+                                href: '#',
+                                src: 'http://localhost:3004/img/luba_banner.jpg',
+                                onClick: (href) => console.log(href)
+                            },
+                            {
+                                text: 'One In X',
+                                href: '#',
+                                src: 'http://localhost:3004/img/luba_banner.jpg',
+                                onClick: (href) => console.log(href)
+                            },
+                            {
+                                text: 'One In X',
+                                href: '#',
+                                src: 'http://localhost:3004/img/luba_banner.jpg',
+                                onClick: (href) => console.log(href)
+                            },
+                        ]}
+                    />
                 </main>
             </div>
         );

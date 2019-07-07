@@ -1,36 +1,31 @@
 {
-    "portfolio": {
-        "projects": [
-            {
-                "id": 1,
-                "title": "1 in X",
-                "subtitle": "A web app for making inhuman statistics more personal.",
-                "thumb_device_small": "",
-                "thumb_device_medium": "",
-                "thumb_device_large": "",
-                "image_hero": {
-                    "small": "",
-                    "medium": "",
-                    "large": ""
-                },
-                "article": "...",
-                "tools": [
-                    "Angular",
-                    "PHP",
-                    "MySql",
-                    "SASS"
-                ]
-            },
-            {
-                "id": 2,
-                "title": "CouponNetwork.fr",
-                "subtitle": "Saving the French money and time."
-            },
-            {
-                "id": 3,
-                "title": "CatalinaCoupons.jp",
-                "subtitle": "A multi-retailer frequent shopper card solution."
-            }
-        ]
-    }
+    "projects": [
+        {
+            "id": 1,
+            "title": "1 in X",
+            "subtitle": "A web app for making inhuman statistics more personal.",
+            "thumb_device_small": "",
+            "thumb_device_medium": "",
+            "thumb_device_large": "img/luba_banner.jpg",
+            "article": "...",
+            "tools": [
+                "Angular",
+                "PHP",
+                "MySql",
+                "SASS"
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "id": 1,
+            "name": "Angular",
+            "logo": "foo"
+        },
+        {
+            "id": 2,
+            "name": "React",
+            "logo": "bar"
+        }
+    ]
 }
