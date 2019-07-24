@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import { IndexPage } from '../index_page';
+import { IndexPage } from '../pages';
 
 /** The root application component. */
 export class Root extends React.Component<{}, never> {

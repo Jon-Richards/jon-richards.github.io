@@ -3,7 +3,7 @@
  * Establishes the base CSS for the page.
  */
 
-@import '../../lib/scss/standards/index';
+@import '../mediator';
 
 @include std-css-reset();
 
