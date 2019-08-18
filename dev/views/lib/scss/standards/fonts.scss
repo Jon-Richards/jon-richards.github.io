@@ -6,8 +6,8 @@
  */
 
 @mixin std-font-1 {
-    font-family: 'Archivo Black', sans-serif;
-    font-weight: 400;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 800;
 }
 
 @mixin std-font-2 {
@@ -15,8 +15,8 @@
     font-weight: 400;
 }
 
-@mixin std-font-2--semi-bold {
-    font-weight: 600;
+@mixin std-font-2--light {
+    font-weight: 300;
 }
 
 @mixin std-font-2--bold {

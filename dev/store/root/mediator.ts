@@ -8,7 +8,7 @@ export { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 export { thunkMiddleware };
 export { composeWithDevTools } from 'redux-devtools-extension';
-export { portfolioReducer } from '../portfolio';
+export { portfolioReducer, PORTFOLIO_ACTIONS } from '../portfolio';
 
 /** Internal */
 import { REDUCER as APP_REDUCER, Store as AppState } from './reducer';

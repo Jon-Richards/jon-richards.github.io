@@ -18,6 +18,7 @@ export function reducer (
     },
     action?: 
         | ReturnType<typeof ACTIONS.getPieces>
+        | ReturnType<typeof ACTIONS.sayHello>
 ): State {
 
     if (action) {
@@ -26,6 +27,11 @@ export function reducer (
                 return {
                     ...state,
                     activePieceId: action.id
+                };
+            case 'PORTFOLIO__SAY_HELLO':
+                return {
+                    ...state,
+                    message: action.message
                 };
             default:
                 return state;

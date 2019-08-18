@@ -11,5 +11,7 @@ export { uuid };
 
 /** Internal */
 export { Gallery } from './gallery/gallery';
+import { PIECE as Piece, PieceShape } from './piece/piece';
+export { Piece, PieceShape };
 import { THUMBNAIL as Thumbnail, ThumbnailShape } from './thumbnail/thumbnail';
 export { Thumbnail, ThumbnailShape };

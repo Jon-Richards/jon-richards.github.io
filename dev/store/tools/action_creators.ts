@@ -20,7 +20,19 @@ export function getPieces (id: number): ActionCreator<'PORTFOLIO__GET_PIECES'> &
     };
 }
 
+/** Gets an overview of all portfolio pieces. */
+export function sayHello (message: string): ActionCreator<'PORTFOLIO__SAY_HELLO'> & {
+    /** A new message. */
+    message: State['message'];
+} {
+    return {
+        type: 'PORTFOLIO__SAY_HELLO',
+        message
+    };
+}
+
 /** Mapping of all Action Creators for the Portfolio module. */
 export const ACTIONS = {
-    getPieces
+    getPieces,
+    sayHello
 };

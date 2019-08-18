@@ -133,11 +133,18 @@
         border-collapse: collapse;
         border-spacing: 0;
     }
-
     /* End Meyerweb */
+    
     *,
     *::before,
     *::after {
         box-sizing: border-box;
+    }
+
+    button, input[type='button'] {
+        outline: none;
+        &::-moz-focus-inner {
+            border: 0;
+        }
     }
 }

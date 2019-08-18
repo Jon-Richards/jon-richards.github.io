@@ -4,7 +4,7 @@
  */
 
 const CSS = require('./index_page.scss');
-import { React, PageTemplate, Gallery } from '../mediator';
+import { React, PageTemplate, Gallery, INTRO, uuid } from '../mediator';
 
 type Props = {};
 
@@ -15,25 +15,43 @@ export class IndexPage extends React.Component<Props, never> {
         return (
             <PageTemplate>
                 <div className={CSS['root']}>
+                    <INTRO
+                        title={
+                            <>
+                                Jon<br />
+                                Richards
+                            </>
+                        }
+                        subtitle="Front-end Engineer" 
+                    />
                     <Gallery 
                         pieces={[
                             {
-                                text: 'One In X',
-                                href: '#',
-                                src: 'http://localhost:3004/img/luba_banner.jpg',
-                                onClick: (href) => console.log(href)
+                                title: 'One In X',
+                                description: <>
+                                    <p>
+                                        Visualizing statistics in an interesting way.
+                                    </p>
+                                </>,
+                                uuid: uuid()
                             },
                             {
-                                text: 'One In X',
-                                href: '#',
-                                src: 'http://localhost:3004/img/luba_banner.jpg',
-                                onClick: (href) => console.log(href)
+                                title: 'One In X',
+                                description: <>
+                                    <p>
+                                        Visualizing statistics in an interesting way.
+                                    </p>
+                                </>,
+                                uuid: uuid()
                             },
                             {
-                                text: 'One In X',
-                                href: '#',
-                                src: 'http://localhost:3004/img/luba_banner.jpg',
-                                onClick: (href) => console.log(href)
+                                title: 'One In X',
+                                description: <>
+                                    <p>
+                                        Visualizing statistics in an interesting way.
+                                    </p>
+                                </>,
+                                uuid: uuid()
                             },
                         ]}
                     />

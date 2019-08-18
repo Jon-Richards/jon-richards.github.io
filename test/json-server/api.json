@@ -7,25 +7,56 @@
             "thumb_device_small": "",
             "thumb_device_medium": "",
             "thumb_device_large": "img/luba_banner.jpg",
-            "article": "...",
-            "tools": [
-                "Angular",
-                "PHP",
-                "MySql",
-                "SASS"
-            ]
+            "article": "..."
+        }
+    ],
+    "projects_tools_junction": [
+        {
+            "id": 1,
+            "project_id": 1,
+            "tool_id": "abc-123"
+        },
+        {
+            "id": 2,
+            "project_id": 1,
+            "tool_id": "abc-124"
         }
     ],
     "tools": [
         {
             "id": 1,
-            "name": "Angular",
-            "logo": "foo"
+            "uuid": "abc-123",
+            "name": "TypeScript",
+            "logo": "foo",
+            "core": true
         },
         {
             "id": 2,
+            "uuid": "abc-124",
             "name": "React",
-            "logo": "bar"
+            "logo": "bar",
+            "core": true
+        },
+        {
+            "id": 3,
+            "uuid": "abc-125",
+            "name": "CSS / SASS",
+            "logo": "bar",
+            "core": true
+        },
+        {
+            "id": 4,
+            "uuid": "abc-125",
+            "name": "Photoshop",
+            "logo": "bar",
+            "core": false
+        },
+        {
+            "id": 5,
+            "uuid": "abc-126",
+            "name": "Illustrator",
+            "logo": "bar",
+            "core": false
         }
     ]
 }
