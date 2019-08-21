@@ -3,7 +3,7 @@
  * The reducer for the portfolio store.
  */
 
-import { ACTIONS, State } from './mediator';
+import { ACTIONS, PortfolioState } from './mediator';
 
 /** 
  * The Redux reducer for the Portfolio store.  If no params are supplied, a
@@ -12,27 +12,17 @@ import { ACTIONS, State } from './mediator';
  * @param action An action creator for updating the supplied state.
  */
 export function reducer (
-    state: State = { 
-        activePieceId: 0,
-        message: ''
+    state: PortfolioState = { 
+        pieces: []
     },
     action?: 
         | ReturnType<typeof ACTIONS.getPieces>
-        | ReturnType<typeof ACTIONS.sayHello>
-): State {
+): PortfolioState {
 
     if (action) {
-        switch (action.type) {
+        switch(action.type) {
             case 'PORTFOLIO__GET_PIECES':
-                return {
-                    ...state,
-                    activePieceId: action.id
-                };
-            case 'PORTFOLIO__SAY_HELLO':
-                return {
-                    ...state,
-                    message: action.message
-                };
+                return state;
             default:
                 return state;
         }

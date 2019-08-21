@@ -5,6 +5,4 @@
 
 /** Internal */
 export { ENDPOINTS } from './endpoints';
-export { Requestor } from './requestor';
-export { Response } from './response';
-export { Status } from './status';
+export { RequestInit } from './request_init';

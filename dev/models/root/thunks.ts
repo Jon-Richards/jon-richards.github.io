@@ -41,6 +41,6 @@ export function init (): ThunkAction<
 > {
     return (dispatch, getState) => {
         const foo = getState().portfolio;
-        return dispatch(PORTFOLIO_ACTIONS.getPieces(1));
+        return dispatch(PORTFOLIO_ACTIONS.getPieces());
     };
 }

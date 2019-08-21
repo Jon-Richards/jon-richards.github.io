@@ -11,8 +11,6 @@ export class Piece {
     readonly displayTitle: string;
     /** URL friendly title. */
     readonly urlTitle: string;
-    /** URL of the banner image. */
-    readonly bannerImage: string;
 
     constructor(
         /** The uuid for the piece. */
@@ -20,13 +18,10 @@ export class Piece {
         /** The piece's title as displayed in the UI. */
         displayTitle: Piece['displayTitle'],
         /** A URL safe version of the piece's title. */
-        urlTitle: Piece['urlTitle'],
-        /** URL of the banner image. */
-        bannerImage: Piece['bannerImage'],
+        urlTitle: Piece['urlTitle']
     ) {
         this.uuid = uuid;
         this.displayTitle = displayTitle;
         this.urlTitle = urlTitle;
-        this.bannerImage = bannerImage;
     }
 }

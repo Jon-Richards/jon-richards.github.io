@@ -6,7 +6,7 @@
 import { reducer as portfolioReducer} from './mediator';
 export { portfolioReducer };
 
-import { State as PortfolioState} from './mediator';
+import { PortfolioState} from './mediator';
 export { PortfolioState };
 
 import {ACTIONS as PORTFOLIO_ACTIONS} from './mediator';

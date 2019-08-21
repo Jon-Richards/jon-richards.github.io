@@ -17,16 +17,13 @@ export function reducer (
         message: ''
     },
     action?: 
-        | ReturnType<typeof ACTIONS.getPieces>
+        | ReturnType<typeof ACTIONS.getToolsFilters>
 ): State {
 
     if (action) {
         switch (action.type) {
-            case 'PORTFOLIO__GET_PIECES':
-                return {
-                    ...state,
-                    activePieceId: action.id
-                };
+            case 'TOOLS__GET_FILTERS':
+                return state;
             default:
                 return state;
         }

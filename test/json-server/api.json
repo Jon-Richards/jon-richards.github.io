@@ -2,61 +2,73 @@
     "projects": [
         {
             "id": 1,
+            "uuid": "1_in_x",
             "title": "1 in X",
             "subtitle": "A web app for making inhuman statistics more personal.",
-            "thumb_device_small": "",
-            "thumb_device_medium": "",
-            "thumb_device_large": "img/luba_banner.jpg",
-            "article": "..."
-        }
-    ],
-    "projects_tools_junction": [
-        {
-            "id": 1,
-            "project_id": 1,
-            "tool_id": "abc-123"
-        },
-        {
-            "id": 2,
-            "project_id": 1,
-            "tool_id": "abc-124"
+            "thumb_device_small": "img/thumb_320x560.jpg",
+            "thumb_device_medium": "img/thumb_768x1024.jpg",
+            "thumb_device_large": "img/thumb_1080x720.jpg",
+            "article": "...",
+            "tools": [
+                {
+                    "id": 6,
+                    "uuid": "angular",
+                    "name": "Angular",
+                    "logo": "bar",
+                    "core": true
+                },
+                {
+                    "id": 4,
+                    "uuid": "photoshop",
+                    "name": "Photoshop",
+                    "logo": "bar",
+                    "core": false
+                }
+            ]
         }
     ],
     "tools": [
         {
             "id": 1,
-            "uuid": "abc-123",
+            "uuid": "typescript",
             "name": "TypeScript",
             "logo": "foo",
             "core": true
         },
         {
             "id": 2,
-            "uuid": "abc-124",
+            "uuid": "react",
             "name": "React",
             "logo": "bar",
             "core": true
         },
         {
             "id": 3,
-            "uuid": "abc-125",
+            "uuid": "css_sass",
             "name": "CSS / SASS",
             "logo": "bar",
             "core": true
         },
         {
             "id": 4,
-            "uuid": "abc-125",
+            "uuid": "photoshop",
             "name": "Photoshop",
             "logo": "bar",
             "core": false
         },
         {
             "id": 5,
-            "uuid": "abc-126",
+            "uuid": "illustrator",
             "name": "Illustrator",
             "logo": "bar",
             "core": false
+        },
+        {
+            "id": 6,
+            "uuid": "angular",
+            "name": "Angular",
+            "logo": "bar",
+            "core": true
         }
     ]
 }

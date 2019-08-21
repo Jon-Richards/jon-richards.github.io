@@ -24,6 +24,7 @@ export class Gallery extends React.Component<
         const pieces: React.ReactFragment[] = this.props.pieces.map( piece => {
             return (
                 <Piece
+                    key={piece.uuid}
                     uuid={piece.uuid}
                     title={piece.title}
                     description={piece.description}

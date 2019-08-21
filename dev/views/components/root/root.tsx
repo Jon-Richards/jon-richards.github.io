@@ -7,18 +7,24 @@ import * as React from 'react';
 import { IndexPage } from '../pages';
 
 /** The root application component. */
-export class Root extends React.Component<{}, never> {
+export class Root extends React.Component<
+    {
+    /** gets portfolio projects */
+    getProjects(): void;
+    }, 
+    never
+> {
     constructor(props: Root['props']) {
         super(props);
-
-        console.log('make initial request');
     }
 
     /** Returns the rendered component as JSX. */
     render(): JSX.Element {
         return (
             <>
-                <IndexPage />
+                <IndexPage
+                    getProjects={this.props.getProjects}
+                />
             </>
         );
     }

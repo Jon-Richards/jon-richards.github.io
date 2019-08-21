@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { create } from './store/root';
+import { create } from './models/root';
 import { ROOT } from './views/containers/root';
 
 /**

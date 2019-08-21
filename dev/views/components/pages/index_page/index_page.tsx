@@ -6,10 +6,18 @@
 const CSS = require('./index_page.scss');
 import { React, PageTemplate, Gallery, INTRO, uuid } from '../mediator';
 
-type Props = {};
-
 /** The root component of the index page. */
-export class IndexPage extends React.Component<Props, never> {
+export class IndexPage extends React.Component<
+    {
+        /** Method dispatched to retrieve portfolio projects. */
+        getProjects(): void;
+    }, 
+    never
+> {
+    constructor(props: IndexPage['props']) {
+        super(props);
+        props.getProjects();
+    }
     /** Renders this component to the DOM. */
     render(): JSX.Element {
         return (
