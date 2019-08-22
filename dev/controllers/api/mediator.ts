@@ -5,4 +5,4 @@
 
 /** Internal */
 export { ENDPOINTS } from './endpoints';
-export { RequestInit } from './request_init';
+export { setRequestOptions } from './request_init';

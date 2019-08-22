@@ -1,74 +1,85 @@
 {
-    "projects": [
-        {
-            "id": 1,
-            "uuid": "1_in_x",
-            "title": "1 in X",
-            "subtitle": "A web app for making inhuman statistics more personal.",
-            "thumb_device_small": "img/thumb_320x560.jpg",
-            "thumb_device_medium": "img/thumb_768x1024.jpg",
-            "thumb_device_large": "img/thumb_1080x720.jpg",
-            "article": "...",
-            "tools": [
-                {
-                    "id": 6,
-                    "uuid": "angular",
-                    "name": "Angular",
-                    "logo": "bar",
-                    "core": true
-                },
-                {
-                    "id": 4,
-                    "uuid": "photoshop",
-                    "name": "Photoshop",
-                    "logo": "bar",
-                    "core": false
-                }
-            ]
-        }
-    ],
-    "tools": [
-        {
-            "id": 1,
-            "uuid": "typescript",
-            "name": "TypeScript",
-            "logo": "foo",
-            "core": true
-        },
-        {
-            "id": 2,
-            "uuid": "react",
-            "name": "React",
-            "logo": "bar",
-            "core": true
-        },
-        {
-            "id": 3,
-            "uuid": "css_sass",
-            "name": "CSS / SASS",
-            "logo": "bar",
-            "core": true
-        },
-        {
-            "id": 4,
-            "uuid": "photoshop",
-            "name": "Photoshop",
-            "logo": "bar",
-            "core": false
-        },
-        {
-            "id": 5,
-            "uuid": "illustrator",
-            "name": "Illustrator",
-            "logo": "bar",
-            "core": false
-        },
-        {
-            "id": 6,
-            "uuid": "angular",
-            "name": "Angular",
-            "logo": "bar",
-            "core": true
-        }
-    ]
+    "portfolio": { 
+        "pieces": [
+            {
+                "id": 1,
+                "uuid": "1_in_x",
+                "display_title": "1 in X",
+                "url_title": "1_in_X",
+                "description": "A web app for making inhuman statistics more personal.",
+                "thumb_device_small": "img/thumb_320x560.jpg",
+                "thumb_device_medium": "img/thumb_768x1024.jpg",
+                "thumb_device_large": "img/thumb_1080x720.jpg",
+                "tools": [
+                    "angular",
+                    "photoshop"
+                ]
+            },
+            {
+                "id": 2,
+                "uuid": "sketchbook",
+                "display_title": "Sketchbook",
+                "url_title": "sketchbook",
+                "description": "A place for displaying work of an entirely different kind.",
+                "thumb_device_small": "img/thumb_320x560.jpg",
+                "thumb_device_medium": "img/thumb_768x1024.jpg",
+                "thumb_device_large": "img/thumb_1080x720.jpg",
+                "tools": [
+                    "angular",
+                    "php",
+                    "illustrator"
+                ]
+            }
+        ],
+        "tools": [
+            {
+                "id": 1,
+                "uuid": "typescript",
+                "name": "TypeScript",
+                "value": "typescript",
+                "logo": "foo",
+                "core": true
+            },
+            {
+                "id": 2,
+                "uuid": "react",
+                "name": "React",
+                "value": "react",
+                "logo": "bar",
+                "core": true
+            },
+            {
+                "id": 3,
+                "uuid": "css_sass",
+                "name": "CSS / SASS",
+                "value": "css_sass",
+                "logo": "bar",
+                "core": true
+            },
+            {
+                "id": 4,
+                "uuid": "photoshop",
+                "name": "Photoshop",
+                "value": "photoshop",
+                "logo": "bar",
+                "core": false
+            },
+            {
+                "id": 5,
+                "uuid": "illustrator",
+                "name": "Illustrator",
+                "value": "illustrator",
+                "logo": "bar",
+                "core": false
+            },
+            {
+                "id": 6,
+                "uuid": "angular",
+                "name": "Angular",
+                "value": "angular",
+                "logo": "bar",
+                "core": true
+            }
+        ]
+    }
 }

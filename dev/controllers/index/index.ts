@@ -3,60 +3,33 @@
  * Contains the portfolio controller.
  */
 
-import { 
-    Dispatch, 
-    Action, 
-    ActionCreator, 
-    Store,
-    ThunkDispatch, 
-    ThunkAction,
-    PORTFOLIO_ACTIONS,
-    AppState 
-} from '../mediator';
-import { ENDPOINTS, RequestInit } from '../api';
+import { ThunkAction, PORTFOLIO_ACTIONS, AppState } from '../mediator';
+import { ENDPOINTS, setRequestOptions } from '../api';
 
-// /** 
-//  * Makes API requests required to initialize the application.
-//  * @template R The return value.
-//  * @template S The application state.
-//  * @template E An extra argument to pass to the thunk.
-//  * @template A Actions that are dispatchable by the ThunkAction.
-//  */
-// export function init (): ThunkAction<
-//     ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>, 
-//     AppState, 
-//     null, 
-//     ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>
-// > {
-//     return (dispatch, getState) => {
-//         const foo = getState().portfolio;
-//         return dispatch(PORTFOLIO_ACTIONS.getPieces());
-//     };
-// }
-
-/** Requests all portfolio pieces from the API and publishes them to the store. */
-function getPieces(): ThunkAction<
-    ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>,
+/** Requests an overview of the portfolio from the API and publishes the response to the store. */
+function getOverview(): ThunkAction<
+    Promise<ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>>,
     AppState,
     undefined,
     | ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>
     | ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>
 > {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(PORTFOLIO_ACTIONS.getPieces());
 
-        fetch(
-            ENDPOINTS.projects(),
-            RequestInit('GET')
-        )
+        return fetch(ENDPOINTS.overview(), setRequestOptions('GET'))
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
-        .catch(error => console.error(error));
-        
-        return dispatch(PORTFOLIO_ACTIONS.publishPieces([]));
+        .then(resp => {
+            const pieces = resp as unknown as AppState['portfolio']['pieces'];
+            return dispatch( PORTFOLIO_ACTIONS.publishPieces(pieces) );
+        })
+        .catch(error => {
+            console.error(error);
+            return dispatch( PORTFOLIO_ACTIONS.publishPieces([]) );
+        });
     };
 }
 
 export const INDEX_CONTROLLER = {
-    getPieces
+    getOverview
 };

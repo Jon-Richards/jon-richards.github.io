@@ -6,11 +6,11 @@
 const API_BASE = 'http://localhost:3004';
 
 /**
- * Returns the API endpoint for an outline of all portfolio projects. 
- * @return The API endpoint for an outline of all portfolio projects.
+ * Returns the API endpoint for an overview of the portfolio.
+ * @return The API endpoint for an overview of the portfolio.
  */
-export function projects(): string {
-    return `${API_BASE}/projects`;
+export function overview(): string {
+    return `${API_BASE}/overview`;
 }
 
 /**
@@ -23,6 +23,6 @@ export function tools(): string {
 
 /** Mapping of all endpoint methods. */
 export const ENDPOINTS = {
-    projects,
+    overview,
     tools
 };

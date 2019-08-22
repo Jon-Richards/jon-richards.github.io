@@ -9,7 +9,7 @@ import { React, PageTemplate, Gallery, INTRO, uuid } from '../mediator';
 /** The root component of the index page. */
 export class IndexPage extends React.Component<
     {
-        /** Method dispatched to retrieve portfolio projects. */
+        /** Gets an overview of the portfolio including pieces and toosl used. */
         getProjects(): void;
     }, 
     never

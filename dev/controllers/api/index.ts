@@ -3,4 +3,4 @@
  * Entrypoint into the API module.
  */
 
-export { ENDPOINTS, RequestInit } from './mediator';
+export { ENDPOINTS, setRequestOptions } from './mediator';

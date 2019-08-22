@@ -9,8 +9,8 @@ import { IndexPage } from '../pages';
 /** The root application component. */
 export class Root extends React.Component<
     {
-    /** gets portfolio projects */
-    getProjects(): void;
+        /** Gets an overview of the portfolio, including the resume. */
+        getOverview(): void;
     }, 
     never
 > {
@@ -23,7 +23,7 @@ export class Root extends React.Component<
         return (
             <>
                 <IndexPage
-                    getProjects={this.props.getProjects}
+                    getProjects={this.props.getOverview}
                 />
             </>
         );
