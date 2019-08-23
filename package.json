@@ -8,7 +8,7 @@
     "> 1%"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build:dev": "webpack --config=./config/webpack/dev.js --env.NODE_ENV=development --clean",
     "build:dist": "webpack --config=./config/webpack/dist.js --env.NODE_ENV=production --clean",
     "start": "webpack-dev-server --config=./config/webpack/dev.js --env.NODE_ENV=development",
@@ -35,6 +35,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@jon-richards/grid": "github:jon-richards/grid",
+    "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.129",
     "@types/node": "^10.5.2",
     "@types/react": "^16.3.14",
@@ -58,6 +59,7 @@
     "handlebars-loader": "^1.7.0",
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
     "json-server": "^0.14.0",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.4.3",
@@ -79,6 +81,7 @@
     "stylelint": "^9.10.1",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-webpack-plugin": "^0.10.5",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^5.2.0",
     "tslint": "^5.14.0",
     "tslint-loader": "^3.5.4",

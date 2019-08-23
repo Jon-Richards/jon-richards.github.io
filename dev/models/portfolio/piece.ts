@@ -7,6 +7,26 @@ import * as isEmpty from 'validator/lib/isEmpty';
 import * as isUUID from 'validator/lib/isUUID';
 import {v4 as uuid} from 'uuid';
 
+/** Shape of the data required for instantiating a Piece. */
+export interface PieceShape {
+    /** The uuid for the piece. */
+    uuid: Piece['uuid'];
+    /** The piece's title as displayed in the UI. */
+    title: Piece['title'];
+    /** A URL safe version of the piece's title. */
+    url: Piece['url'];
+    /** A description of the project. */
+    description: Piece['description'];
+    /** Path to the Piece's thumbnail for small device sizes. */
+    thumbDeviceSmall: Piece['thumbDeviceSmall'];
+    /** Path to the Piece's thumbnail for medium device sizes. */
+    thumbDeviceMedium: Piece['thumbDeviceMedium'];
+    /** Path to the Piece's thumbnail for large device sizes. */
+    thumbDeviceLarge: Piece['thumbDeviceLarge'];
+    /** Array of UUID's corresponding to the tools used to create the piece. */
+    tools: string[];
+}
+
 /** Possible validators to run against a given property. */
 type Validators = 'notEmpty' | 'isUUID';
 
@@ -31,24 +51,7 @@ export class Piece {
 
     constructor(
         /** A portfolio piece to validate. */
-        piece: {
-            /** The uuid for the piece. */
-            uuid: Piece['uuid'],
-            /** The piece's title as displayed in the UI. */
-            title: Piece['title'],
-            /** A URL safe version of the piece's title. */
-            url: Piece['url'],
-            /** A description of the project. */
-            description: Piece['description'],
-            /** Path to the Piece's thumbnail for small device sizes. */
-            thumbDeviceSmall: Piece['thumbDeviceSmall'],
-            /** Path to the Piece's thumbnail for medium device sizes. */
-            thumbDeviceMedium: Piece['thumbDeviceMedium'],
-            /** Path to the Piece's thumbnail for large device sizes. */
-            thumbDeviceLarge: Piece['thumbDeviceLarge'],
-            /** Array of UUID's corresponding to the tools used to create the piece. */
-            tools: string[]
-        }
+        piece: PieceShape
     ) {
         this.uuid = this.validate(piece.uuid, ['notEmpty', 'isUUID'], false, uuid());
         this.title = this.validate(piece.title, ['notEmpty'], false, '');
