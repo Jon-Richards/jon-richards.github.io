@@ -4,7 +4,8 @@
  */
 
 /** Internal */
-export { Piece } from './piece';
+export { Piece, PieceShape } from './piece';
+export { PieceManager } from './piece_manager';
 export { PortfolioState } from './state';
 export { reducer } from './reducer';
 export { ACTIONS } from './action_creators';
