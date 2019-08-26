@@ -3,7 +3,7 @@
  * Contains a class that manages and validates a collection of portfolio pieces.
  */
 
-import { Piece } from './mediator';
+import { Piece, PieceShape } from './mediator';
 
 /** Manages and validates a collection of portfolio pieces. */
 export class PieceManager {
@@ -12,12 +12,15 @@ export class PieceManager {
 
     constructor(
         /** Array of portfolio pieces to validate. */
-        pieces: PieceManager['pieces']
+        pieces: PieceShape[]
     ) {
         if (Array.isArray(pieces)) {
-            this.pieces = this.validatePieces( this.mapPieces(pieces) );
+            const validatedPieces = this.validatePieces(pieces);
+            this.pieces = this.mapPieces(validatedPieces);
         } else {
-            console.error('ERROR: Parameter "pieces" must be an array of Piece instances.');
+            if (process.env.NODE_ENV !== 'test') {
+                console.error('ERROR: Parameter "pieces" must be an array of Piece instances.');
+            }
             this.pieces = [];
         }
     }
@@ -27,7 +30,7 @@ export class PieceManager {
      * @param pieces An array of Pieces to validate.
      * @return An array of valid Pieces.
      */
-    private validatePieces(pieces: Piece[]): Piece[] {
+    private validatePieces(pieces: PieceShape[]): PieceShape[] {
         const completePieces = this.removeIncompletePieces(pieces);
         const uniquePieces = this.removeDuplicatePieces(completePieces);
         return uniquePieces;
@@ -39,7 +42,7 @@ export class PieceManager {
      * @param pieces An array of raw Piece objects.
      * @return An array of Piece instances created from the supplied data.
      */
-    private mapPieces(pieces: Piece[]): Piece[] {
+    private mapPieces(pieces: PieceShape[]): Piece[] {
         return pieces.map( piece => (
             new Piece({
                 uuid: piece.uuid,
@@ -59,14 +62,14 @@ export class PieceManager {
      * @param pieces An array of Pieces.
      * @return An array of Piece in which all required properties are not empty.
      */
-    private removeIncompletePieces(pieces: Piece[]): Piece[] {
-        const populated: Piece[] = [];
+    private removeIncompletePieces(pieces: PieceShape[]): PieceShape[] {
+        const populated: PieceShape[] = [];
 
         pieces.forEach(piece => {
             const {uuid, title, url} = piece;
-            const hasUUID = uuid.trim().length;
-            const hasTitle = title.trim().length;
-            const hasURL = url.trim().length;
+            const hasUUID = typeof uuid === 'string' && uuid.trim().length;
+            const hasTitle = typeof title === 'string' && title.trim().length;
+            const hasURL = typeof url === 'string' && url.trim().length;
 
             if (!hasUUID) this.throwEmptyPropertyError('uuid', '(uuid unavailable)');
             if (!hasTitle) this.throwEmptyPropertyError('title', uuid);
@@ -83,10 +86,12 @@ export class PieceManager {
      * @param uuid The UUID of the piece with the empty property.
      */
     private throwEmptyPropertyError (property: string, uuid: Piece['uuid']): void {
-        console.error(
-            `ERROR: Property: ${property} is missing from portfolio piece with uuid: ${uuid}.  ` +
-            `The piece will be disgarded.`
-        );
+        if (process.env.NODE_ENV !== 'test') {
+            console.error(
+                `ERROR: Property: ${property} is missing from portfolio piece with uuid: ${uuid}.` +
+                ` The piece will be discarded.`
+            );
+        }
     }
 
     /**
@@ -95,8 +100,8 @@ export class PieceManager {
      * @param pieces An array of Pieces.
      * @return An array of Pieces with no duplicate information.
      */
-    private removeDuplicatePieces(pieces: Piece[]): Piece[] {
-        const checkedPieces: Piece[] = [];
+    private removeDuplicatePieces(pieces: PieceShape[]): PieceShape[] {
+        const checkedPieces: PieceShape[] = [];
         
         pieces.forEach( piece => {
             let hasDuplicateId = false;
@@ -126,10 +131,10 @@ export class PieceManager {
      */
     private compareProperty<T>(propA: T, propB: T, propName: string): boolean {
         const areEqual = propA === propB;
-        if (areEqual) {
+        if (areEqual && process.env.NODE_ENV !== 'test') {
             console.error(
                 `ERROR: Found duplicate piece with property: ${propName}.  The duplicate will be ` +
-                `disgarded.`
+                `discarded.`
             );
         }
         return areEqual;
