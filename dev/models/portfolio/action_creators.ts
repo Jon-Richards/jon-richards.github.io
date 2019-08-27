@@ -3,7 +3,7 @@
  * Conatains action creators used by the Portfolio reducucer.
  */
 
-import { Action, PortfolioState } from './mediator';
+import { Action, PortfolioState, PieceManager } from './mediator';
 
 /** 
  * Gets all portfolio pieces.
@@ -34,9 +34,10 @@ export function publishPieces (pieces: PortfolioState['pieces']):  Action<
     /** The array of resulting portfolio pieces that will be published to the store. */
     pieces: PortfolioState['pieces']
 } {
+    const validatedPieces = new PieceManager(pieces);
     return {
         type: 'PORTFOLIO__PUBLISH_PIECES',
-        pieces
+        pieces: validatedPieces.pieces
     };
 }
 

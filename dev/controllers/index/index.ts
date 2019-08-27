@@ -3,7 +3,11 @@
  * Contains the portfolio controller.
  */
 
-import { ThunkAction, PORTFOLIO_ACTIONS, AppState } from '../mediator';
+import { 
+    ThunkAction,
+    PORTFOLIO_ACTIONS,
+    AppState
+} from '../mediator';
 import { ENDPOINTS, setRequestOptions } from '../api';
 
 /** Requests an overview of the portfolio from the API and publishes the response to the store. */
@@ -20,7 +24,7 @@ function getOverview(): ThunkAction<
         return fetch(ENDPOINTS.overview(), setRequestOptions('GET'))
         .then(resp => resp.json())
         .then(resp => {
-            const pieces = resp as unknown as AppState['portfolio']['pieces'];
+            const pieces = resp.pieces as unknown as AppState['portfolio']['pieces'];
             return dispatch( PORTFOLIO_ACTIONS.publishPieces(pieces) );
         })
         .catch(error => {

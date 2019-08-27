@@ -10,7 +10,7 @@ import { Root } from '../components/root';
 import { AppState, INDEX_CONTROLLER } from '../../controllers';
 
 type StateProps = {};
-type DispatchProps = Pick<Root['props'], 'getProjects'>;
+type DispatchProps = Pick<Root['props'], 'getOverview'>;
 
 /** Maps properties from the state to those of the App component. */
 const mapStateToProps = (state: AppState): StateProps => ({
@@ -20,7 +20,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
 /** Maps dispatchabale actions to additional properties of the App component. */
 const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, undefined, Action>): DispatchProps => 
 ({
-    getProjects: () => dispatch(INDEX_CONTROLLER.getPieces())
+    getOverview: () => dispatch(INDEX_CONTROLLER.getOverview())
 });
 
 /** A version of the root component that is connected directly to the controller layer. */

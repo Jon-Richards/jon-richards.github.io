@@ -6,12 +6,12 @@ import {v4 as uuid} from 'uuid';
 const mockPiece: PieceShape = {
     uuid: 'abc-123',
     title: 'Test Piece',
+    url: '/test_piece',
     description: 'A simple test piece.',
     thumbDeviceSmall: null,
     thumbDeviceMedium: null,
     thumbDeviceLarge: null,
     tools: [],
-    url: '/test_piece'
 };
 
 describe('The Piece class.', () => {

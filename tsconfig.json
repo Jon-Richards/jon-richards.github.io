@@ -11,5 +11,8 @@
   "include": [
     "dev/**/*.ts",
     "dev/**/*.tsx"
+  ],
+  "exclude": [
+    "dev/**/*.test.ts"
   ]
 }
