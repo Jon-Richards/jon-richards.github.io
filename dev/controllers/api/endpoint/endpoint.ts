@@ -5,7 +5,7 @@
 
 'use strict';
 
-import * as isUrl from 'validator/lib/isURL';
+import { isUrl } from '../mediator';
 
 /** 
  * Base class for API endpoints.  Provides scaffolding for an endpoint URL, response structure and
@@ -14,17 +14,17 @@ import * as isUrl from 'validator/lib/isURL';
 export class Endpoint<R> {
     /** The url for the endpoint. */
     readonly URL: string;
-    /** The expected response type when making a request to the endpoint. */
-    readonly RESPONSE: R;
+    /** 
+     * Member for storing a response of a given type. Runtime validation for the response should be
+     * handled by subclasses.
+     */
+    response?: R;
 
     constructor(
         /** The url for the endpoint. */
         url: Endpoint<R>['URL'],
-        /** The expected response type when making a request to the endpoint. */
-        response: Endpoint<R>['RESPONSE']
     ) {
         this.URL = this.validateUrl(url);
-        this.RESPONSE = response;
     }
     
     /** 
@@ -34,7 +34,7 @@ export class Endpoint<R> {
      * @retun The url if valid, else returns an empty string.
      */
     private validateUrl(url: Endpoint<R>['URL']): string {
-        const isValid = typeof url === 'string' && isUrl(url);
+        const isValid = typeof url === 'string' && isUrl(url, {require_tld: false});
         if (!isValid && process.env.NODE_ENV !== 'test') {
             console.error(
                 `ERROR: Endpoint was instantiated with invalid URL: ${url}, ` +

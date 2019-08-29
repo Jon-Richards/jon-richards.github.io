@@ -18,27 +18,28 @@ class MockResponse {
 
 describe('The Endpoint class.', () => {
     it('Accepts a valid URL as the first parameter.', () => {
-        const endpoint = new Endpoint('http://www.google.com', new MockResponse('bar'));
+        const endpoint = new Endpoint('http://www.google.com');
         expect(endpoint.URL.length).toEqual(21);
         expect(isUrl(endpoint.URL)).toBe(true);
     });
 
     it('Replaces an invalid URL parameter with an empty string.', () => {
-        const endpoint = new Endpoint('abcde', new MockResponse('bar'));
+        const endpoint = new Endpoint('abcde');
         expect(typeof endpoint.URL).toBe('string');
         expect(endpoint.URL.length).toEqual(0);
     });
 
     it('Replaces a URL parameter of the wrong type with an empty string.', () => {
-        const endpoint = new Endpoint(false as unknown as string, new MockResponse('bar'));
+        const endpoint = new Endpoint(false as unknown as string);
         expect(typeof endpoint.URL).toBe('string');
         expect(endpoint.URL.length).toEqual(0);
     });
 
-    it('Accepts a second parameter that can be any type.', () => {
-        const endpoint = new Endpoint('http://www.google.com', new MockResponse('bar'));
-        expect(endpoint.RESPONSE).toBeInstanceOf(MockResponse);
-        expect(endpoint.RESPONSE).toHaveProperty('foo');
-        expect(endpoint.RESPONSE.foo).toBe('bar');
+    it('Can store a response of any type.', () => {
+        const endpoint = new Endpoint('http://www.google.com');
+        endpoint.response = new MockResponse('bar');
+        expect(endpoint.response).toBeInstanceOf(MockResponse);
+        expect(endpoint.response).toHaveProperty('foo');
+        expect(endpoint.response).toBe('bar');
     });
 });
