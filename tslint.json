@@ -11,6 +11,14 @@
             }
         ],
         "no-consecutive-blank-lines": [true],
-        "indent": [true, "spaces", 4]
+        "indent": [true, "spaces", 4],
+        "variable-name": {
+            "options": [
+                "ban-keywords",
+                "check-format",
+                "allow-leading-underscore",
+                "allow-snake-case"
+            ]
+        }
     }
 }
