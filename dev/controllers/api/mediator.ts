@@ -14,5 +14,8 @@ export { OverviewEndpoint } from './overview/overview_endpoint';
 
 /** External */
 import * as isUrl from 'validator/lib/isURL';
-export { isUrl };
+import * as isEmpty from 'validator/lib/isEmpty';
+import * as isUUID from 'validator/lib/isUUID';
+import * as isNumeric from 'validator/lib/isNumeric';
+export { isUrl, isEmpty, isUUID, isNumeric };
 export { v4 as uuid } from 'uuid';
