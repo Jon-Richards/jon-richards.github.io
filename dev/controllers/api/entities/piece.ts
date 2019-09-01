@@ -21,11 +21,11 @@ export interface PieceResponseShape {
     /** The piece's description. */
     description: string;
     /** The piece's thumbnail for small devices. */
-    thumb_device_small: string;
+    thumb_device_small: string | null;
     /** The piece's thumbnail for medium devices. */
-    thumb_device_medium: string;
+    thumb_device_medium: string | null;
     /** The piece's thumbnail for large devices. */
-    thumb_device_large: string;
+    thumb_device_large: string | null;
     /** An array of tool UUID's used by the piece. */
     tools: string[];
 }
@@ -49,11 +49,11 @@ export class Piece {
     /** The piece's description. */
     readonly description: string;
     /** The piece's thumbnail for small devices. */
-    readonly thumbDeviceSmall: string;
+    readonly thumbDeviceSmall: string | null;
     /** The piece's thumbnail for medium devices. */
-    readonly thumbDeviceMedium: string;
+    readonly thumbDeviceMedium: string | null;
     /** The piece's thumbnail for large devices. */
-    readonly thumbDeviceLarge: string;
+    readonly thumbDeviceLarge: string | null;
     /** An array of tool UUID's used by the piece. */
     readonly tools: string[];
     
@@ -68,22 +68,24 @@ export class Piece {
         this.thumbDeviceSmall = this.validate(
             piece.thumb_device_small, 
             ['notEmpty', 'isURLString'], 
-            false, 
-            ''
+            true, 
+            null
         );
         this.thumbDeviceMedium = this.validate(
             piece.thumb_device_medium, 
             ['notEmpty', 'isURLString'], 
-            false, 
-            ''
+            true, 
+            null
         );
         this.thumbDeviceLarge = this.validate(
             piece.thumb_device_large, 
             ['notEmpty', 'isURLString'], 
-            false, 
-            ''
+            true, 
+            null
         );
-        this.tools = piece.tools;
+        this.tools = piece.tools
+            .map(tool => this.validate(tool, ['notEmpty'], false, ''))
+            .filter(tool => !isEmpty(tool));
     }
 
     /**
