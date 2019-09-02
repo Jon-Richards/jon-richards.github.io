@@ -23,9 +23,7 @@ export interface ToolResponseShape {
     is_core: boolean;
 }
 
-/** Possible validators to run against a given property. */
-type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber' | 'isBool';
-
+/** Possible types that can be passed into the "tool" param when instantiating a new Tool. */
 type ToolField = string | number | boolean | null | undefined;
 
 /** 
