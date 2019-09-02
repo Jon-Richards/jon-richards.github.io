@@ -1,5 +1,5 @@
 import { Piece, PieceResponseShape } from './piece';
-import { isUUID, uuid, isNumeric } from '../mediator';
+import { isUUID, uuid} from './mediator';
 
 /** Test properties for instantiating a Piece. */
 const mockPiece: PieceResponseShape = {

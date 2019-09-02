@@ -1,5 +1,5 @@
 import { Tool, ToolResponseShape } from './tool';
-import { isUUID, uuid} from '../mediator';
+import { isUUID, uuid} from './mediator';
 
 /** Test properties for instantiating a Tool. */
 const mockTool: ToolResponseShape = {

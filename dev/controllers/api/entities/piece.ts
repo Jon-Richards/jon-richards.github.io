@@ -3,7 +3,7 @@
  * Contains a class that validates the structure of a single portfolio piece from the API.
  */
 
-import { isUrl, isEmpty, isUUID, isNumeric, uuid } from '../mediator';
+import { isUrl, isEmpty, isUUID, isNumeric, uuid } from './mediator';
 
 /** Shape of a single portfolio piece node as recieved by the API. */
 export interface PieceResponseShape {

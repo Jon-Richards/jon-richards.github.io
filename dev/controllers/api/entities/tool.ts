@@ -3,7 +3,7 @@
  * Contains a class that validates the structure of a tool object from the API.
  */
 
-import { isUrl, isEmpty, isUUID, isNumeric, uuid } from '../mediator';
+import { isUrl, isEmpty, isUUID, isNumeric, uuid } from './mediator';
 
 /** Shape of a single tool node as recieved by the API. */
 export interface ToolResponseShape {
