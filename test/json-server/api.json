@@ -35,50 +35,50 @@
             {
                 "id": 1,
                 "uuid": "typescript",
-                "name": "TypeScript",
-                "value": "typescript",
+                "display_title": "TypeScript",
+                "filterable_value": "typescript",
                 "logo": "foo",
-                "core": true
+                "is_core": true
             },
             {
                 "id": 2,
                 "uuid": "react",
-                "name": "React",
-                "value": "react",
+                "display_title": "React",
+                "filterable_value": "react",
                 "logo": "bar",
-                "core": true
+                "is_core": true
             },
             {
                 "id": 3,
                 "uuid": "css_sass",
-                "name": "CSS / SASS",
-                "value": "css_sass",
+                "display_title": "CSS / SASS",
+                "filterable_value": "css_sass",
                 "logo": "bar",
-                "core": true
+                "is_core": true
             },
             {
                 "id": 4,
                 "uuid": "photoshop",
-                "name": "Photoshop",
-                "value": "photoshop",
+                "display_title": "Photoshop",
+                "filterable_value": "photoshop",
                 "logo": "bar",
-                "core": false
+                "is_core": false
             },
             {
                 "id": 5,
                 "uuid": "illustrator",
-                "name": "Illustrator",
-                "value": "illustrator",
+                "display_title": "Illustrator",
+                "filterable_value": "illustrator",
                 "logo": "bar",
-                "core": false
+                "is_core": false
             },
             {
                 "id": 6,
                 "uuid": "angular",
-                "name": "Angular",
-                "value": "angular",
+                "display_title": "Angular",
+                "filterable_value": "angular",
                 "logo": "bar",
-                "core": true
+                "is_core": true
             }
         ]
     }

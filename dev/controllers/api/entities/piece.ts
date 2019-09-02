@@ -5,10 +5,7 @@
 
 import { isUrl, isEmpty, isUUID, isNumeric, uuid } from '../mediator';
 
-/** 
- * Shape of a single portfolio piece node as recieved by the API when hitting the Overview
- * endpoint.
- */
+/** Shape of a single portfolio piece node as recieved by the API. */
 export interface PieceResponseShape {
     /** The piece's ID in the database. */
     id: number;
