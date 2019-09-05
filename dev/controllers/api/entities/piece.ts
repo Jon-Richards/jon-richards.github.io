@@ -32,19 +32,19 @@ type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber';
 
 /** 
  * Accepts a single portfolio piece node from the Overview api response, validates and stores it.
- * If a value is invalid, it is replaced with a valid stub.
+ * If a value is invalid, it is replaced with a valid stub and a "isSelfCorrected" flag is raised.
  */
 export class Piece {
     /** The piece's ID in the database. */
-    readonly id: number;
+    readonly id: number | null;
     /** The piece's UUID. */
-    readonly uuid: string;
+    readonly uuid: string | null;
     /** The piece's title as it should be displayed to the user. */
-    readonly displayTitle: string;
+    readonly displayTitle: string | null;
     /** A URL safe version of the piece's title. */
-    readonly urlTitle: string;
+    readonly urlTitle: string | null;
     /** The piece's description. */
-    readonly description: string;
+    readonly description: string | null;
     /** The piece's thumbnail for small devices. */
     readonly thumbDeviceSmall: string | null;
     /** The piece's thumbnail for medium devices. */
@@ -52,37 +52,68 @@ export class Piece {
     /** The piece's thumbnail for large devices. */
     readonly thumbDeviceLarge: string | null;
     /** An array of tool UUID's used by the piece. */
-    readonly tools: string[];
+    readonly tools: string[] | null;
+    /** If this piece revieved an unexpected value and corrected it with a valid stub. */
+    private selfCorrected = false;
+    /** 
+     * Stub values used in the event an invalid property is passed into the constructor.
+     */
+    static readonly STUBS = {
+        ID: null,
+        UUID: null,
+        DISPLAY_TITLE: null,
+        URL_TITLE: null,
+        DESCRIPTION: null,
+        THUMB_DEVICE_SMALL: null,
+        THUMB_DEVICE_MEDIUM: null,
+        THUMB_DEVICE_LARGE: null,
+        TOOLS: null
+    };
     
     constructor (
         piece: PieceResponseShape
     ) {
-        this.id = Number( this.validate(String(piece.id), ['notEmpty', 'isNumber'], false, '-1') );
-        this.uuid = this.validate(piece.uuid, ['notEmpty', 'isUUID'], false, uuid());
-        this.displayTitle = this.validate(piece.display_title, ['notEmpty'], false, '');
-        this.urlTitle = this.validate(piece.url_title, ['notEmpty'], false, '');
-        this.description = this.validate(piece.description, ['notEmpty'], false, '');
+        this.id = Number( 
+            this.validate(String(piece.id), ['notEmpty', 'isNumber'], false, Piece.STUBS.ID)
+        );
+        this.uuid = this.validate(piece.uuid, ['notEmpty', 'isUUID'], false, Piece.STUBS.UUID);
+        this.displayTitle = this.validate(
+            piece.display_title, 
+            ['notEmpty'], 
+            false, 
+            Piece.STUBS.DISPLAY_TITLE
+        );
+        this.urlTitle = this.validate(piece.url_title, ['notEmpty'], false, Piece.STUBS.URL_TITLE);
+        this.description = this.validate(
+            piece.description,
+            ['notEmpty'],
+            false,
+            Piece.STUBS.DESCRIPTION
+        );
         this.thumbDeviceSmall = this.validate(
-            piece.thumb_device_small, 
-            ['notEmpty', 'isURLString'], 
-            true, 
-            null
+            piece.thumb_device_small,
+            ['notEmpty',
+            'isURLString'],
+            true,
+            Piece.STUBS.THUMB_DEVICE_SMALL
         );
         this.thumbDeviceMedium = this.validate(
             piece.thumb_device_medium, 
             ['notEmpty', 'isURLString'], 
-            true, 
-            null
+            true,
+            Piece.STUBS.THUMB_DEVICE_MEDIUM
         );
         this.thumbDeviceLarge = this.validate(
             piece.thumb_device_large, 
             ['notEmpty', 'isURLString'], 
             true, 
-            null
+            Piece.STUBS.THUMB_DEVICE_LARGE
         );
-        this.tools = piece.tools
-            .map(tool => this.validate(tool, ['notEmpty'], false, ''))
-            .filter(tool => !isEmpty(tool));
+        this.tools = Array.isArray(piece.tools) 
+            ? piece.tools
+                .map(tool => this.validate(tool, ['notEmpty'], false, ''))
+                .filter(tool => !isEmpty(tool))
+            : Piece.STUBS.TOOLS;
     }
 
     /**
@@ -112,6 +143,7 @@ export class Piece {
             });
         }
 
+        if (!isValid) this.selfCorrected  = true;
         return isValid ? prop : replaceWith;
     }
 
@@ -151,5 +183,13 @@ export class Piece {
      */
     private isNumber(prop: string): boolean {
         return isNumeric(prop, {no_symbols: true});
+    }
+
+    /** 
+     * If this Piece instance contains a self corrected property due to recieving an unexpected
+     * value.
+     */
+    get isSelfCorrected(): Piece['selfCorrected'] {
+        return this.selfCorrected;
     }
 }

@@ -45,6 +45,8 @@ export class Tool {
      * If the tool should be considered a "core skill", something employers would look for directly.
      */
     readonly isCore: boolean;
+    /** If this tool recieved an unexpected value and corrected it with a valid stub. */
+    private selfCorrected = false;
     
     constructor (
         tool: ToolResponseShape
@@ -96,6 +98,7 @@ export class Tool {
             });
         }
 
+        if (!isValid) this.selfCorrected = true;
         return isValid ? prop : replaceWith;
     }
 
@@ -160,5 +163,13 @@ export class Tool {
      */
     private isBoolean(prop: ToolField): boolean {
         return typeof prop === 'boolean';
+    }
+
+    /** 
+     * If this Tool instance recieved an unexpected value for a property and corrected it with a
+     * valid stub.
+     */
+    get isSelfCorrected(): Tool['selfCorrected'] {
+        return this.selfCorrected;
     }
 }
