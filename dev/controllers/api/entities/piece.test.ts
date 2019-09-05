@@ -21,7 +21,7 @@ describe('The Piece API entity class.', () => {
             ...mockPiece, 
             id: undefined as unknown as number
         });
-        expect(piece.id).toEqual(Piece.STUBS.ID);
+        expect(piece.id).toBe(Piece.STUBS.ID);
     });
 
     test(`If the UUID is invalid, it is replaced with ${Piece.STUBS.UUID}.`, () => {
@@ -68,21 +68,21 @@ describe('The Piece API entity class.', () => {
         expect( piece.tools ).toEqual( ['one', 'three'] );
     });
 
-    // test('If a tool is not of type "string", it should be discarded.', () => {
-    //     const piece = new Piece({
-    //         ...mockPiece, 
-    //         tools: ['one', undefined as unknown as string, 'three']
-    //     });
-    //     expect( piece.tools.length ).toBe(2);
-    // });
+    test('If a tool is not of type "string", it should be discarded.', () => {
+        const piece = new Piece({
+            ...mockPiece, 
+            tools: ['one', 37 as unknown as string, 'three']
+        });
+        expect(piece.tools).toHaveLength(2);
+    });
 
-    // test(
-    //     'If a tool is of type "string" and not empty, it should appear in the tools array.', 
-    //     () => {
-    //         const piece = new Piece({
-    //             ...mockPiece, 
-    //             tools: ['banana']
-    //         });
-    //         expect( piece.tools.length ).toBe(1);
-    // });
+    test(
+        'If a tool is of type "string" and not empty, it should appear in the tools array.', 
+        () => {
+            const piece = new Piece({
+                ...mockPiece, 
+                tools: ['banana']
+            });
+            expect( piece.tools).toHaveLength(1);
+    });
 });

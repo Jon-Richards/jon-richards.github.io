@@ -24,7 +24,7 @@ export interface PieceResponseShape {
     /** The piece's thumbnail for large devices. */
     thumb_device_large: string | null;
     /** An array of tool UUID's used by the piece. */
-    tools: string[];
+    tools: string[] | null;
 }
 
 /** Possible validators to run against a given property. */
@@ -36,15 +36,15 @@ type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber';
  */
 export class Piece {
     /** The piece's ID in the database. */
-    readonly id: number | null;
+    readonly id: number;
     /** The piece's UUID. */
-    readonly uuid: string | null;
+    readonly uuid: string;
     /** The piece's title as it should be displayed to the user. */
-    readonly displayTitle: string | null;
+    readonly displayTitle: string;
     /** A URL safe version of the piece's title. */
-    readonly urlTitle: string | null;
+    readonly urlTitle: string;
     /** The piece's description. */
-    readonly description: string | null;
+    readonly description: string;
     /** The piece's thumbnail for small devices. */
     readonly thumbDeviceSmall: string | null;
     /** The piece's thumbnail for medium devices. */
@@ -59,11 +59,11 @@ export class Piece {
      * Stub values used in the event an invalid property is passed into the constructor.
      */
     static readonly STUBS = {
-        ID: null,
-        UUID: null,
-        DISPLAY_TITLE: null,
-        URL_TITLE: null,
-        DESCRIPTION: null,
+        ID: -1,
+        UUID: '',
+        DISPLAY_TITLE: '',
+        URL_TITLE: '',
+        DESCRIPTION: '',
         THUMB_DEVICE_SMALL: null,
         THUMB_DEVICE_MEDIUM: null,
         THUMB_DEVICE_LARGE: null,
@@ -74,7 +74,12 @@ export class Piece {
         piece: PieceResponseShape
     ) {
         this.id = Number( 
-            this.validate(String(piece.id), ['notEmpty', 'isNumber'], false, Piece.STUBS.ID)
+            this.validate(
+                String(piece.id), 
+                ['notEmpty', 'isNumber'],
+                false, 
+                String(Piece.STUBS.ID)
+            )
         );
         this.uuid = this.validate(piece.uuid, ['notEmpty', 'isUUID'], false, Piece.STUBS.UUID);
         this.displayTitle = this.validate(
@@ -92,8 +97,7 @@ export class Piece {
         );
         this.thumbDeviceSmall = this.validate(
             piece.thumb_device_small,
-            ['notEmpty',
-            'isURLString'],
+            ['notEmpty', 'isURLString'],
             true,
             Piece.STUBS.THUMB_DEVICE_SMALL
         );
@@ -112,7 +116,7 @@ export class Piece {
         this.tools = Array.isArray(piece.tools) 
             ? piece.tools
                 .map(tool => this.validate(tool, ['notEmpty'], false, ''))
-                .filter(tool => !isEmpty(tool))
+                .filter(tool => typeof tool === 'string' && !isEmpty(tool))
             : Piece.STUBS.TOOLS;
     }
 

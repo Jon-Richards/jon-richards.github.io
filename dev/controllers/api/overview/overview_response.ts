@@ -45,15 +45,15 @@ export class OverviewResponse {
         const validPieces = this.removeWithStubs(
             uniquePieces,
             [
-                {fieldName: 'id', stubValue: -1},
-                {fieldName: 'uuid', stubValue: ''},
-                {fieldName: 'displayTitle', stubValue: ''},
-                {fieldName: 'urlTitle', stubValue: ''},
-                {fieldName: 'description', stubValue: ''},
-                {fieldName: 'thumbDeviceSmall', stubValue: ''},
-                {fieldName: 'thumbDeviceMedium', stubValue: ''},
-                {fieldName: 'thumbDeviceLarge', stubValue: ''},
-                {fieldName: 'tools', stubValue: []},
+                {fieldName: 'id', stubValue: PieceEntity.STUBS.ID},
+                {fieldName: 'uuid', stubValue: PieceEntity.STUBS.UUID},
+                {fieldName: 'displayTitle', stubValue: PieceEntity.STUBS.DISPLAY_TITLE},
+                {fieldName: 'urlTitle', stubValue: PieceEntity.STUBS.URL_TITLE},
+                {fieldName: 'description', stubValue: PieceEntity.STUBS.DESCRIPTION},
+                {fieldName: 'thumbDeviceSmall', stubValue: PieceEntity.STUBS.THUMB_DEVICE_SMALL},
+                {fieldName: 'thumbDeviceMedium', stubValue: PieceEntity.STUBS.THUMB_DEVICE_MEDIUM},
+                {fieldName: 'thumbDeviceLarge', stubValue: PieceEntity.STUBS.THUMB_DEVICE_LARGE},
+                {fieldName: 'tools', stubValue: PieceEntity.STUBS.TOOLS},
             ],
             'Piece'
         );
