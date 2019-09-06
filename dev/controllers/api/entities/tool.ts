@@ -47,21 +47,40 @@ export class Tool {
     readonly isCore: boolean;
     /** If this tool recieved an unexpected value and corrected it with a valid stub. */
     private selfCorrected = false;
+    /** Stub values used when the Tool instance needs to replace an invalid field. */
+    static readonly STUBS = {
+        id: -1,
+        uuid: '',
+        displayTitle: '',
+        filterableValue: '',
+        logo: '',
+        isCore: false
+    };
     
     constructor (
         tool: ToolResponseShape
     ) {
-        this.id = this.validate(tool.id, [this.isNumber], false, -1);
-        this.uuid = this.validate(tool.uuid, [this.notEmpty, this.isUUID], false, uuid());
-        this.displayTitle = this.validate(tool.display_title, [this.notEmpty], false, '');
+        this.id = this.validate(tool.id, [this.isNumber], false, Tool.STUBS.id);
+        this.uuid = this.validate(tool.uuid, [this.notEmpty, this.isUUID], false, Tool.STUBS.uuid);
+        this.displayTitle = this.validate(
+            tool.display_title,
+            [this.notEmpty],
+            false,
+            Tool.STUBS.displayTitle
+        );
         this.filterableValue = this.validate(
             tool.filterable_value, 
             [this.notEmpty, this.isURLString], 
             false, 
-            ''
+            Tool.STUBS.filterableValue
         );
-        this.logo = this.validate(tool.logo, [this.notEmpty, this.isURLString], false, '');
-        this.isCore = this.validate(tool.is_core, [this.isBoolean], false, false);
+        this.logo = this.validate(
+            tool.logo,
+            [this.notEmpty, this.isURLString],
+            false,
+            Tool.STUBS.logo
+        );
+        this.isCore = this.validate(tool.is_core, [this.isBoolean], false, Tool.STUBS.isCore);
     }
 
     /**

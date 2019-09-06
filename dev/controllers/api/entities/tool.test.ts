@@ -14,12 +14,12 @@ const mockTool: ToolResponseShape = {
 describe('The Tool API entity class.', () => {
     
     describe('The id field.', () => {
-        test('If the id is not a number, the id is replaced with -1', () => {
+        test(`If the id is not a number, the id is replaced with ${Tool.STUBS.id}`, () => {
             const tool = new Tool({
                 ...mockTool, 
                 id: 'banana' as unknown as number
             });
-            expect(tool.id).toEqual(-1);
+            expect(tool.id).toEqual(Tool.STUBS.id);
         });
 
         test('If the id is a number, the id is written to the Tools id property', () => {
@@ -32,28 +32,12 @@ describe('The Tool API entity class.', () => {
     });
 
     describe('The UUID field.', () => {
-        test('If the UUID is undefined, a valid UUID is created.', () => {
+        test('If the UUID is invalid, it is replaced with an empty string.', () => {
             const tool = new Tool({
                 ...mockTool,
                 uuid: undefined as unknown as string
             });
-            expect( isUUID(tool.uuid) ).toBe( true );
-        });
-
-        test('If the UUID is empty, a valid UUID is created.', () => {
-            const tool = new Tool({
-                ...mockTool, 
-                uuid: ''
-            });
-            expect( isUUID(tool.uuid) ).toBe( true );
-        });
-
-        test('If the UUID is invalid, the invalid UUID is replaced with a valid one.', () => {
-            const tool = new Tool({
-                ...mockTool, 
-                uuid: 'abc-123'
-            });
-            expect( isUUID(tool.uuid) ).toBe( true );
+            expect( tool.uuid ).toBe( Tool.STUBS.uuid );
         });
 
         test('If the UUID is valid, the tool\'s UUID is the supplied UUID', () => {
@@ -67,24 +51,23 @@ describe('The Tool API entity class.', () => {
     });
 
     describe('The display_title filed.', () => {
-        test('If the display_title is null, it is replaced with an empty string.', () => {
-            const tool = new Tool({
+        test('If the display_title is invalid, it is replaced with an empty string.', () => {
+            const withNull = new Tool({
                 ...mockTool, 
                 display_title: null as unknown as string
             });
-            expect( tool.displayTitle ).toBe('');
+            const withUndefined = new Tool({
+                ...mockTool, 
+                display_title: undefined as unknown as string
+            });
+            const withBogus = new Tool({...mockTool, 
+                display_title: 789 as unknown as string
+            });
+            
+            expect( withNull.displayTitle ).toBe(Tool.STUBS.displayTitle);
+            expect( withUndefined.displayTitle ).toBe(Tool.STUBS.displayTitle);
+            expect( withBogus.displayTitle ).toBe(Tool.STUBS.displayTitle);
         });
-
-        test(
-            'If the display_title is of the wrong type, it is replaced with an empty string.',
-            () => {
-                const tool = new Tool({
-                    ...mockTool, 
-                    display_title: 678 as unknown as string
-                });
-                expect( tool.displayTitle ).toBe('');
-            }
-        );
 
         test(
             'If the display_title is a string, it is written to the DisplayTitle property.',
@@ -99,12 +82,12 @@ describe('The Tool API entity class.', () => {
     });
 
     describe('The filterable_value field', () => {
-        test('If the filterable value is undefined, it is replaced with an empty string.', () => {
+        test('If the filterableinvalid, it is replaced with an empty string.', () => {
             const tool = new Tool({
                 ...mockTool, 
                 filterable_value: undefined as unknown as string
             });
-            expect( tool.filterableValue ).toBe('');
+            expect( tool.filterableValue ).toBe(Tool.STUBS.filterableValue);
         });
 
         test('If the filterable value is null, it is replaced with an empty string.', () => {
@@ -112,7 +95,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 filterable_value: null as unknown as string
             });
-            expect( tool.filterableValue ).toBe('');
+            expect( tool.filterableValue ).toBe(Tool.STUBS.filterableValue);
         });
 
         test('If the filterable value the wrong type, it is replaced with an empty string.', () => {
@@ -120,7 +103,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 filterable_value: 123 as unknown as string
             });
-            expect( tool.filterableValue ).toBe('');
+            expect( tool.filterableValue ).toBe(Tool.STUBS.filterableValue);
         });
 
         test(
@@ -130,7 +113,7 @@ describe('The Tool API entity class.', () => {
                     ...mockTool, 
                     filterable_value: 'I have spaced and $special# characters!'
                 });
-                expect( tool.filterableValue ).toBe('');
+                expect( tool.filterableValue ).toBe(Tool.STUBS.filterableValue);
             }
         );
 
@@ -153,7 +136,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 logo: undefined as unknown as string
             });
-            expect( tool.logo ).toBe('');
+            expect( tool.logo ).toBe(Tool.STUBS.logo);
         });
 
         test('If the logo is null, it is replaced with an empty string.', () => {
@@ -161,7 +144,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 logo: null as unknown as string
             });
-            expect( tool.logo ).toBe('');
+            expect( tool.logo ).toBe(Tool.STUBS.logo);
         });
 
         test('If the logo the wrong type, it is replaced with an empty string.', () => {
@@ -169,7 +152,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 logo: 123 as unknown as string
             });
-            expect( tool.logo ).toBe('');
+            expect( tool.logo ).toBe(Tool.STUBS.logo);
         });
 
         test('If the logo is not URL safe, it is replaced with an empty string.', () => {
@@ -177,7 +160,7 @@ describe('The Tool API entity class.', () => {
                 ...mockTool, 
                 logo: 'I have spaced and $special# characters!'
             });
-            expect( tool.logo ).toBe('');
+            expect( tool.logo ).toBe(Tool.STUBS.logo);
         });
 
         test(
@@ -194,29 +177,32 @@ describe('The Tool API entity class.', () => {
     });
 
     describe('The is_core field.', () => {
-        test('If the is_core is undefined, it is replaced with false.', () => {
+        test(`If the is_core is undefined, it is replaced with ${Tool.STUBS.isCore}.`, () => {
             const tool = new Tool({
                 ...mockTool, 
                 is_core: undefined as unknown as boolean
             });
-            expect( tool.isCore ).toBe(false);
+            expect( tool.isCore ).toBe(Tool.STUBS.isCore);
         });
 
-        test('If the is_core is null, it is replaced with false.', () => {
+        test(`If the is_core is null, it is replaced with ${Tool.STUBS.isCore}.`, () => {
             const tool = new Tool({
                 ...mockTool, 
                 is_core: null as unknown as boolean
             });
-            expect( tool.isCore ).toBe(false);
+            expect( tool.isCore ).toBe(Tool.STUBS.isCore);
         });
 
-        test('If the is_core is of the wrong type, it is replaced with false.', () => {
-            const tool = new Tool({
-                ...mockTool, 
-                is_core: 'banana' as unknown as boolean
-            });
-            expect( tool.isCore ).toBe(false);
-        });
+        test(
+            `If the is_core is of the wrong type, it is replaced with ${Tool.STUBS.isCore}.`, 
+            () => {
+                const tool = new Tool({
+                    ...mockTool, 
+                    is_core: 'banana' as unknown as boolean
+                });
+                expect( tool.isCore ).toBe(Tool.STUBS.isCore);
+            }
+        );
 
         test('If the is_core is a boolean, it is written to the isCore property.', () => {
             const tool = new Tool({
