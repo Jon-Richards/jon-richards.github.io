@@ -33,8 +33,9 @@ export class OverviewResponse {
     }
 
     /**
-     * Validates the raw "pieces" field of an OverviewResponseShape, replacing invalid data with
-     * valid data.
+     * Creates an array of PieceEntity instances based on the raw "pieces" field of an 
+     * OverviewResponseShape.  The PieceEntities are then validated and any invalid entities
+     * are discarded.
      * @param piecesBody An array of raw piece response data to validate.
      */
     private validatePieces(
@@ -61,8 +62,8 @@ export class OverviewResponse {
     }
 
     /**
-     * Validates the raw "tools" field of an OverviewResponseShape, replacing invalid data with
-     * valid data.
+     * Creates an array of ToolEntities based on the raw "tools" field of an OverviewResponseShape.
+     * ToolEntities are then validated and any invalid entities are discarded.
      * @param piecesBody An array of raw piece response data to validate.
      */
     private validateTools(
@@ -73,11 +74,12 @@ export class OverviewResponse {
         const validTools = this.removeWithStubs(
             uniqueTools, 
             [
-                {fieldName: 'id', stubValue: -1},
-                {fieldName: 'uuid', stubValue: ''},
-                {fieldName: 'displayTitle', stubValue: ''},
-                {fieldName: 'filterableValue', stubValue: ''},
-                {fieldName: 'logo', stubValue: ''}
+                {fieldName: 'id', stubValue: ToolEntity.STUBS.id},
+                {fieldName: 'uuid', stubValue: ToolEntity.STUBS.uuid},
+                {fieldName: 'displayTitle', stubValue: ToolEntity.STUBS.displayTitle},
+                {fieldName: 'filterableValue', stubValue: ToolEntity.STUBS.filterableValue},
+                {fieldName: 'logo', stubValue: ToolEntity.STUBS.logo},
+                {fieldName: 'isCore', stubValue: ToolEntity.STUBS.isCore}
             ],
             'Tool'
         );
