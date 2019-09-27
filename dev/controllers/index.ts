@@ -3,7 +3,4 @@
  * Entrypoint to the Controller layer.
  */
 
-export {
-    AppState, 
-    INDEX_CONTROLLER
- } from './mediator';
+export { AppState, INDEX_CONTROLLER } from './mediator';

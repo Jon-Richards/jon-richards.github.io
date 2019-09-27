@@ -13,15 +13,20 @@ type StateProps = {};
 type DispatchProps = Pick<Root['props'], 'getOverview'>;
 
 /** Maps properties from the state to those of the App component. */
-const mapStateToProps = (state: AppState): StateProps => ({
-
-});
+const mapStateToProps = (state: AppState): StateProps => ({});
 
 /** Maps dispatchabale actions to additional properties of the App component. */
-const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, undefined, Action>): DispatchProps => 
-({
-    getOverview: () => dispatch(INDEX_CONTROLLER.getOverview())
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<AppState, undefined, Action>
+): DispatchProps => ({
+  getOverview: () => dispatch(INDEX_CONTROLLER.getOverview()),
 });
 
-/** A version of the root component that is connected directly to the controller layer. */
-export const ROOT = connect(mapStateToProps, mapDispatchToProps)(Root);
+/**
+ * A version of the root component that is connected directly to the controller
+ * layer.
+ */
+export const ROOT = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Root);

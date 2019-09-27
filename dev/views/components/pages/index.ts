@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview
  * Entrypoint for all page components.

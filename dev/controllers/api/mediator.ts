@@ -10,11 +10,11 @@ import * as API_TYPES from './types';
 export { API_TYPES };
 export { Endpoint } from './endpoint/endpoint';
 export { API_BASE } from './constants';
-export { 
-    PieceEntity,
-    PieceResponseShape,
-    ToolEntity,
-    ToolResponseShape
+export {
+  PieceEntity,
+  PieceResponseShape,
+  ToolEntity,
+  ToolResponseShape,
 } from './entities';
 export { OverviewEndpoint } from './overview/overview_endpoint';
 

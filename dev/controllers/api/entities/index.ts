@@ -4,8 +4,8 @@
  */
 
 export {
-    PieceEntity,
-    PieceResponseShape,
-    ToolEntity,
-    ToolResponseShape
+  PieceEntity,
+  PieceResponseShape,
+  ToolEntity,
+  ToolResponseShape,
 } from './mediator';

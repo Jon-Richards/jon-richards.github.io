@@ -3,7 +3,7 @@
  * Mediates dependencies within the Gallery module.
  */
 
- /** External */
+/** External */
 import * as React from 'react';
 export { React };
 import { v4 as uuid } from 'uuid';

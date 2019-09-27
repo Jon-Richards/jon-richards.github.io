@@ -17,37 +17,33 @@ import * as React from 'react';
  * </SVGWrapper>
  */
 export const SVG_WRAPPER = React.memo<{
-    /** 
-     * Value of the rendered SVG element's viewBox attribute.
-     * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
-     */
-    viewBox: string;
-    /** 
-     * Value of the rendered SVG element's preserveAspectRatio attribute.
-     * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
-     */
-    preserveAspectRatio: 'none' | string;
-    /** Optional CSS class name for the SVG element. */
-    className?: string;
-    /** Children of the SVG element. */
-    children?: React.ReactChild;
+  /**
+   * Value of the rendered SVG element's viewBox attribute.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+   */
+  viewBox: string;
+  /**
+   * Value of the rendered SVG element's preserveAspectRatio attribute.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+   */
+  preserveAspectRatio: 'none' | string;
+  /** Optional CSS class name for the SVG element. */
+  className?: string;
+  /** Children of the SVG element. */
+  children?: React.ReactChild;
 }>(props => {
-    const {
-        viewBox,
-        preserveAspectRatio,
-        className = '',
-    } = props;
+  const { viewBox, preserveAspectRatio, className = '' } = props;
 
-    return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            viewBox={viewBox}
-            preserveAspectRatio={preserveAspectRatio}
-            className={className}
-        >
-            {props.children}
-        </svg>
-    );
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      viewBox={viewBox}
+      preserveAspectRatio={preserveAspectRatio}
+      className={className}
+    >
+      {props.children}
+    </svg>
+  );
 });

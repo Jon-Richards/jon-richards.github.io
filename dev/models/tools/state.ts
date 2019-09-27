@@ -4,8 +4,8 @@
  */
 
 export interface State {
-    /** The ID of the active portfolio piece. */
-    activePieceId: number;
-    /** Some message */
-    message: string;
+  /** The ID of the active portfolio piece. */
+  activePieceId: number;
+  /** Some message */
+  message: string;
 }

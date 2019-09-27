@@ -6,23 +6,23 @@
  */
 
 @mixin std-font-1 {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 800;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
 }
 
 @mixin std-font-2 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 @mixin std-font-2--light {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 @mixin std-font-2--bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 @mixin std-font-2--extra-bold {
-    font-weight: 800;
+  font-weight: 800;
 }

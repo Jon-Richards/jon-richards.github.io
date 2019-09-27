@@ -15,7 +15,7 @@
     "start:dist": "webpack-dev-server --config=./config/webpack/dist.js --env.NODE_ENV=production",
     "tsc": "tsc && echo Type Check Complete - No errors found. || echo Type Check Complete - See above.",
     "tslint": "tslint",
-    "prettier:write": "prettier --write \"./dev/**/*.ts\" && echo All is pretty!",
+    "prettier:write": "prettier --write \"./dev/**/*.{ts,tsx,scss}\" && echo All is pretty!",
     "prettier:check": "prettier --check \"./dev/**/*\" && echo All is pretty! || echo Found prettier errors - See above.",
     "api": "json-server --watch ./test/json-server/api.json --port 3004 --static ./test/content/",
     "browserslist": "browserslist"

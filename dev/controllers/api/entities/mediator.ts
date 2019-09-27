@@ -4,14 +4,8 @@
  */
 
 /** Internal */
-export { 
-    Piece as PieceEntity,
-    PieceResponseShape
-} from './piece';
-export {
-    Tool as ToolEntity,
-    ToolResponseShape
-} from './tool';
+export { Piece as PieceEntity, PieceResponseShape } from './piece';
+export { Tool as ToolEntity, ToolResponseShape } from './tool';
 /** External */
 import * as isUrl from 'validator/lib/isURL';
 import * as isEmpty from 'validator/lib/isEmpty';

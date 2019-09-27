@@ -14,10 +14,10 @@ import { ROOT } from './views/containers/root';
  * it to the DOM.
  */
 render(
-    <Provider store={create()}>
-        <ROOT />
-    </Provider>,
-    document.getElementById('app')
+  <Provider store={create()}>
+    <ROOT />
+  </Provider>,
+  document.getElementById('app')
 );
 
 /**
@@ -25,5 +25,5 @@ render(
  * result in recompilation and served back into the app asynchronously.
  */
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }

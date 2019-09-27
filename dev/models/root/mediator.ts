@@ -3,7 +3,7 @@
  * Handles dependencies for the Root module.
  */
 
- /** Extneral  */
+/** Extneral  */
 export { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 export { thunkMiddleware };

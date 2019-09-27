@@ -4,19 +4,18 @@
  * that more need to be added.
  */
 
-@function std-get-breakpoint( $breakpoint ) {
-    $_breakpoints: (
-        375: 375px,
-        480: 480px,
-        720: 720px,
-        1080: 1080px,
-        1440: 1400px
-    );
+@function std-get-breakpoint($breakpoint) {
+  $_breakpoints: (
+    375: 375px,
+    480: 480px,
+    720: 720px,
+    1080: 1080px,
+    1440: 1400px,
+  );
 
-    @if (map-has-key($map: $_breakpoints, $key: $breakpoint)) {
-        @return map-get($map: $_breakpoints, $key: $breakpoint);
-    }
-    @else {
-        @error 'Unknown breakpoint: #{$breakpoint}.';
-    }
+  @if (map-has-key($map: $_breakpoints, $key: $breakpoint)) {
+    @return map-get($map: $_breakpoints, $key: $breakpoint);
+  } @else {
+    @error 'Unknown breakpoint: #{$breakpoint}.';
+  }
 }

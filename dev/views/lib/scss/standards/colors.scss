@@ -4,37 +4,43 @@
   */
 
 @function std-get-swatch($swatch, $brightness: 0) {
-    $_swatches: (
-        1: #242424,
-        2: #dddcd8,
-        3: #ffd900
-    );
+  $_swatches: (
+    1: #242424,
+    2: #dddcd8,
+    3: #ffd900,
+  );
 
-    $_brightness-modifiers: (
-        -100: -100%,
-        -80: -80%,
-        -60: -60%,
-        -40: -40%,
-        -20: -20%,
-        0: 0%,
-        20: 20%,
-        40: 40%,
-        60: 60%,
-        80: 80%,
-        100: 100%
-    );
+  $_brightness-modifiers: (
+    -100: -100%,
+    -80: -80%,
+    -60: -60%,
+    -40: -40%,
+    -20: -20%,
+    0: 0%,
+    20: 20%,
+    40: 40%,
+    60: 60%,
+    80: 80%,
+    100: 100%
+  );
 
-    @if (map-has-key($map: $_swatches, $key: $swatch) == false) {
-        @error 'Unkown swatch value: #{$swatch}';
-    }
-    
-    @if (map-has-key($map: $_brightness-modifiers, $key: $brightness) == false) {
-        @error 'Invalid brightness value: #{$brightness}';
-    }
+  @if (map-has-key($map: $_swatches, $key: $swatch) == false) {
+    @error 'Unkown swatch value: #{$swatch}';
+  }
 
-    $result-swatch: map-get($map: $_swatches, $key: $swatch);
-    $result-brightness: map-get($map: $_brightness-modifiers, $key: $brightness);
-    $result: scale-color($result-swatch, $lightness: $result-brightness);
+  @if (map-has-key($map: $_brightness-modifiers, $key: $brightness) == false) {
+    @error 'Invalid brightness value: #{$brightness}';
+  }
 
-    @return $result;
+  $result-swatch: map-get(
+    $map: $_swatches,
+    $key: $swatch,
+  );
+  $result-brightness: map-get(
+    $map: $_brightness-modifiers,
+    $key: $brightness,
+  );
+  $result: scale-color($result-swatch, $lightness: $result-brightness);
+
+  @return $result;
 }

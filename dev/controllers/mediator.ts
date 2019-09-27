@@ -10,4 +10,4 @@ export { PORTFOLIO_ACTIONS } from '../models/portfolio';
 export { AppState } from '../models/root';
 
 /** Internal */
-export {INDEX_CONTROLLER} from './index/index';
+export { INDEX_CONTROLLER } from './index/index';
