@@ -14,3 +14,4 @@ export { ResponseNode } from '../mediator';
 
 // internal
 export { Tool, ToolResponseData } from './tool';
+export { buildTool } from './tool_factory';

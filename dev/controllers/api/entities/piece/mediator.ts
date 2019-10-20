@@ -14,3 +14,4 @@ export { ResponseNode } from '../mediator';
 
 // internal
 export { Piece, PieceResponseData } from './piece';
+export { buildPiece } from './piece_factory';
