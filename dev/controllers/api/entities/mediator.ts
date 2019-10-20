@@ -10,7 +10,7 @@ import * as isUUID from 'validator/lib/isUUID';
 import * as isNumeric from 'validator/lib/isNumeric';
 export { isUrl, isEmpty, isUUID, isNumeric };
 export { v4 as uuid } from 'uuid';
-export { ResponseNode } from '../response_node';
 /** Internal */
+export { ResponseNode } from './response_node';
 export { Piece as PieceEntity, PieceResponseData } from './piece';
 export { Tool as ToolEntity, ToolResponseData } from './tool';

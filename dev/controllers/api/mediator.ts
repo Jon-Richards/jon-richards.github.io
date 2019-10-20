@@ -12,9 +12,9 @@ export { Endpoint } from './endpoint/endpoint';
 export { API_BASE } from './constants';
 export {
   PieceEntity,
-  PieceResponseShape,
+  PieceResponseData,
   ToolEntity,
-  ToolResponseShape,
+  ToolResponseData,
 } from './entities';
 export { OverviewEndpoint } from './overview/overview_endpoint';
 
