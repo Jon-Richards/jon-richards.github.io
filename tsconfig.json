@@ -4,7 +4,7 @@
     "rootDir": ".",
     "outDir": "./dist",
     "jsx": "react",
-    "lib": ["es2016", "dom"],
+    "lib": ["es2018", "dom"],
     "checkJs": false,
     "declaration": false
   },

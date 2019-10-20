@@ -29,7 +29,7 @@ export class Endpoint<R> {
 
   /**
    * Validates the URL passed into the constructor.  If the url is invalid,
-   * returns an emptystring and logs an error to the console.
+   * returns an empty string and logs an error to the console.
    * @param url The url as passed into the constructor.
    * @retun The url if valid, else returns an empty string.
    */

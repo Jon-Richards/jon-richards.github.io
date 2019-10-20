@@ -56,7 +56,7 @@ export class Piece {
   /** An array of tool UUID's used by the piece. */
   readonly tools: string[] | null;
   /**
-   * If this piece revieved an unexpected value and corrected it with a valid
+   * If this piece recieved an unexpected value and corrected it with a valid
    * stub.
    */
   private selfCorrected = false;

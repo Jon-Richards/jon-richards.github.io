@@ -6,7 +6,7 @@
 import { combineReducers } from './mediator';
 import { portfolioReducer as portfolio } from './mediator';
 
-/** 
+/**
  * Reducer comprised of all other top level reducers.  This should never be
  * updated directly.
  */

@@ -5,7 +5,7 @@
 
 import { Piece } from './mediator';
 
-/** 
+/**
  * The Portfolio section of the redux store.  Provides valudation and default
  * values.
  */
