@@ -5,7 +5,7 @@
 
 export {
   PieceEntity,
-  PieceResponseShape,
+  PieceResponseData,
   ToolEntity,
   ToolResponseShape,
 } from './mediator';

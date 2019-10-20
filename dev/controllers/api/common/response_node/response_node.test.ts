@@ -14,7 +14,7 @@ interface MockResponseData {
   awesome: boolean;
 }
 
-/** 
+/**
  * Represents a single node from a JSON response, with basic validation for
  * each property passed into the constructor.
  */
@@ -43,8 +43,8 @@ class MockNode extends ResponseNode<MockResponseData> {
 /** Builds a simple MockNode instance for testing. */
 function buildMockNode(): MockNode {
   return new MockNode(
-    1 as unknown as string,
-    'banana' as unknown as number,
+    (1 as unknown) as string,
+    ('banana' as unknown) as number,
     true
   );
 }
@@ -62,11 +62,11 @@ describe('The ResponseNode class.', () => {
 
   it('Should store multiple reasons per property with error.', () => {
     const node = buildMockNode();
-    
+
     const fooReasons = node.getErrors().get('foo');
     expect(fooReasons).toBeDefined();
     if (fooReasons) expect(fooReasons.size).toEqual(2);
-    
+
     const ageReasons = node.getErrors().get('age');
     expect(ageReasons).toBeDefined();
     if (ageReasons) expect(ageReasons.size).toEqual(1);

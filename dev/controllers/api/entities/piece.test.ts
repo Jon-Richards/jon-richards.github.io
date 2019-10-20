@@ -52,7 +52,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid display title when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      display_title: false as unknown as string,
+      display_title: (false as unknown) as string,
     });
     expect(piece.data.displayTitle).toBe('');
     expect(piece.getErrors().get('display_title')).toBeDefined();
@@ -70,7 +70,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid url title when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      url_title: false as unknown as string,
+      url_title: (false as unknown) as string,
     });
     expect(piece.data.urlTitle).toBe('');
     expect(piece.getErrors().get('url_title')).toBeDefined();
@@ -88,7 +88,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid description when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      description: false as unknown as string,
+      description: (false as unknown) as string,
     });
     expect(piece.data.description).toBe('');
     expect(piece.getErrors().get('description')).toBeDefined();
@@ -106,7 +106,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid small thumb url when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      thumb_device_small: false as unknown as string,
+      thumb_device_small: (false as unknown) as string,
     });
     expect(piece.data.thumbDeviceSmall).toBe('');
     expect(piece.getErrors().get('thumb_device_small')).toBeDefined();
@@ -124,7 +124,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid medium thumb url when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      thumb_device_medium: false as unknown as string,
+      thumb_device_medium: (false as unknown) as string,
     });
     expect(piece.data.thumbDeviceMedium).toBe('');
     expect(piece.getErrors().get('thumb_device_medium')).toBeDefined();
@@ -142,7 +142,7 @@ describe('The Piece API entity class.', () => {
   it(`Should handle an invalid large thumb url when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      thumb_device_large: false as unknown as string,
+      thumb_device_large: (false as unknown) as string,
     });
     expect(piece.data.thumbDeviceLarge).toBe('');
     expect(piece.getErrors().get('thumb_device_large')).toBeDefined();

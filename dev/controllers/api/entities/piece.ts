@@ -6,13 +6,7 @@
  * ResponseNode class.
  */
 
-import { 
-  isUrl,
-  isEmpty,
-  isUUID,
-  isNumeric,
-  ResponseNode
-} from './mediator';
+import { isUrl, isEmpty, isUUID, isNumeric, ResponseNode } from './mediator';
 
 /** Shape of a single portfolio piece JSON node as recieved by the API. */
 export interface PieceResponseData {
@@ -47,7 +41,7 @@ export interface PieceEntityData {
   /** A URL safe version of the piece's title. */
   urlTitle: PieceResponseData['url_title'];
   /** The piece's description. */
-  description: string;
+  description: PieceResponseData['description'];
   /** The piece's thumbnail for small devices. */
   thumbDeviceSmall: PieceResponseData['thumb_device_small'];
   /** The piece's thumbnail for medium devices. */
@@ -55,7 +49,7 @@ export interface PieceEntityData {
   /** The piece's thumbnail for large devices. */
   thumbDeviceLarge: PieceResponseData['thumb_device_large'];
   /** An array of tool UUID's used by the piece. */
-  tools: string[] | null;
+  tools: PieceResponseData['tools'];
 }
 
 /** Available validators to run against a given property. */
@@ -76,8 +70,8 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const id = Number(
       this.validate(
         'id',
-        String(piece.id), 
-        ['notEmpty', 'isNumber'],
+        String(piece.id),
+        [this.notEmpty, this.isNumber],
         false,
         '0'
       )
@@ -86,7 +80,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const uuid = this.validate(
       'uuid',
       piece.uuid,
-      ['notEmpty', 'isUUID'],
+      [this.notEmpty, this.isUUID],
       false,
       ''
     );
@@ -94,7 +88,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const displayTitle = this.validate(
       'display_title',
       piece.display_title,
-      ['notEmpty'],
+      [this.notEmpty],
       false,
       ''
     );
@@ -102,7 +96,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const urlTitle = this.validate(
       'url_title',
       piece.url_title,
-      ['notEmpty'],
+      [this.notEmpty],
       false,
       ''
     );
@@ -110,7 +104,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const description = this.validate(
       'description',
       piece.description,
-      ['notEmpty'],
+      [this.notEmpty],
       false,
       ''
     );
@@ -118,29 +112,29 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const thumbDeviceSmall = this.validate(
       'thumb_device_small',
       piece.thumb_device_small,
-      ['notEmpty', 'isURLString'],
+      [this.notEmpty, this.isURLString],
       true,
       ''
     );
     const thumbDeviceMedium = this.validate(
       'thumb_device_medium',
       piece.thumb_device_medium,
-      ['notEmpty', 'isURLString'],
+      [this.notEmpty, this.isURLString],
       true,
       ''
     );
     const thumbDeviceLarge = this.validate(
       'thumb_device_large',
       piece.thumb_device_large,
-      ['notEmpty', 'isURLString'],
+      [this.notEmpty, this.isURLString],
       true,
       ''
     );
 
-    const tools = Array.isArray(piece.tools) ? 
-      piece.tools
-        .map(tool => this.validate('tools', tool, ['notEmpty'], false, ''))
-        .filter(tool => typeof tool === 'string' && !isEmpty(tool))
+    const tools = Array.isArray(piece.tools)
+      ? piece.tools
+          .map(tool => this.validate('tools', tool, [this.notEmpty], false, ''))
+          .filter(tool => typeof tool === 'string' && !isEmpty(tool))
       : [];
 
     this.data = {
@@ -152,75 +146,8 @@ export class Piece extends ResponseNode<PieceResponseData> {
       thumbDeviceSmall,
       thumbDeviceMedium,
       thumbDeviceLarge,
-      tools
+      tools,
     };
-  }
-
-  /**
-   * Validates a provided property against a provided array of validators.
-   * If the property is invalid, it will be replaced with an acceptable 
-   * placeholder and an error for the property will be registered with
-   * this entity's errors map.
-   * @param name The name of the property being validated.
-   * @param value The value to validate.
-   * @param validators An array of strings designating which validators to run
-   * against the value.
-   * @param isNullable If null is a valid value.
-   * @param replaceWith If the value is invalid, it will be replaced with the
-   * value of this parameter.
-   * @return The original property value or its replacement, depending on if
-   * the value passed validation.
-   */
-  private validate<T extends string | null>(
-    name: keyof PieceResponseData,
-    value: T,
-    validators: Validators[],
-    isNullable: boolean,
-    replaceWith: T
-  ): T {
-    let isValid = this.prevalidate(name, value, isNullable);
-    
-    if (isValid === true && typeof value === 'string') {
-      validators.forEach(validator => {
-        const result = this[validator](value);
-        if (result === false) {
-          isValid = false;
-          this.addError(name, `Failed on validator: ${validator}`);
-        }
-      });
-    }
-
-    return isValid ? value : replaceWith;
-  }
-
-  /**
-   * Runs the provided value through a series of mandatory validators to
-   * ensure it is of an expected type.  If the type is unexpected, an error
-   * for the corresponding property will be registered and the method will
-   * return false.
-   * @param name The name of the property being validated.
-   * @param value The value to be validated.
-   * @param isNullable If null is an acceptable value.
-   * @return True if the value passes validation, else false.
-   */
-  private prevalidate<T extends string | null>(
-    name: keyof PieceResponseData,
-    value: T, 
-    isNullable: boolean
-  ): boolean {
-    let isValid = true;
-
-    if (value === undefined) isValid = false;
-    if (!isNullable && value === null) isValid = false;
-    if (typeof value !== 'string' && !isNullable) isValid = false;
-    if (isNullable && (value !== null && typeof value !== 'string')) {
-      isValid = false;
-    }
-    if (isValid === false) {
-      this.addError(name, `Is of an unexpected type: ${typeof value}`);
-    }
-
-    return isValid;
   }
 
   /**
