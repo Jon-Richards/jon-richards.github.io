@@ -6,10 +6,11 @@
 import { Piece, PieceResponseData, uuid } from './mediator';
 
 /**
+ * **INTENDED FOR TESTING**  
  * Returns a valid Piece entity created with the provided data.  If a property 
  * is missing from the data param, a valid value will be randomly generated in
  * its place.
- * @param data 
+ * @param data A partial or complete PieceResponseData object.
  */
 export function buildPiece(data: Partial<PieceResponseData> = {}): Piece {
   const stubID = Math.ceil(Math.random() * 1000000);

@@ -6,10 +6,10 @@
 import { Tool, ToolResponseData, uuid } from './mediator';
 
 /**
+ * **INTENDED FOR TESTING**  
  * Returns a valid Tool entity created with the provided data.  If a property is
  * missing from the data param, a valid value will be randomly generated in its
  * place.
- * @param data 
  */
 export function buildTool(data: Partial<ToolResponseData> = {}): Tool {
   const stubID = Math.ceil(Math.random() * 1000000);
