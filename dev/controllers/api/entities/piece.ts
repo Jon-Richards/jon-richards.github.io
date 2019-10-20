@@ -2,12 +2,20 @@
  * @fileoverview
  * Contains a class that validates the structure of a single portfolio piece
  * from the API.
+ * @TODO Move core validation functionality into either its own class or the
+ * ResponseNode class.
  */
 
-import { isUrl, isEmpty, isUUID, isNumeric, uuid } from './mediator';
+import { 
+  isUrl,
+  isEmpty,
+  isUUID,
+  isNumeric,
+  ResponseNode
+} from './mediator';
 
-/** Shape of a single portfolio piece node as recieved by the API. */
-export interface PieceResponseShape {
+/** Shape of a single portfolio piece JSON node as recieved by the API. */
+export interface PieceResponseData {
   /** The piece's ID in the database. */
   id: number;
   /** The piece's UUID. */
@@ -28,7 +36,29 @@ export interface PieceResponseShape {
   tools: string[] | null;
 }
 
-/** Possible validators to run against a given property. */
+/** Validated data held by the Piece entity. */
+export interface PieceEntityData {
+  /** The piece's ID in the database. */
+  id: PieceResponseData['id'];
+  /** The piece's UUID. */
+  uuid: PieceResponseData['uuid'];
+  /** The piece's title as it should be displayed to the user. */
+  displayTitle: PieceResponseData['display_title'];
+  /** A URL safe version of the piece's title. */
+  urlTitle: PieceResponseData['url_title'];
+  /** The piece's description. */
+  description: string;
+  /** The piece's thumbnail for small devices. */
+  thumbDeviceSmall: PieceResponseData['thumb_device_small'];
+  /** The piece's thumbnail for medium devices. */
+  thumbDeviceMedium: PieceResponseData['thumb_device_medium'];
+  /** The piece's thumbnail for large devices. */
+  thumbDeviceLarge: PieceResponseData['thumb_device_large'];
+  /** An array of tool UUID's used by the piece. */
+  tools: string[] | null;
+}
+
+/** Available validators to run against a given property. */
 type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber';
 
 /**
@@ -36,135 +66,161 @@ type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber';
  * validates and stores it. If a value is invalid, it is replaced with a valid
  * stub and a "isSelfCorrected" flag is raised.
  */
-export class Piece {
-  /** The piece's ID in the database. */
-  readonly id: number;
-  /** The piece's UUID. */
-  readonly uuid: string;
-  /** The piece's title as it should be displayed to the user. */
-  readonly displayTitle: string;
-  /** A URL safe version of the piece's title. */
-  readonly urlTitle: string;
-  /** The piece's description. */
-  readonly description: string;
-  /** The piece's thumbnail for small devices. */
-  readonly thumbDeviceSmall: string | null;
-  /** The piece's thumbnail for medium devices. */
-  readonly thumbDeviceMedium: string | null;
-  /** The piece's thumbnail for large devices. */
-  readonly thumbDeviceLarge: string | null;
-  /** An array of tool UUID's used by the piece. */
-  readonly tools: string[] | null;
-  /**
-   * If this piece recieved an unexpected value and corrected it with a valid
-   * stub.
-   */
-  private selfCorrected = false;
-  /**
-   * Stub values used in the event an invalid property is passed into the
-   * constructor.
-   */
-  static readonly STUBS = {
-    ID: -1,
-    UUID: '',
-    DISPLAY_TITLE: '',
-    URL_TITLE: '',
-    DESCRIPTION: '',
-    THUMB_DEVICE_SMALL: null,
-    THUMB_DEVICE_MEDIUM: null,
-    THUMB_DEVICE_LARGE: null,
-    TOOLS: null,
-  };
+export class Piece extends ResponseNode<PieceResponseData> {
+  /** Stores the data related to this piece. */
+  readonly data: PieceEntityData;
 
-  constructor(piece: PieceResponseShape) {
-    this.id = Number(
+  constructor(piece: PieceResponseData) {
+    super();
+
+    const id = Number(
       this.validate(
-        String(piece.id),
+        'id',
+        String(piece.id), 
         ['notEmpty', 'isNumber'],
         false,
-        String(Piece.STUBS.ID)
+        '0'
       )
     );
-    this.uuid = this.validate(
+
+    const uuid = this.validate(
+      'uuid',
       piece.uuid,
       ['notEmpty', 'isUUID'],
       false,
-      Piece.STUBS.UUID
+      ''
     );
-    this.displayTitle = this.validate(
+
+    const displayTitle = this.validate(
+      'display_title',
       piece.display_title,
       ['notEmpty'],
       false,
-      Piece.STUBS.DISPLAY_TITLE
+      ''
     );
-    this.urlTitle = this.validate(
+
+    const urlTitle = this.validate(
+      'url_title',
       piece.url_title,
       ['notEmpty'],
       false,
-      Piece.STUBS.URL_TITLE
+      ''
     );
-    this.description = this.validate(
+
+    const description = this.validate(
+      'description',
       piece.description,
       ['notEmpty'],
       false,
-      Piece.STUBS.DESCRIPTION
+      ''
     );
-    this.thumbDeviceSmall = this.validate(
+
+    const thumbDeviceSmall = this.validate(
+      'thumb_device_small',
       piece.thumb_device_small,
       ['notEmpty', 'isURLString'],
       true,
-      Piece.STUBS.THUMB_DEVICE_SMALL
+      ''
     );
-    this.thumbDeviceMedium = this.validate(
+    const thumbDeviceMedium = this.validate(
+      'thumb_device_medium',
       piece.thumb_device_medium,
       ['notEmpty', 'isURLString'],
       true,
-      Piece.STUBS.THUMB_DEVICE_MEDIUM
+      ''
     );
-    this.thumbDeviceLarge = this.validate(
+    const thumbDeviceLarge = this.validate(
+      'thumb_device_large',
       piece.thumb_device_large,
       ['notEmpty', 'isURLString'],
       true,
-      Piece.STUBS.THUMB_DEVICE_LARGE
+      ''
     );
-    this.tools = Array.isArray(piece.tools)
-      ? piece.tools
-          .map(tool => this.validate(tool, ['notEmpty'], false, ''))
-          .filter(tool => typeof tool === 'string' && !isEmpty(tool))
-      : Piece.STUBS.TOOLS;
+
+    const tools = Array.isArray(piece.tools) ? 
+      piece.tools
+        .map(tool => this.validate('tools', tool, ['notEmpty'], false, ''))
+        .filter(tool => typeof tool === 'string' && !isEmpty(tool))
+      : [];
+
+    this.data = {
+      id,
+      uuid,
+      displayTitle,
+      urlTitle,
+      description,
+      thumbDeviceSmall,
+      thumbDeviceMedium,
+      thumbDeviceLarge,
+      tools
+    };
   }
 
   /**
    * Validates a provided property against a provided array of validators.
-   * If the property is invalid, it will be replaced with an acceptable value
-   * and an error will be logged to the console.
-   * @param prop The property to validate.
+   * If the property is invalid, it will be replaced with an acceptable 
+   * placeholder and an error for the property will be registered with
+   * this entity's errors map.
+   * @param name The name of the property being validated.
+   * @param value The value to validate.
    * @param validators An array of strings designating which validators to run
-   * on the property.
-   * @param isNullable If null is a valid property value.
-   * @param replaceWith If the prop is invalid, it will be replaced with the
+   * against the value.
+   * @param isNullable If null is a valid value.
+   * @param replaceWith If the value is invalid, it will be replaced with the
    * value of this parameter.
    * @return The original property value or its replacement, depending on if
-   * prop was valid.
+   * the value passed validation.
    */
   private validate<T extends string | null>(
-    prop: T,
+    name: keyof PieceResponseData,
+    value: T,
     validators: Validators[],
     isNullable: boolean,
     replaceWith: T
   ): T {
-    let isValid = true;
-
-    if (prop === undefined) isValid = false;
-    if (prop === null && !isNullable) isValid = false;
-    if (isValid === true && typeof prop === 'string') {
+    let isValid = this.prevalidate(name, value, isNullable);
+    
+    if (isValid === true && typeof value === 'string') {
       validators.forEach(validator => {
-        if (!this[validator](prop)) isValid = false;
+        const result = this[validator](value);
+        if (result === false) {
+          isValid = false;
+          this.addError(name, `Failed on validator: ${validator}`);
+        }
       });
     }
 
-    if (!isValid) this.selfCorrected = true;
-    return isValid ? prop : replaceWith;
+    return isValid ? value : replaceWith;
+  }
+
+  /**
+   * Runs the provided value through a series of mandatory validators to
+   * ensure it is of an expected type.  If the type is unexpected, an error
+   * for the corresponding property will be registered and the method will
+   * return false.
+   * @param name The name of the property being validated.
+   * @param value The value to be validated.
+   * @param isNullable If null is an acceptable value.
+   * @return True if the value passes validation, else false.
+   */
+  private prevalidate<T extends string | null>(
+    name: keyof PieceResponseData,
+    value: T, 
+    isNullable: boolean
+  ): boolean {
+    let isValid = true;
+
+    if (value === undefined) isValid = false;
+    if (!isNullable && value === null) isValid = false;
+    if (typeof value !== 'string' && !isNullable) isValid = false;
+    if (isNullable && (value !== null && typeof value !== 'string')) {
+      isValid = false;
+    }
+    if (isValid === false) {
+      this.addError(name, `Is of an unexpected type: ${typeof value}`);
+    }
+
+    return isValid;
   }
 
   /**
@@ -203,13 +259,5 @@ export class Piece {
    */
   private isNumber(prop: string): boolean {
     return isNumeric(prop, { no_symbols: true });
-  }
-
-  /**
-   * If this Piece instance contains a self corrected property due to recieving
-   * an unexpected value.
-   */
-  get isSelfCorrected(): Piece['selfCorrected'] {
-    return this.selfCorrected;
   }
 }

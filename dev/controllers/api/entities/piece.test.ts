@@ -1,10 +1,10 @@
-import { Piece, PieceResponseShape } from './piece';
+import { Piece, PieceResponseData } from './piece';
 import { uuid } from './mediator';
 
 /** Test properties for instantiating a Piece. */
-export const MOCK_PIECE: PieceResponseShape = {
+export const MOCK_PIECE: PieceResponseData = {
   id: 1,
-  uuid: 'abc-123',
+  uuid: uuid(),
   display_title: 'Test Piece',
   url_title: '/test_piece',
   description: 'A simple test piece.',
@@ -15,68 +15,169 @@ export const MOCK_PIECE: PieceResponseShape = {
 };
 
 describe('The Piece API entity class.', () => {
-  test(`If the id is undefined, the id is replaced with ${Piece.STUBS.ID}.`, () => {
+  it(`Should replace an invalid id with an empty string.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
       id: (undefined as unknown) as number,
     });
-    expect(piece.id).toBe(Piece.STUBS.ID);
+    expect(piece.data.id).toBe(0);
   });
 
-  test(`If the UUID is invalid, it is replaced with ${Piece.STUBS.UUID}.`, () => {
+  it(`Should store an error when an invalid property is passed.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      id: (undefined as unknown) as number,
+    });
+    expect(piece.getErrors().size).toBe(1);
+  });
+
+  it(`Should handle an invalid uuid property when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
       uuid: ('abc-123' as unknown) as string,
     });
-    expect(piece.uuid).toBe(Piece.STUBS.UUID);
+    expect(piece.data.uuid).toBe('');
+    expect(piece.getErrors().get('uuid')).toBeDefined();
   });
 
-  test("If the UUID is valid, the piece's UUID is the supplied UUID", () => {
+  it('Should store a valid UUID when supplied.', () => {
     const testUUID = uuid();
     const piece = new Piece({
       ...MOCK_PIECE,
       uuid: testUUID,
     });
-    expect(piece.uuid).toBe(testUUID);
+    expect(piece.data.uuid).toBe(testUUID);
   });
 
-  test('If a property is an invalid type, it should be replaced with its corresponding stub.', () => {
+  it(`Should handle an invalid display title when supplied.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,
-      display_title: (undefined as unknown) as string,
+      display_title: false as unknown as string,
     });
-    expect(piece.displayTitle).toBe(Piece.STUBS.DISPLAY_TITLE);
+    expect(piece.data.displayTitle).toBe('');
+    expect(piece.getErrors().get('display_title')).toBeDefined();
   });
 
-  test("If a property is valid, it should appear as the piece's corresponding property", () => {
+  it('Should store a valid display title when supplied.', () => {
+    const testDisplayTitle = 'Hello world!';
     const piece = new Piece({
       ...MOCK_PIECE,
-      display_title: 'A Title',
+      display_title: testDisplayTitle,
     });
-    expect(piece.displayTitle).toBe('A Title');
+    expect(piece.data.displayTitle).toBe(testDisplayTitle);
   });
 
-  test('If a tool is empty, it should be discarded.', () => {
+  it(`Should handle an invalid url title when supplied.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      url_title: false as unknown as string,
+    });
+    expect(piece.data.urlTitle).toBe('');
+    expect(piece.getErrors().get('url_title')).toBeDefined();
+  });
+
+  it('Should store a valid url title when supplied.', () => {
+    const testURLTitle = 'test_title';
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      url_title: testURLTitle,
+    });
+    expect(piece.data.urlTitle).toBe(testURLTitle);
+  });
+
+  it(`Should handle an invalid description when supplied.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      description: false as unknown as string,
+    });
+    expect(piece.data.description).toBe('');
+    expect(piece.getErrors().get('description')).toBeDefined();
+  });
+
+  it('Should store a valid description when supplied.', () => {
+    const testURLTitle = 'tdescription';
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      description: testURLTitle,
+    });
+    expect(piece.data.description).toBe(testURLTitle);
+  });
+
+  it(`Should handle an invalid small thumb url when supplied.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_small: false as unknown as string,
+    });
+    expect(piece.data.thumbDeviceSmall).toBe('');
+    expect(piece.getErrors().get('thumb_device_small')).toBeDefined();
+  });
+
+  it('Should store a valid small thumb url when supplied.', () => {
+    const testThumbUrl = 'test_thumb_url';
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_small: testThumbUrl,
+    });
+    expect(piece.data.thumbDeviceSmall).toBe(testThumbUrl);
+  });
+
+  it(`Should handle an invalid medium thumb url when supplied.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_medium: false as unknown as string,
+    });
+    expect(piece.data.thumbDeviceMedium).toBe('');
+    expect(piece.getErrors().get('thumb_device_medium')).toBeDefined();
+  });
+
+  it('Should store a valid medium thumb url when supplied.', () => {
+    const testThumbUrl = 'test_thumb_url';
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_medium: testThumbUrl,
+    });
+    expect(piece.data.thumbDeviceMedium).toBe(testThumbUrl);
+  });
+
+  it(`Should handle an invalid large thumb url when supplied.`, () => {
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_large: false as unknown as string,
+    });
+    expect(piece.data.thumbDeviceLarge).toBe('');
+    expect(piece.getErrors().get('thumb_device_large')).toBeDefined();
+  });
+
+  it('Should store a valid large thumb url when supplied.', () => {
+    const testThumbUrl = 'test_thumb_url';
+    const piece = new Piece({
+      ...MOCK_PIECE,
+      thumb_device_large: testThumbUrl,
+    });
+    expect(piece.data.thumbDeviceLarge).toBe(testThumbUrl);
+  });
+
+  it('Should discard empty tools.', () => {
     const piece = new Piece({
       ...MOCK_PIECE,
       tools: ['one', '', 'three'],
     });
-    expect(piece.tools).toEqual(['one', 'three']);
+    expect(piece.data.tools).toEqual(['one', 'three']);
   });
 
-  test('If a tool is not of type "string", it should be discarded.', () => {
+  it('Should discard tools that are not strings.', () => {
     const piece = new Piece({
       ...MOCK_PIECE,
       tools: ['one', (37 as unknown) as string, 'three'],
     });
-    expect(piece.tools).toHaveLength(2);
+    expect(piece.data.tools).toHaveLength(2);
   });
 
-  test('If a tool is of type "string" and not empty, it should appear in the tools array.', () => {
+  it('Should store valid tools in the tools array within its data.', () => {
     const piece = new Piece({
       ...MOCK_PIECE,
       tools: ['banana'],
     });
-    expect(piece.tools).toHaveLength(1);
+    expect(piece.data.tools).toHaveLength(1);
   });
 });

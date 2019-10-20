@@ -4,7 +4,7 @@
  */
 
 /** Internal */
-export { Piece as PieceEntity, PieceResponseShape } from './piece';
+export { Piece as PieceEntity, PieceResponseData } from './piece';
 export { Tool as ToolEntity, ToolResponseShape } from './tool';
 /** External */
 import * as isUrl from 'validator/lib/isURL';
@@ -13,3 +13,4 @@ import * as isUUID from 'validator/lib/isUUID';
 import * as isNumeric from 'validator/lib/isNumeric';
 export { isUrl, isEmpty, isUUID, isNumeric };
 export { v4 as uuid } from 'uuid';
+export {ResponseNode} from '../common/response_node';
