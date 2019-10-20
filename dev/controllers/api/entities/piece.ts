@@ -52,13 +52,9 @@ export interface PieceEntityData {
   tools: PieceResponseData['tools'];
 }
 
-/** Available validators to run against a given property. */
-type Validators = 'notEmpty' | 'isUUID' | 'isURLString' | 'isNumber';
-
 /**
  * Accepts a single portfolio piece node from the Overview api response,
- * validates and stores it. If a value is invalid, it is replaced with a valid
- * stub and a "isSelfCorrected" flag is raised.
+ * validates and stores it.
  */
 export class Piece extends ResponseNode<PieceResponseData> {
   /** Stores the data related to this piece. */
@@ -116,6 +112,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
       true,
       ''
     );
+
     const thumbDeviceMedium = this.validate(
       'thumb_device_medium',
       piece.thumb_device_medium,
@@ -123,6 +120,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
       true,
       ''
     );
+
     const thumbDeviceLarge = this.validate(
       'thumb_device_large',
       piece.thumb_device_large,

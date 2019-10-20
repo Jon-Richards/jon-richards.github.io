@@ -1,7 +1,7 @@
 /**
  * @fileoverview
  * Contains a base class for storing and validating JSON nodes recieved as
- * responses from the API.  This class allows
+ * responses from the API.
  */
 
 'use strict';

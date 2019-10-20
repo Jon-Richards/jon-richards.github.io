@@ -1,8 +1,8 @@
-import { Tool, ToolResponseShape } from './tool';
+import { Tool, ToolResponseData } from './tool';
 import { uuid } from './mediator';
 
 /** Test properties for instantiating a Tool. */
-export const MOCK_TOOL: ToolResponseShape = {
+export const MOCK_TOOL: ToolResponseData = {
   id: 1,
   uuid: uuid(),
   display_title: 'Test Piece',
@@ -13,44 +13,44 @@ export const MOCK_TOOL: ToolResponseShape = {
 
 describe('The Tool API entity class.', () => {
   describe('The id field.', () => {
-    test(`If the id is not a number, the id is replaced with ${Tool.STUBS.id}`, () => {
+    it('Should replace an invalid id with empty string.', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
         id: ('banana' as unknown) as number,
       });
-      expect(tool.id).toEqual(Tool.STUBS.id);
+      expect(tool.data.id).toEqual(0);
     });
 
-    test('If the id is a number, the id is written to the Tools id property', () => {
+    it('Should store a valid ID within its data property.', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
         id: 12,
       });
-      expect(tool.id).toEqual(12);
+      expect(tool.data.id).toEqual(12);
     });
   });
 
   describe('The UUID field.', () => {
-    test('If the UUID is invalid, it is replaced with an empty string.', () => {
+    it('Should replace an invalid uuid with an empty string.', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
         uuid: (undefined as unknown) as string,
       });
-      expect(tool.uuid).toBe(Tool.STUBS.uuid);
+      expect(tool.data.uuid).toBe('');
     });
 
-    test("If the UUID is valid, the tool's UUID is the supplied UUID", () => {
+    it('Should store a valid uuid in its data property.', () => {
       const testUUID = uuid();
       const tool = new Tool({
         ...MOCK_TOOL,
         uuid: testUUID,
       });
-      expect(tool.uuid).toBe(testUUID);
+      expect(tool.data.uuid).toBe(testUUID);
     });
   });
 
   describe('The display_title filed.', () => {
-    test('If the display_title is invalid, it is replaced with an empty string.', () => {
+    it('Should replace an invalid value with an empty string.', () => {
       const withNull = new Tool({
         ...MOCK_TOOL,
         display_title: (null as unknown) as string,
@@ -64,143 +64,116 @@ describe('The Tool API entity class.', () => {
         display_title: (789 as unknown) as string,
       });
 
-      expect(withNull.displayTitle).toBe(Tool.STUBS.displayTitle);
-      expect(withUndefined.displayTitle).toBe(Tool.STUBS.displayTitle);
-      expect(withBogus.displayTitle).toBe(Tool.STUBS.displayTitle);
+      expect(withNull.data.displayTitle).toBe('');
+      expect(withUndefined.data.displayTitle).toBe('');
+      expect(withBogus.data.displayTitle).toBe('');
     });
 
-    test('If the display_title is a string, it is written to the DisplayTitle property.', () => {
+    it('Should store a valid display_title in its data property.', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
         display_title: 'I am a display title!',
       });
-      expect(tool.displayTitle).toBe('I am a display title!');
+      expect(tool.data.displayTitle).toBe('I am a display title!');
     });
   });
 
   describe('The filterable_value field', () => {
-    test('If the filterableinvalid, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+    it('Should replace an invalid value with an empty string.', () => {
+      const withUndefined = new Tool({
         ...MOCK_TOOL,
         filterable_value: (undefined as unknown) as string,
       });
-      expect(tool.filterableValue).toBe(Tool.STUBS.filterableValue);
-    });
-
-    test('If the filterable value is null, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+      const withNull = new Tool({
         ...MOCK_TOOL,
         filterable_value: (null as unknown) as string,
       });
-      expect(tool.filterableValue).toBe(Tool.STUBS.filterableValue);
-    });
-
-    test('If the filterable value the wrong type, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+      const withNumber = new Tool({
         ...MOCK_TOOL,
         filterable_value: (123 as unknown) as string,
       });
-      expect(tool.filterableValue).toBe(Tool.STUBS.filterableValue);
+      const withUnsafe = new Tool({
+        ...MOCK_TOOL,
+        filterable_value: 'I have spaces and $special# characters!',
+      });
+      expect(withUndefined.data.filterableValue).toBe('');
+      expect(withNull.data.filterableValue).toBe('');
+      expect(withNumber.data.filterableValue).toBe('');
+      expect(withUnsafe.data.filterableValue).toBe('');
     });
 
-    test('If the filterable value is not URL safe, it is replaced with an empty string.', () => {
+    it('Should store a valid filterable_value in its data property', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
-        filterable_value: 'I have spaced and $special# characters!',
+        filterable_value: 'a-filterable_value',
       });
-      expect(tool.filterableValue).toBe(Tool.STUBS.filterableValue);
+      expect(tool.data.filterableValue).toBe('a-filterable_value');
     });
-
-    test(
-      'If the filterable value is a URL safe string, ' +
-        'it is written to the FilterableValue property.',
-      () => {
-        const tool = new Tool({
-          ...MOCK_TOOL,
-          filterable_value: 'a-filterable_value',
-        });
-        expect(tool.filterableValue).toBe('a-filterable_value');
-      }
-    );
   });
 
   describe('The logo field.', () => {
-    test('If the logo is undefined, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+    it('Should replace an invalid value with an empty string.', () => {
+      const withUndefined = new Tool({
         ...MOCK_TOOL,
         logo: (undefined as unknown) as string,
       });
-      expect(tool.logo).toBe(Tool.STUBS.logo);
-    });
-
-    test('If the logo is null, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+      const withNull = new Tool({
         ...MOCK_TOOL,
         logo: (null as unknown) as string,
       });
-      expect(tool.logo).toBe(Tool.STUBS.logo);
-    });
-
-    test('If the logo the wrong type, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+      const withNumber = new Tool({
         ...MOCK_TOOL,
         logo: (123 as unknown) as string,
       });
-      expect(tool.logo).toBe(Tool.STUBS.logo);
-    });
-
-    test('If the logo is not URL safe, it is replaced with an empty string.', () => {
-      const tool = new Tool({
+      const withUnsafe = new Tool({
         ...MOCK_TOOL,
         logo: 'I have spaced and $special# characters!',
       });
-      expect(tool.logo).toBe(Tool.STUBS.logo);
+      expect(withUndefined.data.logo).toBe('');
+      expect(withNull.data.logo).toBe('');
+      expect(withNumber.data.logo).toBe('');
+      expect(withUnsafe.data.logo).toBe('');
     });
 
-    test(
-      'If the logo is a URL safe string, ' +
-        'it is written to the logo property.',
-      () => {
-        const tool = new Tool({
-          ...MOCK_TOOL,
-          logo: 'a-filterable_value',
-        });
-        expect(tool.logo).toBe('a-filterable_value');
-      }
-    );
+    it('Should store a valid logo url in its data property.', () => {
+      const tool = new Tool({
+        ...MOCK_TOOL,
+        logo: 'a-filterable_value',
+      });
+      expect(tool.data.logo).toBe('a-filterable_value');
+    });
   });
 
   describe('The is_core field.', () => {
-    test(`If the is_core is undefined, it is replaced with ${Tool.STUBS.isCore}.`, () => {
-      const tool = new Tool({
+    it('Should store an invalid value as false.', () => {
+      const withUndefined = new Tool({
         ...MOCK_TOOL,
-        is_core: (undefined as unknown) as boolean,
+        is_core: undefined as unknown as boolean,
       });
-      expect(tool.isCore).toBe(Tool.STUBS.isCore);
+      const withNull = new Tool({
+        ...MOCK_TOOL,
+        is_core: null as unknown as boolean,
+      });
+      const withString = new Tool({
+        ...MOCK_TOOL,
+        is_core: 'banana' as unknown as boolean,
+      });
+      const withEmptyString = new Tool({
+        ...MOCK_TOOL,
+        is_core: '' as unknown as boolean,
+      });
+      expect(withUndefined.data.isCore).toEqual(false);
+      expect(withNull.data.isCore).toEqual(false);
+      expect(withString.data.isCore).toEqual(false);
+      expect(withEmptyString.data.isCore).toEqual(false);
     });
 
-    test(`If the is_core is null, it is replaced with ${Tool.STUBS.isCore}.`, () => {
-      const tool = new Tool({
-        ...MOCK_TOOL,
-        is_core: (null as unknown) as boolean,
-      });
-      expect(tool.isCore).toBe(Tool.STUBS.isCore);
-    });
-
-    test(`If the is_core is of the wrong type, it is replaced with ${Tool.STUBS.isCore}.`, () => {
-      const tool = new Tool({
-        ...MOCK_TOOL,
-        is_core: ('banana' as unknown) as boolean,
-      });
-      expect(tool.isCore).toBe(Tool.STUBS.isCore);
-    });
-
-    test('If the is_core is a boolean, it is written to the isCore property.', () => {
+    it('Should store a valid boolean value in its data property.', () => {
       const tool = new Tool({
         ...MOCK_TOOL,
         is_core: true,
       });
-      expect(tool.isCore).toBe(true);
+      expect(tool.data.isCore).toEqual(true);
     });
   });
 });
