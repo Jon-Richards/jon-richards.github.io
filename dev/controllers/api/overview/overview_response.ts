@@ -44,7 +44,9 @@ export class OverviewResponse {
       piece => 
         console.log(`Found duplicate Piece with uuid: ${piece.data.uuid}.`)
     );
-    const validPieces = uniquePieces.filter(p => p.getErrors().size === 0);
+    const validPieces = uniquePieces.filter(piece => 
+      piece.getErrors().size === 0
+    );
     return validPieces;
   }
 
