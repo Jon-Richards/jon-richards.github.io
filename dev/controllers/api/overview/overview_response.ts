@@ -5,17 +5,17 @@
 
 import {
   PieceEntity,
-  PieceResponseShape,
+  PieceResponseData,
   ToolEntity,
-  ToolResponseShape,
+  ToolResponseData,
 } from '../mediator';
 
 /** The raw response body of an Overview response. */
-export interface OverviewResponseShape {
+export interface OverviewResponseData {
   /** Array of pieces that should appear in the portfolio. */
-  pieces: PieceResponseShape[];
+  pieces: PieceResponseData[];
   /** Array of tools used to build portfolio pieces. */
-  tools: ToolResponseShape[];
+  tools: ToolResponseData[];
 }
 
 /** Validates the response from the Overview endpoint. */
@@ -25,7 +25,7 @@ export class OverviewResponse {
   /** An array of tools. */
   readonly tools: ToolEntity[];
 
-  constructor(responseBody: OverviewResponseShape) {
+  constructor(responseBody: OverviewResponseData) {
     this.pieces = this.validatePieces(responseBody.pieces);
     this.tools = this.validateTools(responseBody.tools);
   }
@@ -36,36 +36,15 @@ export class OverviewResponse {
    * invalid entities are discarded.
    * @param piecesBody An array of raw piece response data to validate.
    */
-  private validatePieces(piecesBody: PieceResponseShape[]): PieceEntity[] {
+  private validatePieces(piecesBody: PieceResponseData[]): PieceEntity[] {
     const mappedPieces = piecesBody.map(piece => new PieceEntity(piece));
-    const uniquePieces = this.removeDuplicates(mappedPieces, 'uuid', 'Piece');
-    const validPieces = this.removeWithStubs(
-      uniquePieces,
-      [
-        { fieldName: 'id', stubValue: PieceEntity.STUBS.ID },
-        { fieldName: 'uuid', stubValue: PieceEntity.STUBS.UUID },
-        {
-          fieldName: 'displayTitle',
-          stubValue: PieceEntity.STUBS.DISPLAY_TITLE,
-        },
-        { fieldName: 'urlTitle', stubValue: PieceEntity.STUBS.URL_TITLE },
-        { fieldName: 'description', stubValue: PieceEntity.STUBS.DESCRIPTION },
-        {
-          fieldName: 'thumbDeviceSmall',
-          stubValue: PieceEntity.STUBS.THUMB_DEVICE_SMALL,
-        },
-        {
-          fieldName: 'thumbDeviceMedium',
-          stubValue: PieceEntity.STUBS.THUMB_DEVICE_MEDIUM,
-        },
-        {
-          fieldName: 'thumbDeviceLarge',
-          stubValue: PieceEntity.STUBS.THUMB_DEVICE_LARGE,
-        },
-        { fieldName: 'tools', stubValue: PieceEntity.STUBS.TOOLS },
-      ],
-      'Piece'
+    const uniquePieces = this.removeDuplicates(
+      mappedPieces,
+      piece => piece.data.uuid, 
+      piece => 
+        console.log(`Found duplicate Piece with uuid: ${piece.data.uuid}.`)
     );
+    const validPieces = uniquePieces.filter(p => p.getErrors().size === 0);
     return validPieces;
   }
 
@@ -73,110 +52,48 @@ export class OverviewResponse {
    * Creates an array of ToolEntities based on the raw "tools" field of an
    * OverviewResponseShape. ToolEntities are then validated and any invalid
    * entities are discarded.
-   * @param piecesBody An array of raw piece response data to validate.
+   * @param toolsBody An array of raw tool response data to validate.
    */
-  private validateTools(toolsBody: ToolResponseShape[]): ToolEntity[] {
+  private validateTools(toolsBody: ToolResponseData[]): ToolEntity[] {
     const mappedTools = toolsBody.map(tool => new ToolEntity(tool));
-    const uniqueTools = this.removeDuplicates(mappedTools, 'uuid', 'Tool');
-    const validTools = this.removeWithStubs(
-      uniqueTools,
-      [
-        { fieldName: 'id', stubValue: ToolEntity.STUBS.id },
-        { fieldName: 'uuid', stubValue: ToolEntity.STUBS.uuid },
-        { fieldName: 'displayTitle', stubValue: ToolEntity.STUBS.displayTitle },
-        {
-          fieldName: 'filterableValue',
-          stubValue: ToolEntity.STUBS.filterableValue,
-        },
-        { fieldName: 'logo', stubValue: ToolEntity.STUBS.logo },
-        { fieldName: 'isCore', stubValue: ToolEntity.STUBS.isCore },
-      ],
-      'Tool'
+    const uniqueTools = this.removeDuplicates(
+      mappedTools, 
+      tool => tool.data.uuid,
+      tool => console.log(`Found duplicate Tool with uuid: ${tool.data.uuid}.`)
     );
+    const validTools = uniqueTools.filter(tool => tool.getErrors().size === 0);
     return validTools;
   }
 
   /**
-   * Checks each entity in an array for uniqueness based on a given field.
+   * Checks each entity in an array for uniqueness based on a given property.
    * Duplicate entities will be discarded.
    * @param entities Array of entities on which to ensure uniqueness.
-   * @param field The name of the field (string) on which to run the comparison.
-   * @param name The name of the entity to include in the console output that
-   *             appears in the event of a duplicate entity.
+   * @param getComparableProperty A method that passes the entity param and
+   * returns a field containing the value for the comparator.
+   * @param onFindDuplicate Optional callback function that passes the duplicate
+   * entity if one is found.
    * @return An array of entities where each of the given field is unique.
    */
-  private removeDuplicates<E, F extends keyof E>(
+  private removeDuplicates<E, F>(
     entities: E[],
-    field: F,
-    entityName: string
+    getComparableProperty: (entity: E) => F,
+    onFindDuplicate?: (entity: E) => void
   ): E[] {
     const checked: E[] = [];
 
     entities.forEach(entity => {
-      const isUnique = checked.every(
-        checkedEntity => checkedEntity[field] !== entity[field]
+      const isUnique = checked.every(checkedEntity => 
+        getComparableProperty(checkedEntity) !== getComparableProperty(entity)
       );
 
       if (isUnique) {
         checked.push(entity);
-      } else if (process.env.NODE_ENV !== 'test') {
-        console.error(
-          `ERROR: Found duplicate ${entityName} with ${field}: ` +
-            `${entity[field]}. This ${entityName} has been discarded from the` +
-            ` Overview response.`
-        );
+      } else if (onFindDuplicate !== undefined) {
+        onFindDuplicate(entity);
       }
     });
 
     return checked;
-  }
-
-  /**
-   * Accepts an array of entities and ensures each of the provided fields does
-   * not contain a stub value that may have been added by the app to prevent a
-   * runtime error. If a field without a legitimate value is found, e.g. an
-   * empty UUID, the entity is discarded.
-   * @param entities An array of entities to validate.
-   * @param fields An array of objects containing the name of the field to be
-   *               checked, and the value by which that field should flagged as
-   *               invalid.
-   * @param entityName The name of the entity, appears in console output when an
-   *                   invalid entity is found.
-   * @return An array of entities with which all of the designated fields are
-   * deemed valid.
-   */
-  private removeWithStubs<E>(
-    entities: E[],
-    fields: Array<{
-      /** The name of the field to check for a stub value. */
-      fieldName: keyof E;
-      /** The value of the stub. */
-      stubValue: E[keyof E];
-    }>,
-    entityName: string
-  ): E[] {
-    const validEntities: E[] = [];
-
-    entities.forEach(entity => {
-      let isValid = true;
-
-      for (const field of fields) {
-        const { fieldName, stubValue } = field;
-        if (entity[fieldName] === stubValue) {
-          console.error(
-            `ERROR: Found invalid field: ${fieldName} with value: ` +
-              `${stubValue} on response entity: ${entityName} in the ` +
-              `Overview response.  This entity ` +
-              `be discarded.`
-          );
-          isValid = false;
-          break;
-        }
-      }
-
-      if (isValid) validEntities.push(entity);
-    });
-
-    return validEntities;
   }
 }
