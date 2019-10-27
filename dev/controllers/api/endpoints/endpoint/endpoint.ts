@@ -5,7 +5,7 @@
 
 'use strict';
 
-import { isUrl } from '../mediator';
+import * as isURL from 'validator/lib/isURL';
 
 /**
  * Base class for API endpoints.  Provides scaffolding for an endpoint URL,
@@ -35,7 +35,7 @@ export class Endpoint<R> {
    */
   private validateUrl(url: Endpoint<R>['URL']): string {
     const isValid =
-      typeof url === 'string' && isUrl(url, { require_tld: false });
+      typeof url === 'string' && isURL(url, { require_tld: false });
     if (!isValid && process.env.NODE_ENV !== 'test') {
       console.error(
         `ERROR: Endpoint was instantiated with invalid URL: ${url}, ` +

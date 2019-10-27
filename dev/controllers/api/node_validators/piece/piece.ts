@@ -2,11 +2,15 @@
  * @fileoverview
  * Contains a class that validates the structure of a single portfolio piece
  * from the API.
- * @TODO Move core validation functionality into either its own class or the
- * ResponseNode class.
  */
 
-import { isUrl, isEmpty, isUUID, isNumeric, ResponseNode } from './mediator';
+import { 
+  NodeValidator,
+  isURIString,
+  isUUID,
+  isInteger,
+  notEmpty
+} from '../../../../lib/node_validator';
 
 /** Shape of a single portfolio piece JSON node as recieved by the API. */
 export interface PieceResponseData {
@@ -31,7 +35,7 @@ export interface PieceResponseData {
 }
 
 /** Validated data held by the Piece entity. */
-export interface PieceEntityData {
+export interface PieceValidatorData {
   /** The piece's ID in the database. */
   id: PieceResponseData['id'];
   /** The piece's UUID. */
@@ -56,9 +60,9 @@ export interface PieceEntityData {
  * Accepts a single portfolio piece node from the Overview api response,
  * validates and stores it.
  */
-export class Piece extends ResponseNode<PieceResponseData> {
+export class Piece extends NodeValidator<PieceResponseData> {
   /** Stores the data related to this piece. */
-  readonly data: PieceEntityData;
+  readonly data: PieceValidatorData;
 
   constructor(piece: PieceResponseData) {
     super();
@@ -67,7 +71,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
       this.validate(
         'id',
         String(piece.id),
-        [this.notEmpty, this.isNumber],
+        [notEmpty, isInteger],
         false,
         '0'
       )
@@ -76,7 +80,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const uuid = this.validate(
       'uuid',
       piece.uuid,
-      [this.notEmpty, this.isUUID],
+      [notEmpty, isUUID],
       false,
       ''
     );
@@ -84,7 +88,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const displayTitle = this.validate(
       'display_title',
       piece.display_title,
-      [this.notEmpty],
+      [notEmpty],
       false,
       ''
     );
@@ -92,7 +96,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const urlTitle = this.validate(
       'url_title',
       piece.url_title,
-      [this.notEmpty],
+      [notEmpty],
       false,
       ''
     );
@@ -100,7 +104,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const description = this.validate(
       'description',
       piece.description,
-      [this.notEmpty],
+      [notEmpty],
       false,
       ''
     );
@@ -108,7 +112,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const thumbDeviceSmall = this.validate(
       'thumb_device_small',
       piece.thumb_device_small,
-      [this.notEmpty, this.isURLString],
+      [notEmpty, isURIString],
       true,
       ''
     );
@@ -116,7 +120,7 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const thumbDeviceMedium = this.validate(
       'thumb_device_medium',
       piece.thumb_device_medium,
-      [this.notEmpty, this.isURLString],
+      [notEmpty, isURIString],
       true,
       ''
     );
@@ -124,15 +128,15 @@ export class Piece extends ResponseNode<PieceResponseData> {
     const thumbDeviceLarge = this.validate(
       'thumb_device_large',
       piece.thumb_device_large,
-      [this.notEmpty, this.isURLString],
+      [notEmpty, isURIString],
       true,
       ''
     );
 
     const tools = Array.isArray(piece.tools)
       ? piece.tools
-          .map(tool => this.validate('tools', tool, [this.notEmpty], false, ''))
-          .filter(tool => typeof tool === 'string' && !isEmpty(tool))
+          .map(tool => this.validate('tools', tool, [notEmpty], false, ''))
+          .filter(tool => typeof tool === 'string' && notEmpty(tool))
       : [];
 
     this.data = {
@@ -146,43 +150,5 @@ export class Piece extends ResponseNode<PieceResponseData> {
       thumbDeviceLarge,
       tools,
     };
-  }
-
-  /**
-   * Checks if a prop is empty.
-   * @return true if the prop is not empty, false if it is.
-   */
-  private notEmpty(prop: string): boolean {
-    return !isEmpty(prop);
-  }
-
-  /**
-   * Checks if a prop is a valid version 4 UUID.
-   * @return true if the prop is a valid UUID else false.
-   */
-  private isUUID(prop: string): boolean {
-    return isUUID(prop, 4);
-  }
-
-  /**
-   * Checks if a prop is a URL safe string.
-   * @return true if the prop is a URL safe string, esle false.
-   */
-  private isURLString(prop: string): boolean {
-    return isUrl(prop, {
-      require_host: false,
-      require_protocol: false,
-      require_tld: false,
-      require_valid_protocol: false,
-      allow_underscores: true,
-    });
-  }
-
-  /**
-   * Checks if a prop is a valid number.
-   * @retrun true if the prop is a valid number, else false.
-   */
-  private isNumber(prop: string): boolean {
-    return isNumeric(prop, { no_symbols: true });
   }
 }

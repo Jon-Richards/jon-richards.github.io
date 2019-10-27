@@ -3,7 +3,8 @@
  * Contains unit tests for the Tool Factory module.
  */
 
-import { buildTool, uuid } from './mediator';
+import { buildTool } from './tool_factory';
+import { v4 as uuid } from 'uuid';
 
 describe('The buildTool factory method.', () => {
   it('Should generate a valid tool without any provided data.', () => {

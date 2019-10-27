@@ -1,5 +1,5 @@
 import { Piece, PieceResponseData } from './piece';
-import { uuid } from './mediator';
+import { v4 as uuid } from 'uuid';
 
 /** Test properties for instantiating a Piece. */
 export const MOCK_PIECE: PieceResponseData = {
@@ -14,7 +14,7 @@ export const MOCK_PIECE: PieceResponseData = {
   tools: [],
 };
 
-describe('The Piece API entity class.', () => {
+describe('The Piece node validator class.', () => {
   it(`Should replace an invalid id with an empty string.`, () => {
     const piece = new Piece({
       ...MOCK_PIECE,

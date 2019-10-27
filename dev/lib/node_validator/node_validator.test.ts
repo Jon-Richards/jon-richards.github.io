@@ -1,11 +1,14 @@
 /**
  * @fileoverview
- * Unit tests for the ResponseNode class.
+ * Unit tests for the NodeValidator class.
  */
 
-import { ResponseNode } from './response_node';
+import { NodeValidator } from './node_validator';
+import { notEmpty, isInteger } from './validators';
 
 interface MockResponseData {
+  /** A numeric index. */
+  index: number;
   /** Foo, should be a string. */
   foo: string;
   /** Some number, any number. */
@@ -15,16 +18,26 @@ interface MockResponseData {
 }
 
 /**
- * Represents a single node from a JSON response, with basic validation for
+ * Represents a single JSON node with basic validation for
  * each property passed into the constructor.
  */
-class MockNode extends ResponseNode<MockResponseData> {
+class MockNode extends NodeValidator<MockResponseData> {
   constructor(
+    readonly index: MockResponseData['index'],
     readonly foo: MockResponseData['foo'],
     readonly age: MockResponseData['age'],
     readonly awesome: MockResponseData['awesome']
   ) {
     super();
+
+    this.index = Number(this.validate(
+      'index',
+      String(index),
+      [isInteger, notEmpty],
+      false,
+      '0'
+    ));
+
     if (typeof foo !== 'string') this.addError('foo', 'Foo must be a string.');
     if (foo !== 'bar') this.addError('foo', 'Foo must equal bar.');
     if (foo !== 'bar') this.addError('foo', 'Foo must equal bar.');
@@ -43,13 +56,14 @@ class MockNode extends ResponseNode<MockResponseData> {
 /** Builds a simple MockNode instance for testing. */
 function buildMockNode(): MockNode {
   return new MockNode(
+    'abc' as unknown as number,
     (1 as unknown) as string,
     ('banana' as unknown) as number,
     true
   );
 }
 
-describe('The ResponseNode class.', () => {
+describe('The NodeValidator class.', () => {
   it('Should store errors.', () => {
     const node = buildMockNode();
     expect(node.getErrors().size).toBeGreaterThan(0);
@@ -57,11 +71,15 @@ describe('The ResponseNode class.', () => {
 
   it('Should store one error per property.', () => {
     const node = buildMockNode();
-    expect(node.getErrors().size).toEqual(2);
+    expect(node.getErrors().size).toEqual(3);
   });
 
   it('Should store multiple reasons per property with error.', () => {
     const node = buildMockNode();
+
+    const indexReasons = node.getErrors().get('index');
+    expect(indexReasons).toBeDefined();
+    if (indexReasons) expect(indexReasons.size).toBe(1);
 
     const fooReasons = node.getErrors().get('foo');
     expect(fooReasons).toBeDefined();
@@ -84,15 +102,27 @@ describe('The ResponseNode class.', () => {
 
   it('Should be able to clear its errors.', () => {
     const node = buildMockNode();
-    expect(node.getErrors().size).toEqual(2);
+    expect(node.getErrors().size).toEqual(3);
     node.clearErrors();
     expect(node.getErrors().size).toEqual(0);
   });
 
   it('Should be able to remove individual errors.', () => {
     const node = buildMockNode();
-    expect(node.getErrors().size).toEqual(2);
+    expect(node.getErrors().size).toEqual(3);
     node.clearError('foo');
-    expect(node.getErrors().size).toEqual(1);
+    expect(node.getErrors().size).toEqual(2);
   });
+
+  it(
+    'Should auto-populate error text when the validate method is called.', 
+    () => {
+      const node = buildMockNode();
+      const reasons = node.getErrors().get('index');
+      if (reasons) { 
+        expect(reasons.values().next().value)
+          .toBe('Failed on validator: isInteger');
+      }
+    }
+  );
 });

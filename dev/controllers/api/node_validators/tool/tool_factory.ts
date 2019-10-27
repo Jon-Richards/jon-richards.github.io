@@ -3,7 +3,8 @@
  * Contains factory methods for easily building Tool entities.
  */
 
-import { Tool, ToolResponseData, uuid } from './mediator';
+import { Tool, ToolResponseData } from './tool';
+import { v4 as uuid } from 'uuid';
 
 /**
  * **INTENDED FOR TESTING**  

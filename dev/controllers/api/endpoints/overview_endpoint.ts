@@ -3,7 +3,9 @@
  * Contains a helper class for the Overview endpoint and type of the response.
  */
 
-import { Endpoint, API_BASE, isUrl } from '../mediator';
+// import { Endpoint, API_BASE, isUrl } from '../mediator';
+import { Endpoint } from './endpoint';
+import { API_BASE } from './constants';
 
 /** A single portfolio piece node in the Overview response. */
 interface OverviewPiece {

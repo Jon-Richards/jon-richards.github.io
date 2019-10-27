@@ -1,5 +1,10 @@
+/**
+ * @fileoverview
+ * Contains unit tests for the Tool class.
+ */
+
 import { Tool, ToolResponseData } from './tool';
-import { uuid } from './mediator';
+import { v4 as uuid } from 'uuid';
 
 /** Test properties for instantiating a Tool. */
 export const MOCK_TOOL: ToolResponseData = {

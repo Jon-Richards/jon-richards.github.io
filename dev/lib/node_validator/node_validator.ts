@@ -1,26 +1,25 @@
 /**
  * @fileoverview
- * Contains a base class for storing and validating JSON nodes recieved as
- * responses from the API.
+ * Contains a base class for storing and validating JSON nodes.
  */
 
 'use strict';
 
 /**
- * Stores and validates data from individual JSON nodes recieved by the API.
- * This allows response validation to be composable, meaning complex response
+ * Facilitates the storage and validation of individual JSON nodes. This allows 
+ * validation of JSON nodes to be composable, meaning complex response
  * types can be mapped to simple derivitives of this class, making it easy to
  * discern if the response has valid data.
  */
-export class ResponseNode<Node extends object> {
+export class NodeValidator<Data extends object> {
   /** Mapping of errors observed by this entity. */
-  private errors: Map<keyof Node, Set<string>> = new Map();
+  private errors: Map<keyof Data, Set<string>> = new Map();
 
   /**
    * Returns a mapping of errors observed by this entity on its content.
    * @return The errors map for this entity.
    */
-  getErrors(): ResponseNode<Node>['errors'] {
+  getErrors(): NodeValidator<Data>['errors'] {
     return this.errors;
   }
 
@@ -31,16 +30,19 @@ export class ResponseNode<Node extends object> {
 
   /**
    * Runs the provided value through a series of mandatory validators to
-   * ensure it is of an expected type.  If the type is unexpected, an error
-   * for the corresponding property will be registered and the method will
-   * return false.
+   * ensure it is of an acceptable type for subsequent validators. At the time
+   * of this writing, the accepted data types are string and null.  String due
+   * to its ease in parsing (making it suitable for a wide variety of 
+   * validators) and null due to its role as an intentional "no" value. If the
+   * type is unexpected, an error for the corresponding property will be
+   * registered and the method will return false.
    * @param name The name of the property being validated.
    * @param value The value to be validated.
    * @param isNullable If null is an acceptable value.
    * @return True if the value passes validation, else false.
    */
-  protected prevalidate<T extends string | null>(
-    name: keyof Node,
+  private prevalidate<T extends string | null>(
+    name: keyof Data,
     value: T,
     isNullable: boolean
   ): boolean {
@@ -63,7 +65,7 @@ export class ResponseNode<Node extends object> {
    * Validates a provided property against a provided array of validators.
    * If the property is invalid, it will be replaced with an acceptable
    * placeholder and an error for the property will be registered with
-   * this entity's errors map.
+   * this instance's errors map.
    * @param name The name of the property being validated.
    * @param value The value to validate.
    * @param validators An array of functions that accept a value (string) as
@@ -76,7 +78,7 @@ export class ResponseNode<Node extends object> {
    * the value passed validation.
    */
   protected validate<T extends string | null>(
-    name: keyof Node,
+    name: keyof Data,
     value: T,
     validators: Array<(value:string) => boolean>,
     isNullable: boolean,
@@ -104,7 +106,7 @@ export class ResponseNode<Node extends object> {
    * @param property The name of the property with the error.
    * @param reason Brief description(s) of the reason for each error.
    */
-  protected addError(property: keyof Node, reason: string | string[]): void {
+  protected addError(property: keyof Data, reason: string | string[]): void {
     const errors = this.errors;
     const currentReasons = errors.get(property);
     const updatedReasons = new Set(Array.isArray(reason) ? reason : [reason]);
@@ -117,7 +119,7 @@ export class ResponseNode<Node extends object> {
   }
 
   /** Removes a single error from this entity's errors. */
-  protected removeError(property: keyof Node): void {
+  protected removeError(property: keyof Data): void {
     this.errors.delete(property);
   }
 }

@@ -4,7 +4,7 @@
  */
 
 import * as isUrl from 'validator/lib/isURL';
-import { Endpoint } from '../mediator';
+import { Endpoint } from './endpoint';
 
 /** A simple repsonse object for testing the Endpoint class. */
 class MockResponse {

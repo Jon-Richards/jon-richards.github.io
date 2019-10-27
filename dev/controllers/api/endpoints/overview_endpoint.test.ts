@@ -3,7 +3,9 @@
  * Contains tests for the OverviewEndpoint class.
  */
 
-import { API_BASE, OverviewEndpoint, isUrl, uuid } from '../mediator';
+import { API_BASE } from './constants'; 
+import { OverviewEndpoint } from './overview_endpoint';
+import { v4 as uuid } from 'uuid';
 
 const mockResponse: OverviewEndpoint['response'] = {
   pieces: [

@@ -3,4 +3,5 @@
  * Point of export for all public modules within this directory.
  */
 
-export { Piece, PieceResponseData, buildPiece} from './mediator';
+export { Tool, ToolResponseData} from './tool';
+export { buildTool } from './tool_factory';

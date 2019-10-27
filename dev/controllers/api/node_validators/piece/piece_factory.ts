@@ -3,7 +3,8 @@
  * Contains factory methods for easily building Piece entities.
  */
 
-import { Piece, PieceResponseData, uuid } from './mediator';
+import { Piece, PieceResponseData } from './piece';
+import { v4 as uuid } from 'uuid';
 
 /**
  * **INTENDED FOR TESTING**  

@@ -3,7 +3,14 @@
  * Contains a class that validates the structure of a tool object from the API.
  */
 
-import { isUrl, isEmpty, isUUID, isNumeric, ResponseNode } from './mediator';
+import { 
+  NodeValidator,
+  isURIString,
+  isInteger,
+  isUUID,
+  notEmpty,
+  isBoolean
+} from '../../../../lib/node_validator';
 
 /** Shape of a single tool node as recieved by the API. */
 export interface ToolResponseData {
@@ -25,7 +32,7 @@ export interface ToolResponseData {
 }
 
 /** Validated data held by the Tool entity. */
-export interface ToolEntityData {
+export interface ToolValidatorData {
   /** The id of the tool. */
   id: ToolResponseData['id'];
   /** The tool's UUID */
@@ -47,9 +54,9 @@ export interface ToolEntityData {
  * Accepts a single portfolio tool node from the Overview api response,
  * validates and stores it.
  */
-export class Tool extends ResponseNode<ToolResponseData> {
+export class Tool extends NodeValidator<ToolResponseData> {
   /** Validated data held by this Tool entity. */
-  data: ToolEntityData;
+  data: ToolValidatorData;
 
   constructor(tool: ToolResponseData) {
     super();
@@ -57,7 +64,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const id: Tool['data']['id'] = Number(this.validate(
       'id',
       String(tool.id), 
-      [this.isNumber],
+      [isInteger],
       false,
       '0'
     ));
@@ -65,7 +72,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const uuid: Tool['data']['uuid'] = this.validate(
       'uuid',
       tool.uuid,
-      [this.notEmpty, this.isUUID],
+      [notEmpty, isUUID],
       false,
       ''
     );
@@ -73,7 +80,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const displayTitle: Tool['data']['displayTitle'] = this.validate(
       'display_title',
       tool.display_title,
-      [this.notEmpty],
+      [notEmpty],
       false,
       ''
     );
@@ -81,7 +88,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const filterableValue: Tool['data']['filterableValue'] = this.validate(
       'filterable_value',
       tool.filterable_value,
-      [this.notEmpty, this.isURLString],
+      [notEmpty, isURIString],
       false,
       ''
     );
@@ -89,7 +96,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const logo: Tool['data']['logo'] = this.validate(
       'logo',
       tool.logo,
-      [this.notEmpty, this.isURLString],
+      [notEmpty, isURIString],
       false,
       ''
     );
@@ -97,7 +104,7 @@ export class Tool extends ResponseNode<ToolResponseData> {
     const isCore: Tool['data']['isCore'] = Boolean(this.validate(
       'is_core',
       String(tool.is_core),
-      [this.isBoolean],
+      [isBoolean],
       false,
       ''
     ));
@@ -110,56 +117,5 @@ export class Tool extends ResponseNode<ToolResponseData> {
       logo,
       isCore
     };
-  }
-
-  /**
-   * Checks if a prop is empty.
-   * @param prop The property being evaluated.
-   * @return true if the prop is not empty, false if it is.
-   */
-  private notEmpty(prop: string): boolean {
-    return !isEmpty(prop);
-  }
-
-  /**
-   * Checks if a prop is a valid version 4 UUID.
-   * @param prop The property being evaluated.
-   * @return true if the prop is a valid UUID else false.
-   */
-  private isUUID(prop: string): boolean {
-    return isUUID(prop, 4);
-  }
-
-  /**
-   * Checks if a prop is a URL safe string.
-   * @param prop The property being evaluated.
-   * @return true if the prop is a URL safe string, esle false.
-   */
-  private isURLString(prop: string): boolean {
-    return isUrl(prop, {
-      require_host: false,
-      require_protocol: false,
-      require_tld: false,
-      require_valid_protocol: false,
-      allow_underscores: true,
-    });
-  }
-
-  /**
-   * Checks if a prop is a valid integer.
-   * @param prop The property being evaluated.
-   * @retrun true if the prop is a valid number, else false.
-   */
-  private isNumber(prop: string): boolean {
-    return isNumeric(prop, { no_symbols: true });
-  }
-
-  /**
-   * Checks if a prop is a valid boolean.
-   * @param prop The property being evaluated.
-   * @return true if the prop is a valid boolean, else false.
-   */
-  private isBoolean(prop: string): boolean {
-    return prop === 'true' || prop === 'false';
   }
 }
