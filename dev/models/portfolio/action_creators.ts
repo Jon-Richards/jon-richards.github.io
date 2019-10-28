@@ -3,26 +3,19 @@
  * Conatains action creators used by the Portfolio reducucer.
  */
 
-import { Action, PortfolioState, PieceManager } from './mediator';
+import { PortfolioState } from './state';
+import { PieceManager } from './piece_manager';
+import { Action } from 'redux';
 
 /**
  * Gets all portfolio pieces.
  * @return A Redux action signaling to the app that a request for portfolio
  * pieces is being made.
  */
-export function getPieces(): Action<'PORTFOLIO__GET_PIECES'> {
+export function getPieces(): Action {
   return {
-    type: 'PORTFOLIO__GET_PIECES',
+    type: 'PORTFOLIO__GET_PIECES'
   };
-}
-
-/**
- * Action that sinals to the application that a request to get all portfolio
- * pieces is being made.
- */
-export interface GetPiecesAction extends Action {
-  /** The action's "type" property. */
-  type: 'PORTFOLIO__GET_PIECES';
 }
 
 /**
@@ -45,9 +38,3 @@ export function publishPieces(
     pieces: validatedPieces.pieces,
   };
 }
-
-/** Mapping of all Action Creators for the Portfolio module. */
-export const ACTIONS = {
-  getPieces,
-  publishPieces,
-};

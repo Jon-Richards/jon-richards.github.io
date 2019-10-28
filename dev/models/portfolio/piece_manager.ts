@@ -3,7 +3,7 @@
  * Contains a class that manages and validates a collection of portfolio pieces.
  */
 
-import { Piece, PieceShape } from './mediator';
+import { Piece, PieceShape } from './piece';
 
 /** Manages and validates a collection of portfolio pieces. */
 export class PieceManager {

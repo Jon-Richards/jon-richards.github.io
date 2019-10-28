@@ -3,5 +3,5 @@
  * Entrypoint into the API module.
  */
 
-// export { ENDPOINTS } from './endpoints';
-// export { setRequestOptions, API_TYPES, Endpoint } from './mediator';
+export { ENDPOINTS } from './endpoints';
+export { setRequestOptions} from './request_configs';
