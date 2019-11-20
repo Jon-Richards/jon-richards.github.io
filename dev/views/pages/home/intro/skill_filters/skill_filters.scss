@@ -1,0 +1,51 @@
+/**
+ * @fileoverview
+ * Styling for the skills list in the intro.
+ */
+
+@import '../../../../lib/scss/standards/index.scss';
+
+.root {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+}
+
+.filter {
+  $color: std-get-swatch(2, -40);
+  $color--focus: std-get-swatch(2);
+
+  display: none;
+  margin: 0.4rem;
+  padding: 0.4rem 1rem;
+  width: auto;
+  background: std-get-swatch(1);
+  color: $color;
+  border: thin solid $color;
+  border-radius: 2rem;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    border-color: $color--focus;
+    color: $color--focus;
+  }
+
+  @media (min-width: std-get-breakpoint(480)) {
+    &--is-core {
+      display: flex;
+    }
+  }
+
+  @media (min-width: std-get-breakpoint(720)) {
+    display: flex;
+  }
+}

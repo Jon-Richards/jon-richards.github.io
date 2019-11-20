@@ -13,7 +13,7 @@ import { ACTIONS, State } from './mediator';
  */
 export function reducer(
   state: State = {
-    activePieceId: 0,
+    activeProjectId: 0,
     message: '',
   },
   action?: ReturnType<typeof ACTIONS.getToolsFilters>

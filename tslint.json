@@ -1,7 +1,26 @@
 {
     "extends": "gts/tslint.json",
     "rules": {
-        "completed-docs": true,
+        "completed-docs": [
+            true,
+            {
+                "classes": { "visibilities": ["exported"] },
+                "enums": { "visibilities": ["exported"] },
+                "functions": { "visibilities": ["exported"] },
+                "methods": {
+                    "locations": ["all"],
+                    "privacies": ["public", "protected"]
+                },
+                "namespaces": { "visibilities": ["exported"] },
+                "properties": { 
+                    "locations": ["all"],
+                    "privacies": ["public", "protected"]
+                },
+                "interfaces": { "visibilities": ["exported"] },
+                "types": { "visibilities": ["exported"] },
+                "variables": { "visibilities": ["exported"] }
+            }
+        ],
         "max-line-length": [
             true,
             {

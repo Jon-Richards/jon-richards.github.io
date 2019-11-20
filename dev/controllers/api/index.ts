@@ -1,7 +1,6 @@
-/**
- * @fileoverview
- * Entrypoint into the API module.
- */
-
-export { ENDPOINTS } from './endpoints';
+export {
+  overviewEndpoint,
+  toolsEndpoint,
+  projectsEndpoint,
+} from './endpoints';
 export { setRequestOptions} from './request_configs';

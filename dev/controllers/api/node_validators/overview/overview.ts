@@ -7,57 +7,56 @@ import {
   NodeValidator,
   filterByDuplicateProperty
 } from '../../../../lib/node_validator';
-import { Piece, PieceResponseData } from '../piece';
+import { Project, ProjectResponseData } from '../project';
 import { Tool, ToolResponseData } from '../tool';
 
 /** The raw response body of an Overview response. */
 export interface OverviewResponseData {
-  /** Array of pieces that should appear in the portfolio. */
-  pieces: PieceResponseData[];
-  /** Array of tools used to build portfolio pieces. */
+  /** Array of projects that should appear in the portfolio. */
+  projects: ProjectResponseData[];
+  /** Array of tools used to build portfolio projects. */
   tools: ToolResponseData[];
 }
 
 /** The raw response body of an Overview response. */
 export interface OverviewValidatorData {
-  /** Array of pieces that should appear in the portfolio. */
-  pieces: Piece[];
-  /** Array of tools used to build portfolio pieces. */
+  /** Array of projects that should appear in the portfolio. */
+  projects: Project[];
+  /** Array of tools used to build portfolio projects. */
   tools: Tool[];
 }
 
 /** Validates the response from the Overview endpoint. */
-export class Overview extends NodeValidator<OverviewResponseData> {
-  /** Contains validated data from the response. */
-  readonly data: OverviewValidatorData = {
-    pieces: [],
-    tools: []
-  };
-
+export class Overview extends NodeValidator<OverviewValidatorData> {
+  /** The validated node data. */
+  data: OverviewValidatorData;
+  
   constructor(responseBody: OverviewResponseData) {
     super();
-    this.data.pieces = this.validatePieces(responseBody.pieces);
-    this.data.tools = this.validateTools(responseBody.tools);
+    this.data = {
+      projects: this.validateProjects(responseBody.projects),
+      tools: this.validateTools(responseBody.tools)
+    };
   }
 
   /**
-   * Creates an array of PieceEntity instances based on the raw "pieces" field
-   * of an OverviewResponseShape.  The PieceEntities are then validated and any
-   * invalid entities are discarded.
-   * @param piecesBody An array of raw piece response data to validate.
+   * Creates an array of ProjectEntity instances based on the raw "projects"
+   * field of an OverviewResponseShape.  The ProjectEntities are then validated
+   * and any invalid entities are discarded.
+   * @param projectsBody An array of raw project response data to validate.
    */
-  private validatePieces(piecesBody: PieceResponseData[]): Piece[] {
-    const mappedPieces = piecesBody.map(piece => new Piece(piece));
-    const uniquePieces = filterByDuplicateProperty(
-      mappedPieces,
-      piece => piece.data.uuid, 
-      piece => 
-        console.warn(`Found duplicate Piece with uuid: ${piece.data.uuid}.`)
+  private validateProjects(projectsBody: ProjectResponseData[]): Project[] {
+    const mappedProjects = projectsBody.map(project => new Project(project));
+    const uniqueProjects = filterByDuplicateProperty(
+      mappedProjects,
+      project => project.data.uuid, 
+      project => 
+        console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`)
     );
-    const validPieces = uniquePieces.filter(piece => 
-      piece.getErrors().size === 0
+    const validProjects = uniqueProjects.filter(project => 
+      project.getErrors().size === 0
     );
-    return validPieces;
+    return validProjects;
   }
 
   /**

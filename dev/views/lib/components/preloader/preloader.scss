@@ -1,0 +1,66 @@
+/**
+ * @fileoverview
+ * Styling for the preloader component.
+ */
+
+@import '../../../lib/scss/standards/index';
+
+.root {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  overflow: hidden;
+  height: 0.25rem;
+}
+
+:global(.page--ready) .root {
+  animation-name: preloader-enter;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
+}
+
+.gradient {
+  position: relative;
+  display: block;
+  top: 0rem;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+
+  background-image: linear-gradient(
+    90deg,
+    std-get-swatch(3, -20) 0%,
+    std-get-swatch(3) 45%,
+    std-get-swatch(3, -20) 50%,
+    std-get-swatch(3) 95%,
+    std-get-swatch(3, -20) 100%
+  );
+  background-repeat: repeat-x;
+
+  animation-name: preloader-loading;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+}
+
+@keyframes preloader-loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes preloader-enter {
+  0% {
+    transform: translateY(0rem);
+  }
+  100% {
+    transform: translateY(-0.25rem);
+  }
+}

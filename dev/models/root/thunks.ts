@@ -5,7 +5,8 @@
 
 import { Dispatch, Action, ActionCreator, Store } from 'redux';
 import { ThunkDispatch, ThunkAction } from 'redux-thunk';
-import { AppState, PORTFOLIO_ACTIONS } from './mediator';
+import { RootStore } from '../root';
+import { getProjectsAction, publishProjectsAction } from '../portfolio';
 
 /** Hi */
 function sayHi(): Promise<Response> {
@@ -26,13 +27,13 @@ function someAction(phrase: string) {
  * @template A An action to pass in the return value.
  */
 export function init(): ThunkAction<
-  ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>,
-  AppState,
+  ReturnType<typeof getProjectsAction>,
+  RootStore,
   null,
-  ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>
+  ReturnType<typeof getProjectsAction>
 > {
   return (dispatch, getState) => {
     const foo = getState().portfolio;
-    return dispatch(PORTFOLIO_ACTIONS.getPieces());
+    return dispatch(getProjectsAction());
   };
 }

@@ -6,21 +6,26 @@
 'use strict';
 
 /**
- * Facilitates the storage and validation of individual JSON nodes. This allows 
- * validation of JSON nodes to be composable, meaning complex response
- * types can be mapped to simple derivitives of this class, making it easy to
- * discern if the response has valid data.
+ * Provides methods for vaidating individual JSON nodes and for storing errors
+ * in a predictable format if any are found.
  */
-export class NodeValidator<Data extends object> {
-  /** Mapping of errors observed by this entity. */
-  private errors: Map<keyof Data, Set<string>> = new Map();
+export class NodeValidator<ValidatedData extends object> {
+  private errors: Map<keyof ValidatedData, Set<string>> = new Map();
 
   /**
    * Returns a mapping of errors observed by this entity on its content.
    * @return The errors map for this entity.
    */
-  getErrors(): NodeValidator<Data>['errors'] {
+  getErrors(): NodeValidator<ValidatedData>['errors'] {
     return this.errors;
+  }
+
+  /**
+   * Returns true of the erros map of this NodeValidator is populated.
+   * @return True if this NodeValidator has errors, else false.
+   */
+  hasErrors(): boolean {
+    return this.errors.size > 0;
   }
 
   /** Clears all errors from this entity. */
@@ -42,7 +47,7 @@ export class NodeValidator<Data extends object> {
    * @return True if the value passes validation, else false.
    */
   private prevalidate<T extends string | null>(
-    name: keyof Data,
+    name: keyof ValidatedData,
     value: T,
     isNullable: boolean
   ): boolean {
@@ -66,6 +71,11 @@ export class NodeValidator<Data extends object> {
    * If the property is invalid, it will be replaced with an acceptable
    * placeholder and an error for the property will be registered with
    * this instance's errors map.
+   * 
+   * __Note__ Values and replacements must be of type `string`, this allows more
+   * flexibility when parsing the provided value and providing a replacement if
+   * need be.
+   * 
    * @param name The name of the property being validated.
    * @param value The value to validate.
    * @param validators An array of functions that accept a value (string) as
@@ -78,7 +88,7 @@ export class NodeValidator<Data extends object> {
    * the value passed validation.
    */
   protected validate<T extends string | null>(
-    name: keyof Data,
+    name: keyof ValidatedData,
     value: T,
     validators: Array<(value:string) => boolean>,
     isNullable: boolean,
@@ -106,7 +116,10 @@ export class NodeValidator<Data extends object> {
    * @param property The name of the property with the error.
    * @param reason Brief description(s) of the reason for each error.
    */
-  protected addError(property: keyof Data, reason: string | string[]): void {
+  protected addError(
+    property: keyof ValidatedData,
+    reason: string | string[]
+  ): void {
     const errors = this.errors;
     const currentReasons = errors.get(property);
     const updatedReasons = new Set(Array.isArray(reason) ? reason : [reason]);
@@ -119,7 +132,7 @@ export class NodeValidator<Data extends object> {
   }
 
   /** Removes a single error from this entity's errors. */
-  protected removeError(property: keyof Data): void {
+  protected removeError(property: keyof ValidatedData): void {
     this.errors.delete(property);
   }
 }

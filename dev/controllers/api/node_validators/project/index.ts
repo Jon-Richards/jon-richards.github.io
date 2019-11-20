@@ -4,4 +4,4 @@
  */
 
 export { Project, ProjectResponseData } from './project';
-export { Tool, ToolResponseData } from './tool';
+export { buildProject } from './project_factory';

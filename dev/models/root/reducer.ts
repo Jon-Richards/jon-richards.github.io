@@ -3,16 +3,16 @@
  * Contains the root reducer for the application.
  */
 
-import { combineReducers } from './mediator';
-import { portfolioReducer as portfolio } from './mediator';
+import { combineReducers } from 'redux';
+import { portfolioReducer as portfolio } from '../portfolio';
 
 /**
  * Reducer comprised of all other top level reducers.  This should never be
  * updated directly.
  */
-export const REDUCER = combineReducers({
+export const ROOT_REDUCER = combineReducers({
   portfolio,
 });
 
 /** Shape of the entire application store. */
-export type Store = ReturnType<typeof REDUCER>;
+export type RootStore = ReturnType<typeof ROOT_REDUCER>;

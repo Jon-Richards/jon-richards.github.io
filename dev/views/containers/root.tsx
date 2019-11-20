@@ -6,20 +6,21 @@
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { Root } from '../components/root';
-import { AppState, INDEX_CONTROLLER } from '../../controllers';
+import { Root } from '../pages';
+import { RootStore } from '../../models/root';
+import { getOverview } from '../../controllers/index';
 
 type StateProps = {};
 type DispatchProps = Pick<Root['props'], 'getOverview'>;
 
 /** Maps properties from the state to those of the App component. */
-const mapStateToProps = (state: AppState): StateProps => ({});
+const mapStateToProps = (state: RootStore): StateProps => ({});
 
 /** Maps dispatchabale actions to additional properties of the App component. */
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<AppState, undefined, Action>
+  dispatch: ThunkDispatch<RootStore, undefined, Action>
 ): DispatchProps => ({
-  getOverview: () => dispatch(INDEX_CONTROLLER.getOverview()),
+  getOverview: () => dispatch(getOverview()),
 });
 
 /**

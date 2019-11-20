@@ -1,9 +1,9 @@
 /**
  * @fileoverview
- * Contains a class that manages an individual portfolio piece.
+ * Contains a class that manages an individual portfolio project.
  */
 
-/** Manages transformations and validation of a single Portfolio Piece. */
+/** Manages transformations and validation of a single Portfolio Project. */
 export class Tool {
   /** The UUID for this tool. */
   readonly uuid: string;

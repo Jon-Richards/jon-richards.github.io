@@ -5,4 +5,4 @@
 
 export { portfolioReducer } from './reducer';
 export { PortfolioState } from './state';
-export { getPieces, publishPieces } from './action_creators';
+export { getProjectsAction, publishProjectsAction } from './actions';

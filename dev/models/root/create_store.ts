@@ -3,13 +3,10 @@
  * Creates the Redux store.
  */
 
-import {
-  createStore,
-  applyMiddleware,
-  thunkMiddleware,
-  composeWithDevTools,
-  APP_REDUCER,
-} from './mediator';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { ROOT_REDUCER } from './reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 /**
  * Creates and configures the store with various middleware and enhancers in
@@ -17,11 +14,11 @@ import {
  * @return An instance of the application store.
  */
 export function create() {
-  const middlewares = [thunkMiddleware];
+  const middlewares = [thunk];
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   const store = createStore(
-    APP_REDUCER,
+    ROOT_REDUCER,
     composeWithDevTools(middleWareEnhancer)
   );
 

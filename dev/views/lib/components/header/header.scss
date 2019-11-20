@@ -1,0 +1,54 @@
+/**
+ * @fileoverview
+ * Styling for the header of the page.
+ */
+
+@import '../../../lib/scss/standards/index';
+
+.header {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  bottom: 0rem;
+  left: 0rem;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(5rem);
+
+  @media (min-width: std-get-breakpoint(720)) {
+    justify-content: flex-end;
+    top: 0rem;
+    bottom: initial;
+    transform: translateY(-5rem);
+  }
+}
+:global(.page--ready) .header {
+  animation-name: header-entry--mobile;
+  animation-direction: normal;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+
+  @media (min-width: std-get-breakpoint(720)) {
+    animation-name: header-entry--desktop;
+  }
+}
+
+@keyframes header-entry--mobile {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes header-entry--desktop {
+  0% {
+    transform: transaleY(-5rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}

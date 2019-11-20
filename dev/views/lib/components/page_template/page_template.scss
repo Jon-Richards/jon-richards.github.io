@@ -1,0 +1,35 @@
+/**
+ * @fileoverview
+ * Establishes the base CSS for the page.
+ */
+
+@import '../../../lib/scss/standards/index';
+
+@include std-css-reset();
+
+html,
+body {
+  font-size: 1rem;
+  padding: 0rem;
+  margin: 0rem;
+  background-color: std-get-swatch(1);
+  color: std-get-swatch(2);
+  @include std-font-2;
+}
+
+.root {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.main {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+}

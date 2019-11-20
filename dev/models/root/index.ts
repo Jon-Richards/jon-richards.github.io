@@ -3,4 +3,5 @@
  * Entrypoint for the Store module.
  */
 
-export { create, AppState } from './mediator';
+export { create } from './create_store';
+export { RootStore, ROOT_REDUCER } from './reducer';

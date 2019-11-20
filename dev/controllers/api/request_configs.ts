@@ -1,11 +1,4 @@
 /**
- * @fileoverview
- * Contains common configurations for API requests.
- */
-
-'use strict';
-
-/**
  * Configures a Fetch RequestInit object by merging provided parameter values
  * with default values.
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch

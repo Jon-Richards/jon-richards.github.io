@@ -1,39 +1,40 @@
 /**
  * @fileoverview
- * Contains the portfolio controller.
+ * Controller for the index page.
  */
 
-import { ThunkAction, PORTFOLIO_ACTIONS, AppState } from '../mediator';
-import { ENDPOINTS, setRequestOptions } from '../api';
+import { ThunkAction } from 'redux-thunk';
+import {
+  getProjectsAction,
+  publishProjectsAction
+ } from '../../models/portfolio';
+import { RootStore } from '../../models/root';
+import { overviewEndpoint, setRequestOptions } from '../api';
 
 /**
  * Requests an overview of the portfolio from the API and publishes the
  * response to the store.
  */
-function getOverview(): ThunkAction<
-  Promise<ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>>,
-  AppState,
+export function getOverview(): ThunkAction<
+  Promise<ReturnType<typeof publishProjectsAction>>,
+  RootStore,
   undefined,
-  | ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>
-  | ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>
+  | ReturnType<typeof getProjectsAction>
+  | ReturnType<typeof publishProjectsAction>
 > {
   return dispatch => {
-    dispatch(PORTFOLIO_ACTIONS.getPieces());
+    dispatch(getProjectsAction());
 
-    return fetch(ENDPOINTS.overview(), setRequestOptions('GET'))
+    return fetch(overviewEndpoint(), setRequestOptions('GET'))
       .then(resp => resp.json())
       .then(resp => {
         const pieces = 
-            (resp.pieces as unknown) as AppState['portfolio']['pieces'];
-        return dispatch(PORTFOLIO_ACTIONS.publishPieces(pieces));
+            (resp.pieces as unknown) as RootStore['portfolio']['projects'];
+        return dispatch(publishProjectsAction(pieces));
       })
       .catch(error => {
         console.error(error);
-        return dispatch(PORTFOLIO_ACTIONS.publishPieces([]));
+        return dispatch(publishProjectsAction([]));
       });
   };
 }
-
-export const INDEX_CONTROLLER = {
-  getOverview,
-};

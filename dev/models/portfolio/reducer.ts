@@ -3,7 +3,7 @@
  * The reducer for the portfolio store.
  */
 
-import { PORTFOLIO_ACTIONS } from './action_creators';
+import { getProjectsAction, publishProjectsAction } from './actions';
 import { PortfolioState } from './state';
 
 /**
@@ -14,11 +14,11 @@ import { PortfolioState } from './state';
  */
 export function portfolioReducer(
   state: PortfolioState = {
-    pieces: [],
+    projects: [],
   },
   action?: 
-  | ReturnType<typeof PORTFOLIO_ACTIONS.getPieces>
-  | ReturnType<typeof PORTFOLIO_ACTIONS.publishPieces>
+  | ReturnType<typeof getProjectsAction>
+  | ReturnType<typeof publishProjectsAction>
 ): PortfolioState {
   if (action) {
     switch (action.type) {

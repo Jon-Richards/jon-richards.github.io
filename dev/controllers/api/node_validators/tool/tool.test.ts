@@ -10,8 +10,8 @@ import { v4 as uuid } from 'uuid';
 export const MOCK_TOOL: ToolResponseData = {
   id: 1,
   uuid: uuid(),
-  display_title: 'Test Piece',
-  filterable_value: 'test_piece',
+  display_title: 'Test Project',
+  filterable_value: 'test_project',
   logo: 'logo.png',
   is_core: true,
 };

@@ -3,20 +3,20 @@
  * Contains the interface for the Portfolio state.
  */
 
-import { Piece } from './mediator';
+import { ProjectModelShape } from './interfaces/project';
 
 /**
  * The Portfolio section of the redux store.  Provides valudation and default
  * values.
  */
 export class PortfolioState {
-  /** Array of pieces displayed in the portfolio. */
-  readonly pieces: Piece[];
+  /** Array of projects displayed in the portfolio. */
+  readonly projects: ProjectModelShape[];
 
   constructor(
-    /** Array of pieces displayed in the portfolio. */
-    pieces: Piece[]
+    /** Array of projects displayed in the portfolio. */
+    projects: ProjectModelShape[]
   ) {
-    this.pieces = pieces;
+    this.projects = projects;
   }
 }

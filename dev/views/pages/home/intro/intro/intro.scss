@@ -1,0 +1,83 @@
+/**
+ * @fileoverview
+ * Styling for the intro component.
+ */
+
+@import '../../../../lib/scss/standards/index.scss';
+
+.root {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: std-get-breakpoint(720)) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.headline {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: std-get-breakpoint(480)) {
+    width: 80%;
+  }
+
+  @media (min-width: std-get-breakpoint(720)) {
+    width: auto;
+  }
+}
+
+.title {
+  display: flex;
+  margin-bottom: 0.2rem;
+  @include std-font-1;
+  font-size: 2.8rem;
+  color: std-get-swatch(2);
+  line-height: 3.2rem;
+}
+
+.subtitle {
+  display: flex;
+  @include std-font-2;
+  font-size: 1.4rem;
+  color: std-get-swatch(2);
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  max-width: 80%;
+  padding: 1rem 0rem 0rem 0rem;
+  margin: 1.4rem 0rem 0rem 0rem;
+  border-top-width: thin;
+  border-color: std-get-swatch(2, -60);
+  border-style: dotted;
+
+  @media (min-width: std-get-breakpoint(720)) {
+    max-width: 45%;
+    padding: 0rem 0rem 0rem 1rem;
+    margin: 0rem 0rem 0rem 1.4rem;
+    border-top-width: 0rem;
+    border-left-width: thin;
+  }
+}
