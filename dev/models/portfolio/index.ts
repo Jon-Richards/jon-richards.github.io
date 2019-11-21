@@ -3,6 +3,6 @@
  * Entrypoint for the Portfolio state machine.
  */
 
-export { portfolioReducer } from './reducer';
-export { PortfolioState } from './state';
-export { getProjectsAction, publishProjectsAction } from './actions';
+export { PORTFOLIO_REDUCER } from './reducer';
+export { PortfolioModelShape } from './interfaces/portfolio';
+export { getPortfolioAction, publishPortfolioAction } from './actions';

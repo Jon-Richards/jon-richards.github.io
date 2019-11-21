@@ -3,10 +3,9 @@
  * Contains thunks related to the overall application.
  */
 
-import { Dispatch, Action, ActionCreator, Store } from 'redux';
-import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import { RootStore } from '../root';
-import { getProjectsAction, publishProjectsAction } from '../portfolio';
+import { getPortfolioAction } from '../portfolio';
 
 /** Hi */
 function sayHi(): Promise<Response> {
@@ -27,13 +26,13 @@ function someAction(phrase: string) {
  * @template A An action to pass in the return value.
  */
 export function init(): ThunkAction<
-  ReturnType<typeof getProjectsAction>,
+  ReturnType<typeof getPortfolioAction>,
   RootStore,
   null,
-  ReturnType<typeof getProjectsAction>
+  ReturnType<typeof getPortfolioAction>
 > {
   return (dispatch, getState) => {
     const foo = getState().portfolio;
-    return dispatch(getProjectsAction());
+    return dispatch(getPortfolioAction());
   };
 }

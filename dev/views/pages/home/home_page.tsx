@@ -12,15 +12,11 @@ import { v4 as uuid } from 'uuid';
 
 /** The root component of the home page. */
 export class HomePage extends React.Component<
-  {
-    /** Gets an overview of the portfolio including pieces and toosl used. */
-    getProjects(): void;
-  },
+  {},
   never
 > {
   constructor(props: HomePage['props']) {
     super(props);
-    props.getProjects();
   }
   /** Renders this component to the DOM. */
   render(): JSX.Element {

@@ -3,36 +3,34 @@
  * Conatains action creators used by the Portfolio reducucer.
  */
 
-import { PortfolioState } from './state';
+import { PortfolioModelShape } from './interfaces/portfolio';
 import { Action } from 'redux';
 
-/**
- * Gets all portfolio projects.
- * @return A Redux action signaling to the app that a request for portfolio
- * projects is being made.
- */
-export function getProjectsAction(): Action {
+/** Notifies the app that a request for for the portfolio has been made. */
+export function getPortfolioAction(): Action<'PORTFOLIO__GET_PORTFOLIO'> {
   return {
-    type: 'PORTFOLIO__GET_PIECES'
+    type: 'PORTFOLIO__GET_PORTFOLIO'
   };
 }
 
-/**
- * Publishes an array of portfolio projects to the application store.
- * @return A Redux action that updates the application store with an array of
- * portfolio projects.
+/** 
+ * Publishes a complete collection of portfolio data to the store.
+ * @param projects An array of projects to add to the Portfolio store.
+ * @param tools An array of tools that were used in each project of the
+ * portfolio.
  */
-export function publishProjectsAction(
-  projects: PortfolioState['projects']
-): Action<'PORTFOLIO__PUBLISH_PIECES'> & {
-  /**
-   * The array of resulting portfolio projects that will be published to the
-   * store.
-   */
-  projects: PortfolioState['projects'];
+export function publishPortfolioAction(
+  projects: PortfolioModelShape['projects'],
+  tools: PortfolioModelShape['tools']
+): Action<'PORTFOLIO__PUBLISH_PORTFOLIO'> & {
+  /** An array of projects that will overwrite those in the Portfolio store. */
+  projects: PortfolioModelShape['projects'];
+  /** An array of tools that will overwrite those in the Portfolio store. */
+  tools: PortfolioModelShape['tools'];
 } {
   return {
-    type: 'PORTFOLIO__PUBLISH_PIECES',
-    projects
+    type: 'PORTFOLIO__PUBLISH_PORTFOLIO',
+    projects,
+    tools
   };
 }

@@ -4,7 +4,7 @@
  */
 
 import { combineReducers } from 'redux';
-import { portfolioReducer as portfolio } from '../portfolio';
+import { PORTFOLIO_REDUCER as portfolio } from '../portfolio';
 
 /**
  * Reducer comprised of all other top level reducers.  This should never be

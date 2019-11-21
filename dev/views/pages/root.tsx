@@ -16,13 +16,14 @@ export class Root extends React.Component<
 > {
   constructor(props: Root['props']) {
     super(props);
+    props.getOverview();
   }
 
   /** Returns the rendered component as JSX. */
   render(): JSX.Element {
     return (
       <>
-        <HomePage getProjects={this.props.getOverview} />
+        <HomePage />
       </>
     );
   }
