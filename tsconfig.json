@@ -6,7 +6,8 @@
     "jsx": "react",
     "lib": ["es2018", "dom"],
     "checkJs": false,
-    "declaration": false
+    "declaration": false,
+    "sourceMap": true,
   },
   "include": [
     "dev/**/*.ts",

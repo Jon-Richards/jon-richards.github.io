@@ -3,7 +3,7 @@
         "projects": [
             {
                 "id": 1,
-                "uuid": "1_in_x",
+                "uuid": "3f9af169-4810-4224-b6fa-818fae216b45",
                 "display_title": "1 in X",
                 "url_title": "1_in_X",
                 "description": "A web app for making inhuman statistics more personal.",
@@ -17,7 +17,7 @@
             },
             {
                 "id": 2,
-                "uuid": "sketchbook",
+                "uuid": "5dde8740-c91a-4e03-bdc7-94cf872d72c6",
                 "display_title": "Sketchbook",
                 "url_title": "sketchbook",
                 "description": "A place for displaying work of an entirely different kind.",
@@ -34,7 +34,7 @@
         "tools": [
             {
                 "id": 1,
-                "uuid": "typescript",
+                "uuid": "4ac41e25-e4ce-4981-bb9d-beb2f20d4af2",
                 "display_title": "TypeScript",
                 "filterable_value": "typescript",
                 "logo": "foo",
@@ -42,7 +42,7 @@
             },
             {
                 "id": 2,
-                "uuid": "react",
+                "uuid": "15a4fbc6-61dc-42e2-a72c-109cf67188a4",
                 "display_title": "React",
                 "filterable_value": "react",
                 "logo": "bar",
@@ -50,7 +50,7 @@
             },
             {
                 "id": 3,
-                "uuid": "css_sass",
+                "uuid": "1841410a-b601-46ca-b26d-bf8a56db696a",
                 "display_title": "CSS / SASS",
                 "filterable_value": "css_sass",
                 "logo": "bar",
@@ -58,7 +58,7 @@
             },
             {
                 "id": 4,
-                "uuid": "photoshop",
+                "uuid": "5ca2cf5e-2cd9-440a-b909-adec67d96d4e",
                 "display_title": "Photoshop",
                 "filterable_value": "photoshop",
                 "logo": "bar",
@@ -66,7 +66,7 @@
             },
             {
                 "id": 5,
-                "uuid": "illustrator",
+                "uuid": "cc6c51ee-1484-4a1f-9ebe-2af9f09d6018",
                 "display_title": "Illustrator",
                 "filterable_value": "illustrator",
                 "logo": "bar",
@@ -74,7 +74,7 @@
             },
             {
                 "id": 6,
-                "uuid": "angular",
+                "uuid": "486457c4-b79a-4331-86f9-160f08cf2ab5",
                 "display_title": "Angular",
                 "filterable_value": "angular",
                 "logo": "bar",

@@ -11,9 +11,6 @@ import {
   notEmpty,
   isInteger
 } from '../../../../lib/node_validator';
-import { 
-  ProjectModelShape
-} from '../../../../models/portfolio/interfaces/project';
 
 /** Shape of a single portfolio project JSON node as recieved by the API. */
 export interface ProjectResponseData {
@@ -42,9 +39,9 @@ export interface ProjectResponseData {
  * validates and stores it in a format compatible with a project node in the
  * Store.
  */
-export class Project extends NodeValidator<ProjectResponseData> {
+export class ProjectValidator extends NodeValidator<ProjectResponseData> {
   /** Stores the data related to this project. */
-  readonly data: ProjectModelShape;
+  readonly data: ProjectResponseData;
 
   constructor(project: ProjectResponseData) {
     super();
@@ -65,7 +62,7 @@ export class Project extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const displayTitle = this.validate(
+    const display_title = this.validate(
       'display_title',
       project.display_title,
       [notEmpty],
@@ -73,7 +70,7 @@ export class Project extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const urlTitle = this.validate(
+    const url_title = this.validate(
       'url_title',
       project.url_title,
       [notEmpty],
@@ -89,7 +86,7 @@ export class Project extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const thumbDeviceSmall = this.validate(
+    const thumb_device_small = this.validate(
       'thumb_device_small',
       project.thumb_device_small,
       [notEmpty, isURIString],
@@ -97,7 +94,7 @@ export class Project extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const thumbDeviceMedium = this.validate(
+    const thumb_device_medium = this.validate(
       'thumb_device_medium',
       project.thumb_device_medium,
       [notEmpty, isURIString],
@@ -105,7 +102,7 @@ export class Project extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const thumbDeviceLarge = this.validate(
+    const thumb_device_large = this.validate(
       'thumb_device_large',
       project.thumb_device_large,
       [notEmpty, isURIString],
@@ -122,12 +119,12 @@ export class Project extends NodeValidator<ProjectResponseData> {
     this.data = {
       id,
       uuid,
-      title: displayTitle,
-      url: urlTitle,
+      display_title,
+      url_title,
       description,
-      thumbDeviceSmall,
-      thumbDeviceMedium,
-      thumbDeviceLarge,
+      thumb_device_small,
+      thumb_device_medium,
+      thumb_device_large,
       tools,
     };
   }

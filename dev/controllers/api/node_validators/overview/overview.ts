@@ -7,8 +7,8 @@ import {
   NodeValidator,
   filterByDuplicateProperty
 } from '../../../../lib/node_validator';
-import { Project, ProjectResponseData } from '../project';
-import { Tool, ToolResponseData } from '../tool';
+import { ProjectValidator, ProjectResponseData } from '../project';
+import { ToolValidator, ToolResponseData } from '../tool';
 
 /** The raw response body of an Overview response. */
 export interface OverviewResponseData {
@@ -18,18 +18,10 @@ export interface OverviewResponseData {
   tools: ToolResponseData[];
 }
 
-/** The raw response body of an Overview response. */
-export interface OverviewValidatorData {
-  /** Array of projects that should appear in the portfolio. */
-  projects: Project[];
-  /** Array of tools used to build portfolio projects. */
-  tools: Tool[];
-}
-
 /** Validates the response from the Overview endpoint. */
-export class Overview extends NodeValidator<OverviewValidatorData> {
+export class OverviewValidator extends NodeValidator<OverviewResponseData> {
   /** The validated node data. */
-  data: OverviewValidatorData;
+  readonly data: OverviewResponseData;
   
   constructor(responseBody: OverviewResponseData) {
     super();
@@ -44,19 +36,25 @@ export class Overview extends NodeValidator<OverviewValidatorData> {
    * field of an OverviewResponseShape.  The ProjectEntities are then validated
    * and any invalid entities are discarded.
    * @param projectsBody An array of raw project response data to validate.
+   * @return An array of project data that has been validated within the context
+   * of other projects.
    */
-  private validateProjects(projectsBody: ProjectResponseData[]): Project[] {
-    const mappedProjects = projectsBody.map(project => new Project(project));
+  private validateProjects(
+    projectsBody: ProjectResponseData[]
+  ): OverviewResponseData['projects'] {
+    const mappedProjects = projectsBody.map(project => {
+      return new ProjectValidator(project);
+    });
+    const validProjects = mappedProjects.filter(project => {
+      return !project.hasErrors();
+    });
     const uniqueProjects = filterByDuplicateProperty(
-      mappedProjects,
+      validProjects,
       project => project.data.uuid, 
       project => 
         console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`)
     );
-    const validProjects = uniqueProjects.filter(project => 
-      project.getErrors().size === 0
-    );
-    return validProjects;
+    return uniqueProjects.map(project => project.data);
   }
 
   /**
@@ -64,16 +62,20 @@ export class Overview extends NodeValidator<OverviewValidatorData> {
    * OverviewResponseShape. ToolEntities are then validated and any invalid
    * entities are discarded.
    * @param toolsBody An array of raw tool response data to validate.
+   * @return An array of tool data that has been validated within the context
+   * of other tools.
    */
-  private validateTools(toolsBody: ToolResponseData[]): Tool[] {
-    const mappedTools = toolsBody.map(tool => new Tool(tool));
+  private validateTools(
+    toolsBody: ToolResponseData[]
+  ): OverviewResponseData['tools'] {
+    const mappedTools = toolsBody.map(tool => new ToolValidator(tool));
+    const validTools = mappedTools.filter(tool => tool.getErrors().size === 0);
     const uniqueTools = filterByDuplicateProperty(
-      mappedTools, 
+      validTools, 
       tool => tool.data.uuid,
       tool => 
         console.warn(`Found duplicate Tool with uuid: ${tool.data.uuid}.`)
     );
-    const validTools = uniqueTools.filter(tool => tool.getErrors().size === 0);
-    return validTools;
+    return uniqueTools.map(tool => tool.data);
   }
 }

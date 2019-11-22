@@ -3,5 +3,5 @@
  * Point of export for all public modules within this directory.
  */
 
-export { Tool, ToolResponseData} from './tool';
+export { ToolValidator, ToolResponseData} from './tool';
 export { buildTool } from './tool_factory';

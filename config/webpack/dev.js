@@ -36,7 +36,7 @@ module.exports = env => {
 
     mode: 'development',
     
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
 
     devServer: {
       contentBase: Path.resolve(__dirname, '..', '..', 'dist'),
@@ -98,7 +98,6 @@ module.exports = env => {
           use: [
             {
               loader: 'ts-loader',
-              options: {}
             },
             {
               loader: 'tslint-loader',

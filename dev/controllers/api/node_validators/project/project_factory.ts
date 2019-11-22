@@ -3,7 +3,7 @@
  * Contains factory methods for easily building Project entities.
  */
 
-import { Project, ProjectResponseData } from './project';
+import { ProjectValidator, ProjectResponseData } from './project';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -13,7 +13,9 @@ import { v4 as uuid } from 'uuid';
  * generated in its place.
  * @param data A partial or complete ProjectResponseData object.
  */
-export function buildProject(data: Partial<ProjectResponseData> = {}): Project {
+export function buildProject(
+  data: Partial<ProjectResponseData> = {}
+): ProjectValidator {
   const stubID = Math.ceil(Math.random() * 1000000);
   const stubUUID = uuid();
   const stubbedData: ProjectResponseData = {
@@ -30,5 +32,5 @@ export function buildProject(data: Partial<ProjectResponseData> = {}): Project {
 
   const finalData = {...stubbedData, ...data};
 
-  return new Project(finalData);
+  return new ProjectValidator(finalData);
 }

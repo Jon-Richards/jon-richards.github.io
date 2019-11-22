@@ -3,4 +3,4 @@
  * Publicizes modules within this directory.
  */
 
-export { Overview } from './overview';
+export { OverviewValidator, OverviewResponseData } from './overview';

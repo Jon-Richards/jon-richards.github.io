@@ -3,7 +3,7 @@
  * Contains factory methods for easily building Tool entities.
  */
 
-import { Tool, ToolResponseData } from './tool';
+import { ToolValidator, ToolResponseData } from './tool';
 import { v4 as uuid } from 'uuid';
 
 /**
@@ -12,7 +12,7 @@ import { v4 as uuid } from 'uuid';
  * missing from the data param, a valid value will be randomly generated in its
  * place.
  */
-export function buildTool(data: Partial<ToolResponseData> = {}): Tool {
+export function buildTool(data: Partial<ToolResponseData> = {}): ToolValidator {
   const stubID = Math.ceil(Math.random() * 1000000);
   const stubUUID = uuid();
   const coinFlip = Math.floor(Math.random() * 2);
@@ -27,5 +27,5 @@ export function buildTool(data: Partial<ToolResponseData> = {}): Tool {
 
   const finalData = {...stubbedData, ...data};
 
-  return new Tool(finalData);
+  return new ToolValidator(finalData);
 }

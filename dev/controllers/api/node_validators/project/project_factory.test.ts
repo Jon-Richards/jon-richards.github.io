@@ -26,7 +26,7 @@ describe('The buildProject factory method.', () => {
       uuid: testUUID
     });
 
-    expect(tool.data.displayTitle).toBe('Foo');
+    expect(tool.data.display_title).toBe('Foo');
     expect(tool.data.uuid).toBe(testUUID);
   });
 });

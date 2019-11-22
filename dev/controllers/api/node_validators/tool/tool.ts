@@ -31,37 +31,18 @@ export interface ToolResponseData {
   is_core: boolean;
 }
 
-/** Validated data held by the Tool entity. */
-export interface ToolValidatorData {
-  /** The id of the tool. */
-  id: ToolResponseData['id'];
-  /** The tool's UUID */
-  uuid: ToolResponseData['uuid'];
-  /** The display name of the tool. */
-  displayTitle: ToolResponseData['display_title'];
-  /** A value by which the tool can be filtered amongst other tools. */
-  filterableValue: ToolResponseData['filterable_value'];
-  /** URL safe string for the tool's logo image. */
-  logo: ToolResponseData['logo'];
-  /**
-   * If the tool should be considered a "core skill", something employers would
-   * look for directly.
-   */
-  isCore: ToolResponseData['is_core'];
-}
-
 /**
  * Accepts a single portfolio tool node from the Overview api response,
  * validates and stores it.
  */
-export class Tool extends NodeValidator<ToolResponseData> {
+export class ToolValidator extends NodeValidator<ToolResponseData> {
   /** Validated data held by this Tool entity. */
-  data: ToolValidatorData;
+  data: ToolResponseData;
 
   constructor(tool: ToolResponseData) {
     super();
 
-    const id: Tool['data']['id'] = Number(this.validate(
+    const id: ToolResponseData['id'] = Number(this.validate(
       'id',
       String(tool.id), 
       [isInteger],
@@ -69,7 +50,7 @@ export class Tool extends NodeValidator<ToolResponseData> {
       '0'
     ));
 
-    const uuid: Tool['data']['uuid'] = this.validate(
+    const uuid: ToolResponseData['uuid'] = this.validate(
       'uuid',
       tool.uuid,
       [notEmpty, isUUID],
@@ -77,7 +58,7 @@ export class Tool extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const displayTitle: Tool['data']['displayTitle'] = this.validate(
+    const display_title: ToolResponseData['display_title'] = this.validate(
       'display_title',
       tool.display_title,
       [notEmpty],
@@ -85,15 +66,16 @@ export class Tool extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const filterableValue: Tool['data']['filterableValue'] = this.validate(
-      'filterable_value',
-      tool.filterable_value,
-      [notEmpty, isURIString],
-      false,
-      ''
-    );
+    const filterable_value: ToolResponseData['filterable_value'] = 
+      this.validate(
+        'filterable_value',
+        tool.filterable_value,
+        [notEmpty, isURIString],
+        false,
+        ''
+      );
 
-    const logo: Tool['data']['logo'] = this.validate(
+    const logo: ToolResponseData['logo'] = this.validate(
       'logo',
       tool.logo,
       [notEmpty, isURIString],
@@ -101,7 +83,7 @@ export class Tool extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const isCore: Tool['data']['isCore'] = Boolean(this.validate(
+    const is_core: ToolResponseData['is_core'] = Boolean(this.validate(
       'is_core',
       String(tool.is_core),
       [isBoolean],
@@ -112,10 +94,10 @@ export class Tool extends NodeValidator<ToolResponseData> {
     this.data = {
       id,
       uuid,
-      displayTitle,
-      filterableValue,
+      display_title,
+      filterable_value,
       logo,
-      isCore
+      is_core
     };
   }
 }

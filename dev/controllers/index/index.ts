@@ -7,7 +7,7 @@ import { ThunkAction } from 'redux-thunk';
 import { getPortfolioAction, publishPortfolioAction } from '../../models/portfolio';
 import { RootStore } from '../../models/root';
 import { overviewEndpoint, setRequestOptions } from '../api';
-import { Overview } from '../api/node_validators/overview';
+import { OverviewValidator, OverviewResponseData } from '../api/node_validators/overview';
 
 /**
  * Requests an overview of the portfolio from the API and publishes the
@@ -26,10 +26,8 @@ export function getOverview(): ThunkAction<
     return fetch(overviewEndpoint(), setRequestOptions('GET'))
       .then(resp => resp.json())
       .then(resp => {
-        const projects = 
-            (resp.projects as unknown) as RootStore['portfolio']['projects'];
-        const tools =
-            (resp.tools as unknown) as RootStore['portfolio']['tools'];
+        const body = resp as unknown as OverviewResponseData;
+        const { projects, tools } = new OverviewValidator(body).data;
         return dispatch(publishPortfolioAction(projects, tools));
       })
       .catch(error => {

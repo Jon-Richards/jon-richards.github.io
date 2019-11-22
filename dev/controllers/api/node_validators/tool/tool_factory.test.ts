@@ -27,8 +27,8 @@ describe('The buildTool factory method.', () => {
       uuid: testUUID
     });
 
-    expect(tool.data.displayTitle).toBe('Foo');
-    expect(tool.data.isCore).toBe(true);
+    expect(tool.data.display_title).toBe('Foo');
+    expect(tool.data.is_core).toBe(true);
     expect(tool.data.uuid).toBe(testUUID);
   });
 });
