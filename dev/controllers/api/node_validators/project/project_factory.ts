@@ -1,6 +1,6 @@
 /**
  * @fileoverview
- * Contains factory methods for easily building Project entities.
+ * Contains factory methods for easily building a ProjectValidator.
  */
 
 import { ProjectValidator, ProjectResponseData } from './project';
@@ -8,12 +8,12 @@ import { v4 as uuid } from 'uuid';
 
 /**
  * **INTENDED FOR TESTING**  
- * Returns a valid Project entity created with the provided data.
+ * Returns a ProjectValidator created with the provided data.
  * If a property is missing from the data param, a valid value will be randomly
  * generated in its place.
  * @param data A partial or complete ProjectResponseData object.
  */
-export function buildProject(
+export function buildProjectValidator(
   data: Partial<ProjectResponseData> = {}
 ): ProjectValidator {
   const stubID = Math.ceil(Math.random() * 1000000);

@@ -3,25 +3,25 @@
  * Contains unit tests for the Tool Factory module.
  */
 
-import { buildTool } from './tool_factory';
+import { buildToolValidator } from './tool_factory';
 import { v4 as uuid } from 'uuid';
 
-describe('The buildTool factory method.', () => {
+describe('The buildToolValidator factory method.', () => {
   it('Should generate a valid tool without any provided data.', () => {
-    const tool = buildTool();
+    const tool = buildToolValidator();
     expect(tool.getErrors().size).toBe(0);
   });
 
   it('Should generate tools with random values.', () => {
-    const toolA = buildTool();
-    const toolB = buildTool();
+    const toolA = buildToolValidator();
+    const toolB = buildToolValidator();
     expect(toolA.data.id).not.toBe(toolB.data.id);
     expect(toolA.data.uuid).not.toBe(toolB.data.uuid);
   });
 
   it('Should use provided values when applicable.', () => {
     const testUUID = uuid();
-    const tool = buildTool({
+    const tool = buildToolValidator({
       display_title: 'Foo',
       is_core: true,
       uuid: testUUID

@@ -5,6 +5,7 @@
  */
 
 export { NodeValidator } from './node_validator';
+// export { buildValidators } from './node_validator_factory';
 export { 
   isUUID,
   isURIString,

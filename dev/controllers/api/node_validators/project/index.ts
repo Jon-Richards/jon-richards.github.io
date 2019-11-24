@@ -4,4 +4,4 @@
  */
 
 export { ProjectValidator, ProjectResponseData } from './project';
-export { buildProject } from './project_factory';
+export { buildProjectValidator } from './project_factory';

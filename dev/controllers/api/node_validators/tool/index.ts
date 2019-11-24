@@ -4,4 +4,4 @@
  */
 
 export { ToolValidator, ToolResponseData} from './tool';
-export { buildTool } from './tool_factory';
+export { buildToolValidator } from './tool_factory';
