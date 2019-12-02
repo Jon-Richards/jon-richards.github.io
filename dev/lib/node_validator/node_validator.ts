@@ -129,7 +129,9 @@ export class NodeValidator<ValidatedData extends object> {
     }
 
     errors.set(property, new Set(updatedReasons));
-    console.warn(`${property}: ${reason}`);
+    if (process.env.NODE_ENV !== 'test') {
+      console.warn(`${property}: ${reason}`);
+    }
   }
 
   /** Removes a single error from this entity's errors. */

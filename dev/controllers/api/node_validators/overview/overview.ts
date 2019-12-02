@@ -51,10 +51,20 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
     const uniqueProjects = filterByDuplicateProperty(
       validProjects,
       project => project.data.uuid, 
-      project => 
-        console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`)
+      project => this.handleDuplicateProject(project)
     );
     return uniqueProjects.map(project => project.data);
+  }
+
+  /**
+   * Handles error registration when a duplicate project is found.
+   * @param project The project that was a duplicate.
+   */
+  private handleDuplicateProject(project: ProjectValidator): void {
+    if (process.env.NODE_ENV !== 'test') {
+      console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`);
+    }
+    this.addError('projects', `Duplicate with uuid: ${project.data.uuid}.`);
   }
 
   /**
@@ -73,9 +83,19 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
     const uniqueTools = filterByDuplicateProperty(
       validTools, 
       tool => tool.data.uuid,
-      tool => 
-        console.warn(`Found duplicate Tool with uuid: ${tool.data.uuid}.`)
+      tool => this.handleDuplicateTool(tool)
     );
     return uniqueTools.map(tool => tool.data);
+  }
+
+  /**
+   * Handles error registration when a duplicate tool is found.
+   * @param tool The tool that was a duplicate.
+   */
+  private handleDuplicateTool(tool: ToolValidator): void {
+    if (process.env.NODE_ENV !== 'test') {
+      console.warn(`Found duplicate tool with uuid: ${tool.data.uuid}.`);
+    }
+    this.addError('tools', `Duplicate with uuid: ${tool.data.uuid}.`);
   }
 }

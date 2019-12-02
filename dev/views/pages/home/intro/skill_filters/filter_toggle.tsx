@@ -33,15 +33,15 @@ export const FILTER_TOGGLE = React.memo<
   const { displayLabel, value, isActive, isCore, onClick } = props;
 
   return (
-    <button
+    <span
       className={
         `${CSS['filter']}` +
         `${isActive ? ' ' + CSS['filter--active'] : ''}` +
         `${isCore ? ' ' + CSS['filter--is-core'] : ''}`
       }
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e, value)}
+      // onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e, value)}
     >
       {displayLabel}
-    </button>
+    </span>
   );
 });

@@ -33,11 +33,11 @@
   border-radius: 2rem;
   cursor: pointer;
 
-  &:focus,
-  &:hover {
-    border-color: $color--focus;
-    color: $color--focus;
-  }
+  // &:focus,
+  // &:hover {
+  //   border-color: $color--focus;
+  //   color: $color--focus;
+  // }
 
   @media (min-width: std-get-breakpoint(480)) {
     &--is-core {
