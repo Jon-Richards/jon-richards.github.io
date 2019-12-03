@@ -4,10 +4,10 @@
  */
 
 import * as React from 'react';
-const CSS = require('./root.scss');
+const CSS = require('./page_root.scss');
 import { Preloader } from '../shared/preloader';
 import { Header } from '../shared/header';
-import { HomePage } from './pages/home';
+import { HomePage } from './pages';
 
 type State = {
   /** The overall status of the application. */
@@ -22,8 +22,8 @@ type State = {
  * should be available through a Provider component, to prevent unncessary
  * renders,  _this_ component does not make direct use of any of its props.
  */
-export class Root extends React.Component<{}, State> {
-  constructor(props: Root['props']) {
+export class PageRoot extends React.Component<{}, State> {
+  constructor(props: PageRoot['props']) {
     super(props);
     this.state = {
       status: 'initializing'
@@ -41,7 +41,7 @@ export class Root extends React.Component<{}, State> {
   /** Renders the root layout to the DOM. */
   render(): JSX.Element {
     return (
-      <div className={`${CSS['root']} ${'page--' + this.state.status}`}>
+      <div className={`${CSS['page-root']} page-root--${this.state.status}`}>
         <Preloader />
         <Header />
         <main className={CSS['main']}>

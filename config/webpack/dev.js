@@ -71,6 +71,10 @@ module.exports = env => {
       ],
       alias: {
         // MUST be relative to this file.
+        'Models': Path.resolve(__dirname, '..', '..', 'dev', 'models'),
+        'Views': Path.resolve(__dirname, '..', '..', 'dev', 'views'),
+        'Controllers': Path.resolve(__dirname, '..', '..', 'dev', 'controllers'),
+        'Lib': Path.resolve(__dirname, '..', '..', 'dev', 'lib'),
         'scss-lib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss'),
         'scss-standards': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss', 'standards', 'index.scss'),
         'TSLib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'ts'),

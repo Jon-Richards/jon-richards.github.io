@@ -1,1 +1,1 @@
-export { Root } from './root';
+export { PageRoot } from './page_root';

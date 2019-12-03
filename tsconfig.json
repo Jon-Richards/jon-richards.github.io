@@ -8,6 +8,10 @@
     "checkJs": false,
     "declaration": false,
     "sourceMap": true,
+    "baseUrl": ".", // required for paths to resolve
+    "paths": { // relative to baseUrl
+      "Controllers": ["dev/controllers/*"],
+    },
   },
   "include": [
     "dev/**/*.ts",
