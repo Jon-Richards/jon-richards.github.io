@@ -3,4 +3,4 @@
  * Entrypoint into the App component.
  */
 
-export { Root } from './root';
+export { HomePage } from './home';

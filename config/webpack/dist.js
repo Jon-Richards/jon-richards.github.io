@@ -238,7 +238,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/lib/templates/index.hbs',
+        template: './dev/views/templates/index.hbs',
         minify: {
           collapseWhitespace: true
         },

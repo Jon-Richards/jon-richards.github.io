@@ -7,7 +7,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { create } from './models/root';
-import { ROOT } from './views/components/contextual/root';
+import { Root } from './views/components/hierarchal';
 
 /**
  * Applies the store to the root of the application tree as props and renders
@@ -15,7 +15,7 @@ import { ROOT } from './views/components/contextual/root';
  */
 render(
   <Provider store={create()}>
-    <ROOT />
+    <Root />
   </Provider>,
   document.getElementById('app')
 );
