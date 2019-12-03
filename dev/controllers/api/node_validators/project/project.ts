@@ -10,7 +10,7 @@ import {
   isUUID,
   notEmpty,
   isInteger
-} from '../../../../lib/node_validator';
+} from '../../../../lib/ts/node_validator';
 
 /** Shape of a single portfolio project JSON node as recieved by the API. */
 export interface ProjectResponseData {

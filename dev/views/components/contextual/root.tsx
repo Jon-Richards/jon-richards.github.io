@@ -6,9 +6,9 @@
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { Root } from '../pages';
-import { RootStore } from '../../models/root';
-import { getOverview } from '../../controllers/index';
+import { Root } from './pages';
+import { RootStore } from '../../../models/root';
+import { getOverview } from '../../../controllers/index/index';
 
 type StateProps = {};
 type DispatchProps = Pick<Root['props'], 'getOverview'>;

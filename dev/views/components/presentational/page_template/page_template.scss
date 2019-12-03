@@ -3,7 +3,7 @@
  * Establishes the base CSS for the page.
  */
 
-@import '../../../lib/scss/standards/index';
+@import '~scss-standards';
 
 @include std-css-reset();
 

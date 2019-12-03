@@ -7,7 +7,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { create } from './models/root';
-import { ROOT } from './views/containers/root';
+import { ROOT } from './views/components/contextual/root';
 
 /**
  * Applies the store to the root of the application tree as props and renders

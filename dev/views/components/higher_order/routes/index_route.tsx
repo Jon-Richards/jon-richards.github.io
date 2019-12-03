@@ -6,13 +6,13 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { RootStore } from '../../../models/root';
+import { RootStore } from '../../../../models/root';
 
 /** Stub for dispatchable actions */
 type DispatchableActions = {};
 
 interface IndexProps {
-  /** All portfolio projects currently in the application store. */
+  /** Portfolio projects and tools in the redux store. */
   portfolio: RootStore['portfolio'];
   /** Dispatch to request portfolio projects. */
   getPortfolioProjects(): void;

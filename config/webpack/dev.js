@@ -68,7 +68,14 @@ module.exports = env => {
         '.otf',
         '.ttf',
         '.woff'
-      ]
+      ],
+      alias: {
+        // MUST be relative to this file.
+        'scss-lib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss'),
+        'scss-standards': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss', 'standards', 'index.scss'),
+        'TSLib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'ts'),
+        'TestLib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'ts'),
+      }
     },
 
     module: {
@@ -230,7 +237,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/views/lib/templates/index.hbs',
+        template: './dev/lib/templates/index.hbs',
         minify: false,
         inlineSource: '.(js|css)$'
       }),
