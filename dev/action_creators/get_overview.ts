@@ -1,17 +1,27 @@
 /**
  * @fileoverview
  * 
- * Contains thunk actions for interacting with the Overview endpoint.
+ * Contains thunk that handles fetching and publishing data from the overview
+ * endpoint.
  */
 
 import { ThunkAction } from 'redux-thunk';
-import { getPortfolio } from '../private/get_portfolio';
-import { publishPortfolio } from '../private/publish_portfolio';
-import { GetPortfolio, PublishPortfolio } from '../../store/portfolio/interfaces/actions';
-import { RootStore } from '../../store/root';
-import { setRequestOptions } from '../../async/request_configs';
-import { OverviewValidator, OverviewResponseData } from '../../async/node_validators/overview';
-import { overviewEndpoint } from '../../async/endpoints';
+import { GetPortfolio, PublishPortfolio } from '../store/portfolio';
+import { RootStore } from '../store/root';
+import { setRequestOptions } from '../async/request_configs';
+import { OverviewValidator, OverviewResponseData } from '../async/node_validators/overview';
+import { overviewEndpoint } from '../async/endpoints';
+
+function publishPortfolio(
+  projects: PublishPortfolio['projects'],
+  tools: PublishPortfolio['tools']
+): PublishPortfolio {
+  return {
+    type: 'PORTFOLIO__PUBLISH_PORTFOLIO',
+    projects,
+    tools
+  };
+}
 
 /**
  * Requests an overview of the portfolio from the API and publishes the
@@ -25,7 +35,7 @@ export function getOverview(): ThunkAction<
   | PublishPortfolio
 > {
   return dispatch => {
-    dispatch(getPortfolio());
+    dispatch((): GetPortfolio => ({type: 'PORTFOLIO__GET_PORTFOLIO'}));
 
     return fetch(overviewEndpoint(), setRequestOptions('GET'))
       .then(resp => resp.json())
