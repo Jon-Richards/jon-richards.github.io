@@ -5,9 +5,9 @@
  */
 
 import { HomePage } from './home_page';
-import { getOverview } from '../../../../../async/endpoints/overview';
+import { getOverview } from '../../../../../actions';
 import { connect } from 'react-redux';
-import { RootStore } from '../../../../../models/root';
+import { RootStore } from '../../../../../store/root';
 
 type StoreProjects = RootStore['portfolio']['projects'];
 type ComponentProjects = HomePage['props']['projects'];

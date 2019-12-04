@@ -6,7 +6,7 @@
 import { OverviewValidator, OverviewResponseData } from './overview';
 import { mockProjectResponseData } from '../project/project.test';
 import { mockToolResponseData } from '../tool/tool.test';
-import { mockResponseNodes } from '../../../../lib/test/mock_response_nodes';
+import { mockResponseNodes } from '../../../lib/test/mock_response_nodes';
 
 type Project = OverviewResponseData['projects'][0];
 type Tool = OverviewResponseData['tools'][0];

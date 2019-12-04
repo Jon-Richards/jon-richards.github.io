@@ -4,11 +4,8 @@
  */
 
 import { Reducer } from 'redux';
-import { PortfolioModelShape } from './interfaces/portfolio';
-import { 
-  getPortfolioAction,
-  publishPortfolioAction
-} from './actions';
+import { PortfolioStore } from './interfaces/store';
+import { GetPortfolio, PublishPortfolio, } from './interfaces/actions';
 
 /**
  * The Redux reducer for the Portfolio store.  If no params are supplied, a
@@ -17,13 +14,13 @@ import {
  * @param action An action creator for updating the supplied state.
  */
 export const PORTFOLIO_REDUCER: Reducer<
-  PortfolioModelShape,
-  | ReturnType<typeof getPortfolioAction>
-  | ReturnType<typeof publishPortfolioAction>
+  PortfolioStore,
+  | GetPortfolio
+  | PublishPortfolio
 > = (
   state = {
     projects: [],
-    tools: []
+    tools: [],
   },
   action
 ) => {
