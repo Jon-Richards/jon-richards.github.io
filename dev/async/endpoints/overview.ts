@@ -1,13 +1,23 @@
 /**
  * @fileoverview
- * Controller for the index page.
+ * 
+ * Contains thunk actions for interacting with the Overview endpoint.
  */
 
 import { ThunkAction } from 'redux-thunk';
 import { getPortfolioAction, publishPortfolioAction } from '../../models/portfolio';
 import { RootStore } from '../../models/root';
-import { overviewEndpoint, setRequestOptions } from '../api';
-import { OverviewValidator, OverviewResponseData } from '../api/node_validators/overview';
+import { setRequestOptions } from '../request_configs';
+import { OverviewValidator, OverviewResponseData } from '../node_validators/overview';
+import { API_BASE } from '../api_base';
+
+/**
+ * Returns the API endpoint for an overview of the portfolio.
+ * @return The API endpoint for an overview of the portfolio.
+ */
+export function overviewEndpoint(): string {
+  return `${API_BASE}/overview`;
+}
 
 /**
  * Requests an overview of the portfolio from the API and publishes the

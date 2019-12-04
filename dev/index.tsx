@@ -7,7 +7,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { create } from './models/root';
-import { PageRoot } from './views/components/hierarchal';
+import { PageRoot } from './views/components/hierarchical';
 
 /**
  * Applies the store to the root of the application tree as props and renders

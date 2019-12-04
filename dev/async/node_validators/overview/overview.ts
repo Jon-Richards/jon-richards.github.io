@@ -6,7 +6,7 @@
 import { 
   NodeValidator,
   filterByDuplicateProperty
-} from '../../../../lib/ts/node_validator';
+} from '../../../lib/ts/node_validator';
 import { ProjectValidator, ProjectResponseData } from '../project';
 import { ToolValidator, ToolResponseData } from '../tool';
 

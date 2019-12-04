@@ -5,24 +5,24 @@
 
 const CSS = require('./home_page.scss');
 import * as React from 'react';
-import { INTRO } from './intro';
-import { Gallery } from './gallery';
+import { INTRO } from './subcomponents/intro';
+import { Gallery } from './subcomponents/gallery';
 import { v4 as uuid } from 'uuid';
+
+type Project = {
+  /** The title of the project as displayed to the user. */
+  title: string;
+};
 
 type Props = {
   /** Function that gets the overview of the portfolio. */
   getOverview: () => void;
-};
-
-type State = {
-  /** A list of portfolio projects held by the store. */
-  projects: string[];
-  /** A list of tools held by the store. */
-  tools: string[];
+  /** Array of projects to display in the gallery. */
+  projects: Project[];
 };
 
 /** The root component of the home page. */
-export class HomePage extends React.Component<Props, State> {
+export class HomePage extends React.PureComponent<Props, never> {
   constructor(props: HomePage['props']) {
     super(props);
     this.props.getOverview();
@@ -32,6 +32,7 @@ export class HomePage extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div className={CSS['root']}>
+        {!this.props.projects.length && (<>LOADING</>)}
         <INTRO
           title={
             <>
