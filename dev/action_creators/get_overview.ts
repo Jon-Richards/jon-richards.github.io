@@ -11,7 +11,6 @@ import { RootStore } from '../store/root';
 import { setRequestOptions } from '../async/request_configs';
 import { OverviewValidator, OverviewResponseData } from '../async/node_validators/overview';
 import { overviewEndpoint } from '../async/endpoints';
-import { v4 as uuid } from 'uuid';
 
 function publishPortfolio(
   projects: PublishPortfolio['projects'],
@@ -23,16 +22,6 @@ function publishPortfolio(
     tools
   };
 }
-
-const stubUUID = uuid();
-const tool = {
-  id: Math.ceil(Math.random() * 1000000000),
-  uuid: stubUUID,
-  display_title: `Tool Title ${stubUUID}`,
-  filterable_value: `tool-${stubUUID}`,
-  logo: `logo-${stubUUID}`,
-  is_core: Math.floor(Math.random() * 2) === 0,
-};
 
 /**
  * Requests an overview of the portfolio from the API and publishes the
@@ -47,7 +36,6 @@ export function getOverview(): ThunkAction<
 > {
   return (dispatch, getState) => {
     dispatch((): GetPortfolio => ({type: 'PORTFOLIO__GET_PORTFOLIO'}));
-    dispatch(publishPortfolio([], [tool]));
     
     return fetch(overviewEndpoint(), setRequestOptions('GET'))
       .then(resp => resp.json())
