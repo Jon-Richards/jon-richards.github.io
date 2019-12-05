@@ -11,6 +11,7 @@ import { RootStore } from '../store/root';
 import { setRequestOptions } from '../async/request_configs';
 import { OverviewValidator, OverviewResponseData } from '../async/node_validators/overview';
 import { overviewEndpoint } from '../async/endpoints';
+import { v4 as uuid } from 'uuid';
 
 function publishPortfolio(
   projects: PublishPortfolio['projects'],
@@ -23,30 +24,53 @@ function publishPortfolio(
   };
 }
 
+const stubUUID = uuid();
+const tool = {
+  id: Math.ceil(Math.random() * 1000000000),
+  uuid: stubUUID,
+  display_title: `Tool Title ${stubUUID}`,
+  filterable_value: `tool-${stubUUID}`,
+  logo: `logo-${stubUUID}`,
+  is_core: Math.floor(Math.random() * 2) === 0,
+};
+
 /**
  * Requests an overview of the portfolio from the API and publishes the
  * response to the store.
  */
 export function getOverview(): ThunkAction<
-  Promise<PublishPortfolio>,
+  Promise<PublishPortfolio | void>,
   RootStore,
   undefined,
   | GetPortfolio
   | PublishPortfolio
 > {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch((): GetPortfolio => ({type: 'PORTFOLIO__GET_PORTFOLIO'}));
-
+    dispatch(publishPortfolio([], [tool]));
+    
     return fetch(overviewEndpoint(), setRequestOptions('GET'))
       .then(resp => resp.json())
       .then(resp => {
         const body = resp as unknown as OverviewResponseData;
-        const { projects, tools } = new OverviewValidator(body).data;
-        return dispatch(publishPortfolio(projects, tools));
+        const {
+          projects: newProjects, 
+          tools: newTools 
+        } = new OverviewValidator(body).data;
+        const {
+          projects: currentProjects,
+          tools: currentTools
+        } = getState().portfolio;
+        
+        if (currentProjects.length === 0 && currentTools.length === 0) {
+          return dispatch(publishPortfolio(newProjects, newTools));
+        } else {
+          Promise.reject('Portfolio is already populated.');
+          return;
+        }
       })
       .catch(error => {
         console.error(error);
-        return dispatch(publishPortfolio([], []));
       });
   };
 }

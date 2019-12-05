@@ -20,7 +20,7 @@ export const PORTFOLIO_REDUCER: Reducer<
 > = (
   state = {
     projects: [],
-    tools: [],
+    tools:[]
   },
   action
 ) => {

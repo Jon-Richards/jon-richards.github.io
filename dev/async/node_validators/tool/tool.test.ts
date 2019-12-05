@@ -3,43 +3,21 @@
  * Contains unit tests for the Tool class.
  */
 
-import { ToolValidator, ToolResponseData } from './tool';
+import { ToolValidator } from './tool';
 import { v4 as uuid } from 'uuid';
-
-/**
- * Mocks a ToolResponseData type, calculating unique values where needed.  If a
- * field is nullable, it will returned as null by default.
- * @param data A complete or partial ToolResponseData type.  The provided fields
- * of which will appear in the return value.
- * @return A valid ToolResponseData type.
- */
-export function mockToolResponseData(
-  data: Partial<ToolResponseData> = {}
-): ToolResponseData {
-  const stubUUID = uuid();
-
-  return {
-    id: Math.ceil(Math.random() * 1000000000),
-    uuid: stubUUID,
-    display_title: `Tool Title ${stubUUID}`,
-    filterable_value: `tool-${stubUUID}`,
-    logo: `logo-${stubUUID}`,
-    is_core: Math.floor(Math.random() * 2) === 0,
-    ...data
-  };
-}
+import { toolResponseData } from './__mocks__/tool_response_data';
 
 describe('The Tool API entity class.', () => {
   describe('The id field.', () => {
     it('Should replace an invalid id with empty string.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         id: ('banana' as unknown) as number,
       }));
       expect(tool.data.id).toEqual(0);
     });
 
     it('Should store a valid ID within its data property.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         id: 12,
       }));
       expect(tool.data.id).toEqual(12);
@@ -48,7 +26,7 @@ describe('The Tool API entity class.', () => {
 
   describe('The UUID field.', () => {
     it('Should replace an invalid uuid with an empty string.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         uuid: (undefined as unknown) as string,
       }));
       expect(tool.data.uuid).toBe('');
@@ -56,7 +34,7 @@ describe('The Tool API entity class.', () => {
 
     it('Should store a valid uuid in its data property.', () => {
       const testUUID = uuid();
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         uuid: testUUID,
       }));
       expect(tool.data.uuid).toBe(testUUID);
@@ -65,13 +43,13 @@ describe('The Tool API entity class.', () => {
 
   describe('The display_title filed.', () => {
     it('Should replace an invalid value with an empty string.', () => {
-      const withNull = new ToolValidator(mockToolResponseData({
+      const withNull = new ToolValidator(toolResponseData({
         display_title: (null as unknown) as string,
       }));
-      const withUndefined = new ToolValidator(mockToolResponseData({
+      const withUndefined = new ToolValidator(toolResponseData({
         display_title: (undefined as unknown) as string,
       }));
-      const withBogus = new ToolValidator(mockToolResponseData({
+      const withBogus = new ToolValidator(toolResponseData({
         display_title: (789 as unknown) as string,
       }));
 
@@ -81,7 +59,7 @@ describe('The Tool API entity class.', () => {
     });
 
     it('Should store a valid display_title in its data property.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         display_title: 'I am a display title!',
       }));
       expect(tool.data.display_title).toBe('I am a display title!');
@@ -90,16 +68,16 @@ describe('The Tool API entity class.', () => {
 
   describe('The filterable_value field', () => {
     it('Should replace an invalid value with an empty string.', () => {
-      const withUndefined = new ToolValidator(mockToolResponseData({
+      const withUndefined = new ToolValidator(toolResponseData({
         filterable_value: (undefined as unknown) as string,
       }));
-      const withNull = new ToolValidator(mockToolResponseData({
+      const withNull = new ToolValidator(toolResponseData({
         filterable_value: (null as unknown) as string,
       }));
-      const withNumber = new ToolValidator(mockToolResponseData({
+      const withNumber = new ToolValidator(toolResponseData({
         filterable_value: (123 as unknown) as string,
       }));
-      const withUnsafe = new ToolValidator(mockToolResponseData({
+      const withUnsafe = new ToolValidator(toolResponseData({
         filterable_value: 'I have spaces and $special# characters!',
       }));
       expect(withUndefined.data.filterable_value).toBe('');
@@ -109,7 +87,7 @@ describe('The Tool API entity class.', () => {
     });
 
     it('Should store a valid filterable_value in its data property', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         filterable_value: 'a-filterable_value',
       }));
       expect(tool.data.filterable_value).toBe('a-filterable_value');
@@ -118,16 +96,16 @@ describe('The Tool API entity class.', () => {
 
   describe('The logo field.', () => {
     it('Should replace an invalid value with an empty string.', () => {
-      const withUndefined = new ToolValidator(mockToolResponseData({
+      const withUndefined = new ToolValidator(toolResponseData({
         logo: (undefined as unknown) as string,
       }));
-      const withNull = new ToolValidator(mockToolResponseData({
+      const withNull = new ToolValidator(toolResponseData({
         logo: (null as unknown) as string,
       }));
-      const withNumber = new ToolValidator(mockToolResponseData({
+      const withNumber = new ToolValidator(toolResponseData({
         logo: (123 as unknown) as string,
       }));
-      const withUnsafe = new ToolValidator(mockToolResponseData({
+      const withUnsafe = new ToolValidator(toolResponseData({
         logo: 'I have spaced and $special# characters!',
       }));
       expect(withUndefined.data.logo).toBe('');
@@ -137,7 +115,7 @@ describe('The Tool API entity class.', () => {
     });
 
     it('Should store a valid logo url in its data property.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         logo: 'a-filterable_value',
       }));
       expect(tool.data.logo).toBe('a-filterable_value');
@@ -146,16 +124,16 @@ describe('The Tool API entity class.', () => {
 
   describe('The is_core field.', () => {
     it('Should store an invalid value as false.', () => {
-      const withUndefined = new ToolValidator(mockToolResponseData({
+      const withUndefined = new ToolValidator(toolResponseData({
         is_core: undefined as unknown as boolean,
       }));
-      const withNull = new ToolValidator(mockToolResponseData({
+      const withNull = new ToolValidator(toolResponseData({
         is_core: null as unknown as boolean,
       }));
-      const withString = new ToolValidator(mockToolResponseData({
+      const withString = new ToolValidator(toolResponseData({
         is_core: 'banana' as unknown as boolean,
       }));
-      const withEmptyString = new ToolValidator(mockToolResponseData({
+      const withEmptyString = new ToolValidator(toolResponseData({
         is_core: '' as unknown as boolean,
       }));
       expect(withUndefined.data.is_core).toEqual(false);
@@ -165,7 +143,7 @@ describe('The Tool API entity class.', () => {
     });
 
     it('Should store a valid boolean value in its data property.', () => {
-      const tool = new ToolValidator(mockToolResponseData({
+      const tool = new ToolValidator(toolResponseData({
         is_core: true,
       }));
       expect(tool.data.is_core).toEqual(true);
