@@ -3,11 +3,12 @@
  * Contains the component that renders the skill list filter.
  */
 
-import { React, FILTER_TOGGLE, SkillFilterShape } from '../mediator';
+import * as React from 'react';
 const CSS = require('./skill_filters.scss');
+import { FILTER_TOGGLE } from './filter_toggle';
 
 /** The hspae of a single skill filter. */
-export interface SkillFilterShape {
+export interface SkillFilter {
   /** UUID for this particular skill. */
   uuid: string;
   /** The label as it will display to the user. */
@@ -37,7 +38,7 @@ export interface SkillFilterShape {
  */
 export const SKILL_FILTERS = React.memo<{
   /** Array of skill filters. */
-  skills: SkillFilterShape[];
+  skills: SkillFilter[];
 }>(props => {
   const { skills } = props;
 
@@ -55,7 +56,7 @@ export const SKILL_FILTERS = React.memo<{
  * @return  A React Fragment containing SKILL_FILTER_TOGGLE components
  *          wrapped in list item elements.
  */
-function mapSkillsToFilters(skills: SkillFilterShape[]): React.ReactFragment {
+function mapSkillsToFilters(skills: SkillFilter[]): React.ReactFragment {
   if (skills.length) {
     return skills.map(skill => (
       <li key={skill.uuid}>

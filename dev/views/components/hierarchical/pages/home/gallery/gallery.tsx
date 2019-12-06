@@ -1,11 +1,6 @@
-/**
- * @fileoverview
- *
- * Contains the gallery component.
- */
-
 const CSS = require('./gallery.scss');
-import { React, Piece, PieceShape } from '../mediator';
+import * as React from 'react';
+import { Piece, PieceShape } from './piece';
 
 /** Renders a gallery of portfolio pieces. */
 export class Gallery extends React.Component<

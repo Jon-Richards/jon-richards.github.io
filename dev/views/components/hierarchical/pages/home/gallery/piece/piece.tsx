@@ -3,7 +3,7 @@
  * Contains a component that renders a single piece for the gallery.
  */
 
-import { React } from '../mediator';
+import * as React from 'react';
 const CSS = require('./piece.scss');
 
 /** The shape of a single portfolio piece. */

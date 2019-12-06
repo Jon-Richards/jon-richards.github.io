@@ -5,8 +5,8 @@
 
 const CSS = require('./home_page.scss');
 import * as React from 'react';
-import { INTRO } from './subcomponents/intro';
-import { Gallery } from './subcomponents/gallery';
+import { Intro } from './intro';
+import { Gallery } from './gallery';
 import { v4 as uuid } from 'uuid';
 
 type Project = {
@@ -33,7 +33,7 @@ export class HomePage extends React.PureComponent<Props, never> {
     return (
       <div className={CSS['root']}>
         {!this.props.projects.length && (<>LOADING</>)}
-        <INTRO
+        <Intro
           title={
             <>
               Jon

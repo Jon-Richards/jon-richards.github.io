@@ -1,0 +1,1 @@
+export { PIECE as Piece, PieceShape } from './piece';

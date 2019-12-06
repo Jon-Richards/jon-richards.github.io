@@ -1,0 +1,1 @@
+export { THUMBNAIL as Thumbnail } from './thumbnail';

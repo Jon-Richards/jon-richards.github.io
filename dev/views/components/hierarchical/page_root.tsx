@@ -41,7 +41,7 @@ export class PageRoot extends React.Component<{}, State> {
   /** Renders the root layout to the DOM. */
   render(): JSX.Element {
     return (
-      <div className={`${CSS['page-root']} page-root--${this.state.status}`}>
+      <div className={`${CSS['root']} page_root--${this.state.status}`}>
         <Preloader />
         <Header />
         <main className={CSS['main']}>

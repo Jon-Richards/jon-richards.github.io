@@ -1,13 +1,8 @@
-/**
- * @fileoverview
- * Contains a thumbnail component for the gallery.
- */
-
-import { React } from '../mediator';
+import * as React from 'react';
 const CSS = require('./thumbnail.scss');
 
 /** Shape of a single thumbnail. */
-export interface ThumbnailShape {
+export interface ThumbnailProps {
   /** This thumbnail's source image. */
   src: string;
   /** If the thumbnail should load its source. */
@@ -29,7 +24,7 @@ export interface ThumbnailShape {
 /**
  * A single thumneail
  */
-export const THUMBNAIL = React.memo<ThumbnailShape>(props => {
+export const THUMBNAIL = React.memo<ThumbnailProps>(props => {
   const { src, shouldLoad, sizeModifier, altText, onClick = () => {} } = props;
 
   return (

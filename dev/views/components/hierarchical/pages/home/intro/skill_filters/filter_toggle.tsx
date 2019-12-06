@@ -1,9 +1,5 @@
-/**
- * @fileoverview
- * Contains a single skill filter.
- */
-
-import { React, SkillFilterShape } from '../mediator';
+import * as React from 'react';
+import { SkillFilter } from './skill_filters';
 const CSS = require('./skill_filters.scss');
 
 /**
@@ -22,11 +18,11 @@ const CSS = require('./skill_filters.scss');
  * />
  */
 export const FILTER_TOGGLE = React.memo<
-  SkillFilterShape & {
+  SkillFilter & {
     /** Fires when this button is clicked. */
     onClick(
       e: React.MouseEvent<HTMLButtonElement>,
-      value: SkillFilterShape['value']
+      value: SkillFilter['value']
     ): void;
   }
 >(props => {

@@ -3,4 +3,4 @@
  * Entrypoint for the gallery component.
  */
 
-export { Gallery } from './mediator';
+export { Gallery } from './gallery';
