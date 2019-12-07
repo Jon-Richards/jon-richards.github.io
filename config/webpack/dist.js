@@ -159,7 +159,7 @@ module.exports = env => {
               options: {
                 modules: true, // use exportOnlyLocals (see docs)
                 exportOnlyLocals: true,
-                localIdentName:'[hash:base64:5]-[name]__[local]',
+                localIdentName: '[name]__[local]__[hash:base64:5]',
                 sourceMap: false
               } 
             },

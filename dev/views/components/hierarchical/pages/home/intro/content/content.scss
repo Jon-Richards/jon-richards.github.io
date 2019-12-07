@@ -1,0 +1,68 @@
+@import '~scss-standards';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  @media (min-width: std-get-breakpoint(720)) {
+    flex-direction: row;
+  }
+}
+
+.headline {
+  display: flex;
+  width: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: std-get-breakpoint(480)) {
+    width: auto;
+    margin: auto;
+  }
+
+  @media (min-width: std-get-breakpoint(720)) {
+    width: auto;
+  }
+}
+
+.title {
+  display: flex;
+  margin-bottom: 0.2rem;
+  @include std-font-1;
+  font-size: 2.8rem;
+  color: std-get-swatch(2);
+  line-height: 3.2rem;
+}
+
+.subtitle {
+  display: flex;
+  @include std-font-2;
+  font-size: 1.4rem;
+  color: std-get-swatch(2);
+}
+
+.skills {
+  display: none;
+
+  @media (min-width: std-get-breakpoint(480)) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    padding: 1rem 0rem 0rem 0rem;
+    margin: 1.4rem 0rem 0rem 0rem;
+    border-top-width: thin;
+    border-color: std-get-swatch(2, -60);
+    border-style: dotted;
+  }
+
+  @media (min-width: std-get-breakpoint(720)) {
+    padding: 0rem 0rem 0rem 1rem;
+    margin: 0rem 0rem 0rem 1.4rem;
+    border-top-width: 0rem;
+    border-left-width: thin;
+  }
+}
