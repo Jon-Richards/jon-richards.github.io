@@ -9,18 +9,20 @@ import { Preloader } from '../shared/preloader';
 import { Header } from '../shared/header';
 import { HomePage } from './pages';
 
+type Props = {
+  /** Initializes the application. */
+  initilize(): void;
+};
+
 type State = {
   /** The overall status of the application. */
   status: 'initializing' | 'loading' | 'ready';
 };
 
-/** 
- * Scaffolds the page and coordinates how the overall state of the application
- * is displayed.
- * 
- * **Note:** This is strictly a presentation component.  Although the Store
- * should be available through a Provider component, to prevent unncessary
- * renders,  _this_ component does not make direct use of any of its props.
+/**
+ * The root of the component tree.   
+ * Scaffolds the page, initializes the application once the Store has been
+ * created and  coordinates how the overall state of the application displays.
  */
 export class PageRoot extends React.Component<{}, State> {
   constructor(props: PageRoot['props']) {
