@@ -10,12 +10,13 @@
   overflow: hidden;
   background-color: std-get-swatch(1);
   background-image: linear-gradient(
-    160deg,
+    170deg,
     std-get-swatch(1, 20),
     std-get-swatch(1),
     std-get-swatch(1, -20),
   );
-  box-shadow: 0.2rem 0.2rem 1.25rem 0rem rgba(std-get-swatch(1, -100), 0.5);
+  // box-shadow: 0.2rem 0.2rem 1.25rem 0rem rgba(std-get-swatch(1, -100), 0.5);
+  box-shadow: 0.4rem 0.8rem 2rem 0rem rgba(std-get-swatch(1, -100), 0.5);
 }
 
 .content {
@@ -26,7 +27,7 @@
   padding: 0rem;
   background-color: std-get-swatch(1);
   background-image: linear-gradient(
-    160deg,
+    170deg,
     std-get-swatch(1),
     std-get-swatch(1, -20)
   );

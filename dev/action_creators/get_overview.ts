@@ -8,9 +8,7 @@
 import { ThunkAction } from 'redux-thunk';
 import { GetPortfolio, PublishPortfolio } from '../store/portfolio';
 import { RootStore } from '../store/root';
-import { setRequestOptions } from '../async/request_configs';
-import { OverviewValidator, OverviewResponseData } from '../async/node_validators/overview';
-import { overviewEndpoint } from '../async/endpoints';
+import { getOverview as getOverviewRequest } from '../async/requests';
 
 function publishPortfolio(
   projects: PublishPortfolio['projects'],
@@ -24,38 +22,27 @@ function publishPortfolio(
 }
 
 /**
- * Requests an overview of the portfolio from the API and publishes the
- * response to the store.
+ * If the Portfolio store has no tools or projects, makes a request to the API
+ * to load them and publishes the result to the store.
  */
 export function getOverview(): ThunkAction<
-  Promise<PublishPortfolio | void>,
+  Promise<PublishPortfolio | void> | void,
   RootStore,
   undefined,
   | GetPortfolio
   | PublishPortfolio
 > {
   return (dispatch, getState) => {
-    dispatch((): GetPortfolio => ({type: 'PORTFOLIO__GET_PORTFOLIO'}));
+    const {projects, tools} = getState().portfolio;
     
-    return fetch(overviewEndpoint(), setRequestOptions('GET'))
-      .then(resp => resp.json())
+    if (projects.length || tools.length) return;
+    
+    dispatch((): GetPortfolio => ({type: 'PORTFOLIO__GET_PORTFOLIO'}));
+    return getOverviewRequest()
       .then(resp => {
-        const body = resp as unknown as OverviewResponseData;
-        const {
-          projects: newProjects, 
-          tools: newTools 
-        } = new OverviewValidator(body).data;
-        const {
-          projects: currentProjects,
-          tools: currentTools
-        } = getState().portfolio;
-        
-        if (currentProjects.length === 0 && currentTools.length === 0) {
-          return dispatch(publishPortfolio(newProjects, newTools));
-        } else {
-          Promise.reject('Portfolio is already populated.');
-          return;
-        }
+        if (resp.getErrors().size > 0) Promise.reject('Invalid Overview data.');
+        const {projects, tools} = resp.data;
+        return dispatch(publishPortfolio(projects, tools));
       })
       .catch(error => {
         console.error(error);
