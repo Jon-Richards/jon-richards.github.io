@@ -71,7 +71,7 @@ module.exports = env => {
       ],
       alias: {
         // MUST be relative to this file.
-        'scss-standards': Path.resolve(__dirname, '..', 'dev', 'utils', 'scss', 'standards', 'index.scss'),
+        'scss-standards': Path.resolve(__dirname, '..', 'dev', 'config', 'scss', 'index.scss'),
       }
     },
 

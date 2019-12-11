@@ -1,16 +1,16 @@
 import { PageRoot } from './page_root';
-import { getOverview } from '../../../../controllers/action_creators';
+import { getOverview } from '../../../../action_creators';
 import { connect } from 'react-redux';
-import { RootStore } from '../../../../models';
+import { RootStore } from '../../../../store';
 import { HomePage } from './home_page';
-import { adaptProjects } from './adaptors';
+import { projectsMapper } from './mappers';
 
 function mapStateToProps(state: RootStore): Pick<
   HomePage['props'],
   | 'projects'
 > {
   return {
-    projects: adaptProjects(state.portfolio.projects)
+    projects: projectsMapper(state.portfolio.projects)
   };
 }
 

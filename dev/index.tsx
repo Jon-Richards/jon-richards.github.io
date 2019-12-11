@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { buildStore } from './models';
+import { buildStore } from './store';
 import { PageRoot } from './views/components/contextual';
 
 /**

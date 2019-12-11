@@ -4,8 +4,8 @@
  */
 
 import { ThunkAction } from 'redux-thunk';
-import { GetPortfolio, PublishPortfolio } from '../../models/portfolio';
-import { RootStore } from '../../models';
+import { GetPortfolio, PublishPortfolio } from '../store/portfolio';
+import { RootStore } from '../store';
 import { setRequestOptions } from '../async/request_configs';
 import { OverviewValidator, OverviewResponseData } from '../async/node_validators/overview';
 import { overviewEndpoint } from '../async/endpoints';
