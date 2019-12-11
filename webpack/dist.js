@@ -25,13 +25,13 @@ module.exports = env => {
   return {    
     entry: {
       'app': [
-        Path.resolve(__dirname, '..', '..', 'dev', 'index.tsx')
+        Path.resolve(__dirname, '..', 'dev', 'index.tsx')
       ]
     },
 
     output: {
       filename: '[name].dist.js',
-      path: Path.resolve(__dirname, '..', '..', 'dist', 'js'),
+      path: Path.resolve(__dirname, '..', 'dist', 'js'),
       publicPath: '/assets/'
     },
 
@@ -40,7 +40,7 @@ module.exports = env => {
     devtool: 'source-map',
 
     devServer: {
-      contentBase: Path.resolve(__dirname, '..', '..', 'dist'),
+      contentBase: Path.resolve(__dirname, '..', 'dist'),
       port: 3000,
       hot: true,
       index: 'index.html',
@@ -72,10 +72,7 @@ module.exports = env => {
       ],
       alias: {
         // MUST be relative to this file.
-        'scss-lib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss'),
-        'scss-standards': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'scss', 'standards', 'index.scss'),
-        'TSLib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'ts'),
-        'TestLib': Path.resolve(__dirname, '..', '..', 'dev', 'lib', 'ts'),
+        'scss-standards': Path.resolve(__dirname, '..', 'dev', 'utils', 'scss', 'standards', 'index.scss'),
       }
     },
 
@@ -111,9 +108,9 @@ module.exports = env => {
             {
               loader: 'tslint-loader',
               options: {
-                configFile: Path.resolve(__dirname, '..', '..', 'tslint.json'),
+                configFile: Path.resolve(__dirname, '..', 'tslint.json'),
                 failtOnHint: true,
-                tsConfigfile: Path.resolve(__dirname, '..', '..', 'tsconfig.json')
+                tsConfigfile: Path.resolve(__dirname, '..', 'tsconfig.json')
               }
             }
           ]
@@ -220,7 +217,7 @@ module.exports = env => {
           './dist'
         ],
         {
-          root: Path.resolve(__dirname, '..', '..'),
+          root: Path.resolve(__dirname, '..'),
           dry: Argv.clean ? false : true
         }
       ),
