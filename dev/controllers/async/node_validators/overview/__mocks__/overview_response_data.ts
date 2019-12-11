@@ -1,7 +1,7 @@
 import { OverviewResponseData } from '../overview';
 import { projectResponseData } from '../../project/__mocks__/project_response_data';
 import { toolResponseData } from '../../tool/__mocks__/tool_response_data';
-import { mockResponseNodes } from '../../../../lib/test/mock_response_nodes';
+import { mockResponseNodes } from '../../../../../utils/test/mock_response_nodes';
 
 type Project = OverviewResponseData['projects'][0];
 type Tool = OverviewResponseData['tools'][0];
