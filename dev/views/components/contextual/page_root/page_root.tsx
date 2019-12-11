@@ -7,7 +7,7 @@ import * as React from 'react';
 const CSS = require('./page_root.scss');
 import { Preloader } from '../../shared/preloader';
 import { Header } from '../../shared/header';
-import { HomePage } from './subcomponents/pages';
+import { HomePage } from './home_page';
 
 type Props = {
   /** Initializes the application. */

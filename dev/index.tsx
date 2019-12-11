@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { create } from './store/root';
+import { buildStore } from './models';
 import { PageRoot } from './views/components/contextual';
 
 /**
@@ -14,7 +14,7 @@ import { PageRoot } from './views/components/contextual';
  * it to the DOM.
  */
 render(
-  <Provider store={create()}>
+  <Provider store={buildStore()}>
     <PageRoot />
   </Provider>,
   document.getElementById('app')

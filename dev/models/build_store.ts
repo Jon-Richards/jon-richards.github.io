@@ -5,7 +5,7 @@
 
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { ROOT_REDUCER } from './reducer';
+import { ROOT_REDUCER } from './root_reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 /**
@@ -13,7 +13,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
  * addition to the reducers.
  * @return An instance of the application store.
  */
-export function create() {
+export function buildStore() {
   const middlewares = [thunk];
   const middleWareEnhancer = applyMiddleware(...middlewares);
 

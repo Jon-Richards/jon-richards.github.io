@@ -1,8 +1,8 @@
-import { PageRoot } from '../page_root';
-import { getOverview } from '../../../../../action_creators';
+import { PageRoot } from './page_root';
+import { getOverview } from '../../../../controllers/action_creators';
 import { connect } from 'react-redux';
-import { RootStore } from '../../../../../store/root';
-import { HomePage } from '../subcomponents/pages/home';
+import { RootStore } from '../../../../models';
+import { HomePage } from './home_page';
 import { adaptProjects } from './adaptors';
 
 function mapStateToProps(state: RootStore): Pick<

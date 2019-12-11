@@ -6,8 +6,8 @@
  */
 
 import { ThunkAction } from 'redux-thunk';
-import { GetPortfolio, PublishPortfolio } from '../store/portfolio';
-import { RootStore } from '../store/root';
+import { GetPortfolio, PublishPortfolio } from '../../models/portfolio';
+import { RootStore } from '../../models';
 import { getOverview as getOverviewRequest } from '../async/requests';
 
 function publishPortfolio(

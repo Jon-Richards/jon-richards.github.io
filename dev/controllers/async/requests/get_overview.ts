@@ -1,7 +1,7 @@
 import { 
   OverviewValidator,
   OverviewResponseData
-} from '..//node_validators/overview';
+} from '../node_validators/overview';
 import { setRequestOptions } from '../request_configs';
 import { overviewEndpoint } from '../endpoints';
 

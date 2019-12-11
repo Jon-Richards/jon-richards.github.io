@@ -1,5 +1,5 @@
-import { RootStore } from '../../../../../store/root';
-import { HomePage } from '../subcomponents/pages/home';
+import { RootStore } from '../../../../models';
+import { HomePage } from './home_page';
 
 type ModelProjects = RootStore['portfolio']['projects'];
 type ViewProjects = HomePage['props']['projects'];

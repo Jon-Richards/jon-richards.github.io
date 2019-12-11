@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { v4 as uuid } from 'uuid';
 import { SkillFilters, SkillFilter } from './content/skill_filters';
-import { Panel } from '../../../../../../shared/panel';
+import { Panel } from '../../../../shared/panel';
 import { Content } from './content';
 const CSS = require('./intro.scss');
 
