@@ -15,19 +15,12 @@ type Project = {
 };
 
 type Props = {
-  /** Function that gets the overview of the portfolio. */
-  getOverview: () => void;
   /** Array of projects to display in the gallery. */
   projects: Project[];
 };
 
 /** The root component of the home page. */
 export class HomePage extends React.PureComponent<Props, never> {
-  constructor(props: HomePage['props']) {
-    super(props);
-    this.props.getOverview();
-  }
-
   /** Renders this component to the DOM. */
   render(): JSX.Element {
     return (

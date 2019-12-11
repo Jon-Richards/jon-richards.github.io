@@ -11,7 +11,9 @@ import { HomePage } from './pages';
 
 type Props = {
   /** Initializes the application. */
-  initilize(): void;
+  initialize(): void;
+  /** Portfolio projects passed to various pages. */
+  projects: HomePage['props']['projects'];
 };
 
 type State = {
@@ -24,12 +26,13 @@ type State = {
  * Scaffolds the page, initializes the application once the Store has been
  * created and  coordinates how the overall state of the application displays.
  */
-export class PageRoot extends React.Component<{}, State> {
+export class PageRoot extends React.Component<Props, State> {
   constructor(props: PageRoot['props']) {
     super(props);
     this.state = {
       status: 'initializing'
     };
+    this.props.initialize();
   }
 
   /**
@@ -47,7 +50,7 @@ export class PageRoot extends React.Component<{}, State> {
         <Preloader />
         <Header />
         <main className={CSS['main']}>
-          <HomePage />
+          <HomePage projects={this.props.projects} />
         </main>
       </div>
     );
