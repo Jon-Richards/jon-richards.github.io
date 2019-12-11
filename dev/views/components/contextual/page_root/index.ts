@@ -1,0 +1,1 @@
+export { PAGE_ROOT_HOC as PageRoot } from './hoc';
