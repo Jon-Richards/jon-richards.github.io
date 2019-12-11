@@ -1,0 +1,1 @@
+export { PAGE_ROOT_HOC } from './page_root_hoc';

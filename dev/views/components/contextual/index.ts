@@ -1,1 +1,1 @@
-export { PAGE_ROOT_HOC as PageRoot } from './page_root_hoc';
+export { PAGE_ROOT_HOC as PageRoot } from './hoc';

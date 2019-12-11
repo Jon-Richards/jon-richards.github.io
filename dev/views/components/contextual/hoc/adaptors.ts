@@ -1,12 +1,12 @@
-import { RootStore } from '../../../store/root';
-import { HomePage } from './pages/home';
+import { RootStore } from '../../../../store/root';
+import { HomePage } from '../pages/home';
 
 type ModelProjects = RootStore['portfolio']['projects'];
 type ViewProjects = HomePage['props']['projects'];
 
 /** 
- * Converts the structure of a project in the redux store to one used by the
- * view layer.
+ * Converts the collection of portfolio Projects in the Store to match that used
+ * by the PageRoot component.
  * @param projects An array of projects held by the redux store.
  * @return An array of projects formatted for the view.
  */
