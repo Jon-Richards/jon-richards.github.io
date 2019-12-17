@@ -10,6 +10,10 @@ export type Breakpoint = {
   unit: 'px' | 'em' | 'rem' | 'pt';
 };
 
+/** 
+ * A Map of Breakpoint types with the Breakpoint's name property serving as
+ * its key.
+ */
 type MappedBreakpoints = Map<
   Breakpoint['name'], 
   Breakpoint
@@ -120,6 +124,8 @@ export class Breakpoints {
    * passed via the constuctor will take precedence.
    * @param options A partial or complete set of options with which to replace
    * the default values.
+   * @return An Options type with values either passed via the constructor or
+   * defaults set in the initial declaration.
    */
   private setOptions(options: Partial<Options> = {}): Options {
     const { debounceRate } = options;
@@ -130,10 +136,11 @@ export class Breakpoints {
   }
 
   /** 
-   * Validates the debounceRate property of an Options object.  If the rate is
+   * Validates the debounceRate property of an Options type.  If the rate is
    * invalid, the default value will be used instead and an error will be logged
    * to the console.
    * @param rate The debounce rate to validate.
+   * @return A valid Options type.
    */
   validateDebounceRate(rate?: number): Options['debounceRate'] {
     window.addEventListener('resize', (ev: UIEvent) => {
