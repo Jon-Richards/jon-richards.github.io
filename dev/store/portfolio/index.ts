@@ -5,4 +5,4 @@
 
 export { PORTFOLIO_REDUCER } from './reducer';
 export { PortfolioStore } from './interfaces/store';
-export { GetPortfolio, PublishPortfolio } from './interfaces/actions';
+export { PublishPortfolio } from './interfaces/actions';

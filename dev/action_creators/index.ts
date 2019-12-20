@@ -1,1 +1,1 @@
-export { getOverview } from './get_overview';
+export { bootstrap } from './bootstrap';

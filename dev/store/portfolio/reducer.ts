@@ -5,7 +5,7 @@
 
 import { Reducer } from 'redux';
 import { PortfolioStore } from './interfaces/store';
-import { GetPortfolio, PublishPortfolio, } from './interfaces/actions';
+import { PublishPortfolio, } from './interfaces/actions';
 
 /**
  * The Redux reducer for the Portfolio store.  If no params are supplied, a
@@ -15,8 +15,7 @@ import { GetPortfolio, PublishPortfolio, } from './interfaces/actions';
  */
 export const PORTFOLIO_REDUCER: Reducer<
   PortfolioStore,
-  | GetPortfolio
-  | PublishPortfolio
+  PublishPortfolio
 > = (
   state = {
     projects: [],
@@ -26,8 +25,6 @@ export const PORTFOLIO_REDUCER: Reducer<
 ) => {
   if (action) {
     switch (action.type) {
-      case 'PORTFOLIO__GET_PORTFOLIO':
-        return state;
       case 'PORTFOLIO__PUBLISH_PORTFOLIO':
         return {
           ...state,
