@@ -6,7 +6,7 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { PublishPortfolio } from '../store/portfolio';
 import { RootStore } from '../store';
-import { BreakpointTracker } from '../lib/ts/breakpoint_tracker';
+import { MediaQueryTracker } from '../lib/ts/media_query_tracker';
 import { UpdateStatus } from '../store/application';
 import { getOverview } from '../async/requests';
 
@@ -37,12 +37,31 @@ export function bootstrap(): ThunkAction<
   | UpdateStatus
 > {
 
-  const bp = new BreakpointTracker([
-    {name: 'sm', min: 0, max: 99, unit: 'px'},
-    {name: 'md', min: 100, max: Infinity, unit: 'px'}
-  ],
-    () => (console.log('breakpoint'))
+  /**
+   * 375: 375px,
+   * 480: 480px,
+   * 720: 720px,
+   * 1080: 1080px,
+   * 1440: 1400px,
+   */
+
+  const mqt = new MediaQueryTracker(
+    [
+      {id: '375', query: '(min-width: 375px) and (max-width: 479px)'},
+      {id: '480', query: '(min-width: 480px) and (max-width: 719px)'},
+      {id: '720', query: '(min-width: 720px) and (max-width: 1079px)'},
+      {id: '1080', query: '(min-width: 1080px) and (max-width: 1439px)'},
+      {id: '1440', query: '(min-width: 1440px)'},
+    ],
+    [
+      {event: 'load', throttle: 0},
+      {event: 'resize', throttle: 300},
+      {event: 'orientationchange', throttle: 300}
+    ],
+    (e) => console.log(e)
   );
+
+  console.log('', mqt.getMatches());
 
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
@@ -52,7 +71,6 @@ export function bootstrap(): ThunkAction<
         const {projects, tools} = resp.data;
         return dispatch(publishPortfolio(projects, tools));
       }));
-
       resolve(overview);
     }).then(() => {
       return dispatch(updateStatus());
