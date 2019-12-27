@@ -47,4 +47,27 @@ describe('The validateMediaQueries function', () => {
     expect(test_4).toBe(false);
     expect(test_5).toBe(false);
   });
+
+  it('Returns false when passed media queries with duplicate values.', () => {
+    const test_1 = validateMediaQueries([
+      {id: 'foo', query: '(min-width: 320px)'},
+      {id: 'foo', query: '(min-width: 480px)'}
+    ]);
+    const test_2 = validateMediaQueries([
+      {id: 'foo', query: '(min-width: 320px)'},
+      {id: 'bar', query: '(min-width: 320px)'}
+    ]);
+
+    expect(test_1).toBe(false);
+    expect(test_2).toBe(false);
+  });
+
+  it('Returns true when passed a valid array of MQTMediaQueries.', () => {
+    const test_1 = validateMediaQueries([
+      {id: 'xs', query: '(min-width: 320px)'},
+      {id: 'sm', query: '(min-width: 480px)'}
+    ]);
+
+    expect(test_1).toBe(true);
+  });
 });
