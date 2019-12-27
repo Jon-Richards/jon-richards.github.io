@@ -8,7 +8,7 @@
     "> 1%"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --silent",
     "build:dev": "webpack --config=./webpack/dev.js --env.NODE_ENV=development --clean",
     "build:dist": "webpack --config=./webpack/dist.js --env.NODE_ENV=production --clean",
     "start:dev": "webpack-dev-server --config=./webpack/dev.js --env.NODE_ENV=development",
@@ -56,7 +56,7 @@
     "dotenv-webpack": "^1.5.7",
     "file-loader": "^2.0.0",
     "gts": "^0.9.0",
-    "handlebars": "^4.0.12",
+    "handlebars": "^4.5.3",
     "handlebars-loader": "^1.7.0",
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
@@ -95,7 +95,5 @@
     "webpack-dev-server": "^3.1.9",
     "yargs": "^12.0.2"
   },
-  "dependencies": {
-    "stylelint": "^9.10.1"
-  }
+  "dependencies": {}
 }

@@ -1,49 +1,36 @@
 import { MQTEventListener } from '../interfaces';
 
-function validateEvent(identifier: keyof WindowEventMap): boolean {
-  let isValid = true;
-  try {
-    if (typeof identifier !== 'string') {
-      throw new TypeError('Event identifier must be a string.');
-    }
-    if (identifier.length === 0) {
-      throw new RangeError('Event identifier cannot be empty.');
-    }
+function validateEvent(identifier: keyof WindowEventMap): void {
+  if (typeof identifier !== 'string') {
+    throw new TypeError('Event identifier must be a string.');
   }
-  catch(error) {
-    console.error(error);
-    isValid = false;
-  }
-  finally {
-    return isValid;
+  if (identifier.length === 0) {
+    throw new RangeError('Event identifier cannot be empty.');
   }
 }
 
-function validateThrottle(
-  rate: MQTEventListener['throttle']
-): boolean{
-  let isValid = true;
-  try {
-    if (typeof rate !== 'number') {
-      throw new TypeError('Throttle must be a number.');
-    }
-    if (rate < 0) {
-      throw new RangeError('Throttle cannot be negative.');
-    }
+function validateThrottle(rate: MQTEventListener['throttle']): void {
+  if (typeof rate !== 'number') {
+    throw new TypeError('Throttle must be a number.');
   }
-  catch(error) {
-    console.error(error);
-    isValid = false;
-  }
-  finally {
-    return isValid;
+  if (rate < 0) {
+    throw new RangeError('Throttle cannot be negative.');
   }
 }
 
-function validateEventListener(listener: MQTEventListener): boolean {
-  if (!validateThrottle(listener.throttle)) return false;
-  if (!validateEvent(listener.event)) return false;
-  return true;
+function validateUniqueness (
+  validated: MQTEventListener[],
+  listener: MQTEventListener
+): void {
+  const duplicateEvents = validated.filter(existing => {
+    return existing.event === listener.event;
+  });
+  if (duplicateEvents.length > 0) {
+    throw new TypeError(
+      'MediaQueryTracker recieved two listeners for the same event: ' +
+      `${listener.event}.`
+    );
+  }
 }
 
 /**
@@ -57,20 +44,12 @@ export function validateEventListeners(listeners: MQTEventListener[]): boolean {
     if (!Array.isArray(listeners)) {
       throw new TypeError('Listeners must be an array.');
     }
-    
     const validated: MQTEventListener[] = [];
     listeners.forEach(listener => {
-      const duplicateEvents = validated.filter(existing => {
-        return existing.event === listener.event;
-      });
-      if (duplicateEvents.length > 0) {
-        throw new TypeError(
-          'MediaQueryTracker recieved two listeners for the same event: ' +
-          `${listener.event}.`
-        );
-      }
-
-      if (validateEventListener(listener) === true) validated.push(listener);
+      validateUniqueness(validated, listener);
+      validateEvent(listener.event);
+      validateThrottle(listener.throttle);  
+      validated.push(listener);
     });
   }
   catch (error) {
