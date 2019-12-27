@@ -9,7 +9,7 @@ function validateQueries(queries: MQTMediaQuery[]): void {
   }
 }
 
-function validateId (id: MQTMediaQuery['id']): void {
+function validateIdProp (id: MQTMediaQuery['id']): void {
   if (typeof id !== 'string' && typeof id !== 'number') {
     throw new TypeError(
       'Media query id property must be a string or number.'
@@ -22,7 +22,7 @@ function validateId (id: MQTMediaQuery['id']): void {
   }
 }
 
-function validateQuery (query: MQTMediaQuery['query']) {
+function validateQueryProp (query: MQTMediaQuery['query']) {
   if (typeof query !== 'string') {
     throw new TypeError('Media query "query" property must be a string.');
   }
@@ -31,7 +31,7 @@ function validateQuery (query: MQTMediaQuery['query']) {
   }
 }
 
-function validateUniqueness (
+function validateQueryUniqueness (
   validated: MQTMediaQuery[],
   query: MQTMediaQuery
 ): void {
@@ -57,8 +57,8 @@ function validateUniqueness (
 }
 
 /** 
- * Validates an array of media queries and responds accordingly if a validator
- * fails.
+ * Verifies that all MQTMediaQueries in an array meet the requirements for
+ * MediaQueryTracker.
  * @param queries An array of MQTMediaQueries to validate.
  * @return True if all validations pass, false if not.
  */
@@ -69,9 +69,9 @@ export function validateMediaQueries(queries: MQTMediaQuery[]): boolean {
     
     const validated: MQTMediaQuery[] = [];
     queries.forEach(query => {
-      validateUniqueness(validated, query);
-      validateQuery(query.query);
-      validateId(query.id);
+      validateQueryUniqueness(validated, query);
+      validateQueryProp(query.query);
+      validateIdProp(query.id);
       validated.push(query);
     });
   }

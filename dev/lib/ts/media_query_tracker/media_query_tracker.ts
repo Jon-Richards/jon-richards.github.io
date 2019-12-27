@@ -63,7 +63,7 @@ export class MediaQueryTracker {
       this.listeners.forEach(listener => {
         window.addEventListener(
           listener.event,
-          throttle(this.handleWindowEvent.bind(this), 300),
+          throttle(this.handleWindowEvent.bind(this), listener.throttle),
           {capture: false}
         );
       });
