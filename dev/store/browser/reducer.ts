@@ -1,6 +1,7 @@
 import { Reducer } from 'redux';
 import { BrowserStore } from './interfaces/store';
-import { UpdateBreakpoint } from './interfaces/actions';
+import { MEDIA_QUERIES } from '../../config/media_queries';
+import { UpdateMatchingMediaQueries } from './interfaces/actions';
 
 /**
  * The Redux reducer for the Browser store.  Contains information related to
@@ -10,18 +11,19 @@ import { UpdateBreakpoint } from './interfaces/actions';
  */
 export const BROWSER_REDUCER: Reducer<
   BrowserStore,
-  | UpdateBreakpoint
+  | UpdateMatchingMediaQueries
 > = (
   state = {
-    activeBreakpoint: '0'
+    possible_media_queries: MEDIA_QUERIES,
+    matching_media_queries: []
   },
   action
 ) => {
   switch(action.type) {
-    case 'BROWSER__UPDATE_BREAKPOINT':
+    case 'BROWSER__UPDATE_MATCHING_MEDIA_QUERIES':
       return {
         ...state,
-        activeBreakpoint: action.breakpoint
+        matching_media_queries: action.matches
       };
     default:
       return state;

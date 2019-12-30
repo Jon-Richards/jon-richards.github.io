@@ -1,9 +1,12 @@
-import { Breakpoint } from './breakpoint';
+import { MEDIA_QUERIES } from '../../../config/media_queries';
 
-/** The shape of the Browser model. */
+/**
+ * Contains information about the environment in which the application is
+ * running.
+ */
 export interface BrowserStore {
-  /** 
-   * The closest breakpoint to the Browser's window width without going over.
-   */
-  activeBreakpoint: Breakpoint;
+  /** List of all media queries that are tracked by the application. */
+  possible_media_queries: typeof MEDIA_QUERIES;
+  /** Media queries that are known to match the current environment. */
+  matching_media_queries: typeof MEDIA_QUERIES;
 }
