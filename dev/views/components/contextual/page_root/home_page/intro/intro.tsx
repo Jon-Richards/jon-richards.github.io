@@ -10,15 +10,17 @@ import { Panel } from '../../../../shared/panel';
 import { Content } from './content';
 const CSS = require('./intro.scss');
 
-/** Parent component for the intro section. */
-export const INTRO = React.memo<{
+type Props = {
   /** The intro title. */
   title: React.ReactFragment;
   /** The subtitle. */
   subtitle: React.ReactFragment;
   /** Array of skills by which portfolio pieces can be ordered. */
   skills?: SkillFilter[];
-}>(props => {
+};
+
+/** Renders the introduction section. */
+function Intro (props: Props): JSX.Element {
   const { title, subtitle, skills = [] } = props;
 
   const mockSkills: SkillFilter[] = [
@@ -63,98 +65,7 @@ export const INTRO = React.memo<{
       value: 'typescript',
       isActive: false,
       isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Rails',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Photoshop',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Illustrator',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'SVG',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'PHP',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Rails',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Photoshop',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Illustrator',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'SVG',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'PHP',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Rails',
-      value: 'typescript',
-      isActive: false,
-      isCore: false,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Photoshop',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
-    {
-      uuid: uuid(),
-      displayLabel: 'Illustrator',
-      value: 'typescript',
-      isActive: false,
-      isCore: true,
-    },
+    }
   ];
 
   let renderWithPanel = false;
@@ -178,4 +89,8 @@ export const INTRO = React.memo<{
       </div>
     </div>
   );
-});
+}
+
+const introMemo = React.memo<Props>(Intro);
+
+export { introMemo as Intro };

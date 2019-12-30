@@ -5,7 +5,7 @@
 
 const CSS = require('./home_page.scss');
 import * as React from 'react';
-import { Intro } from './intro';
+import { Intro } from './intro/intro';
 import { Gallery } from './gallery';
 import { v4 as uuid } from 'uuid';
 
