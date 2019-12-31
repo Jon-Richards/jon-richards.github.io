@@ -1,0 +1,1 @@
+export { IntroContent } from './content';

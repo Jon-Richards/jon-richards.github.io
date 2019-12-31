@@ -1,7 +1,7 @@
 import { PageRoot } from './page_root';
-import { bootstrap } from '../../../../action_creators';
+import { bootstrap } from 'Action_creators/bootstrap';
 import { connect } from 'react-redux';
-import { RootStore } from '../../../../store';
+import { RootStore } from 'Store/root_reducer';
 import { HomePage } from './home_page';
 import { projectsMapper } from './mappers';
 

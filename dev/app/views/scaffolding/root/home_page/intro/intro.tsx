@@ -6,8 +6,8 @@
 import * as React from 'react';
 import { v4 as uuid } from 'uuid';
 import { SkillFilters, SkillFilter } from './content/skill_filters';
-import { Panel } from '../../../../shared/panel';
-import { Content } from './content';
+import { Panel } from 'Views/components/panel';
+import { IntroContent } from './content';
 const CSS = require('./intro.scss');
 
 type Props = {
@@ -17,11 +17,18 @@ type Props = {
   subtitle: React.ReactFragment;
   /** Array of skills by which portfolio pieces can be ordered. */
   skills?: SkillFilter[];
+  /** An optional theme with qhich to render the intro.  Defaults to "PANEL" */
+  theme?: 'PANEL' | 'COPY';
 };
 
 /** Renders the introduction section. */
 function Intro (props: Props): JSX.Element {
-  const { title, subtitle, skills = [] } = props;
+  const {
+    title,
+    subtitle,
+    skills = [],
+    theme = 'PANEL',
+  } = props;
 
   const mockSkills: SkillFilter[] = [
     {
@@ -68,23 +75,19 @@ function Intro (props: Props): JSX.Element {
     }
   ];
 
-  let renderWithPanel = false;
-
-  if (window) {
-    if (window.matchMedia('(min-width: 480px)').matches === true) {
-      renderWithPanel = true;
-    }
-  }
-
   return (
     <div className={CSS['root']}>
       <div className={CSS['wrapper']}>
-        {renderWithPanel ? (
-          <Panel display="flex">
-            <Content title={title} subtitle={subtitle} skills={mockSkills} />
+        {theme === 'PANEL' ? (
+          <Panel>
+            <IntroContent
+              title={title} 
+              subtitle={subtitle} 
+              skills={mockSkills}
+            />
           </Panel>
         ) : (
-          <Content title={title} subtitle={subtitle} skills={mockSkills} />
+          <IntroContent title={title} subtitle={subtitle} skills={mockSkills} />
         )}
       </div>
     </div>

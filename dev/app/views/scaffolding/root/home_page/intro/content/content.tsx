@@ -12,7 +12,7 @@ type Props = {
 };
 
 /** Renders the content for the intro section. */
-export const CONTENT = React.memo<Props>(props => {
+function IntroContent(props: Props) {
   const { 
     title,
     subtitle,
@@ -30,4 +30,8 @@ export const CONTENT = React.memo<Props>(props => {
       </div>
     </div>
   );
-});
+}
+
+const introContentMemo = React.memo<Props>(IntroContent);
+
+export { introContentMemo as IntroContent };

@@ -35,6 +35,7 @@ export class HomePage extends React.PureComponent<Props, never> {
             </>
           }
           subtitle="Front-end Engineer"
+          theme="PANEL"
         />
         <Gallery
           pieces={[

@@ -24,7 +24,7 @@ module.exports = env => {
   return {    
     entry: {
       'app': [
-        Path.resolve(__dirname, '..', 'dev', 'index.tsx')
+        Path.resolve(__dirname, '..', 'dev', 'app', 'index.tsx')
       ]
     },
 
@@ -71,7 +71,12 @@ module.exports = env => {
       ],
       alias: {
         // MUST be relative to this file.
-        'scss-standards': Path.resolve(__dirname, '..', 'dev', 'config', 'scss', 'index.scss'),
+        'scss-standards': Path.resolve(__dirname, '..', 'dev', 'app', 'config', 'scss', 'index.scss'),
+        'Action_creators': Path.resolve(__dirname, '..', 'dev', 'app', 'action_creators'),
+        'Config': Path.resolve(__dirname, '..', 'dev', 'app', 'config'),
+        'Lib': Path.resolve(__dirname, '..', 'dev', 'app', 'lib'),
+        'Store': Path.resolve(__dirname, '..', 'dev', 'app', 'store'),
+        'Views': Path.resolve(__dirname, '..', 'dev', 'app', 'views'),
       }
     },
 
@@ -234,7 +239,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         filename: './../index.html',
-        template: './dev/views/templates/index.hbs',
+        template: './dev/document/index.hbs',
         minify: false,
         inlineSource: '.(js|css)$'
       }),

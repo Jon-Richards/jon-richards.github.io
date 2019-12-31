@@ -1,1 +1,0 @@
-export { PANEL as Panel } from './panel';

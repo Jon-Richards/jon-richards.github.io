@@ -5,15 +5,20 @@
 
 import * as React from 'react';
 const CSS = require('./page_root.scss');
-import { Preloader } from '../../shared/preloader';
-import { Header } from '../../shared/header';
+import { Preloader } from '../../components/preloader';
+import { Header } from '../../components/header';
 import { HomePage } from './home_page';
+import { PortfolioProject } from 'Views/scaffolding/interfaces';
 
 type Props = {
   /** Initializes the application. */
   initialize(): void;
   /** Portfolio projects passed to various pages. */
-  projects: HomePage['props']['projects'];
+  projects: PortfolioProject[];
+  // /** Possible media query IDs that can match the runtime environment. */
+  // possibleMediaQueryies: string[];
+  // /** Media query IDs that match the current environment. */
+  // matchingMediaQueries: string[];
 };
 
 type State = {

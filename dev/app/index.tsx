@@ -7,7 +7,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { buildStore } from './store';
-import { PageRoot } from './views/components/contextual';
+import { PageRoot } from './views/scaffolding/root';
 
 /**
  * Applies the store to the root of the application tree as props and renders

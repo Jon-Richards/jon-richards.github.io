@@ -1,4 +1,4 @@
-import { RootStore } from '../../../../store';
+import { RootStore } from 'dev/app/store/root_reducer';
 import { HomePage } from './home_page';
 
 type ModelProjects = RootStore['portfolio']['projects'];
