@@ -3,14 +3,13 @@
  * Styling for the skills list in the intro.
  */
 
-// @import '../../../../../../lib/scss/standards/index.scss';
 @import '~scss-standards';
 
 .root {
   display: flex;
 }
 
-.filters {
+.skills {
   display: flex;
   list-style-type: none;
   flex-direction: row;
@@ -25,7 +24,7 @@
   }
 }
 
-.filter {
+.skill {
   display: none;
   margin: 0.2rem 0.2rem;
   padding: 0.4rem 1rem;

@@ -1,22 +1,22 @@
 import * as React from 'react';
 const CSS = require('./content.scss');
-import { SkillFilters, SkillFilter } from './skill_filters';
+import { Skills, SkillsProps} from './skills';
 
-type Props = {
+type ContentProps = {
   /** The intro title. */
   title: React.ReactFragment;
   /** The subtitle. */
   subtitle: React.ReactFragment;
-  /** Array of skills by which portfolio pieces can be ordered. */
-  skills?: SkillFilter[];
+  /** A list of skills. */
+  skills: SkillsProps['skills'];
 };
 
 /** Renders the content for the intro section. */
-function IntroContent(props: Props) {
+function Content(props: ContentProps) {
   const { 
     title,
     subtitle,
-    skills = []
+    skills,
   } = props;
 
   return (
@@ -25,13 +25,15 @@ function IntroContent(props: Props) {
         <h1 className={CSS['title']}>{title}</h1>
         <h2 className={CSS['subtitle']}>{subtitle}</h2>
       </div>
-      <div className={CSS['skills']}>
-        <SkillFilters skills={skills} />
-      </div>
+      {skills.length > 0 && (
+        <div className={CSS['children']}>
+          <Skills skills={skills} />
+        </div>
+      )}
     </div>
   );
 }
 
-const introContentMemo = React.memo<Props>(IntroContent);
+const contentMemo = React.memo<ContentProps>(Content);
 
-export { introContentMemo as IntroContent };
+export { contentMemo as Content, ContentProps };

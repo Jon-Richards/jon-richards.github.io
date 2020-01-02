@@ -8,18 +8,19 @@ const CSS = require('./root.scss');
 import { Preloader } from '../../components/preloader';
 import { Header } from '../../components/header';
 import { HomePage } from '../home_page';
-import { PortfolioStore } from 'Store/portfolio/interfaces/store';
-import { BrowserStore } from 'Store/browser/interfaces/store';
+import { RootStore } from 'Store/root_reducer';
 
 type Props = {
   /** Initializes the application. */
   initialize(): void;
   /** Portfolio projects passed to various pages. */
-  projects: PortfolioStore['projects'];
+  projects: RootStore['portfolio']['projects'];
+  /** Tools used to create various projects. */
+  tools: RootStore['portfolio']['tools'];
   /** Possible media query IDs that can match the runtime environment. */
-  possibleMediaQueries: BrowserStore['possible_media_queries'];
+  possibleMediaQueries: RootStore['browser']['possible_media_queries'];
   /** Media query IDs that match the current environment. */
-  matchingMediaQueries: BrowserStore['matching_media_queries'];
+  matchingMediaQueries: RootStore['browser']['matching_media_queries'];
 };
 
 type State = {
@@ -58,6 +59,7 @@ export class Root extends React.Component<Props, State> {
         <main className={CSS['main']}>
           <HomePage
             projects={this.props.projects}
+            tools={this.props.tools}
             matchingMediaQueries={this.props.matchingMediaQueries}
           />
         </main>

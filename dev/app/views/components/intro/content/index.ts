@@ -1,1 +1,1 @@
-export { IntroContent } from './content';
+export { Content, ContentProps } from './content';

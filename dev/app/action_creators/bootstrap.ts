@@ -58,8 +58,8 @@ function trackMediaQueries(
     queries,
     [
       {event: 'load', throttle: 0},
-      {event: 'resize', throttle: 300},
-      {event: 'orientationchange', throttle: 300}
+      {event: 'resize', throttle: 500},
+      {event: 'orientationchange', throttle: 500}
     ],
     (e) => dispatch(updateMatchingMediaQueries(e.matches))
   );
