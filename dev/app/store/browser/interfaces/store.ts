@@ -1,4 +1,4 @@
-import { MEDIA_QUERIES } from '../../../config/media_queries';
+import { MEDIA_QUERIES } from 'Config/media_queries';
 
 /**
  * Contains information about the environment in which the application is

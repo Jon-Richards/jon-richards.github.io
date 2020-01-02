@@ -5,6 +5,7 @@ import { MQTMediaQuery } from '../lib/ts/media_query_tracker';
  * TypeScript as well as SCSS.
  */
 export const MEDIA_QUERIES: MQTMediaQuery[] = [
+  {id: '0', query: '(max-width: 374px)'},
   {id: '375', query: '(min-width: 375px) and (max-width: 479px)'},
   {id: '480', query: '(min-width: 480px) and (max-width: 719px)'},
   {id: '720', query: '(min-width: 720px) and (max-width: 1079px)'},

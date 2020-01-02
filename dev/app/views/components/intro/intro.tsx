@@ -10,6 +10,7 @@ import { Panel } from 'Views/components/panel';
 import { IntroContent } from './content';
 const CSS = require('./intro.scss');
 
+/** Props needed to instantiate the Intro component. */
 type Props = {
   /** The intro title. */
   title: React.ReactFragment;
@@ -96,4 +97,4 @@ function Intro (props: Props): JSX.Element {
 
 const introMemo = React.memo<Props>(Intro);
 
-export { introMemo as Intro };
+export { introMemo as Intro, Props as IntroProps };

@@ -4,21 +4,22 @@
  */
 
 import * as React from 'react';
-const CSS = require('./page_root.scss');
+const CSS = require('./root.scss');
 import { Preloader } from '../../components/preloader';
 import { Header } from '../../components/header';
-import { HomePage } from './home_page';
-import { PortfolioProject } from 'Views/scaffolding/interfaces';
+import { HomePage } from '../home_page';
+import { PortfolioStore } from 'Store/portfolio/interfaces/store';
+import { BrowserStore } from 'Store/browser/interfaces/store';
 
 type Props = {
   /** Initializes the application. */
   initialize(): void;
   /** Portfolio projects passed to various pages. */
-  projects: PortfolioProject[];
-  // /** Possible media query IDs that can match the runtime environment. */
-  // possibleMediaQueryies: string[];
-  // /** Media query IDs that match the current environment. */
-  // matchingMediaQueries: string[];
+  projects: PortfolioStore['projects'];
+  /** Possible media query IDs that can match the runtime environment. */
+  possibleMediaQueries: BrowserStore['possible_media_queries'];
+  /** Media query IDs that match the current environment. */
+  matchingMediaQueries: BrowserStore['matching_media_queries'];
 };
 
 type State = {
@@ -31,8 +32,8 @@ type State = {
  * Scaffolds the page, initializes the application once the Store has been
  * created and  coordinates how the overall state of the application displays.
  */
-export class PageRoot extends React.Component<Props, State> {
-  constructor(props: PageRoot['props']) {
+export class Root extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       status: 'initializing'
@@ -51,11 +52,14 @@ export class PageRoot extends React.Component<Props, State> {
   /** Renders the root layout to the DOM. */
   render(): JSX.Element {
     return (
-      <div className={`${CSS['root']} page_root--${this.state.status}`}>
+      <div className={`${CSS['root']} root--${this.state.status}`}>
         <Preloader />
         <Header />
         <main className={CSS['main']}>
-          <HomePage projects={this.props.projects} />
+          <HomePage
+            projects={this.props.projects}
+            matchingMediaQueries={this.props.matchingMediaQueries}
+          />
         </main>
       </div>
     );

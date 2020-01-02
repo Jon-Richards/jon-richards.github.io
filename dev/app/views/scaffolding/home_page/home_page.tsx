@@ -5,22 +5,32 @@
 
 const CSS = require('./home_page.scss');
 import * as React from 'react';
-import { Intro } from './intro/intro';
+import { 
+  Intro,
+  IntroProps
+} from 'Views/components/intro';
 import { Gallery } from './gallery';
 import { v4 as uuid } from 'uuid';
-
-type Project = {
-  /** The title of the project as displayed to the user. */
-  title: string;
-};
+import { RootStore } from 'Store/root_reducer';
 
 type Props = {
   /** Array of projects to display in the gallery. */
-  projects: Project[];
+  projects: RootStore['portfolio']['projects'];
+  /** Media queries that match the current environemnt. */
+  matchingMediaQueries: RootStore['browser']['matching_media_queries'];
 };
 
 /** The root component of the home page. */
 export class HomePage extends React.PureComponent<Props, never> {
+  private resolveIntroTheme = (): IntroProps['theme'] => {
+    const queries = this.props.matchingMediaQueries.map(query => query.id);
+    if (queries.includes('0') || queries.includes('375')) {
+      return 'COPY';
+    } else {
+      return 'PANEL';
+    }
+  }
+  
   /** Renders this component to the DOM. */
   render(): JSX.Element {
     return (
@@ -35,7 +45,7 @@ export class HomePage extends React.PureComponent<Props, never> {
             </>
           }
           subtitle="Front-end Engineer"
-          theme="PANEL"
+          theme={this.resolveIntroTheme()}
         />
         <Gallery
           pieces={[
