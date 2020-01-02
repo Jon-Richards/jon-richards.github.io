@@ -27,4 +27,16 @@ describe('The Skill component.', () => {
       .contains('Foo')
     ).toBe(false);
   });
+
+  it('Should match the snapshot.', () => {
+    expect(
+      shallow(
+        <Skill
+          uuid={uuid()}
+          displayLabel="Bar"
+          isCore={true}
+        />
+      )
+    ).toMatchSnapshot();
+  });
 });
