@@ -1,1 +1,1 @@
-export { Root } from './root_hoc';
+export { RootHOC } from './root_hoc';

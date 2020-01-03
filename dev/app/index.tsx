@@ -7,7 +7,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { buildStore } from './store';
-import { Root } from './views/scaffolding/root';
+import { RootHOC } from './views/scaffolding/root';
 
 /**
  * Applies the store to the root of the application tree as props and renders
@@ -15,7 +15,7 @@ import { Root } from './views/scaffolding/root';
  */
 render(
   <Provider store={buildStore()}>
-    <Root />
+    <RootHOC />
   </Provider>,
   document.getElementById('app')
 );
