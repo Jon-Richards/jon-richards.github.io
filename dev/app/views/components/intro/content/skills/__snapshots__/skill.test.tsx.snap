@@ -4,6 +4,6 @@ exports[`The Skill component. Should match the snapshot. 1`] = `
 <span
   className="skill skill--is-core"
 >
-  Bar
+  Foo
 </span>
 `;

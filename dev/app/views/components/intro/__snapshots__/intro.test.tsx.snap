@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Intro component. Should match the snapshot. 1`] = `
+<div
+  class="root"
+>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="frame"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="headline"
+          >
+            <h1
+              class="title"
+            >
+              Foo
+            </h1>
+            <h2
+              class="subtitle"
+            >
+              Bar
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

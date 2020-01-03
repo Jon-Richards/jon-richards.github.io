@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Intro's Content component Should match the snaptshot. 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="headline"
+  >
+    <h1
+      className="title"
+    >
+      Foo
+    </h1>
+    <h2
+      className="subtitle"
+    >
+      Bar
+    </h2>
+  </div>
+</div>
+`;

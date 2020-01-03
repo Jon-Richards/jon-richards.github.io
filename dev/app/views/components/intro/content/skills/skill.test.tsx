@@ -1,42 +1,28 @@
 import * as React from 'react';
-import {shallow, mount, render} from 'enzyme';
-import {Skill, SkillProps} from './skill';
+import { shallow, mount, render } from 'enzyme';
+import { Skill, SkillProps } from './skill';
 import { v4 as uuid } from 'uuid';
 
 describe('The Skill component.', () => {
-  it('Should render without throwing an error.', () => {
-    expect(
-      shallow(
-        <Skill
-          uuid={uuid()}
-          displayLabel="Foo"
-          isCore={true}
-        />
-      )
-      .contains('Foo')
-    ).toBe(true);
+  it('Should render to reflect its props.', () => {
+    const test_1 = shallow(
+      <Skill uuid={uuid()} displayLabel="Foo" isCore={true} />
+    );
+    const test_2 = shallow(
+      <Skill uuid={uuid()} displayLabel="Bar" isCore={false} />
+    );
 
-    expect(
-      shallow(
-        <Skill
-          uuid={uuid()}
-          displayLabel="Bar"
-          isCore={true}
-        />
-      )
-      .contains('Foo')
-    ).toBe(false);
+    expect(test_1.contains('Foo')).toBe(true);
+    expect(test_2.contains('Foo')).toBe(false);
+    expect(test_1.hasClass('skill--is-core')).toBe(true);
+    expect(test_2.hasClass('skill--is-core')).toBe(false);
   });
 
   it('Should match the snapshot.', () => {
-    expect(
-      shallow(
-        <Skill
-          uuid={uuid()}
-          displayLabel="Bar"
-          isCore={true}
-        />
-      )
-    ).toMatchSnapshot();
+    const test_1 = shallow(
+      <Skill uuid={uuid()} displayLabel="Foo" isCore={true} />
+    );
+
+    expect(test_1).toMatchSnapshot();
   });
 });
