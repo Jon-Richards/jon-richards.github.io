@@ -5,8 +5,8 @@
 
 import * as React from 'react';
 const CSS = require('./root.scss');
-import { Preloader } from '../../components/preloader';
-import { Header } from '../../components/header';
+import { Preloader } from '../../presentational/preloader';
+import { Header } from '../../presentational/header';
 import { HomePage } from '../home_page';
 
 type Props = {

@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import { Panel } from 'Views/components/panel';
+import { Panel } from 'Views/presentational/panel';
 import { Content, ContentProps } from './content';
 const CSS = require('./intro.scss');
 
@@ -16,7 +16,7 @@ type Props = {
   subtitle: React.ReactFragment;
   /** An array of skills. */
   skills: ContentProps['skills'];
-  /** An optional theme with qhich to render the intro.  Defaults to "PANEL" */
+  /** An optional theme with which to render the intro.  Defaults to "PANEL" */
   theme?: 'PANEL' | 'COPY';
 };
 

@@ -12,6 +12,18 @@ static presentation.
 * Architect the application to facilitate the adoption of new tools and
 practices as technology progresses, without the need for a full refactor.
 
+## Terms
+* "Data layer" - Anything that handles data related to application state.  This
+includes the directories "store", "action_creators", and "async".
+* "View layer" - Anything visible to the user.  This primarily includes the
+"Views" directory.
+* "Store" - The persistent state machine created by Redux at runtime.  See
+Redux's official documentation.
+* "HOC" - Higher order component.  A component that maps properties on the Store
+to properties used by a component.
+* "Component" - A modularized piece of view logic.  See React's official
+documentation.
+
 ## Architecture
 Dataflow is handled via the Flux architectural pattern.  The application can be
 thought of in layers: "data" (state management and business logic related

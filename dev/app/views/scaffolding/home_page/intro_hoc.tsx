@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Intro, IntroProps } from 'Views/components/intro';
+import { Intro, IntroProps } from 'Views/presentational/intro';
 import { connect } from 'react-redux';
 import { RootStore } from 'Store/root_reducer';
 
