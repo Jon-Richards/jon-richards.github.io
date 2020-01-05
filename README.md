@@ -2,7 +2,7 @@
 
 A single page portfolio app.
 
-## Buisiness Objectives
+## Business Objectives
 * Showcase projects.
 * Provide contact and resume information.
 
@@ -14,20 +14,20 @@ practices as technology progresses, without the need for a full refactor.
 
 ## Architecture
 Dataflow is handled via the Flux architectural pattern.  The application can be
-thought of in layers: "data" (state management and buisiness logic related
+thought of in layers: "data" (state management and business logic related
 to said data) and "views" (presentational logic and user interaction).
-Linguisitically, ECMAScript and JSX are written in TypeScript.  CSS is written
+Linguistically, ECMAScript and JSX are written in TypeScript.  CSS is written
 in SCSS.
 
 ### The Data Layer  
 The data layer is built using Redux.  Usage of TypeScript means that actions can
-take the form of interfaces.  Most of the buisiness logic for the data layer is
+take the form of interfaces.  Most of the business logic for the data layer is
 handled by "Action Creators" (functions that return an Action type).
 Redux-Thunk is used for complex action creators that need to dispatch multiple
 updates to the store.
 
 **Conventions**  
-* Buisiness logic should be handled by Action Creators.
+* Business logic should be handled by Action Creators.
   * Helps separate concerns.
 * The Store should consist only of reducer functions and interfaces for actions
 and the structure of reducers.
