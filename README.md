@@ -2,26 +2,38 @@
 
 A single page portfolio app.
 
-## Approach
+## Buisiness Objectives
+* Showcase projects.
+* Provide contact and resume information.
 
-The app uses Flux architecture with Redux for state management (data layer) and React for the view layer.  This fairly unopinionated approach allows each layer
-to adopt new tools and techniques as technology progresses.  CSS is handled
-with SASS and modularized via Webpack.  JS and JSX are written with TypeScript.
+## Technical Objectives
+* Provide an elegant user experience beyond that offered from a traditional
+static presentation.
+* Architect the application to facilitate the adoption of new tools and
+practices as technology progresses, without the need for a full refactor.
+
+## Architecture
+Dataflow is handled via the Flux architectural pattern.  The application can be
+thought of in layers: "data" (state management and buisiness logic related
+to said data) and "views" (presentational logic and user interaction).
+Linguisitically, ECMAScript and JSX are written in TypeScript.  CSS is written
+in SCSS.
 
 ### The Data Layer  
 The data layer is built using Redux.  Usage of TypeScript means that actions can
 take the form of interfaces.  Most of the buisiness logic for the data layer is
 handled by "Action Creators" (functions that return an Action type).
-Redux-Thunk is used for more complex actions that need to dispatch multiple
+Redux-Thunk is used for complex action creators that need to dispatch multiple
 updates to the store.
 
 **Conventions**  
-* Buisiness logic should go in Action Creators.
+* Buisiness logic should be handled by Action Creators.
   * Helps separate concerns.
-* The Store should consist only of reducer functions and interfaces for actions.
+* The Store should consist only of reducer functions and interfaces for actions
+and the structure of reducers.
   * Makes the store easier to comprehend since it is created at runtime.
   * Helps separate concerns.
-* Reducer fnuctions may not have side effects.
+* Reducer functions may not have side effects.
   * Ease in testing.
   * Separation of concerns.
   * Avoids unexpected results.
@@ -58,8 +70,10 @@ connect them directly to the store.
   * Avoids unnecessary renders.
 * Scaffolding components should have as little presentation logic as possible.
   * Separation of concerns.
-* Sass files should only inherit from the `config/scss` directory.
+* SCSS files should only inherit from the `config/scss` directory.
   * Portability.
+* SCSS classes should follow BEM (block-element--modifier) naming conventions.
+  * Readability and comprehension.
 
 ### Lib
 The application includes a "lib" directory, intended for code that can be
