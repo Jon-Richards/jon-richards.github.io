@@ -27,7 +27,7 @@ function validateUniqueness (
   });
   if (duplicateEvents.length > 0) {
     throw new TypeError(
-      'MediaQueryTracker recieved two listeners for the same event: ' +
+      'MediaQueryTracker received two listeners for the same event: ' +
       `${listener.event}.`
     );
   }

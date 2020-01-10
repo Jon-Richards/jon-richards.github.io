@@ -5,11 +5,12 @@
 
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { PublishPortfolio } from '../store/portfolio';
-import { RootStore } from '../store';
-import { MediaQueryTracker, MQTMediaQuery } from '../lib/ts/media_query_tracker';
+import { Store } from '../store';
+import { MediaQueryTracker } from 'Lib/ts/media_query_tracker';
 import { UpdateStatus } from '../store/application';
 import { getOverview } from '../async/requests';
 import { UpdateMatchingMediaQueries } from '../store/browser';
+import { MediaQuery } from 'Config/media_queries';
 
 function updateStatus(): UpdateStatus {
   return {
@@ -46,14 +47,14 @@ function updateMatchingMediaQueries(
  * @param queries The set of queries to use when configuring the Media Query
  * Tracker.
  */
-function trackMediaQueries(
+function trackMediaQueries (
   dispatch: ThunkDispatch<
-    RootStore,
+    Store,
     undefined,
     | UpdateMatchingMediaQueries
   >,
-  queries: MQTMediaQuery[]
-): MediaQueryTracker {
+  queries: MediaQuery[]
+): MediaQueryTracker<MediaQuery> {
   return new MediaQueryTracker(
     queries,
     [
@@ -68,7 +69,7 @@ function trackMediaQueries(
 /** Coordinates bootstrapping the application. */
 export function bootstrap(): ThunkAction<
   Promise<UpdateStatus | void> | void,
-  RootStore,
+  Store,
   undefined,
   | PublishPortfolio
   | UpdateStatus

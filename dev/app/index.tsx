@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { buildStore } from './store';
+import { STORE } from './store';
 import { RootHOC } from './views/scaffolding/root';
 
 /**
@@ -14,7 +14,7 @@ import { RootHOC } from './views/scaffolding/root';
  * it to the DOM.
  */
 render(
-  <Provider store={buildStore()}>
+  <Provider store={STORE}>
     <RootHOC />
   </Provider>,
   document.getElementById('app')

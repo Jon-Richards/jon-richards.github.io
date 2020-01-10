@@ -1,1 +1,1 @@
-export { MEDIA_QUERIES, MediaQueryId } from './media_queries';
+export { MEDIA_QUERIES } from './media_queries';

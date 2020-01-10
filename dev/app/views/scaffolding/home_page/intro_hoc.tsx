@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Intro, IntroProps } from 'Views/presentational/intro';
 import { connect } from 'react-redux';
-import { RootStore } from 'Store/root_reducer';
+import { Store } from 'Store/index';
 
-type Tools = RootStore['portfolio']['tools'];
-type MatchingMediaQueries = RootStore['browser']['matching_media_queries'];
+type Tools = Store['portfolio']['tools'];
+type MatchingMediaQueries = Store['browser']['matching_media_queries'];
 
 type StateProps = Pick<
   IntroProps,
@@ -35,7 +35,7 @@ function resolveIntroTheme(
   }
 }
 
-function mapStateToProps(state: RootStore): StateProps {
+function mapStateToProps(state: Store): StateProps {
   return {
     title: <>Jon<br />Richards</>,
     subtitle: 'Front-end Engineer',

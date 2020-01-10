@@ -40,7 +40,7 @@ function validateQueryUniqueness (
   });
   if (duplicateQueries.length > 0) {
     throw new TypeError(
-      `MediaQueryTracker recieved two queries with the same query string:` +
+      `MediaQueryTracker received two queries with the same query string:` +
       ` ${query.query}.`
     );
   }
@@ -50,7 +50,7 @@ function validateQueryUniqueness (
   });
   if (duplicateIds.length > 0) {
     throw new TypeError(
-      `MediaQueryTracker recieved two queries with the same id: ` +
+      `MediaQueryTracker received two queries with the same id: ` +
       `${query.id}.`
     );
   }

@@ -1,6 +1,5 @@
 import { Reducer } from 'redux';
 import { BrowserStore } from './interfaces/store';
-import { MEDIA_QUERIES } from '../../config/media_queries';
 import { UpdateMatchingMediaQueries } from './interfaces/actions';
 
 /**
@@ -14,7 +13,13 @@ export const BROWSER_REDUCER: Reducer<
   | UpdateMatchingMediaQueries
 > = (
   state = {
-    possible_media_queries: MEDIA_QUERIES,
+    possible_media_queries: [
+      {id: '375', query: '(min-width: 375px)'},
+      {id: '480', query: '(min-width: 480px)'},
+      {id: '720', query: '(min-width: 720px)'},
+      {id: '1080', query: '(min-width: 1080px)'},
+      {id: '1440', query: '(min-width: 1440px)'}
+    ],
     matching_media_queries: []
   },
   action

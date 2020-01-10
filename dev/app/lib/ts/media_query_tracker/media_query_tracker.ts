@@ -15,29 +15,26 @@ import {
  * Provides an API for evaluating a collection of media queries based on the
  * state of the window object.
  */
-export class MediaQueryTracker {
+export class MediaQueryTracker<Q extends MQTMediaQuery = MQTMediaQuery> {
   /** The media queries tracked by this MediaQueryTracker instance. */
-  private readonly queries: MQTMediaQuery[] = [];
+  private readonly queries: Q[] = [];
   /** Event listeners that are attacked to the window object. */
   private readonly listeners: MQTEventListener[] = [];
   /** Callback function that fires when one of the listeners is triggered. */
-  private readonly callback: MQTCallback = () => {};
+  private readonly callback: MQTCallback<Q> = () => {};
   /** Stores check that the window object is available. */
   private readonly inWindow: boolean;
 
   constructor (
     /** An array of MediaQueries to track. */
-    mediaQueries: MQTMediaQuery[],
-    /**
-     * Window events on which the supplied MediaQueries should be evaluated. If
-     * not supplied, 
-     */
+    mediaQueries: Q[],
+    /** Window events on which the supplied MediaQueries should be evaluated. */
     listeners: MQTEventListener[] | null = null,
     /** 
-     * Callback function that will be invoked when any of the listners from the
+     * Callback function that will be invoked when any of the listeners from the
      * previous argument fire.
      */
-    callback: MQTCallback | null = null,
+    callback: MQTCallback<Q> | null = null,
   ) {
     if (typeof window !== 'undefined' && window.document) {
       this.inWindow = true;
@@ -70,7 +67,7 @@ export class MediaQueryTracker {
     }
   }
 
-  private handleWindowEvent(e: MQTEvent['event']): void {
+  private handleWindowEvent(e: MQTEvent<Q>['event']): void {
     this.callback({matches: this.getMatches(), event: e});
   }
 
@@ -79,8 +76,8 @@ export class MediaQueryTracker {
    * match the current state of the window object.
    * @return The MQTMediaQueries that evaluate to true.
    */
-  getMatches(): MQTMediaQuery[] {
-    const matches: MQTMediaQuery[] = [];
+  getMatches(): Q[] {
+    const matches: Q[] = [];
     if (this.inWindow === true) {
       this.queries.forEach(query => {
         if (window.matchMedia(query.query).matches === true) {

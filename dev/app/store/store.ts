@@ -13,7 +13,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
  * addition to the reducers.
  * @return An instance of the application store.
  */
-export function buildStore() {
+function buildStore () {
   const middlewares = [thunk];
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
@@ -24,3 +24,9 @@ export function buildStore() {
 
   return store;
 }
+
+/** The application store. */
+export const STORE = buildStore();
+
+/** Shape of the application store. */
+export type Store = ReturnType<typeof ROOT_REDUCER>;

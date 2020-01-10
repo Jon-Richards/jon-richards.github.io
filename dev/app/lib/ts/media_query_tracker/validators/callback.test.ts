@@ -1,7 +1,7 @@
 import { validateCallback } from './callback';
 
 describe('The callback validator.', () => {
-  it('Should reurturn false if not passed a function.', () => {
+  it('Should return false if not passed a function.', () => {
     const test_1 = validateCallback(null as unknown as () => {});
     const test_2 = validateCallback(undefined as unknown as () => {});
     const test_3 = validateCallback('banana' as unknown as () => {});

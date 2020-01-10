@@ -17,6 +17,3 @@ export const ROOT_REDUCER = combineReducers({
   browser,
   portfolio,
 });
-
-/** Shape of the entire application store. */
-export type RootStore = ReturnType<typeof ROOT_REDUCER>;
