@@ -44,6 +44,6 @@ function mapStateToProps(state: Store): StateProps {
   };
 }
 
-const INTRO_HOC = connect(mapStateToProps, () => {})(Intro);
+const INTRO_HOC = connect(mapStateToProps, () => ({}))(Intro);
 
 export { INTRO_HOC as IntroHOC };

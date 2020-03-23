@@ -8,13 +8,11 @@ export type MediaQueryIds =
   | '1080'
   | '1440';
 
-/** Shape of a single media query. */
-// export type MediaQuery = MQTMediaQuery;
+/** Shape of a single media query as used by the application. */
 export interface MediaQuery extends MQTMediaQuery {
   /** An application standard media query id. */
   id: MediaQueryIds;
 }
-// export interface MediaQuery extends MQTMediaQuery {}
 
 /** 
  * Standard media queries used across the application, these appear in

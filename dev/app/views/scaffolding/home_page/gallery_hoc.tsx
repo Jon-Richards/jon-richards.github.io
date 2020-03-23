@@ -66,6 +66,6 @@ function mapStateToProps(state: Store): StateProps {
   };
 }
 
-const GALLERY_HOC = connect(mapStateToProps, () => {})(Gallery);
+const GALLERY_HOC = connect(mapStateToProps, () => ({}))(Gallery);
 
 export { GALLERY_HOC as GalleryHOC };
