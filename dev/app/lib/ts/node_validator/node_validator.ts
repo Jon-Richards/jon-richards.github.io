@@ -1,12 +1,5 @@
 /**
- * @fileoverview
- * Contains a base class for storing and validating JSON nodes.
- */
-
-'use strict';
-
-/**
- * Provides methods for vaidating individual JSON nodes and for storing errors
+ * Provides methods for validating individual JSON nodes and for storing errors
  * in a predictable format if any are found.
  */
 export class NodeValidator<ValidatedData extends object> {
@@ -21,7 +14,7 @@ export class NodeValidator<ValidatedData extends object> {
   }
 
   /**
-   * Returns true of the erros map of this NodeValidator is populated.
+   * Returns true if the errors map of this NodeValidator is populated.
    * @return True if this NodeValidator has errors, else false.
    */
   hasErrors(): boolean {

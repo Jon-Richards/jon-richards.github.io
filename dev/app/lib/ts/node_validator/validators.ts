@@ -40,7 +40,7 @@ export function isURIString(val: string): boolean {
 
 /**
  * Checks if a value is a valid number.
- * @retrun true if the value is a valid number, else false.
+ * @return true if the value is a valid number, else false.
  */
 export function isInteger(val: string): boolean {
   return isInt(val, {allow_leading_zeroes: false});

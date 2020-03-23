@@ -1,8 +1,3 @@
-/**
- * @fileoverview
- * Contains unit tests for he filters module.
- */
-
 import { filterByDuplicateProperty } from './filters';
 
 describe('The filterByDuplicateProperty filter:', () => {

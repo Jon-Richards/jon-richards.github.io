@@ -1,14 +1,4 @@
 /**
- * @fileoverview
- * Contains commonly used functions for filtering objects and values when
- * validating nodes.
- */
-
-'use strict';
-
-import { NodeValidator } from "./node_validator";
-
-/**
  * Checks each object in an array of objects for uniqueness of a given
  * property, e.g. a UUID, and fires an optional callback function if one is
  * found.  Returns a new array in which the duplicates have been discarded.

@@ -1,8 +1,3 @@
-/**
- * @fileoverview
- * Unit tests for the NodeValidator class.
- */
-
 import { NodeValidator } from './node_validator';
 import { notEmpty, isInteger } from './validators';
 

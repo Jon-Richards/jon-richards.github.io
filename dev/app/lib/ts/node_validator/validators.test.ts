@@ -1,8 +1,3 @@
-/**
- * @fileoverview
- * Contains unit tests for the validator functions.
- */
-
 import {
   isUUID,
   isURIString,
