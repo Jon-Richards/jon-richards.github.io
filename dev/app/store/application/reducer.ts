@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { ApplicationStore } from './interfaces/store';
-import { UpdateStatus } from './interfaces/actions';
+import { UpdateStatus, SetRoute } from './interfaces/actions';
 
 /**
  * The Application reducer for the Application store.  Contains information
@@ -13,9 +13,15 @@ import { UpdateStatus } from './interfaces/actions';
 export const APPLICATION_REDUCER: Reducer<
   ApplicationStore,
   | UpdateStatus
+  | SetRoute
 > = (
   state = {
-    status: 'initializing'
+    status: 'initializing',
+    currentRoute: {
+      path: '',
+      index: 0,
+      params: {}
+    }
   },
   action
 ) => {
@@ -24,6 +30,11 @@ export const APPLICATION_REDUCER: Reducer<
       return {
         ...state,
         status: action.status
+      };
+    case 'APPLICATION__SET_ROUTE':
+      return {
+        ...state,
+        route: action.route
       };
     default:
       return state;

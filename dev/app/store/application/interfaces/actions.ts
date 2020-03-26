@@ -1,3 +1,4 @@
+import { MatchResult } from 'path-to-regexp';
 import { Action } from 'redux';
 import { Status } from './status';
 
@@ -5,4 +6,10 @@ import { Status } from './status';
 export interface UpdateStatus extends Action<'APPLICATION__UPDATE_STATUS'> {
   /** Value of the status update. */
   status: Status;
+}
+
+/** Updates the active route. */
+export interface SetRoute extends Action<'APPLICATION__SET_ROUTE'> {
+  /** The value of the new route. */
+  route: MatchResult;
 }

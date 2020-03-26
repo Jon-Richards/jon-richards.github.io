@@ -12,9 +12,9 @@ type ThumbnailShape = {
   /** The image's source url for large screens. (freestanding monitors) */
   sourceLarge: string;
   /** A very short description of the project that the thumbnail represents. */
-  description: ThumbnailProps['altText']
-  /** Fires when the thumbnail is clicked, passing a URl. */
-  onClick: ThumbnailProps['onClick'];
+  description: ThumbnailProps['altText'];
+  /** The destination for the thumbnail's link. */
+  href: ThumbnailProps['href'];
 };
 
 /** For computing the size of the image that will be loaded by a thumbnail. */
@@ -28,6 +28,8 @@ export interface GalleryProps {
   thumbnails: ThumbnailShape[];
   /** The size at which thumbnails should render. */
   thumbnailSize: ThumbnailSize;
+  /** Click handler that passes the URI of the thumbnail that was clicked. */
+  onClick: (path: string) => {};
 }
 
 function computeThumbnailSource (
@@ -46,13 +48,14 @@ function computeThumbnailSource (
 
 function mapThumbnails(
   thumbnails: ThumbnailShape[],
-  size: ThumbnailSize
+  size: ThumbnailSize,
+  onClick: GalleryProps['onClick']
 ): JSX.Element {
   const mapped = thumbnails.map(thumbnail => {
     const {
       description,
       uuid,
-      onClick
+      href
     } = thumbnail;
     
     const src = computeThumbnailSource(size, thumbnail);
@@ -62,7 +65,8 @@ function mapThumbnails(
         key={uuid}
         src={src}
         altText={description}
-        onClick={onClick}
+        href={href}
+        onClick={() => onClick(href)}
       />
     );
   });
@@ -73,10 +77,11 @@ function mapThumbnails(
 function Gallery (props: GalleryProps): JSX.Element {
   const {
     thumbnails,
-    thumbnailSize
+    thumbnailSize,
+    onClick
   } = props;
 
-  const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize);
+  const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize, onClick);
 
   return (
     <div className={CSS['root']}>{mappedThumbs}</div>

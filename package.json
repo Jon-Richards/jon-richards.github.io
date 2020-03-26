@@ -8,7 +8,8 @@
     "> 1%"
   ],
   "scripts": {
-    "test": "jest --silent",
+    "test": "jest",
+    "test:silent": "jest --silent",
     "build:dev": "webpack --config=./webpack/dev.js --env.NODE_ENV=development --clean",
     "build:dist": "webpack --config=./webpack/dist.js --env.NODE_ENV=production --clean",
     "start:dev": "webpack-dev-server --config=./webpack/dev.js --env.NODE_ENV=development",
@@ -44,6 +45,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^6.0.10",
+    "@types/redux-mock-store": "^1.0.2",
     "@types/uuid": "^3.4.4",
     "@types/validator": "^10.11.3",
     "@types/webpack-env": "^1.13.6",
@@ -74,6 +76,7 @@
     "node-sass": "^4.9.3",
     "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "path-to-regexp": "^6.1.0",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.16.4",
     "react": "^16.12.0",
@@ -82,6 +85,7 @@
     "react-test-renderer": "^16.12.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "reset-css": "^4.0.1",
     "resolve-url-loader": "^3.0.0",

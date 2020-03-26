@@ -7,10 +7,11 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { PublishPortfolio } from '../store/portfolio';
 import { Store } from '../store';
 import { MediaQueryTracker } from 'Lib/ts/media_query_tracker';
-import { UpdateStatus } from '../store/application';
+import { UpdateStatus, SetRoute } from '../store/application';
 import { getOverview } from '../async/requests';
 import { UpdateMatchingMediaQueries } from '../store/browser';
 import { MediaQuery } from 'Config/media_queries';
+import { setRoute } from './set_route';
 
 function updateStatus(): UpdateStatus {
   return {
@@ -77,6 +78,7 @@ export function bootstrap(): ThunkAction<
   return (dispatch, getState) => {
 
     trackMediaQueries(dispatch, getState().browser.possible_media_queries);
+    dispatch(setRoute(window.location.pathname));
 
     return new Promise((resolve, reject) => {
       const overview = getOverview()

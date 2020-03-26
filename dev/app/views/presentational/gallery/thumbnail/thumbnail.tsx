@@ -7,22 +7,27 @@ export interface ThumbnailProps {
   src: string;
   /** Alt text for the thumbnail's link. */
   altText: string;
+  /** The destination for the thumbnail's link. */
+  href: string;
   /** Method that fires when this thumbnail is clicked. */
   onClick(
-    /** The URI of the project represented by the thumbnail. */
+    /** The HTML element's click event. */
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ): void;
 }
 
 /** A single thumbnail. */
 function Thumbnail (props: ThumbnailProps): JSX.Element {
-  const { src, altText, onClick } = props;
+  const { src, altText, href, onClick } = props;
 
   return (
     <a
       className={CSS['root']}
-      href=""
-      onClick={(e) => onClick(e)}
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
     >
       <figure
         role="button"
