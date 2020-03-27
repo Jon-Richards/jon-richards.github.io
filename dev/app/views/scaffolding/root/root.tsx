@@ -8,10 +8,13 @@ const CSS = require('./root.scss');
 import { Preloader } from '../../presentational/preloader';
 import { Header } from '../../presentational/header';
 import { HomePage } from '../home_page';
+import { ROUTES } from 'Config/routes';
 
 type Props = {
   /** Initializes the application. */
   initialize(): void;
+  /** The scheme for the current route. */
+  route: string;
 };
 
 type State = {
@@ -48,7 +51,15 @@ export class Root extends React.Component<Props, State> {
         <Preloader />
         <Header />
         <main className={CSS['main']}>
-          <HomePage/>
+          {(
+            this.props.route === ROUTES.home ||
+            this.props.route === ROUTES.portfolio_piece
+          ) && (
+            <HomePage/>
+          )}
+          {this.props.route === ROUTES.error && (
+            <div>Error</div>
+          )}
         </main>
       </div>
     );

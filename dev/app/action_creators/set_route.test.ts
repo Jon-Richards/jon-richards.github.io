@@ -31,18 +31,18 @@ describe('The setRoute action creator.', () => {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/',
-          index: 0,
-          params: {}
+          params: {},
+          schema: '/'
         }
       },
       {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/error/500',
-          index: 0,
           params: {
             error_code: '500'
-          }
+          },
+          schema: '/error/:error_code'
         }
       }
     ]);
@@ -59,18 +59,18 @@ describe('The setRoute action creator.', () => {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/error/404',
-          index: 0,
           params: {
             error_code: '404'
-          }
+          },
+          schema: '/error/:error_code'
         }
       },
       {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/resume',
-          index: 0,
-          params: {}
+          params: {},
+          schema: '/resume'
         }
       }
     ]);

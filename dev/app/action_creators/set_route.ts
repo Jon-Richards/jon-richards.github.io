@@ -2,7 +2,9 @@ import { ThunkAction } from 'redux-thunk';
 import { Store } from 'Store/index';
 import { SetRoute } from 'Store/application';
 import { ROUTES } from 'Config/routes';
-import { match, Match } from 'path-to-regexp';
+import { match } from 'path-to-regexp';
+
+type RouteMatch = Store['application']['route'] | false;
 
 /** 
  * Matches a provided path to one of the routes tracked by this Router
@@ -12,13 +14,17 @@ import { match, Match } from 'path-to-regexp';
  * @return Meta data related to the matching route and any params that were
  * passed to it.  If no match is found, returns false.
  */
-const matchRoute = (path: string): Match => {
-  let result: Match = false;
+const matchRoute = (path: string): RouteMatch => {
+  let result: RouteMatch = false;
 
   for (const [key, value] of Object.entries(ROUTES)) {
     const hasMatch = match(value, { decode: decodeURIComponent })(path);
     if (hasMatch) {
-      result = hasMatch;
+      result = {
+        path: hasMatch.path,
+        params: hasMatch.params, 
+        schema: value
+      };
       break;
     }
   }
@@ -40,7 +46,7 @@ export function setRoute<S = Store>(path: string): ThunkAction<
   SetRoute
 > {
   return (dispatch) => {
-    let result: Match = false;
+    let result: RouteMatch = false;
 
     if (path === '') path = '/';
 

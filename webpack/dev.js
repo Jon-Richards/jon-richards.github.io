@@ -41,6 +41,7 @@ module.exports = env => {
     devServer: {
       contentBase: Path.resolve(__dirname, '..', 'dist'),
       port: 3000,
+      historyApiFallback: true,
       hot: true,
       index: 'index.html',
       overlay: true,

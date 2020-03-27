@@ -17,10 +17,10 @@ export const APPLICATION_REDUCER: Reducer<
 > = (
   state = {
     status: 'initializing',
-    currentRoute: {
+    route: {
       path: '',
-      index: 0,
-      params: {}
+      params: {},
+      schema: '',
     }
   },
   action
