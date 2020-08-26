@@ -1,12 +1,13 @@
-/**
- * @fileoverview
- * Styling for the gallery component.
- */
+@import '~scss-standards';
 
 .root {
   display: flex;
-  position: relative;
   width: 100%;
-  height: 100%;
-  flex-direction: column;
+  height: auto;
+  flex-wrap: wrap;
+  
+  @media (min-width: std-get-breakpoint(480)) {
+    padding: 0rem ($std-dimension-gap * 2);
+    align-items: center;
+  }
 }

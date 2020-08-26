@@ -33,7 +33,9 @@ const matchRoute = (path: string): RouteMatch => {
 };
 
 /**
- * Sets a new active route in the Application store.
+ * Sets a new active route in the Application store.  If the provided path does
+ * not match any of the pre-configured routes, it will be replaced with the
+ * route corresponding to a 404 error.
  * 
  * @param path The path to match against a route.
  * @return Dispatches an action to update the active route in the Application

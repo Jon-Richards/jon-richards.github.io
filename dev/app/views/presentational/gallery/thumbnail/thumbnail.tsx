@@ -1,5 +1,6 @@
 import * as React from 'react';
 const CSS = require('./thumbnail.scss');
+import { Panel } from 'Views/presentational/panel';
 
 /** Shape of a single thumbnail. */
 export interface ThumbnailProps {
@@ -29,13 +30,16 @@ function Thumbnail (props: ThumbnailProps): JSX.Element {
         onClick(e);
       }}
     >
-      <figure
-        role="button"
-        aria-label="thumbnail"
-        className={`${CSS['root']}`}
-      >
-        <img className={CSS['image']} src={src} alt={altText} />
-      </figure>
+      <Panel>
+        <figure
+          role="button"
+          aria-label="thumbnail"
+          className={CSS['figure']}
+        >
+          <img className={CSS['image']} src={src} alt={altText} />
+          <figcaption className={CSS['caption']}>{altText}</figcaption>
+        </figure>
+      </Panel>  
     </a>
   );
 }

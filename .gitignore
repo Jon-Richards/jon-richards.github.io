@@ -5,5 +5,4 @@ dist/
 .vscode/
 npm-debug.log
 .env
-test/content/img/
 coverage/

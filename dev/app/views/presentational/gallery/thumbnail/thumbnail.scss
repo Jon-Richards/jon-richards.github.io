@@ -1,43 +1,47 @@
-/**
- * @fileoverview
- * Styling for the thumbnail component.
- */
- 
 @import '~scss-standards';
 
 .root {
   display: flex;
-  position: relative;
   width: 100%;
-  height: 20rem;
+  height: auto;
   padding: 0rem;
-  margin: 0rem;
-  border: thin solid std-get-swatch(1);
-  border-bottom-color: transparent;
+  margin: 0rem 0rem $std-dimension-gap 0rem;
 
   @media (min-width: std-get-breakpoint(720)) {
-    max-width: 80%;
-    margin: 0rem auto;
+    display: inline-flex;
+    width: calc(50% - 1rem);
+    &:nth-of-type(odd) {
+      margin-right: 2rem;
+    }
   }
 }
 
-.image {
-  display: block;
-  position: absolute;
-  top: 0rem;
-  left: 0rem;
+.figure {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   height: auto;
-  z-index: 1;
-  object-fit: cover;
+  padding: 0rem;
+  margin: 0rem;
+  vertical-align: top;
+}
+
+.image {
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: std-get-breakpoint(480)) {
+    width: 50%;
+  }
 }
 
 .caption {
-  display: flex;
-  position: relative;
-  z-index: 1;
+  display: inline-flex;
   width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+  padding: $std-dimension-gap;
+
+  @media (min-width: std-get-breakpoint(480)) {
+    width: 50%;
+  }
 }
