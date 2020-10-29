@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   
   @media (min-width: std-get-breakpoint(480)) {
-    padding: 0rem ($std-dimension-gap * 2);
     align-items: center;
   }
 }
