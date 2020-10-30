@@ -4,7 +4,7 @@
     "rootDir": ".",
     "outDir": "./dist",
     "jsx": "react",
-    "lib": ["es2018", "dom"],
+    "lib": ["es2019", "dom"],
     "checkJs": false,
     "declaration": false,
     "sourceMap": true,
@@ -14,7 +14,8 @@
       "Config/*": ["dev/app/config/*"],
       "Lib/*": ["dev/app/lib/*"],
       "Store/*": ["dev/app/store/*"],
-      "Views/*": ["dev/app/views/*"]
+      "Views/*": ["dev/app/views/*"],
+      "Vendor/*": ["dev/app/vendor/*"],
     },
   },
   "include": [

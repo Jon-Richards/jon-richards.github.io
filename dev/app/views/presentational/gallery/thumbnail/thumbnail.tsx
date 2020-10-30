@@ -1,5 +1,8 @@
+/** @jsx jsx */
+
 import * as React from 'react';
-const CSS = require('./thumbnail.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 import { Panel } from 'Views/presentational/panel';
 
 /** Shape of a single thumbnail. */
@@ -23,7 +26,7 @@ function Thumbnail (props: ThumbnailProps): JSX.Element {
 
   return (
     <a
-      className={CSS['root']}
+      css={css(STYLES.root)}
       href={href}
       onClick={(e) => {
         e.preventDefault();
@@ -34,10 +37,10 @@ function Thumbnail (props: ThumbnailProps): JSX.Element {
         <figure
           role="button"
           aria-label="thumbnail"
-          className={CSS['figure']}
+          css={css(STYLES.figure)}
         >
-          <img className={CSS['image']} src={src} alt={altText} />
-          <figcaption className={CSS['caption']}>{altText}</figcaption>
+          <img css={css(STYLES.image)} src={src} alt={altText} />
+          <figcaption css={css(STYLES.caption)}>{altText}</figcaption>
         </figure>
       </Panel>  
     </a>

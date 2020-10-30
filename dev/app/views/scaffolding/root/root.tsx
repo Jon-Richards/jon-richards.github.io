@@ -1,14 +1,13 @@
-/**
- * @fileoverview
- * Contains the root component for the application.
- */
+/** @jsx jsx */
 
 import * as React from 'react';
-const CSS = require('./root.scss');
 import { Preloader } from '../../presentational/preloader';
 import { Header } from '../../presentational/header';
 import { HomePage } from '../home_page';
 import { ROUTES } from 'Config/routes';
+import { css, jsx } from '@emotion/core';
+import { GlobalStyles } from './global_styles';
+import { STYLES } from './styles';
 
 type Props = {
   /** Initializes the application. */
@@ -47,21 +46,24 @@ export class Root extends React.Component<Props, State> {
   /** Renders the root layout to the DOM. */
   render(): JSX.Element {
     return (
-      <div className={`${CSS['root']} root--${this.state.status}`}>
-        <Preloader />
-        <Header />
-        <main className={CSS['main']}>
-          {(
-            this.props.route === ROUTES.home ||
-            this.props.route === ROUTES.portfolio_piece
-          ) && (
-            <HomePage/>
-          )}
-          {this.props.route === ROUTES.error && (
-            <div>Error</div>
-          )}
-        </main>
-      </div>
+      <React.Fragment>
+        <GlobalStyles />
+        <div css={css(STYLES.root)}>
+          <Preloader />
+          <Header />
+          <main css={css(STYLES.main)} >
+            {(
+              this.props.route === ROUTES.home ||
+              this.props.route === ROUTES.portfolio_piece
+            ) && (
+              <HomePage/>
+            )}
+            {this.props.route === ROUTES.error && (
+              <div>Error</div>
+            )}
+          </main>
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -37,7 +37,9 @@ describe('The Skills component.', () => {
       <Skills skills={[]} />
     );
 
-    expect(test_1.find('.skills').children().length).toBe(3);
-    expect(test_2.find('.skills').children().length).toBe(0);
+    expect(test_1.find('[data-testid="intro__content__skills__list"]')
+        .children().length).toBe(3);
+    expect(test_2.find('[data-testid="intro__content__skills__list"]')
+        .children().length).toBe(0);
   });
 });

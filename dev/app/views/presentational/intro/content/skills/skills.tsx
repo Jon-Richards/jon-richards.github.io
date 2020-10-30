@@ -1,11 +1,9 @@
-/**
- * @fileoverview
- * Contains the component that renders a list of skills.
- */
+/** @jsx jsx */
 
 import * as React from 'react';
-const CSS = require('./skills.scss');
-import { Skill, SkillProps } from './skill';
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
+import { Skill, SkillProps } from './skill/skill';
 
 type SkillsProps = {
   /** Array of skill filters. */
@@ -34,8 +32,10 @@ function Skills (props: SkillsProps): JSX.Element {
   const { skills } = props;
 
   return (
-    <div className={CSS['root']}>
-      <ul className={CSS['skills']}>{mapSkills(skills)}</ul>
+    <div css={css(STYLES.root)}>
+      <ul css={css(STYLES.skills)} data-testid="intro__content__skills__list">
+        {mapSkills(skills)}
+      </ul>
     </div>
   );
 }
@@ -52,7 +52,7 @@ function mapSkills(skills: SkillProps[]): React.ReactFragment {
       </li>
     ));
   }
-  return <></>;
+  return <React.Fragment></React.Fragment>;
 }
 
 const skillsMemo = React.memo<SkillsProps>(Skills);

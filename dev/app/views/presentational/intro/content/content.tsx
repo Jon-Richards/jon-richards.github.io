@@ -1,5 +1,8 @@
+/** @jsx jsx */
+
 import * as React from 'react';
-const CSS = require('./content.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 import { Skills, SkillsProps} from './skills';
 
 type ContentProps = {
@@ -20,13 +23,13 @@ function Content(props: ContentProps) {
   } = props;
 
   return (
-    <div className={CSS['content']}>
-      <div className={CSS['headline']}>
-        <h1 className={CSS['title']}>{title}</h1>
-        <h2 className={CSS['subtitle']}>{subtitle}</h2>
+    <div css={css(STYLES.content)}>
+      <div css={css(STYLES.headline)}>
+        <h1 css={css(STYLES.title)}>{title}</h1>
+        <h2 css={css(STYLES.subtitle)}>{subtitle}</h2>
       </div>
       {skills.length > 0 && (
-        <div className={CSS['children']}>
+        <div css={css(STYLES.children)} data-testid="intro_content_skills">
           <Skills skills={skills} />
         </div>
       )}

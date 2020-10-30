@@ -1,10 +1,8 @@
-/**
- * @fileoverview
- * The main header for the page.
- */
+/** @jsx jsx */
 
 import * as React from 'react';
-const CSS = require('./header.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 import { Nav } from '../nav';
 
 /** The main header of the page. */
@@ -12,7 +10,7 @@ export class Header extends React.Component<{}, never> {
   /** Renders the header to the DOM. */
   render(): JSX.Element {
     return (
-      <header className={CSS['header']}>
+      <header css={css(STYLES.header)}>
         <Nav />
       </header>
     );

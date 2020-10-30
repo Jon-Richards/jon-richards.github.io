@@ -1,5 +1,8 @@
+/** @jsx jsx */
+
 import * as React from 'react';
-const CSS = require('./panel.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 
 type Props = React.PropsWithChildren<{}>;
 
@@ -14,8 +17,8 @@ type Props = React.PropsWithChildren<{}>;
  */
 function Panel(props: Props): JSX.Element {
   return (
-    <div className={`${CSS['frame']}`}>
-      <div className={`${CSS['content']}`}>
+    <div css={css(STYLES.frame)}>
+      <div css={css(STYLES.content)}>
         {props.children}
       </div>
     </div>

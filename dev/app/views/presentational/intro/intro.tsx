@@ -1,12 +1,10 @@
-/**
- * @fileoverview
- * Parent component to the intro section.
- */
+/** @jsx jsx */
 
 import * as React from 'react';
 import { Panel } from 'Views/presentational/panel';
 import { Content, ContentProps } from './content';
-const CSS = require('./intro.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 
 /** Props needed to instantiate the Intro component. */
 type Props = {
@@ -30,10 +28,10 @@ function Intro (props: Props): JSX.Element {
   } = props;
 
   return (
-    <div className={CSS['root']}>
-      <div className={CSS['wrapper']}>
+    <div css={css(STYLES.root)}>
+      <div css={css(STYLES.wrapper)}>
         {theme === 'PANEL' ? (
-          <Panel>
+          <Panel data-testid="intro_panel">
             <Content title={title} subtitle={subtitle} skills={skills} />
           </Panel>
         ) : (

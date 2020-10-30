@@ -1,16 +1,14 @@
-/**
- * @fileoverview
- * Contains the preloader component.
- */
+/** @jsx jsx */
 
 import * as React from 'react';
-const CSS = require('./preloader.scss');
+import { css, jsx } from '@emotion/core';
+import { STYLES } from './styles';
 
 /** Indicates to the user that something is processing. */
 function Preloader(): JSX.Element {
   return (
-    <div className={CSS['root']}>
-      <div className={CSS['gradient']}></div>
+    <div css={css(STYLES.root)}>
+      <div css={css(STYLES.gradient)}></div>
     </div>
   );
 }

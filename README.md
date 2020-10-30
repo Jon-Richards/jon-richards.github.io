@@ -91,7 +91,11 @@ connect them directly to the store.
 The application includes a "lib" directory, intended for code that can be
 used in other projects but is still under active development and not yet
 formalized into a standalone NPM package.  Code in the Lib directory should have
-few to no dependencies, include fairly thorough unit tests, and include runtime validation in the event it is consumed with ECMAScript.
+few to no dependencies, include fairly thorough unit tests, and include runtime
+validation in the event it is consumed with ECMAScript.
+
+### Vendor
+Wrappers for third party libraries.
 
 ### Tests
 Tests are written with Jest and Enzyme.  All layers of the application should

@@ -3,8 +3,8 @@ import { shallow, mount, render } from 'enzyme';
 import { Content } from './content';
 
 describe('The Intro\'s Content component', () => {
-  it('Should match the snaptshot.', () => {
-    const test_1 = shallow(
+  it('Should match the snapshot.', () => {
+    const test_1 = render(
       <Content title="Foo" subtitle="Bar" skills={[]} />
     );
 
@@ -15,8 +15,19 @@ describe('The Intro\'s Content component', () => {
     const test_1 = shallow(
       <Content title="Foo" subtitle="Bar" skills={[]} />
     );
+    const test_2 = shallow(
+      <Content title="Foo" subtitle="Bar"
+        skills={[{
+          uuid: 'abc-123',
+          displayLabel: 'unit testing',
+          isCore: true
+        }]}
+      />
+    );
 
-    expect(test_1.find('.title').contains('Foo')).toBe(true);
-    expect(test_1.find('.subtitle').contains('Bar')).toBe(true);
+    expect(test_1.find('[data-testid="intro_content_skills"]').length)
+        .toBe(0);
+    expect(test_2.find('[data-testid="intro_content_skills"]').length)
+        .toBe(1);
   });
 });

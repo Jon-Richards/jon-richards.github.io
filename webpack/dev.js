@@ -78,6 +78,7 @@ module.exports = env => {
         'Lib': Path.resolve(__dirname, '..', 'dev', 'app', 'lib'),
         'Store': Path.resolve(__dirname, '..', 'dev', 'app', 'store'),
         'Views': Path.resolve(__dirname, '..', 'dev', 'app', 'views'),
+        'Vendor': Path.resolve(__dirname, '..', 'dev', 'app', 'vendor'),
       }
     },
 

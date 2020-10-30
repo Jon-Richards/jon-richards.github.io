@@ -19,12 +19,7 @@ describe('The Intro component.', () => {
       <Intro title="Apple" subtitle="Banana" theme="COPY" skills={[]} />
     );
 
-    expect(test_1.find('.frame').length).toBe(1);
-    expect(test_1.find('.title').text()).toBe('Foo');
-    expect(test_1.find('.subtitle').text()).toBe('Bar');
-
-    expect(test_2.find('.frame').length).toBe(0);
-    expect(test_2.find('.title').text()).toBe('Apple');
-    expect(test_2.find('.subtitle').text()).toBe('Banana');
+    expect(test_1.find('[data-testid="intro_panel"]').length).toBe(1);
+    expect(test_2.find('[data-testid="intro_panel"]').length).toBe(0);
   });
 });

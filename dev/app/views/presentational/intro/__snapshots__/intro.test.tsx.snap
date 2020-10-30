@@ -1,31 +1,208 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Intro component. Should match the snapshot. 1`] = `
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.emotion-6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  width: auto;
+  margin: auto;
+  max-width: 45rem;
+  height: auto;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@media ( min-width:480px) {
+  .emotion-6 {
+    margin: auto 4rem;
+  }
+}
+
+@media (min-width:720px) {
+  .emotion-6 {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.emotion-5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 1px;
+  margin: 0rem;
+  overflow: hidden;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,30%,1), hsla(0,0%,10%,1), hsla(0,0%,17%,1) );
+  box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
+}
+
+.emotion-4 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+@media (min-width:720px) {
+  .emotion-3 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+@media (min-width:480px) {
+  .emotion-2 {
+    width: auto;
+    margin: auto;
+  }
+}
+
+@media (min-width:720px) {
+  .emotion-2 {
+    width: auto;
+  }
+}
+
+.emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.2rem;
+  font-family: "Heebo",sans-serif;
+  font-size: 2.8rem;
+  color: hsla(48,7%,86%,1);
+  line-height: 3.2rem;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: hsla(48,7%,86%,1);
+}
+
 <div
-  class="root"
+  class="emotion-7"
 >
   <div
-    class="wrapper"
+    class="emotion-6"
   >
     <div
-      class="frame"
+      class="emotion-5"
     >
       <div
-        class="content"
+        class="emotion-4"
       >
         <div
-          class="content"
+          class="emotion-3"
         >
           <div
-            class="headline"
+            class="emotion-2"
           >
             <h1
-              class="title"
+              class="emotion-0"
             >
               Foo
             </h1>
             <h2
-              class="subtitle"
+              class="emotion-1"
             >
               Bar
             </h2>

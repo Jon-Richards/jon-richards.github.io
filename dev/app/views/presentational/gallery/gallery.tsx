@@ -1,6 +1,9 @@
-const CSS = require('./gallery.scss');
+/** @jsx jsx */
+
 import * as React from 'react';
+import { css, jsx} from '@emotion/core';
 import { Thumbnail, ThumbnailProps } from './thumbnail';
+import { STYLES } from './styles';
 
 type ThumbnailShape = {
   /** A unique identifier for this thumbnail. */
@@ -71,14 +74,14 @@ function mapThumbnails(
     );
   });
 
-  return <>{mapped}</>;
+  return <React.Fragment>{mapped}</React.Fragment>;
 }
 
 function Gallery (props: GalleryProps): JSX.Element {
   const { thumbnails, thumbnailSize, onClick } = props;
   const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize, onClick);
 
-  return (<div className={CSS['root']}>{mappedThumbs}{mappedThumbs}</div>);
+  return (<div css={css(STYLES.root)}>{mappedThumbs}{mappedThumbs}</div>);
 }
 
 const GALLERY_MEMO = React.memo<GalleryProps>(Gallery);
