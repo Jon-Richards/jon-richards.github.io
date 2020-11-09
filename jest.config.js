@@ -18,5 +18,6 @@ module.exports = {
         "^Store(.*)$": "<rootDir>/dev/app/store$1",
         "^Views(.*)$": "<rootDir>/dev/app/views$1",
         "^Vendor(.*)$": "<rootDir>/dev/app/vendor$1",
+        "^Test(.*)$": "<rootDir>/test$1",
     }
 }

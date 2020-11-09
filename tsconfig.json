@@ -16,6 +16,7 @@
       "Store/*": ["dev/app/store/*"],
       "Views/*": ["dev/app/views/*"],
       "Vendor/*": ["dev/app/vendor/*"],
+      "Test/*": ["test/*"],
     },
   },
   "include": [
