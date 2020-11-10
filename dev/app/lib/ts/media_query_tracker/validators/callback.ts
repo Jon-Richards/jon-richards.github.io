@@ -11,18 +11,16 @@ import {
  */
 export function validateCallback<
   Q extends MQTMediaQuery = MQTMediaQuery
->(callback: MQTCallback<Q>): boolean {
+> (callback: MQTCallback<Q>): boolean {
   let isValid = true;
   try {
     if (typeof callback !== 'function') {
       throw new TypeError('Callback is not a function.');
     }
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     isValid = false;
-  }
-  finally {
+  } finally {
     return isValid;
   }
 }

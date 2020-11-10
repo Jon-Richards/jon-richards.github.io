@@ -5,7 +5,7 @@ describe('BaseColor', () => {
     const col = new BaseColor(1080, 50, 50, 1);
     expect(col.hue).toEqual(0);
   });
-  
+
   it('Sets the saturation to 0 when invalid.', () => {
     const col = new BaseColor(50, 300, 50, 1);
     expect(col.saturation).toEqual(0);

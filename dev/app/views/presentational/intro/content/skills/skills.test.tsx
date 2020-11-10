@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Skills, SkillsProps } from './skills';
 
 const mockSkills: SkillsProps['skills'] = [
@@ -38,8 +38,8 @@ describe('The Skills component.', () => {
     );
 
     expect(test_1.find('[data-testid="intro__content__skills__list"]')
-        .children().length).toBe(3);
+      .children().length).toBe(3);
     expect(test_2.find('[data-testid="intro__content__skills__list"]')
-        .children().length).toBe(0);
+      .children().length).toBe(0);
   });
 });

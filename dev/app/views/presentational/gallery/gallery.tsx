@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import * as React from 'react';
-import { css, jsx} from '@emotion/core';
+import { css, jsx } from '@emotion/core';
 import { Thumbnail, ThumbnailProps } from './thumbnail';
 import { STYLES } from './styles';
 
@@ -39,17 +39,17 @@ function computeThumbnailSource (
   size: ThumbnailSize,
   thumbnail: ThumbnailShape
 ): string {
-  switch(size) {
-    case 'LARGE':
-      return thumbnail.sourceLarge;
-    case 'MEDIUM':
-      return thumbnail.sourceMedium;
-    default:
-      return thumbnail.sourceSmall;
+  switch (size) {
+  case 'LARGE':
+    return thumbnail.sourceLarge;
+  case 'MEDIUM':
+    return thumbnail.sourceMedium;
+  default:
+    return thumbnail.sourceSmall;
   }
 }
 
-function mapThumbnails(
+function mapThumbnails (
   thumbnails: ThumbnailShape[],
   size: ThumbnailSize,
   onClick: GalleryProps['onClick']
@@ -60,10 +60,10 @@ function mapThumbnails(
       uuid,
       href
     } = thumbnail;
-    
+
     const src = computeThumbnailSource(size, thumbnail);
 
-    return(
+    return (
       <Thumbnail
         key={uuid}
         src={src}

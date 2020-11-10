@@ -1,6 +1,6 @@
 import { MQTMediaQuery } from '../interfaces';
 
-function validateQueries(queries: MQTMediaQuery[]): void {
+function validateQueries (queries: MQTMediaQuery[]): void {
   if (!Array.isArray(queries)) {
     throw new TypeError('Queries must be an array.');
   }
@@ -56,17 +56,17 @@ function validateQueryUniqueness (
   }
 }
 
-/** 
+/**
  * Verifies that all MQTMediaQueries in an array meet the requirements for
  * MediaQueryTracker.
  * @param queries An array of MQTMediaQueries to validate.
  * @return True if all validations pass, false if not.
  */
-export function validateMediaQueries(queries: MQTMediaQuery[]): boolean {
+export function validateMediaQueries (queries: MQTMediaQuery[]): boolean {
   let isValid = true;
   try {
     validateQueries(queries);
-    
+
     const validated: MQTMediaQuery[] = [];
     queries.forEach(query => {
       validateQueryUniqueness(validated, query);
@@ -74,12 +74,10 @@ export function validateMediaQueries(queries: MQTMediaQuery[]): boolean {
       validateIdProp(query.id);
       validated.push(query);
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     isValid = false;
-  }
-  finally {
+  } finally {
     return isValid;
   }
 }

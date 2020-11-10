@@ -2,7 +2,7 @@ import { BaseValue } from './base_value';
 
 /** A single color channel. */
 export class Color extends BaseValue {
-  constructor(
+  constructor (
     readonly value: number
   ) {
     super();

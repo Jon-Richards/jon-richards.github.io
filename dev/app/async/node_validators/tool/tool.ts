@@ -3,7 +3,7 @@
  * Contains a class that validates the structure of a tool object from the API.
  */
 
-import { 
+import {
   NodeValidator,
   isURIString,
   isInteger,
@@ -39,12 +39,12 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
   /** Validated data held by this Tool entity. */
   data: ToolResponseData;
 
-  constructor(tool: ToolResponseData) {
+  constructor (tool: ToolResponseData) {
     super();
 
     const id: ToolResponseData['id'] = Number(this.validate(
       'id',
-      String(tool.id), 
+      String(tool.id),
       [isInteger],
       false,
       '0'
@@ -66,7 +66,7 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const filterable_value: ToolResponseData['filterable_value'] = 
+    const filterable_value: ToolResponseData['filterable_value'] =
       this.validate(
         'filterable_value',
         tool.filterable_value,

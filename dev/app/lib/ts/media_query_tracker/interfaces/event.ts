@@ -5,7 +5,7 @@ import { MQTMediaQuery } from './media_query';
  * MediaQueryTracker instance fires.
  */
 export interface MQTEvent<Q extends MQTMediaQuery> {
-  /** 
+  /**
    * The matching MediaQueries for the state of the window object when the
    * event listener's callback was fired.
    */

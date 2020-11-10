@@ -19,7 +19,7 @@ type DispatchProps = Pick<
 
 type ThumbnailSize = GalleryProps['thumbnailSize'];
 
-function convertNullToEmptyString(value: null | string): string {
+function convertNullToEmptyString (value: null | string): string {
   if (value === null) {
     console.error(new TypeError('Invalid thumbnail source.'));
     return '';
@@ -27,7 +27,7 @@ function convertNullToEmptyString(value: null | string): string {
   return value;
 }
 
-function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
+function mapProjectsToThumbnails (projects: Projects): StateProps['thumbnails'] {
   return projects.map(project => {
     const {
       uuid,
@@ -66,14 +66,14 @@ function computeThumbnailSize (queries: MatchingMediaQueries): ThumbnailSize {
   }
 }
 
-function mapStateToProps(state: Store): StateProps {
+function mapStateToProps (state: Store): StateProps {
   return {
     thumbnails: mapProjectsToThumbnails(state.portfolio.projects),
     thumbnailSize: computeThumbnailSize(state.browser.matching_media_queries)
   };
 }
 
-function mapDispatchToProps(): DispatchProps {
+function mapDispatchToProps (): DispatchProps {
   return {
     onClick: (path: string) => setRoute(`/portfolio/${path}`)
   };

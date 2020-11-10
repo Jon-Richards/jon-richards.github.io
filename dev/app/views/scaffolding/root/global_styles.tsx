@@ -6,9 +6,7 @@ import { CSS_RESET } from 'Config/styles/reset';
 import { Fonts } from 'Config/styles/fonts';
 import { Colors } from 'Config/styles/colors';
 
-type Props = React.PropsWithChildren<{}>;
-
-function globalStyles(props: Props): JSX.Element {
+function globalStyles (): JSX.Element {
   return (
     <Global
       styles={css`

@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const Argv = require('yargs').argv;
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 /** Console output settings. */
@@ -17,7 +18,7 @@ const output_stats = {
   version: false,
   modules: false,
   timings: false
-}
+};
 
 
 module.exports = env => {
@@ -110,14 +111,6 @@ module.exports = env => {
           use: [
             {
               loader: 'ts-loader',
-            },
-            {
-              loader: 'tslint-loader',
-              options: {
-                configFile: Path.resolve(__dirname, '..', 'tslint.json'),
-                failtOnHint: true,
-                tsConfigfile: Path.resolve(__dirname, '..', 'tsconfig.json')
-              }
             }
           ]
         },
@@ -133,7 +126,7 @@ module.exports = env => {
                 presets: [
                   '@babel/preset-env',
                   '@babel/preset-react',
-                  {'modules': false}
+                  { 'modules': false }
                 ]
               }
             }
@@ -225,6 +218,11 @@ module.exports = env => {
     }, // end module
 
     plugins: [
+      new ESLintPlugin({
+        extensions: ['.ts', '.tsx'],
+        emitError: true,
+        emitWarning: true
+      }),
       new CleanWebpackPlugin(
         [
           './dist'
@@ -251,6 +249,5 @@ module.exports = env => {
     ],
 
     stats: output_stats
-  }
-
-} // end config
+  };
+}; // end config

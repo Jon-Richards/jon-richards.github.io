@@ -8,14 +8,14 @@
  * will be concatenated to the end of the returned array.
  * @return An array of the specified type.
  */
-export function mockResponseNodes<T>(
+export function mockResponseNodes<T> (
   factory: () => T,
   length = 3,
   include: T | T[] = []
 ): T[] {
   const nodes: T[] = Array
-    .from<typeof length>({length})
-    .map((value, index) => factory());
-  const additions = Array.isArray(include) ? include : [include]; 
+    .from<typeof length>({ length })
+    .map(() => factory());
+  const additions = Array.isArray(include) ? include : [include];
   return [...nodes, ...additions];
 }

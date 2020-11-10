@@ -6,10 +6,10 @@ import { match } from 'path-to-regexp';
 
 type RouteMatch = Store['application']['route'] | false;
 
-/** 
+/**
  * Matches a provided path to one of the routes tracked by this Router
  * instance.
- * 
+ *
  * @param path The path for which to find a matching route.
  * @return Meta data related to the matching route and any params that were
  * passed to it.  If no match is found, returns false.
@@ -17,12 +17,13 @@ type RouteMatch = Store['application']['route'] | false;
 const matchRoute = (path: string): RouteMatch => {
   let result: RouteMatch = false;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (const [key, value] of Object.entries(ROUTES)) {
     const hasMatch = match(value, { decode: decodeURIComponent })(path);
     if (hasMatch) {
       result = {
         path: hasMatch.path,
-        params: hasMatch.params, 
+        params: hasMatch.params,
         schema: value
       };
       break;
@@ -36,12 +37,12 @@ const matchRoute = (path: string): RouteMatch => {
  * Sets a new active route in the Application store.  If the provided path does
  * not match any of the pre-configured routes, it will be replaced with the
  * route corresponding to a 404 error.
- * 
+ *
  * @param path The path to match against a route.
  * @return Dispatches an action to update the active route in the Application
  * store.
  */
-export function setRoute<S = Store>(path: string): ThunkAction<
+export function setRoute<S = Store> (path: string): ThunkAction<
   SetRoute,
   S,
   undefined,
@@ -71,7 +72,7 @@ export function setRoute<S = Store>(path: string): ThunkAction<
         route: result
       });
     }
-    
+
     throw Error('Route could not be resolved.');
   };
 }

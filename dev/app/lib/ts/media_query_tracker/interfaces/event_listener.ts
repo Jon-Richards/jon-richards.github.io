@@ -1,4 +1,4 @@
-/** 
+/**
  * For defining event listeners used by the MediaQueryTracker to re-evaluate its
  * MediaQueries.
  */

@@ -9,7 +9,7 @@ import { mockResponseNodes } from './mock_response_nodes';
  * Generates an object with some calculated property values.
  * @return An object literal with calculated property values.
  */
-function testNodeFactory() {
+function testNodeFactory () {
   const id = Math.ceil(Math.random() * 1000000000);
   return {
     id,
@@ -36,7 +36,7 @@ describe('The mockResponseNodes factory function.', () => {
 
   it('Concatenates additional nodes passed as the third argument.', () => {
     const nodes = mockResponseNodes(
-      testNodeFactory, 
+      testNodeFactory,
       undefined,
       testNodeFactory()
     );

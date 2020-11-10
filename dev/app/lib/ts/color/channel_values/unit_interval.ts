@@ -2,7 +2,7 @@ import { BaseValue } from './base_value';
 
 /** A value ranging from 0 to 1. */
 export class UnitInterval extends BaseValue {
-  constructor(
+  constructor (
     readonly value: number
   ) {
     super();
@@ -10,7 +10,7 @@ export class UnitInterval extends BaseValue {
     this.value = value;
   }
 
-   /** Validates that the value is within acceptable range. */
+  /** Validates that the value is within acceptable range. */
   protected isWithinRange = (int: number): void => {
     if (int < 0 || int > 1) {
       throw RangeError('Unit interval must range from 0 to 1.');

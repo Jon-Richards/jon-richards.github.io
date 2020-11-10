@@ -1,5 +1,5 @@
 import {
-  MediaQueryTracker, 
+  MediaQueryTracker,
   MQTEventListener,
   MQTMediaQuery
 } from './index';
@@ -35,23 +35,23 @@ beforeAll(() => {
 describe('The MediaQueryTracker class.', () => {
   it('Should bind events to the window.', () => {
     const callback = jest.fn();
-    const mqt = new MediaQueryTracker(
-      [{id: 'xs', query: '(min-width: 320px)'}],
+    new MediaQueryTracker(
+      [{ id: 'xs', query: '(min-width: 320px)' }],
       listeners,
       callback
     );
     window.dispatchEvent(testEvent);
-    
+
     expect(callback).toBeCalled();
   });
 
   it('Return only matching media queries.', () => {
     const events: Array<MQTMediaQuery['id']> = [];
-    const mqt = new MediaQueryTracker(
+    new MediaQueryTracker(
       [
-        {id: 'screen', query: 'screen'},
-        {id: '320', query: '(min-width: 320px)'},
-        {id: '720', query: '(min-width: 720px)'},
+        { id: 'screen', query: 'screen' },
+        { id: '320', query: '(min-width: 320px)' },
+        { id: '720', query: '(min-width: 720px)' },
       ],
       listeners,
       (e) => {
@@ -59,7 +59,7 @@ describe('The MediaQueryTracker class.', () => {
       }
     );
     window.dispatchEvent(testEvent);
-    
+
     expect(events[0]).toBe('screen');
     expect(events.length).toBe(2);
   });
@@ -67,8 +67,8 @@ describe('The MediaQueryTracker class.', () => {
   it('Throttles the callback function if called in rapid succession.', () => {
     const callback = jest.fn();
     const testEvent_2 = new Event('test_event_2');
-    const mqt = new MediaQueryTracker(
-      [{id: 'xs', query: '(min-width: 320px)'}],
+    new MediaQueryTracker(
+      [{ id: 'xs', query: '(min-width: 320px)' }],
       [
         {
           event: 'test_event' as unknown as MQTEventListener['event'],
@@ -88,7 +88,7 @@ describe('The MediaQueryTracker class.', () => {
     window.dispatchEvent(testEvent);
     window.dispatchEvent(testEvent);
     window.dispatchEvent(testEvent);
-    
+
     window.dispatchEvent(testEvent_2);
     window.dispatchEvent(testEvent_2);
     window.dispatchEvent(testEvent_2);

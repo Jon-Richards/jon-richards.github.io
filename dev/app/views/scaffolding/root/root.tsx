@@ -22,12 +22,12 @@ type State = {
 };
 
 /**
- * The root of the component tree.   
+ * The root of the component tree.
  * Scaffolds the page, initializes the application once the Store has been
  * created and  coordinates how the overall state of the application displays.
  */
 export class Root extends React.Component<Props, State> {
-  constructor(props: Props) {
+  constructor (props: Props) {
     super(props);
     this.state = {
       status: 'initializing'
@@ -35,23 +35,18 @@ export class Root extends React.Component<Props, State> {
     this.props.initialize();
   }
 
-  /**
-   * Handles status updates from child components and updates the overall.
-   * application state accordingly.
-   */
   updateApplicationState = (status: State['status']): void => {
     this.setState({ status });
   }
 
-  /** Renders the root layout to the DOM. */
-  render(): JSX.Element {
+  render (): JSX.Element {
     return (
       <React.Fragment>
         <GlobalStyles />
         <div css={css(STYLES.root)}>
           <Preloader />
           <Header />
-          <main css={css(STYLES.main)} >
+          <main css={css(STYLES.main)}>
             {(
               this.props.route === ROUTES.home ||
               this.props.route === ROUTES.portfolio_piece

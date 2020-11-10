@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, render } from 'enzyme';
 import { Content } from './content';
 
 describe('The Intro\'s Content component', () => {
@@ -26,8 +26,8 @@ describe('The Intro\'s Content component', () => {
     );
 
     expect(test_1.find('[data-testid="intro_content_skills"]').length)
-        .toBe(0);
+      .toBe(0);
     expect(test_2.find('[data-testid="intro_content_skills"]').length)
-        .toBe(1);
+      .toBe(1);
   });
 });

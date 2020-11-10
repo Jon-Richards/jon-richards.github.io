@@ -1,5 +1,4 @@
 import { Breakpoints } from 'Config/styles/breakpoints';
-import { Colors } from 'Config/styles/colors';
 import { Dimensions } from 'Config/styles/dimensions';
 
 /** Styles for the Thumbnails component. */

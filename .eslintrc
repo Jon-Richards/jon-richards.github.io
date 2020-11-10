@@ -1,0 +1,53 @@
+/**
+ * TODO: Write better rules for JSDoc blocks.  At the time of this writing, I
+ * was unable to find a preset that offered the same granular control as TSLint.
+ */
+
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["jsx-a11y", "@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": ["**/*.md", "**/*.snap"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "google",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "rules": {
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "linebreak-style": "off",
+    "indent": ["error", 2],
+    "object-curly-spacing": ["error", "always"],
+    "comma-dangle": "off",
+    "arrow-parens": "off",
+    "no-unsafe-finally": "off",
+    "valid-jsdoc": "off",
+    "require-jsdoc": "off",
+    "camelcase": "off",
+    "new-cap": "off",
+    "prefer-promise-reject-errors": "off",
+    "no-unused-vars": "off", // see next line
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "max-len": ["error", {
+      "code": 80,
+      "tabWidth": 2,
+      "ignoreUrls": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": false
+    }],
+    "no-invalid-this": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "space-before-function-paren": ["error", "always"]
+  }
+}

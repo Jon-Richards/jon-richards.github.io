@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { shallow, mount, render } from 'enzyme';
-import { Skill, SkillProps } from './skill';
+import { shallow } from 'enzyme';
+import { Skill } from './skill';
 import { v4 as uuid } from 'uuid';
 
 describe('The Skill component.', () => {

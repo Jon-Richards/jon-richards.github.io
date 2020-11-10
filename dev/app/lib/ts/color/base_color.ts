@@ -6,7 +6,7 @@ type ValueKind = typeof Degree | typeof Percentage | typeof UnitInterval;
 
 /** A color object.  If passed invalid values, defaults to black. */
 export class BaseColor {
-  constructor(
+  constructor (
     readonly hue: number,
     readonly saturation: number,
     readonly lightness: number,
@@ -18,32 +18,30 @@ export class BaseColor {
     this.alpha = this.assignValue(alpha, UnitInterval);
   }
 
-  private assignValue(
+  private assignValue (
     value: number,
     kind: ValueKind,
   ): number {
     let result = this.computeDefaultValue(kind);
     try {
       result = new kind(value).value;
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
-    }
-    finally {
+    } finally {
       return result;
     }
   }
 
-  private computeDefaultValue(kind: ValueKind): number {
+  private computeDefaultValue (kind: ValueKind): number {
     switch (kind) {
-      case Degree:
-        return 0;
-      case Percentage:
-        return 0;
-      case UnitInterval:
-        return 1;
-      default:
-        return 0;
+    case Degree:
+      return 0;
+    case Percentage:
+      return 0;
+    case UnitInterval:
+      return 1;
+    default:
+      return 0;
     }
   }
 }

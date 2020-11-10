@@ -25,18 +25,18 @@ export const APPLICATION_REDUCER: Reducer<
   },
   action
 ) => {
-  switch(action.type) {
-    case 'APPLICATION__UPDATE_STATUS':
-      return {
-        ...state,
-        status: action.status
-      };
-    case 'APPLICATION__SET_ROUTE':
-      return {
-        ...state,
-        route: action.route
-      };
-    default:
-      return state;
+  switch (action.type) {
+  case 'APPLICATION__UPDATE_STATUS':
+    return {
+      ...state,
+      status: action.status
+    };
+  case 'APPLICATION__SET_ROUTE':
+    return {
+      ...state,
+      route: action.route
+    };
+  default:
+    return state;
   }
 };

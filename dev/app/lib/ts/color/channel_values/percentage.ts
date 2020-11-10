@@ -2,7 +2,7 @@ import { BaseValue } from './base_value';
 
 /** A percentage value.. */
 export class Percentage extends BaseValue {
-  constructor(
+  constructor (
     readonly value: number
   ) {
     super();

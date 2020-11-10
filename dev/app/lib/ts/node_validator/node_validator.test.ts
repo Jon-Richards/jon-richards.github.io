@@ -17,7 +17,7 @@ interface MockResponseData {
  * each property passed into the constructor.
  */
 class MockNode extends NodeValidator<MockResponseData> {
-  constructor(
+  constructor (
     readonly index: MockResponseData['index'],
     readonly foo: MockResponseData['foo'],
     readonly age: MockResponseData['age'],
@@ -43,13 +43,13 @@ class MockNode extends NodeValidator<MockResponseData> {
   }
 
   /** Removes a provided error by property name. */
-  clearError(name: keyof MockResponseData) {
+  clearError (name: keyof MockResponseData) {
     this.removeError(name);
   }
 }
 
 /** Builds a simple MockNode instance for testing. */
-function buildMockNode(): MockNode {
+function buildMockNode (): MockNode {
   return new MockNode(
     'abc' as unknown as number,
     (1 as unknown) as string,
@@ -110,11 +110,11 @@ describe('The NodeValidator class.', () => {
   });
 
   it(
-    'Should auto-populate error text when the validate method is called.', 
+    'Should auto-populate error text when the validate method is called.',
     () => {
       const node = buildMockNode();
       const reasons = node.getErrors().get('index');
-      if (reasons) { 
+      if (reasons) {
         expect(reasons.values().next().value)
           .toBe('Failed on validator: isInteger');
       }

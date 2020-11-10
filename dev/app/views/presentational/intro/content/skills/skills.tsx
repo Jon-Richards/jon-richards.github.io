@@ -12,9 +12,9 @@ type SkillsProps = {
 
 /**
  * Renders a filterable list of skills.
- * 
+ *
  * __NOTE:__  At the time of this writing, filtering happens automatically based
- * on the isCore property for each skill. 
+ * on the isCore property for each skill.
  *
  * @example
  * <Skills
@@ -40,7 +40,7 @@ function Skills (props: SkillsProps): JSX.Element {
   );
 }
 
-function mapSkills(skills: SkillProps[]): React.ReactFragment {
+function mapSkills (skills: SkillProps[]): React.ReactFragment {
   if (skills.length) {
     return skills.map(skill => (
       <li key={skill.uuid}>

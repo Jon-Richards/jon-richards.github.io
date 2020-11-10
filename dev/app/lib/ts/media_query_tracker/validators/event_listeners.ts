@@ -1,6 +1,6 @@
 import { MQTEventListener } from '../interfaces';
 
-function validateEvent(identifier: keyof WindowEventMap): void {
+function validateEvent (identifier: keyof WindowEventMap): void {
   if (typeof identifier !== 'string') {
     throw new TypeError('Event identifier must be a string.');
   }
@@ -9,7 +9,7 @@ function validateEvent(identifier: keyof WindowEventMap): void {
   }
 }
 
-function validateThrottle(rate: MQTEventListener['throttle']): void {
+function validateThrottle (rate: MQTEventListener['throttle']): void {
   if (typeof rate !== 'number') {
     throw new TypeError('Throttle must be a number.');
   }
@@ -38,7 +38,9 @@ function validateUniqueness (
  * @param listeners An array of MQTEventListeners to validate.
  * @return True if all validations pass, false if not.
  */
-export function validateEventListeners(listeners: MQTEventListener[]): boolean {
+export function validateEventListeners (
+  listeners: MQTEventListener[]
+): boolean {
   let isValid = true;
   try {
     if (!Array.isArray(listeners)) {
@@ -48,15 +50,13 @@ export function validateEventListeners(listeners: MQTEventListener[]): boolean {
     listeners.forEach(listener => {
       validateUniqueness(validated, listener);
       validateEvent(listener.event);
-      validateThrottle(listener.throttle);  
+      validateThrottle(listener.throttle);
       validated.push(listener);
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
     isValid = false;
-  }
-  finally {
+  } finally {
     return isValid;
   }
 }

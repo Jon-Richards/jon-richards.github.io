@@ -15,17 +15,17 @@ type DefaultState = typeof defaultState;
 
 const middlewres = [thunk];
 const mockStore = configureStore<
-  DefaultState, 
+  DefaultState,
   ThunkDispatch<DefaultState, undefined, SetRoute>
 >(middlewres);
 
 describe('The setRoute action creator.', () => {
   it('Matches a given path to its corresponding route.', () => {
     const store = mockStore(defaultState);
-    
-    store.dispatch(setRoute<DefaultState>("/"));
-    store.dispatch(setRoute<DefaultState>("/error/500"));
-    
+
+    store.dispatch(setRoute<DefaultState>('/'));
+    store.dispatch(setRoute<DefaultState>('/error/500'));
+
     expect(store.getActions()).toEqual([
       {
         type: 'APPLICATION__SET_ROUTE',
@@ -50,10 +50,10 @@ describe('The setRoute action creator.', () => {
 
   it('Replaces invalid routes with a route to the 404 error page.', () => {
     const store = mockStore(defaultState);
-    
-    store.dispatch(setRoute<DefaultState>("/ice-cream/banana"));
-    store.dispatch(setRoute<DefaultState>("/resume"));
-    
+
+    store.dispatch(setRoute<DefaultState>('/ice-cream/banana'));
+    store.dispatch(setRoute<DefaultState>('/resume'));
+
     expect(store.getActions()).toEqual([
       {
         type: 'APPLICATION__SET_ROUTE',

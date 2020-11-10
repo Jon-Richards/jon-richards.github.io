@@ -5,7 +5,7 @@ import {
   MQTEvent,
   MQTCallback
 } from './interfaces';
-import { 
+import {
   validateEventListeners,
   validateMediaQueries,
   validateCallback
@@ -30,7 +30,7 @@ export class MediaQueryTracker<Q extends MQTMediaQuery = MQTMediaQuery> {
     mediaQueries: Q[],
     /** Window events on which the supplied MediaQueries should be evaluated. */
     listeners: MQTEventListener[] | null = null,
-    /** 
+    /**
      * Callback function that will be invoked when any of the listeners from the
      * previous argument fire.
      */
@@ -55,20 +55,20 @@ export class MediaQueryTracker<Q extends MQTMediaQuery = MQTMediaQuery> {
     }
   }
 
-  private addEventListeners(): void {
+  private addEventListeners (): void {
     if (this.inWindow) {
       this.listeners.forEach(listener => {
         window.addEventListener(
           listener.event,
           throttle(this.handleWindowEvent.bind(this), listener.throttle),
-          {capture: false}
+          { capture: false }
         );
       });
     }
   }
 
-  private handleWindowEvent(e: MQTEvent<Q>['event']): void {
-    this.callback({matches: this.getMatches(), event: e});
+  private handleWindowEvent (e: MQTEvent<Q>['event']): void {
+    this.callback({ matches: this.getMatches(), event: e });
   }
 
   /**
@@ -76,7 +76,7 @@ export class MediaQueryTracker<Q extends MQTMediaQuery = MQTMediaQuery> {
    * match the current state of the window object.
    * @return The MQTMediaQueries that evaluate to true.
    */
-  getMatches(): Q[] {
+  getMatches (): Q[] {
     const matches: Q[] = [];
     if (this.inWindow === true) {
       this.queries.forEach(query => {

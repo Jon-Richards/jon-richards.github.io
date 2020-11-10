@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { BrowserStore } from './store';
 
-/** 
+/**
  * Updates the list of media queries that match the current runtime environment.
  */
 export interface UpdateMatchingMediaQueries extends Action<
@@ -18,7 +18,7 @@ export interface UpdateMatchingMediaQueries extends Action<
 export interface SetPossibleMediaQueries extends Action<
   'BROWSER__SET_POSSIBLE_MEDIA_QUERIES'
 > {
-  /** 
+  /**
    * A list of possible media queries that the application can test against
    * the current environment.
    */

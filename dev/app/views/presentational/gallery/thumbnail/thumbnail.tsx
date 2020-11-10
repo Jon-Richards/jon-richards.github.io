@@ -35,14 +35,13 @@ function Thumbnail (props: ThumbnailProps): JSX.Element {
     >
       <Panel>
         <figure
-          role="button"
           aria-label="thumbnail"
           css={css(STYLES.figure)}
         >
           <img css={css(STYLES.image)} src={src} alt={altText} />
           <figcaption css={css(STYLES.caption)}>{altText}</figcaption>
         </figure>
-      </Panel>  
+      </Panel>
     </a>
   );
 }

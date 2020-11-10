@@ -4,7 +4,7 @@
  * from the API.
  */
 
-import { 
+import {
   NodeValidator,
   isURIString,
   isUUID,
@@ -43,7 +43,10 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
   /** Stores the data related to this project. */
   readonly data: ProjectResponseData;
 
-  constructor(project: ProjectResponseData) {
+  /**
+   * @param project The response data to validate.
+   */
+  constructor (project: ProjectResponseData) {
     super();
 
     const id = Number(this.validate(
@@ -110,11 +113,9 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const tools = Array.isArray(project.tools)
-      ? project.tools
-          .map(tool => this.validate('tools', tool, [notEmpty], false, ''))
-          .filter(tool => typeof tool === 'string' && notEmpty(tool))
-      : [];
+    const tools = Array.isArray(project.tools) ? project.tools
+      .map(tool => this.validate('tools', tool, [notEmpty], false, ''))
+      .filter(tool => typeof tool === 'string' && notEmpty(tool)) : [];
 
     this.data = {
       id,

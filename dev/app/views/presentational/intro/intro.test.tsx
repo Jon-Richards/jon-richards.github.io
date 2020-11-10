@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { mount, render } from 'enzyme';
 import { Intro } from './intro';
 
 describe('The Intro component.', () => {

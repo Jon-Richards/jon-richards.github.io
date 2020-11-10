@@ -32,7 +32,7 @@ type Tool = {
   filterable_value: string,
   /** URL safe string for the tool's logo. */
   logo: string,
-  /** 
+  /**
    * If this tool is considered a "core skill", something employers would look
    * for explicitly.
    */

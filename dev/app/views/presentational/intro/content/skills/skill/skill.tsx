@@ -43,4 +43,4 @@ function Skill (props: SkillProps): JSX.Element {
 
 const skillMemo = React.memo<SkillProps>(Skill);
 
-export {skillMemo as Skill, SkillProps};
+export { skillMemo as Skill, SkillProps };

@@ -1,6 +1,6 @@
 export { NodeValidator } from './node_validator';
 
-export { 
+export {
   isUUID,
   isURIString,
   isInteger,

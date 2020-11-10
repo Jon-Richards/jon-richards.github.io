@@ -2,7 +2,7 @@ import { BaseValue } from './base_value';
 
 /** A value in geometric degrees. */
 export class Degree extends BaseValue {
-  constructor(
+  constructor (
     readonly value: number
   ) {
     super();

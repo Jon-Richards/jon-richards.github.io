@@ -14,7 +14,7 @@ type StateProps = Pick<
   | 'title'
 >;
 
-function mapToolsToSkills(tools: Tools): StateProps['skills'] {
+function mapToolsToSkills (tools: Tools): StateProps['skills'] {
   return tools.map(tool => (
     {
       displayLabel: tool.display_title,
@@ -24,7 +24,7 @@ function mapToolsToSkills(tools: Tools): StateProps['skills'] {
   ));
 }
 
-function resolveIntroTheme(
+function resolveIntroTheme (
   matchingMediaQueries: MatchingMediaQueries
 ): StateProps['theme'] {
   const queries = matchingMediaQueries.map(query => query.id);
@@ -35,7 +35,7 @@ function resolveIntroTheme(
   }
 }
 
-function mapStateToProps(state: Store): StateProps {
+function mapStateToProps (state: Store): StateProps {
   return {
     title: <>Jon<br />Richards</>,
     subtitle: 'Front-end Engineer',

@@ -14,23 +14,23 @@ export const BROWSER_REDUCER: Reducer<
 > = (
   state = {
     possible_media_queries: [
-      {id: '375', query: '(min-width: 375px)'},
-      {id: '480', query: '(min-width: 480px)'},
-      {id: '720', query: '(min-width: 720px)'},
-      {id: '1080', query: '(min-width: 1080px)'},
-      {id: '1440', query: '(min-width: 1440px)'}
+      { id: '375', query: '(min-width: 375px)' },
+      { id: '480', query: '(min-width: 480px)' },
+      { id: '720', query: '(min-width: 720px)' },
+      { id: '1080', query: '(min-width: 1080px)' },
+      { id: '1440', query: '(min-width: 1440px)' }
     ],
     matching_media_queries: []
   },
   action
 ) => {
-  switch(action.type) {
-    case 'BROWSER__UPDATE_MATCHING_MEDIA_QUERIES':
-      return {
-        ...state,
-        matching_media_queries: action.matches
-      };
-    default:
-      return state;
+  switch (action.type) {
+  case 'BROWSER__UPDATE_MATCHING_MEDIA_QUERIES':
+    return {
+      ...state,
+      matching_media_queries: action.matches
+    };
+  default:
+    return state;
   }
 };

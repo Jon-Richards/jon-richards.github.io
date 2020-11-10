@@ -5,7 +5,7 @@ import {
   notEmpty,
   isBoolean
 } from './validators';
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 describe('The notEmpty validation function:', () => {
   it('Returns true when the supplied with at least one character.', () => {
@@ -63,9 +63,9 @@ describe('The isNumber validation function:', () => {
     expect(isInteger('123')).toBe(true);
     expect(isInteger('-123')).toBe(true);
   });
-  
+
   it(
-    'Returns false when the suppliedargument cannot convert to integer.', 
+    'Returns false when the suppliedargument cannot convert to integer.',
     () =>{
       expect(isInteger('123.4')).toBe(false);
       expect(isInteger('abc123.4')).toBe(false);
@@ -81,7 +81,7 @@ describe('The isBoolean validation function:', () => {
     expect(isBoolean('true')).toBe(true);
     expect(isBoolean('false')).toBe(true);
   });
-  
+
   it('Should return false when supplied with a "truthy" boolean.', () => {
     expect(isBoolean('0')).toBe(false);
     expect(isBoolean('null')).toBe(false);

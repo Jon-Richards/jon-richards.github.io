@@ -3,7 +3,7 @@
  * Conatins a class that validates a response from the Overview endpoint.
  */
 
-import { 
+import {
   NodeValidator,
   filterByDuplicateProperty
 } from '../../../lib/ts/node_validator';
@@ -22,8 +22,8 @@ export interface OverviewResponseData {
 export class OverviewValidator extends NodeValidator<OverviewResponseData> {
   /** The validated node data. */
   readonly data: OverviewResponseData;
-  
-  constructor(responseBody: OverviewResponseData) {
+
+  constructor (responseBody: OverviewResponseData) {
     super();
     this.data = {
       projects: this.validateProjects(responseBody.projects),
@@ -39,7 +39,7 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
    * @return An array of project data that has been validated within the context
    * of other projects.
    */
-  private validateProjects(
+  private validateProjects (
     projectsBody: ProjectResponseData[]
   ): OverviewResponseData['projects'] {
     const mappedProjects = projectsBody.map(project => {
@@ -50,7 +50,7 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
     });
     const uniqueProjects = filterByDuplicateProperty(
       validProjects,
-      project => project.data.uuid, 
+      project => project.data.uuid,
       project => this.handleDuplicateProject(project)
     );
     return uniqueProjects.map(project => project.data);
@@ -60,7 +60,7 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
    * Handles error registration when a duplicate project is found.
    * @param project The project that was a duplicate.
    */
-  private handleDuplicateProject(project: ProjectValidator): void {
+  private handleDuplicateProject (project: ProjectValidator): void {
     if (process.env.NODE_ENV !== 'test') {
       console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`);
     }
@@ -75,13 +75,13 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
    * @return An array of tool data that has been validated within the context
    * of other tools.
    */
-  private validateTools(
+  private validateTools (
     toolsBody: ToolResponseData[]
   ): OverviewResponseData['tools'] {
     const mappedTools = toolsBody.map(tool => new ToolValidator(tool));
     const validTools = mappedTools.filter(tool => tool.getErrors().size === 0);
     const uniqueTools = filterByDuplicateProperty(
-      validTools, 
+      validTools,
       tool => tool.data.uuid,
       tool => this.handleDuplicateTool(tool)
     );
@@ -92,7 +92,7 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
    * Handles error registration when a duplicate tool is found.
    * @param tool The tool that was a duplicate.
    */
-  private handleDuplicateTool(tool: ToolValidator): void {
+  private handleDuplicateTool (tool: ToolValidator): void {
     if (process.env.NODE_ENV !== 'test') {
       console.warn(`Found duplicate tool with uuid: ${tool.data.uuid}.`);
     }

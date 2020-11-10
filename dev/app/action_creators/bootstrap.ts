@@ -13,14 +13,14 @@ import { UpdateMatchingMediaQueries } from '../store/browser';
 import { MediaQuery } from 'Config/media_queries';
 import { setRoute } from './set_route';
 
-function updateStatus(): UpdateStatus {
+function updateStatus (): UpdateStatus {
   return {
     type: 'APPLICATION__UPDATE_STATUS',
     status: 'ready'
   };
 }
 
-function publishPortfolio(
+function publishPortfolio (
   projects: PublishPortfolio['projects'],
   tools: PublishPortfolio['tools']
 ): PublishPortfolio {
@@ -31,7 +31,7 @@ function publishPortfolio(
   };
 }
 
-function updateMatchingMediaQueries(
+function updateMatchingMediaQueries (
   matches: UpdateMatchingMediaQueries['matches']
 ): UpdateMatchingMediaQueries {
   return {
@@ -59,34 +59,33 @@ function trackMediaQueries (
   return new MediaQueryTracker(
     queries,
     [
-      {event: 'load', throttle: 0},
-      {event: 'resize', throttle: 500},
-      {event: 'orientationchange', throttle: 500}
+      { event: 'load', throttle: 0 },
+      { event: 'resize', throttle: 500 },
+      { event: 'orientationchange', throttle: 500 }
     ],
     (e) => dispatch(updateMatchingMediaQueries(e.matches))
   );
 }
 
 /** Coordinates bootstrapping the application. */
-export function bootstrap(): ThunkAction<
+export function bootstrap (): ThunkAction<
   Promise<UpdateStatus | void> | void,
   Store,
   undefined,
   | PublishPortfolio
   | UpdateStatus
-> {
+  > {
   return (dispatch, getState) => {
-
     trackMediaQueries(dispatch, getState().browser.possible_media_queries);
     dispatch(setRoute(window.location.pathname));
 
     return new Promise((resolve, reject) => {
       getOverview()
-      .then((resp => {
-        if (resp.getErrors().size > 0) reject('Invalid Overview data.');
-        const {projects, tools} = resp.data;
-        return dispatch(publishPortfolio(projects, tools));
-      }));
+        .then((resp => {
+          if (resp.getErrors().size > 0) reject('Invalid Overview data.');
+          const { projects, tools } = resp.data;
+          return dispatch(publishPortfolio(projects, tools));
+        }));
       resolve();
     }).then(() => {
       return dispatch(updateStatus());

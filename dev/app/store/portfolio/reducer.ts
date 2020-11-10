@@ -25,14 +25,14 @@ export const PORTFOLIO_REDUCER: Reducer<
 ) => {
   if (action) {
     switch (action.type) {
-      case 'PORTFOLIO__PUBLISH_PORTFOLIO':
-        return {
-          ...state,
-          projects: action.projects,
-          tools: action.tools
-        };
-      default:
-        return state;
+    case 'PORTFOLIO__PUBLISH_PORTFOLIO':
+      return {
+        ...state,
+        projects: action.projects,
+        tools: action.tools
+      };
+    default:
+      return state;
     }
   }
 

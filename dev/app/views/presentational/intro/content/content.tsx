@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { css, jsx } from '@emotion/core';
 import { STYLES } from './styles';
-import { Skills, SkillsProps} from './skills';
+import { Skills, SkillsProps } from './skills';
 
 type ContentProps = {
   /** The intro title. */
@@ -15,8 +15,8 @@ type ContentProps = {
 };
 
 /** Renders the content for the intro section. */
-function Content(props: ContentProps) {
-  const { 
+function Content (props: ContentProps) {
+  const {
     title,
     subtitle,
     skills,
