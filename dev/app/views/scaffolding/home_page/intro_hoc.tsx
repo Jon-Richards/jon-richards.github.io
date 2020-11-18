@@ -6,25 +6,17 @@ import { Store } from 'Store/index';
 type Tools = Store['portfolio']['tools'];
 type MatchingMediaQueries = Store['browser']['matching_media_queries'];
 
-type StateProps = Pick<
-  IntroProps,
-  | 'skills'
-  | 'subtitle'
-  | 'theme'
-  | 'title'
->;
+type StateProps = Pick<IntroProps, 'skills' | 'subtitle' | 'theme' | 'title'>;
 
-function mapToolsToSkills (tools: Tools): StateProps['skills'] {
-  return tools.map(tool => (
-    {
-      displayLabel: tool.display_title,
-      uuid: tool.uuid,
-      isCore: tool.is_core
-    }
-  ));
+function mapToolsToSkills(tools: Tools): StateProps['skills'] {
+  return tools.map(tool => ({
+    displayLabel: tool.display_title,
+    uuid: tool.uuid,
+    isCore: tool.is_core,
+  }));
 }
 
-function resolveIntroTheme (
+function resolveIntroTheme(
   matchingMediaQueries: MatchingMediaQueries
 ): StateProps['theme'] {
   const queries = matchingMediaQueries.map(query => query.id);
@@ -35,12 +27,18 @@ function resolveIntroTheme (
   }
 }
 
-function mapStateToProps (state: Store): StateProps {
+function mapStateToProps(state: Store): StateProps {
   return {
-    title: <>Jon<br />Richards</>,
+    title: (
+      <>
+        Jon
+        <br />
+        Richards
+      </>
+    ),
     subtitle: 'Front-end Engineer',
     skills: mapToolsToSkills(state.portfolio.tools),
-    theme: resolveIntroTheme(state.browser.matching_media_queries)
+    theme: resolveIntroTheme(state.browser.matching_media_queries),
   };
 }
 

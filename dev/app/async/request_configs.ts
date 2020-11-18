@@ -8,7 +8,7 @@
  * Defaults to `"Content-Type": "application/json"`.
  * @return A configured RequestInit object.
  */
-export function setRequestOptions (
+export function setRequestOptions(
   method: RequestInit['method'],
   body: RequestInit['body'] = undefined,
   headers: RequestInit['headers'] = { 'Content-Type': 'application/json' }

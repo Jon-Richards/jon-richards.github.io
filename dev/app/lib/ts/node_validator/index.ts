@@ -5,9 +5,7 @@ export {
   isURIString,
   isInteger,
   notEmpty,
-  isBoolean
+  isBoolean,
 } from './validators';
 
-export {
-  filterByDuplicateProperty
-} from './filters';
+export { filterByDuplicateProperty } from './filters';

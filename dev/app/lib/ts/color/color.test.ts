@@ -3,21 +3,33 @@ import { Color } from './color';
 describe('Color', () => {
   it('Accepts hue, saturation, lightness, and alpha values.', () => {
     const col = new Color(20, 30, 40, 0.5);
-    expect(col.value())
-      .toEqual({ hue: 20, saturation: 30, lightness: 40, alpha: 0.5 });
+    expect(col.value()).toEqual({
+      hue: 20,
+      saturation: 30,
+      lightness: 40,
+      alpha: 0.5,
+    });
   });
 
   it('Defaults the alpha value to 1 if not provided.', () => {
     const col = new Color(20, 30, 40);
-    expect(col.value())
-      .toEqual({ hue: 20, saturation: 30, lightness: 40, alpha: 1 });
+    expect(col.value()).toEqual({
+      hue: 20,
+      saturation: 30,
+      lightness: 40,
+      alpha: 1,
+    });
   });
 
   describe('#value', () => {
     it('Returns an object with the hsla value of the color.', () => {
       const col = new Color(20, 20, 20, 1);
-      expect(col.value())
-        .toEqual({ hue: 20, saturation: 20, lightness: 20, alpha: 1 });
+      expect(col.value()).toEqual({
+        hue: 20,
+        saturation: 20,
+        lightness: 20,
+        alpha: 1,
+      });
     });
   });
 

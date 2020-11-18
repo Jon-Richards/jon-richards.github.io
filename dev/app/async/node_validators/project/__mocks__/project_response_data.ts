@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
  * fields of which will appear in the return value.
  * @return A valid ProjectResponseData type.
  */
-export function projectResponseData (
+export function projectResponseData(
   data: Partial<ProjectResponseData> = {}
 ): ProjectResponseData {
   const stubUUID = uuid();
@@ -23,6 +23,6 @@ export function projectResponseData (
     thumb_device_medium: null,
     thumb_device_large: null,
     tools: [],
-    ...data
+    ...data,
   };
 }

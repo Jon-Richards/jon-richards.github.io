@@ -33,5 +33,5 @@ export const STYLES = {
       ${Colors.SWATCH_1.value},
       ${Colors.SWATCH_1.withLightness(8).value}
     );
-  `
+  `,
 };

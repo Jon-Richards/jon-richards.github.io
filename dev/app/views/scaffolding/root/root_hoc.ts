@@ -6,15 +6,15 @@ import { Store } from 'Store/index';
 type StateProps = Pick<Root['props'], 'route'>;
 type DispatchableProps = Pick<Root['props'], 'initialize'>;
 
-function mapStateToProps (state: Store): StateProps {
+function mapStateToProps(state: Store): StateProps {
   return {
-    route: state.application.route.schema
+    route: state.application.route.schema,
   };
 }
 
-function mapDispatchToProps (): DispatchableProps {
+function mapDispatchToProps(): DispatchableProps {
   return {
-    initialize: () => bootstrap()
+    initialize: () => bootstrap(),
   };
 }
 

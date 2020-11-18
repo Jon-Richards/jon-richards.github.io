@@ -5,7 +5,7 @@
 
 import { Reducer } from 'redux';
 import { PortfolioStore } from './interfaces/store';
-import { PublishPortfolio, } from './interfaces/actions';
+import { PublishPortfolio } from './interfaces/actions';
 
 /**
  * The Redux reducer for the Portfolio store.  If no params are supplied, a
@@ -13,13 +13,10 @@ import { PublishPortfolio, } from './interfaces/actions';
  * @param state An object representing the current state of the Portfolio store.
  * @param action An action creator for updating the supplied state.
  */
-export const PORTFOLIO_REDUCER: Reducer<
-  PortfolioStore,
-  PublishPortfolio
-> = (
+export const PORTFOLIO_REDUCER: Reducer<PortfolioStore, PublishPortfolio> = (
   state = {
     projects: [],
-    tools: []
+    tools: [],
   },
   action
 ) => {
@@ -29,7 +26,7 @@ export const PORTFOLIO_REDUCER: Reducer<
       return {
         ...state,
         projects: action.projects,
-        tools: action.tools
+        tools: action.tools,
       };
     default:
       return state;

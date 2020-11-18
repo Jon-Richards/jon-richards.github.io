@@ -12,7 +12,7 @@ import * as isValidUUID from 'validator/lib/isUUID';
  * Checks if a value is empty.
  * @return true if the value is not empty, false if it is.
  */
-export function notEmpty (val: string): boolean {
+export function notEmpty(val: string): boolean {
   return !isEmpty(val);
 }
 
@@ -20,7 +20,7 @@ export function notEmpty (val: string): boolean {
  * Checks if a value is a valid version 4 UUID.
  * @return true if the value is a valid UUID else false.
  */
-export function isUUID (val: string): boolean {
+export function isUUID(val: string): boolean {
   return isValidUUID(val, 4);
 }
 
@@ -28,7 +28,7 @@ export function isUUID (val: string): boolean {
  * Checks if a value is a URI safe string.
  * @return true if the value is a URI safe string, esle false.
  */
-export function isURIString (val: string): boolean {
+export function isURIString(val: string): boolean {
   return isURL(val, {
     require_host: false,
     require_protocol: false,
@@ -42,7 +42,7 @@ export function isURIString (val: string): boolean {
  * Checks if a value is a valid number.
  * @return true if the value is a valid number, else false.
  */
-export function isInteger (val: string): boolean {
+export function isInteger(val: string): boolean {
   return isInt(val, { allow_leading_zeroes: false });
 }
 
@@ -52,6 +52,6 @@ export function isInteger (val: string): boolean {
  * @param val The value being evaluated.
  * @return true if the value is a valid boolean, else false.
  */
-export function isBoolean (val: string): boolean {
+export function isBoolean(val: string): boolean {
   return val === 'true' || val === 'false';
 }

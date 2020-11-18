@@ -9,7 +9,7 @@ import {
   isURIString,
   isUUID,
   notEmpty,
-  isInteger
+  isInteger,
 } from '../../../lib/ts/node_validator';
 
 /** Shape of a single portfolio project JSON node as recieved by the API. */
@@ -46,16 +46,18 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
   /**
    * @param project The response data to validate.
    */
-  constructor (project: ProjectResponseData) {
+  constructor(project: ProjectResponseData) {
     super();
 
-    const id = Number(this.validate(
-      'id',
-      String(project.id),
-      [notEmpty, isInteger],
-      false,
-      '-1'
-    ));
+    const id = Number(
+      this.validate(
+        'id',
+        String(project.id),
+        [notEmpty, isInteger],
+        false,
+        '-1'
+      ),
+    );
 
     const uuid = this.validate(
       'uuid',
@@ -113,9 +115,11 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const tools = Array.isArray(project.tools) ? project.tools
-      .map(tool => this.validate('tools', tool, [notEmpty], false, ''))
-      .filter(tool => typeof tool === 'string' && notEmpty(tool)) : [];
+    const tools = Array.isArray(project.tools)
+      ? project.tools
+        .map(tool => this.validate('tools', tool, [notEmpty], false, ''))
+        .filter(tool => typeof tool === 'string' && notEmpty(tool))
+      : [];
 
     this.data = {
       id,

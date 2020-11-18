@@ -9,7 +9,7 @@ import {
   isInteger,
   isUUID,
   notEmpty,
-  isBoolean
+  isBoolean,
 } from '../../../lib/ts/node_validator';
 
 /** Shape of a single tool node as recieved by the API. */
@@ -39,16 +39,12 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
   /** Validated data held by this Tool entity. */
   data: ToolResponseData;
 
-  constructor (tool: ToolResponseData) {
+  constructor(tool: ToolResponseData) {
     super();
 
-    const id: ToolResponseData['id'] = Number(this.validate(
-      'id',
-      String(tool.id),
-      [isInteger],
-      false,
-      '0'
-    ));
+    const id: ToolResponseData['id'] = Number(
+      this.validate('id', String(tool.id), [isInteger], false, '0'),
+    );
 
     const uuid: ToolResponseData['uuid'] = this.validate(
       'uuid',
@@ -66,14 +62,13 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const filterable_value: ToolResponseData['filterable_value'] =
-      this.validate(
-        'filterable_value',
-        tool.filterable_value,
-        [notEmpty, isURIString],
-        false,
-        ''
-      );
+    const filterable_value: ToolResponseData['filterable_value'] = this.validate(
+      'filterable_value',
+      tool.filterable_value,
+      [notEmpty, isURIString],
+      false,
+      ''
+    );
 
     const logo: ToolResponseData['logo'] = this.validate(
       'logo',
@@ -83,13 +78,9 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       ''
     );
 
-    const is_core: ToolResponseData['is_core'] = Boolean(this.validate(
-      'is_core',
-      String(tool.is_core),
-      [isBoolean],
-      false,
-      ''
-    ));
+    const is_core: ToolResponseData['is_core'] = Boolean(
+      this.validate('is_core', String(tool.is_core), [isBoolean], false, ''),
+    );
 
     this.data = {
       id,
@@ -97,7 +88,7 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       display_title,
       filterable_value,
       logo,
-      is_core
+      is_core,
     };
   }
 }

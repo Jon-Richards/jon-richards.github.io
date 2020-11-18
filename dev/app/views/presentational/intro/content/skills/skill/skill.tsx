@@ -28,7 +28,7 @@ type SkillProps = {
  *      }}
  * />
  */
-function Skill (props: SkillProps): JSX.Element {
+function Skill(props: SkillProps): JSX.Element {
   const { displayLabel, isCore } = props;
 
   return (

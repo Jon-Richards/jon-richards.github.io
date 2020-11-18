@@ -10,7 +10,7 @@ import { UpdateMatchingMediaQueries } from './interfaces/actions';
  */
 export const BROWSER_REDUCER: Reducer<
   BrowserStore,
-  | UpdateMatchingMediaQueries
+  UpdateMatchingMediaQueries
 > = (
   state = {
     possible_media_queries: [
@@ -18,9 +18,9 @@ export const BROWSER_REDUCER: Reducer<
       { id: '480', query: '(min-width: 480px)' },
       { id: '720', query: '(min-width: 720px)' },
       { id: '1080', query: '(min-width: 1080px)' },
-      { id: '1440', query: '(min-width: 1440px)' }
+      { id: '1440', query: '(min-width: 1440px)' },
     ],
-    matching_media_queries: []
+    matching_media_queries: [],
   },
   action
 ) => {
@@ -28,7 +28,7 @@ export const BROWSER_REDUCER: Reducer<
   case 'BROWSER__UPDATE_MATCHING_MEDIA_QUERIES':
     return {
       ...state,
-      matching_media_queries: action.matches
+      matching_media_queries: action.matches,
     };
   default:
     return state;

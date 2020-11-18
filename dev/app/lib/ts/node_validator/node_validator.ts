@@ -9,7 +9,7 @@ export class NodeValidator<ValidatedData extends object> {
    * Returns a mapping of errors observed by this entity on its content.
    * @return The errors map for this entity.
    */
-  getErrors (): NodeValidator<ValidatedData>['errors'] {
+  getErrors(): NodeValidator<ValidatedData>['errors'] {
     return this.errors;
   }
 
@@ -17,12 +17,12 @@ export class NodeValidator<ValidatedData extends object> {
    * Returns true if the errors map of this NodeValidator is populated.
    * @return True if this NodeValidator has errors, else false.
    */
-  hasErrors (): boolean {
+  hasErrors(): boolean {
     return this.errors.size > 0;
   }
 
   /** Clears all errors from this entity. */
-  clearErrors (): void {
+  clearErrors(): void {
     this.errors.clear();
   }
 
@@ -39,7 +39,7 @@ export class NodeValidator<ValidatedData extends object> {
    * @param isNullable If null is an acceptable value.
    * @return True if the value passes validation, else false.
    */
-  private prevalidate<T extends string | null> (
+  private prevalidate<T extends string | null>(
     name: keyof ValidatedData,
     value: T,
     isNullable: boolean
@@ -49,7 +49,7 @@ export class NodeValidator<ValidatedData extends object> {
     if (value === undefined) isValid = false;
     if (!isNullable && value === null) isValid = false;
     if (typeof value !== 'string' && !isNullable) isValid = false;
-    if (isNullable && (value !== null && typeof value !== 'string')) {
+    if (isNullable && value !== null && typeof value !== 'string') {
       isValid = false;
     }
     if (isValid === false) {
@@ -80,10 +80,10 @@ export class NodeValidator<ValidatedData extends object> {
    * @return The original property value or its replacement, depending on if
    * the value passed validation.
    */
-  protected validate<T extends string | null> (
+  protected validate<T extends string | null>(
     name: keyof ValidatedData,
     value: T,
-    validators: Array<(value:string) => boolean>,
+    validators: Array<(value: string) => boolean>,
     isNullable: boolean,
     replaceWith: T
   ): T {
@@ -109,7 +109,7 @@ export class NodeValidator<ValidatedData extends object> {
    * @param property The name of the property with the error.
    * @param reason Brief description(s) of the reason for each error.
    */
-  protected addError (
+  protected addError(
     property: keyof ValidatedData,
     reason: string | string[]
   ): void {
@@ -128,7 +128,7 @@ export class NodeValidator<ValidatedData extends object> {
   }
 
   /** Removes a single error from this entity's errors. */
-  protected removeError (property: keyof ValidatedData): void {
+  protected removeError(property: keyof ValidatedData): void {
     this.errors.delete(property);
   }
 }

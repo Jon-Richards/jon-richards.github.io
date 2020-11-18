@@ -28,7 +28,7 @@ type SkillsProps = {
  *      ]}
  * />
  */
-function Skills (props: SkillsProps): JSX.Element {
+function Skills(props: SkillsProps): JSX.Element {
   const { skills } = props;
 
   return (
@@ -40,7 +40,7 @@ function Skills (props: SkillsProps): JSX.Element {
   );
 }
 
-function mapSkills (skills: SkillProps[]): React.ReactFragment {
+function mapSkills(skills: SkillProps[]): React.ReactFragment {
   if (skills.length) {
     return skills.map(skill => (
       <li key={skill.uuid}>

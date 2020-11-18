@@ -9,11 +9,11 @@ import { mockResponseNodes } from './mock_response_nodes';
  * Generates an object with some calculated property values.
  * @return An object literal with calculated property values.
  */
-function testNodeFactory () {
+function testNodeFactory() {
   const id = Math.ceil(Math.random() * 1000000000);
   return {
     id,
-    foo: 'bar'
+    foo: 'bar',
   };
 }
 
@@ -38,14 +38,14 @@ describe('The mockResponseNodes factory function.', () => {
     const nodes = mockResponseNodes(
       testNodeFactory,
       undefined,
-      testNodeFactory()
+      testNodeFactory(),
     );
     expect(nodes.length).toBe(4);
 
     const withArray = mockResponseNodes(
       testNodeFactory,
       1,
-      [testNodeFactory(), testNodeFactory()]
+      [testNodeFactory(), testNodeFactory()],
     );
     expect(withArray.length).toBe(3);
     expect(withArray[1]).not.toEqual(withArray[2]);

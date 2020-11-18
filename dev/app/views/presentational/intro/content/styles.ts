@@ -66,5 +66,5 @@ export const STYLES = {
       border-top-width: 0rem;
       border-left-width: thin;
     }
-  `
+  `,
 };

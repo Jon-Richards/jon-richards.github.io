@@ -29,5 +29,5 @@ export const STYLES = {
     @media (min-width: ${Breakpoints[1440]}) {
       padding: 0rem;
     }
-  `
+  `,
 };

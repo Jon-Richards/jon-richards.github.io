@@ -12,8 +12,7 @@ import { UpdateStatus, SetRoute } from './interfaces/actions';
  */
 export const APPLICATION_REDUCER: Reducer<
   ApplicationStore,
-  | UpdateStatus
-  | SetRoute
+  UpdateStatus | SetRoute
 > = (
   state = {
     status: 'initializing',
@@ -21,7 +20,7 @@ export const APPLICATION_REDUCER: Reducer<
       path: '',
       params: {},
       schema: '',
-    }
+    },
   },
   action
 ) => {
@@ -29,12 +28,12 @@ export const APPLICATION_REDUCER: Reducer<
   case 'APPLICATION__UPDATE_STATUS':
     return {
       ...state,
-      status: action.status
+      status: action.status,
     };
   case 'APPLICATION__SET_ROUTE':
     return {
       ...state,
-      route: action.route
+      route: action.route,
     };
   default:
     return state;

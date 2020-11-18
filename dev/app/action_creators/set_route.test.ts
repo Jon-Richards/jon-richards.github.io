@@ -7,8 +7,8 @@ const defaultState = {
   currentRoute: {
     path: '',
     index: 0,
-    params: {}
-  }
+    params: {},
+  },
 };
 
 type DefaultState = typeof defaultState;
@@ -32,19 +32,19 @@ describe('The setRoute action creator.', () => {
         route: {
           path: '/',
           params: {},
-          schema: '/'
-        }
+          schema: '/',
+        },
       },
       {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/error/500',
           params: {
-            error_code: '500'
+            error_code: '500',
           },
-          schema: '/error/:error_code'
-        }
-      }
+          schema: '/error/:error_code',
+        },
+      },
     ]);
   });
 
@@ -60,19 +60,19 @@ describe('The setRoute action creator.', () => {
         route: {
           path: '/error/404',
           params: {
-            error_code: '404'
+            error_code: '404',
           },
-          schema: '/error/:error_code'
-        }
+          schema: '/error/:error_code',
+        },
       },
       {
         type: 'APPLICATION__SET_ROUTE',
         route: {
           path: '/resume',
           params: {},
-          schema: '/resume'
-        }
-      }
+          schema: '/resume',
+        },
+      },
     ]);
   });
 });

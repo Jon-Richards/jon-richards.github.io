@@ -5,7 +5,7 @@ import { Gallery, GalleryProps } from './gallery';
 describe('The gallery component.', () => {
   it('Should match the snapshot.', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const stubHandler = function () {};
+    const stubHandler = function() {};
     const test_1 = render(
       <Gallery
         thumbnails={[]}
@@ -18,7 +18,7 @@ describe('The gallery component.', () => {
   });
 
   it('Should render the one thumbnail for each in the array.', () => {
-    const stubHandler = function () {};
+    const stubHandler = function() {};
     const thumbs: GalleryProps['thumbnails'] = [
       {
         uuid: 'abc-123',
@@ -26,7 +26,7 @@ describe('The gallery component.', () => {
         sourceMedium: 'medium.jpg',
         sourceLarge: 'large.jpg',
         description: 'a thumbnail',
-        href: 'www.google.com'
+        href: 'www.google.com',
       },
       {
         uuid: 'abc-456',
@@ -34,8 +34,8 @@ describe('The gallery component.', () => {
         sourceMedium: 'medium.jpg',
         sourceLarge: 'large.jpg',
         description: 'a thumbnail',
-        href: 'www.google.com'
-      }
+        href: 'www.google.com',
+      },
     ];
     const test_1 = render(
       <Gallery
@@ -49,7 +49,7 @@ describe('The gallery component.', () => {
   });
 
   it('Should apply the correct image source based on the size.', () => {
-    const stubHandler = function () {};
+    const stubHandler = function() {};
     const thumbs: GalleryProps['thumbnails'] = [
       {
         uuid: 'abc-123',
@@ -57,7 +57,7 @@ describe('The gallery component.', () => {
         sourceMedium: 'medium.jpg',
         sourceLarge: 'large.jpg',
         description: 'a thumbnail',
-        href: 'www.google.com'
+        href: 'www.google.com',
       },
       {
         uuid: 'abc-456',
@@ -65,8 +65,8 @@ describe('The gallery component.', () => {
         sourceMedium: 'medium.jpg',
         sourceLarge: 'large.jpg',
         description: 'a thumbnail',
-        href: 'www.google.com'
-      }
+        href: 'www.google.com',
+      },
     ];
     const test_1 = render(
       <Gallery
@@ -76,8 +76,8 @@ describe('The gallery component.', () => {
       />
     );
 
-    expect(test_1.find('[data-testid="gallery__thumb__img"]')
-      .attr('src'))
-      .toBe('medium.jpg');
+    expect(test_1.find('[data-testid="gallery__thumb__img"]').attr('src')).toBe(
+      'medium.jpg',
+    );
   });
 });

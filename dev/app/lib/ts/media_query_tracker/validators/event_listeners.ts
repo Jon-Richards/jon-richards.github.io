@@ -1,6 +1,6 @@
 import { MQTEventListener } from '../interfaces';
 
-function validateEvent (identifier: keyof WindowEventMap): void {
+function validateEvent(identifier: keyof WindowEventMap): void {
   if (typeof identifier !== 'string') {
     throw new TypeError('Event identifier must be a string.');
   }
@@ -9,7 +9,7 @@ function validateEvent (identifier: keyof WindowEventMap): void {
   }
 }
 
-function validateThrottle (rate: MQTEventListener['throttle']): void {
+function validateThrottle(rate: MQTEventListener['throttle']): void {
   if (typeof rate !== 'number') {
     throw new TypeError('Throttle must be a number.');
   }
@@ -18,7 +18,7 @@ function validateThrottle (rate: MQTEventListener['throttle']): void {
   }
 }
 
-function validateUniqueness (
+function validateUniqueness(
   validated: MQTEventListener[],
   listener: MQTEventListener
 ): void {
@@ -28,7 +28,7 @@ function validateUniqueness (
   if (duplicateEvents.length > 0) {
     throw new TypeError(
       'MediaQueryTracker received two listeners for the same event: ' +
-      `${listener.event}.`
+        `${listener.event}.`
     );
   }
 }
@@ -38,9 +38,7 @@ function validateUniqueness (
  * @param listeners An array of MQTEventListeners to validate.
  * @return True if all validations pass, false if not.
  */
-export function validateEventListeners (
-  listeners: MQTEventListener[]
-): boolean {
+export function validateEventListeners(listeners: MQTEventListener[]): boolean {
   let isValid = true;
   try {
     if (!Array.isArray(listeners)) {

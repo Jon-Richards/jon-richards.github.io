@@ -20,5 +20,5 @@ export const STYLES = {
     @media (min-width: ${Breakpoints[1440]}) {
       grid-template-columns: 1fr 1fr 1fr;
     }
-  `
+  `,
 };

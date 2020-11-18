@@ -10,10 +10,10 @@ import { STYLES } from './styles';
  * dedicated page about the piece the thumbnail depicts.
  * @param props Required information for rendering the Gallery.
  */
-function Gallery (props: GalleryProps): JSX.Element {
+function Gallery(props: GalleryProps): JSX.Element {
   const { thumbnails, thumbnailSize, onClick } = props;
   const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize, onClick);
-  return (<div css={css(STYLES.root)}>{mappedThumbs}</div>);
+  return <div css={css(STYLES.root)}>{mappedThumbs}</div>;
 }
 
 export type GalleryProps = {
@@ -28,7 +28,7 @@ export type GalleryProps = {
     e: React.MouseEvent<HTMLElement, MouseEvent>,
     path?: string
   ) => void;
-}
+};
 
 type ThumbnailShape = {
   uuid: string;
@@ -48,7 +48,7 @@ type ThumbnailSize = 'SMALL' | 'MEDIUM' | 'LARGE';
  * @param size The size at which the thumbnails should render.
  * @param onClick A click handler that a thumbnail can call when clicked.
  */
-function mapThumbnails (
+function mapThumbnails(
   thumbnails: ThumbnailShape[],
   size: ThumbnailSize,
   onClick: GalleryProps['onClick']
@@ -63,7 +63,7 @@ function mapThumbnails (
         src={src}
         altText={description}
         href={href}
-        onClick={(e) => onClick(e, href)}
+        onClick={e => onClick(e, href)}
       />
     );
   });
@@ -71,7 +71,7 @@ function mapThumbnails (
   return <React.Fragment>{mapped}</React.Fragment>;
 }
 
-function computeThumbnailSourceFromSize (
+function computeThumbnailSourceFromSize(
   size: ThumbnailSize,
   thumbnail: ThumbnailShape
 ): string {

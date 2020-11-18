@@ -42,12 +42,9 @@ describe('The OverviewValidator class.', () => {
 
   it('Discards projects with errors.', () => {
     const projectWithError = projectResponseData({
-      id: 'banana' as unknown as number
+      id: ('banana' as unknown) as number,
     });
-    const projects = [
-      projectResponseData(),
-      projectWithError
-    ];
+    const projects = [projectResponseData(), projectWithError];
     const data = overviewResponseData(projects);
     const validator = new OverviewValidator(data);
     expect(validator.data.projects.length).toBe(1);
@@ -55,12 +52,9 @@ describe('The OverviewValidator class.', () => {
 
   it('Discards tools with errors.', () => {
     const toolWithError = toolResponseData({
-      id: 'banana' as unknown as number
+      id: ('banana' as unknown) as number,
     });
-    const tools = [
-      toolResponseData(),
-      toolWithError
-    ];
+    const tools = [toolResponseData(), toolWithError];
     const data = overviewResponseData(undefined, tools);
     const validator = new OverviewValidator(data);
     expect(validator.data.tools.length).toBe(1);

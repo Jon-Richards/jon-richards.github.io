@@ -6,7 +6,7 @@ import { CSS_RESET } from 'Config/styles/reset';
 import { Fonts } from 'Config/styles/fonts';
 import { Colors } from 'Config/styles/colors';
 
-function globalStyles (): JSX.Element {
+function globalStyles(): JSX.Element {
   return (
     <Global
       styles={css`

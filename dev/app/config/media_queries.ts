@@ -23,5 +23,5 @@ export const MEDIA_QUERIES: MediaQuery[] = [
   { id: '480', query: '(min-width: 480px)' },
   { id: '720', query: '(min-width: 720px)' },
   { id: '1080', query: '(min-width: 1080px)' },
-  { id: '1440', query: '(min-width: 1440px)' }
+  { id: '1440', query: '(min-width: 1440px)' },
 ];

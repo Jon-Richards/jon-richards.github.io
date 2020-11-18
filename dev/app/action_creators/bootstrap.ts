@@ -13,30 +13,30 @@ import { UpdateMatchingMediaQueries } from '../store/browser';
 import { MediaQuery } from 'Config/media_queries';
 import { setRoute } from './set_route';
 
-function updateStatus (): UpdateStatus {
+function updateStatus(): UpdateStatus {
   return {
     type: 'APPLICATION__UPDATE_STATUS',
-    status: 'ready'
+    status: 'ready',
   };
 }
 
-function publishPortfolio (
+function publishPortfolio(
   projects: PublishPortfolio['projects'],
   tools: PublishPortfolio['tools']
 ): PublishPortfolio {
   return {
     type: 'PORTFOLIO__PUBLISH_PORTFOLIO',
     projects,
-    tools
+    tools,
   };
 }
 
-function updateMatchingMediaQueries (
+function updateMatchingMediaQueries(
   matches: UpdateMatchingMediaQueries['matches']
 ): UpdateMatchingMediaQueries {
   return {
     type: 'BROWSER__UPDATE_MATCHING_MEDIA_QUERIES',
-    matches
+    matches,
   };
 }
 
@@ -48,12 +48,8 @@ function updateMatchingMediaQueries (
  * @param queries The set of queries to use when configuring the Media Query
  * Tracker.
  */
-function trackMediaQueries (
-  dispatch: ThunkDispatch<
-    Store,
-    undefined,
-    | UpdateMatchingMediaQueries
-  >,
+function trackMediaQueries(
+  dispatch: ThunkDispatch<Store, undefined, UpdateMatchingMediaQueries>,
   queries: MediaQuery[]
 ): MediaQueryTracker<MediaQuery> {
   return new MediaQueryTracker(
@@ -61,36 +57,36 @@ function trackMediaQueries (
     [
       { event: 'load', throttle: 0 },
       { event: 'resize', throttle: 500 },
-      { event: 'orientationchange', throttle: 500 }
+      { event: 'orientationchange', throttle: 500 },
     ],
-    (e) => dispatch(updateMatchingMediaQueries(e.matches))
+    e => dispatch(updateMatchingMediaQueries(e.matches))
   );
 }
 
 /** Coordinates bootstrapping the application. */
-export function bootstrap (): ThunkAction<
+export function bootstrap(): ThunkAction<
   Promise<UpdateStatus | void> | void,
   Store,
   undefined,
-  | PublishPortfolio
-  | UpdateStatus
+  PublishPortfolio | UpdateStatus
   > {
   return (dispatch, getState) => {
     trackMediaQueries(dispatch, getState().browser.possible_media_queries);
     dispatch(setRoute(window.location.pathname));
 
     return new Promise((resolve, reject) => {
-      getOverview()
-        .then((resp => {
-          if (resp.getErrors().size > 0) reject('Invalid Overview data.');
-          const { projects, tools } = resp.data;
-          return dispatch(publishPortfolio(projects, tools));
-        }));
+      getOverview().then(resp => {
+        if (resp.getErrors().size > 0) reject('Invalid Overview data.');
+        const { projects, tools } = resp.data;
+        return dispatch(publishPortfolio(projects, tools));
+      });
       resolve();
-    }).then(() => {
-      return dispatch(updateStatus());
-    }).catch(error => {
-      console.error(error);
-    });
+    })
+      .then(() => {
+        return dispatch(updateStatus());
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 }

@@ -2,9 +2,7 @@ import { BaseValue } from './base_value';
 
 /** A value in geometric degrees. */
 export class Degree extends BaseValue {
-  constructor (
-    readonly value: number
-  ) {
+  constructor(readonly value: number) {
     super();
     this.isWithinRange(value);
     this.value = value;
@@ -15,5 +13,5 @@ export class Degree extends BaseValue {
     if (value < 0 || value > 360) {
       throw RangeError('Degree can only range from 0 to 360.');
     }
-  }
+  };
 }

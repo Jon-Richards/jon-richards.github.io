@@ -35,5 +35,5 @@ export const STYLES = {
       flex-direction: row;
       align-items: flex-start;
     }
-  `
+  `,
 };

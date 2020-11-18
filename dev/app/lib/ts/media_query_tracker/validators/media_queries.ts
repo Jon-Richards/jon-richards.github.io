@@ -1,6 +1,6 @@
 import { MQTMediaQuery } from '../interfaces';
 
-function validateQueries (queries: MQTMediaQuery[]): void {
+function validateQueries(queries: MQTMediaQuery[]): void {
   if (!Array.isArray(queries)) {
     throw new TypeError('Queries must be an array.');
   }
@@ -9,20 +9,16 @@ function validateQueries (queries: MQTMediaQuery[]): void {
   }
 }
 
-function validateIdProp (id: MQTMediaQuery['id']): void {
+function validateIdProp(id: MQTMediaQuery['id']): void {
   if (typeof id !== 'string' && typeof id !== 'number') {
-    throw new TypeError(
-      'Media query id property must be a string or number.'
-    );
+    throw new TypeError('Media query id property must be a string or number.');
   }
   if (typeof id === 'string' && id.length === 0) {
-    throw new TypeError(
-      'Media query id property cannot be an empty string.'
-    );
+    throw new TypeError('Media query id property cannot be an empty string.');
   }
 }
 
-function validateQueryProp (query: MQTMediaQuery['query']) {
+function validateQueryProp(query: MQTMediaQuery['query']) {
   if (typeof query !== 'string') {
     throw new TypeError('Media query "query" property must be a string.');
   }
@@ -31,7 +27,7 @@ function validateQueryProp (query: MQTMediaQuery['query']) {
   }
 }
 
-function validateQueryUniqueness (
+function validateQueryUniqueness(
   validated: MQTMediaQuery[],
   query: MQTMediaQuery
 ): void {
@@ -40,8 +36,8 @@ function validateQueryUniqueness (
   });
   if (duplicateQueries.length > 0) {
     throw new TypeError(
-      `MediaQueryTracker received two queries with the same query string:` +
-      ` ${query.query}.`
+      'MediaQueryTracker received two queries with the same query string:' +
+        ` ${query.query}.`
     );
   }
 
@@ -50,8 +46,8 @@ function validateQueryUniqueness (
   });
   if (duplicateIds.length > 0) {
     throw new TypeError(
-      `MediaQueryTracker received two queries with the same id: ` +
-      `${query.id}.`
+      'MediaQueryTracker received two queries with the same id: ' +
+        `${query.id}.`
     );
   }
 }
@@ -62,7 +58,7 @@ function validateQueryUniqueness (
  * @param queries An array of MQTMediaQueries to validate.
  * @return True if all validations pass, false if not.
  */
-export function validateMediaQueries (queries: MQTMediaQuery[]): boolean {
+export function validateMediaQueries(queries: MQTMediaQuery[]): boolean {
   let isValid = true;
   try {
     validateQueries(queries);

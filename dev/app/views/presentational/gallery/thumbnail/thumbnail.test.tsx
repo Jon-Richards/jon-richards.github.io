@@ -4,7 +4,7 @@ import { Thumbnail } from './thumbnail';
 
 describe('The gallery component.', () => {
   it('Should match the snapshot.', () => {
-    const stubHandler = function () {};
+    const stubHandler = function() {};
     const test_1 = render(
       <Thumbnail
         src="test.jpg"

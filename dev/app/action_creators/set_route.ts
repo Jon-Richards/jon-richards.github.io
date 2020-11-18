@@ -24,7 +24,7 @@ const matchRoute = (path: string): RouteMatch => {
       result = {
         path: hasMatch.path,
         params: hasMatch.params,
-        schema: value
+        schema: value,
       };
       break;
     }
@@ -42,13 +42,10 @@ const matchRoute = (path: string): RouteMatch => {
  * @return Dispatches an action to update the active route in the Application
  * store.
  */
-export function setRoute<S = Store> (path: string): ThunkAction<
-  SetRoute,
-  S,
-  undefined,
-  SetRoute
-> {
-  return (dispatch) => {
+export function setRoute<S = Store>(
+  path: string
+): ThunkAction<SetRoute, S, undefined, SetRoute> {
+  return dispatch => {
     let result: RouteMatch = false;
 
     if (path === '') path = '/';
@@ -69,7 +66,7 @@ export function setRoute<S = Store> (path: string): ThunkAction<
       history.pushState(result.path, '', result.path);
       return dispatch({
         type: 'APPLICATION__SET_ROUTE',
-        route: result
+        route: result,
       });
     }
 

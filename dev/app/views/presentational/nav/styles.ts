@@ -54,5 +54,5 @@ export const STYLES = {
         border-bottom: thin solid ${Colors.SWATCH_3.value};
       }
     }
-  `
+  `,
 };

@@ -19,5 +19,5 @@ export const STYLES = {
       bottom: initial;
       transform: translateY(-5rem);
     }
-  `
+  `,
 };

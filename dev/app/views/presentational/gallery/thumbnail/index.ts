@@ -1,4 +1,1 @@
-export {
-  Thumbnail,
-  ThumbnailProps
-} from './thumbnail';
+export { Thumbnail, ThumbnailProps } from './thumbnail';

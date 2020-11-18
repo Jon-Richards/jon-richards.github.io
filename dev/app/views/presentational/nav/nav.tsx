@@ -7,7 +7,7 @@ import { STYLES } from './styles';
 /** The main navigation. */
 export class Nav extends React.Component<Record<string, unknown>, never> {
   /** Renders the navigation to the DOM. */
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
       <nav css={css(STYLES.root)} role="navigation">
         <a href="/work" css={css(STYLES.link)}>

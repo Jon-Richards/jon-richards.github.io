@@ -4,5 +4,5 @@ export const ROUTES = {
   'portfolio_piece': '/portfolio/:piece_id',
   'resume': '/resume',
   'contact': '/contact',
-  'error': '/error/:error_code'
+  'error': '/error/:error_code',
 };

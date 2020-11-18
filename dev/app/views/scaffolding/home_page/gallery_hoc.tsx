@@ -6,20 +6,13 @@ import { setRoute } from 'Action_creators/set_route';
 type Projects = Store['portfolio']['projects'];
 type MatchingMediaQueries = Store['browser']['matching_media_queries'];
 
-type StateProps = Pick<
-  GalleryProps,
-  | 'thumbnailSize'
-  | 'thumbnails'
->;
+type StateProps = Pick<GalleryProps, 'thumbnailSize' | 'thumbnails'>;
 
-type DispatchProps = Pick<
-  GalleryProps,
-  | 'onClick'
->;
+type DispatchProps = Pick<GalleryProps, 'onClick'>;
 
 type ThumbnailSize = GalleryProps['thumbnailSize'];
 
-function convertNullToEmptyString (value: null | string): string {
+function convertNullToEmptyString(value: null | string): string {
   if (value === null) {
     console.error(new TypeError('Invalid thumbnail source.'));
     return '';
@@ -27,7 +20,7 @@ function convertNullToEmptyString (value: null | string): string {
   return value;
 }
 
-function mapProjectsToThumbnails (projects: Projects): StateProps['thumbnails'] {
+function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
   return projects.map(project => {
     const {
       uuid,
@@ -35,27 +28,25 @@ function mapProjectsToThumbnails (projects: Projects): StateProps['thumbnails'] 
       url_title: href,
       thumb_device_small,
       thumb_device_medium,
-      thumb_device_large
+      thumb_device_large,
     } = project;
 
     const sourceSmall = convertNullToEmptyString(thumb_device_small);
     const sourceMedium = convertNullToEmptyString(thumb_device_medium);
     const sourceLarge = convertNullToEmptyString(thumb_device_large);
 
-    return (
-      {
-        uuid,
-        description,
-        sourceSmall,
-        sourceMedium,
-        sourceLarge,
-        href
-      }
-    );
+    return {
+      uuid,
+      description,
+      sourceSmall,
+      sourceMedium,
+      sourceLarge,
+      href,
+    };
   });
 }
 
-function computeThumbnailSize (queries: MatchingMediaQueries): ThumbnailSize {
+function computeThumbnailSize(queries: MatchingMediaQueries): ThumbnailSize {
   const mapped = queries.map(query => query.id);
   if (mapped.includes('1080')) {
     return 'LARGE';
@@ -66,19 +57,19 @@ function computeThumbnailSize (queries: MatchingMediaQueries): ThumbnailSize {
   }
 }
 
-function mapStateToProps (state: Store): StateProps {
+function mapStateToProps(state: Store): StateProps {
   return {
     thumbnails: mapProjectsToThumbnails(state.portfolio.projects),
-    thumbnailSize: computeThumbnailSize(state.browser.matching_media_queries)
+    thumbnailSize: computeThumbnailSize(state.browser.matching_media_queries),
   };
 }
 
-function mapDispatchToProps (): DispatchProps {
+function mapDispatchToProps(): DispatchProps {
   return {
     onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>, path?: string) => {
       e.preventDefault();
       return setRoute(`/portfolio/${path}`);
-    }
+    },
   };
 }
 

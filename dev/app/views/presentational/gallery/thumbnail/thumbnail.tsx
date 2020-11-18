@@ -21,23 +21,20 @@ export interface ThumbnailProps {
 }
 
 /** A single thumbnail. */
-function Thumbnail (props: ThumbnailProps): JSX.Element {
+function Thumbnail(props: ThumbnailProps): JSX.Element {
   const { src, altText, href, onClick } = props;
 
   return (
     <a
       css={css(STYLES.root)}
       href={href}
-      onClick={(e) => {
+      onClick={e => {
         onClick(e);
       }}
       data-testid="gallery__thumb"
     >
       <Panel>
-        <figure
-          aria-label="thumbnail"
-          css={css(STYLES.figure)}
-        >
+        <figure aria-label="thumbnail" css={css(STYLES.figure)}>
           <img
             css={css(STYLES.image)}
             src={src}

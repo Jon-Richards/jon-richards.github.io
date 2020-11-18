@@ -1,7 +1,4 @@
-import {
-  MQTCallback,
-  MQTMediaQuery
-} from '../interfaces';
+import { MQTCallback, MQTMediaQuery } from '../interfaces';
 
 /**
  * Validates the callback that fires in response to one of the supplied
@@ -9,9 +6,9 @@ import {
  * @param callback The callback function to validate.
  * @return True if all validations pass, false if not.
  */
-export function validateCallback<
-  Q extends MQTMediaQuery = MQTMediaQuery
-> (callback: MQTCallback<Q>): boolean {
+export function validateCallback<Q extends MQTMediaQuery = MQTMediaQuery>(
+  callback: MQTCallback<Q>,
+): boolean {
   let isValid = true;
   try {
     if (typeof callback !== 'function') {

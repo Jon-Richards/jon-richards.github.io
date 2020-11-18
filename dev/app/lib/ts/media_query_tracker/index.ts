@@ -3,5 +3,5 @@ export {
   MQTEvent,
   MQTEventListener,
   MQTCallback,
-  MQTMediaQuery
+  MQTMediaQuery,
 } from './interfaces';

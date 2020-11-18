@@ -17,21 +17,17 @@ interface MockResponseData {
  * each property passed into the constructor.
  */
 class MockNode extends NodeValidator<MockResponseData> {
-  constructor (
+  constructor(
     readonly index: MockResponseData['index'],
     readonly foo: MockResponseData['foo'],
     readonly age: MockResponseData['age'],
-    readonly awesome: MockResponseData['awesome']
+    readonly awesome: MockResponseData['awesome'],
   ) {
     super();
 
-    this.index = Number(this.validate(
-      'index',
-      String(index),
-      [isInteger, notEmpty],
-      false,
-      '0'
-    ));
+    this.index = Number(
+      this.validate('index', String(index), [isInteger, notEmpty], false, '0')
+    );
 
     if (typeof foo !== 'string') this.addError('foo', 'Foo must be a string.');
     if (foo !== 'bar') this.addError('foo', 'Foo must equal bar.');
@@ -43,18 +39,18 @@ class MockNode extends NodeValidator<MockResponseData> {
   }
 
   /** Removes a provided error by property name. */
-  clearError (name: keyof MockResponseData) {
+  clearError(name: keyof MockResponseData) {
     this.removeError(name);
   }
 }
 
 /** Builds a simple MockNode instance for testing. */
-function buildMockNode (): MockNode {
+function buildMockNode(): MockNode {
   return new MockNode(
-    'abc' as unknown as number,
+    ('abc' as unknown) as number,
     (1 as unknown) as string,
     ('banana' as unknown) as number,
-    true
+    true,
   );
 }
 
@@ -109,15 +105,13 @@ describe('The NodeValidator class.', () => {
     expect(node.getErrors().size).toEqual(2);
   });
 
-  it(
-    'Should auto-populate error text when the validate method is called.',
-    () => {
-      const node = buildMockNode();
-      const reasons = node.getErrors().get('index');
-      if (reasons) {
-        expect(reasons.values().next().value)
-          .toBe('Failed on validator: isInteger');
-      }
+  it('Should auto-populate error text when the validate method is called.', () => {
+    const node = buildMockNode();
+    const reasons = node.getErrors().get('index');
+    if (reasons) {
+      expect(reasons.values().next().value).toBe(
+        'Failed on validator: isInteger'
+      );
     }
-  );
+  });
 });

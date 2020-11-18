@@ -7,7 +7,7 @@ interface Project {
   /** The project's title as displayed in the UI. */
   display_title: string;
   /** A URL safe version of the project's title. */
-  url_title:string;
+  url_title: string;
   /** A description of the project. */
   description: string;
   /** Path to the Project's thumbnail for small device sizes. */
@@ -23,20 +23,20 @@ interface Project {
 /** Shape of a single Tool in the Portfolio store. */
 type Tool = {
   /** The id of the tool */
-  id: number,
+  id: number;
   /** The tool's UUID. */
-  uuid: string,
+  uuid: string;
   /** The title of the tool as displayed to the user. */
-  display_title: string,
+  display_title: string;
   /** Value by which the tool can be filtered. */
-  filterable_value: string,
+  filterable_value: string;
   /** URL safe string for the tool's logo. */
-  logo: string,
+  logo: string;
   /**
    * If this tool is considered a "core skill", something employers would look
    * for explicitly.
    */
-  is_core: boolean
+  is_core: boolean;
 };
 
 /** The shape of the Portfolio model. */

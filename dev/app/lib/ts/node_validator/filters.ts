@@ -20,7 +20,7 @@
  *  (cat) => console.log(`${cat.name} : ${cat.coat}`) // 'Sarah : calico'
  * ); // [cat_a, cat_c]
  */
-export function filterByDuplicateProperty<O extends object, P> (
+export function filterByDuplicateProperty<O extends object, P>(
   objects: O[],
   getComparableProperty: (object: O) => P,
   onFindDuplicate?: (object: O) => void
@@ -28,8 +28,9 @@ export function filterByDuplicateProperty<O extends object, P> (
   const checked: O[] = [];
 
   objects.forEach(object => {
-    const isUnique = checked.every(checkedObject =>
-      getComparableProperty(checkedObject) !== getComparableProperty(object)
+    const isUnique = checked.every(
+      checkedObject =>
+        getComparableProperty(checkedObject) !== getComparableProperty(object)
     );
 
     if (isUnique) {

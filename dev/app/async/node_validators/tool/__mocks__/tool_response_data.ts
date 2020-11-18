@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid';
  * of which will appear in the return value.
  * @return A valid ToolResponseData type.
  */
-export function toolResponseData (
+export function toolResponseData(
   data: Partial<ToolResponseData> = {}
 ): ToolResponseData {
   const stubUUID = uuid();
@@ -20,6 +20,6 @@ export function toolResponseData (
     filterable_value: `tool-${stubUUID}`,
     logo: `logo-${stubUUID}`,
     is_core: Math.floor(Math.random() * 2) === 0,
-    ...data
+    ...data,
   };
 }

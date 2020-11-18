@@ -15,12 +15,10 @@ type Props = React.PropsWithChildren<Record<string, unknown>>;
  *   <!-- child content -->
  * </Panel>
  */
-function Panel (props: Props): JSX.Element {
+function Panel(props: Props): JSX.Element {
   return (
     <div css={css(STYLES.frame)}>
-      <div css={css(STYLES.content)}>
-        {props.children}
-      </div>
+      <div css={css(STYLES.content)}>{props.children}</div>
     </div>
   );
 }

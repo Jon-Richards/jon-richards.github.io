@@ -15,12 +15,8 @@ type ContentProps = {
 };
 
 /** Renders the content for the intro section. */
-function Content (props: ContentProps) {
-  const {
-    title,
-    subtitle,
-    skills,
-  } = props;
+function Content(props: ContentProps) {
+  const { title, subtitle, skills } = props;
 
   return (
     <div css={css(STYLES.content)}>

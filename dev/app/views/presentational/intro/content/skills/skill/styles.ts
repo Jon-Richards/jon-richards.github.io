@@ -30,5 +30,5 @@ export const STYLES = {
     @media (min-width: ${Breakpoints[480]}) {
       display: flex;
     }
-  `
+  `,
 };

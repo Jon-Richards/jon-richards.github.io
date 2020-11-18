@@ -27,19 +27,19 @@ type State = {
  * created and  coordinates how the overall state of the application displays.
  */
 export class Root extends React.Component<Props, State> {
-  constructor (props: Props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      status: 'initializing'
+      status: 'initializing',
     };
     this.props.initialize();
   }
 
   updateApplicationState = (status: State['status']): void => {
     this.setState({ status });
-  }
+  };
 
-  render (): JSX.Element {
+  render(): JSX.Element {
     return (
       <React.Fragment>
         <GlobalStyles />
@@ -47,15 +47,9 @@ export class Root extends React.Component<Props, State> {
           <Preloader />
           <Header />
           <main css={css(STYLES.main)}>
-            {(
-              this.props.route === ROUTES.home ||
-              this.props.route === ROUTES.portfolio_piece
-            ) && (
-              <HomePage/>
-            )}
-            {this.props.route === ROUTES.error && (
-              <div>Error</div>
-            )}
+            {(this.props.route === ROUTES.home ||
+              this.props.route === ROUTES.portfolio_piece) && <HomePage />}
+            {this.props.route === ROUTES.error && <div>Error</div>}
           </main>
         </div>
       </React.Fragment>

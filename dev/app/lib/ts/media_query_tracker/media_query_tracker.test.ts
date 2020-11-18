@@ -1,15 +1,11 @@
-import {
-  MediaQueryTracker,
-  MQTEventListener,
-  MQTMediaQuery
-} from './index';
+import { MediaQueryTracker, MQTEventListener, MQTMediaQuery } from './index';
 
 const testEvent = new Event('test_event');
 const listeners: MQTEventListener[] = [
   {
-    event: 'test_event' as unknown as MQTEventListener['event'],
-    throttle: 0
-  }
+    event: ('test_event' as unknown) as MQTEventListener['event'],
+    throttle: 0,
+  },
 ];
 
 beforeAll(() => {
@@ -54,7 +50,7 @@ describe('The MediaQueryTracker class.', () => {
         { id: '720', query: '(min-width: 720px)' },
       ],
       listeners,
-      (e) => {
+      e => {
         e.matches.forEach(match => events.push(match.id));
       }
     );
@@ -71,13 +67,13 @@ describe('The MediaQueryTracker class.', () => {
       [{ id: 'xs', query: '(min-width: 320px)' }],
       [
         {
-          event: 'test_event' as unknown as MQTEventListener['event'],
-          throttle: 5000
+          event: ('test_event' as unknown) as MQTEventListener['event'],
+          throttle: 5000,
         },
         {
-          event: 'test_event_2' as unknown as MQTEventListener['event'],
-          throttle: 0
-        }
+          event: ('test_event_2' as unknown) as MQTEventListener['event'],
+          throttle: 0,
+        },
       ],
       callback
     );

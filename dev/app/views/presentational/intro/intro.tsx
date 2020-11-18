@@ -19,13 +19,8 @@ type Props = {
 };
 
 /** Renders the introduction section. */
-function Intro (props: Props): JSX.Element {
-  const {
-    title,
-    subtitle,
-    skills,
-    theme = 'PANEL',
-  } = props;
+function Intro(props: Props): JSX.Element {
+  const { title, subtitle, skills, theme = 'PANEL' } = props;
 
   return (
     <div css={css(STYLES.root)}>

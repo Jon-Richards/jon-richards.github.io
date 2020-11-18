@@ -18,5 +18,5 @@ export const STYLES = {
     @media (min-width: ${Breakpoints[720]}) {
       justify-content: flex-start;
     }
-  `
+  `,
 };

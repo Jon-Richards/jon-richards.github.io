@@ -3,7 +3,7 @@ import {
   isURIString,
   isInteger,
   notEmpty,
-  isBoolean
+  isBoolean,
 } from './validators';
 import { v4 as uuid } from 'uuid';
 
@@ -19,11 +19,11 @@ describe('The notEmpty validation function:', () => {
   });
 
   it('Returns true when supplied with a boolean converted to a string.', () => {
-    expect( notEmpty(String(false)) ).toBe(true);
+    expect(notEmpty(String(false))).toBe(true);
   });
 
   it('Returns true when supplied with 0 converted to a string.', () => {
-    expect( notEmpty(String(0)) ).toBe(true);
+    expect(notEmpty(String(0))).toBe(true);
   });
 });
 
@@ -48,7 +48,7 @@ describe('The isURIString validation function:', () => {
     expect(isURIString('foobar_123.jpg')).toBe(true);
   });
 
-  it('Returns false when supplied with invalid characters for URI\'s', () => {
+  it("Returns false when supplied with invalid characters for URI's", () => {
     expect(isURIString('\\foobar.jpg')).toBe(false);
     expect(isURIString('^foobar.jpg')).toBe(false);
     expect(isURIString('*foobar.jpg')).toBe(false);
@@ -64,16 +64,13 @@ describe('The isNumber validation function:', () => {
     expect(isInteger('-123')).toBe(true);
   });
 
-  it(
-    'Returns false when the suppliedargument cannot convert to integer.',
-    () =>{
-      expect(isInteger('123.4')).toBe(false);
-      expect(isInteger('abc123.4')).toBe(false);
-      expect(isInteger('123\\4')).toBe(false);
-      expect(isInteger('123 * 4')).toBe(false);
-      expect(isInteger('001')).toBe(false);
-    }
-  );
+  it('Returns false when the suppliedargument cannot convert to integer.', () => {
+    expect(isInteger('123.4')).toBe(false);
+    expect(isInteger('abc123.4')).toBe(false);
+    expect(isInteger('123\\4')).toBe(false);
+    expect(isInteger('123 * 4')).toBe(false);
+    expect(isInteger('001')).toBe(false);
+  });
 });
 
 describe('The isBoolean validation function:', () => {
@@ -85,9 +82,9 @@ describe('The isBoolean validation function:', () => {
   it('Should return false when supplied with a "truthy" boolean.', () => {
     expect(isBoolean('0')).toBe(false);
     expect(isBoolean('null')).toBe(false);
-    expect(isBoolean(null as unknown as string)).toBe(false);
+    expect(isBoolean((null as unknown) as string)).toBe(false);
     expect(isBoolean('')).toBe(false);
-    expect(isBoolean(undefined as unknown as string)).toBe(false);
-    expect(isBoolean([] as unknown as string)).toBe(false);
+    expect(isBoolean((undefined as unknown) as string)).toBe(false);
+    expect(isBoolean(([] as unknown) as string)).toBe(false);
   });
 });

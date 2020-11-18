@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/core';
 import { STYLES } from './styles';
 
 /** Indicates to the user that something is processing. */
-function Preloader (): JSX.Element {
+function Preloader(): JSX.Element {
   return (
     <div css={css(STYLES.root)}>
       <div css={css(STYLES.gradient)}></div>
