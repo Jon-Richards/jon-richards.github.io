@@ -25,9 +25,9 @@ export const STYLES = {
     @media (min-width: ${Breakpoints[480]}) {
       padding: 0rem ${Dimensions.whitespace};
     }
-  
-    @media (min-width: ${Breakpoints[480]} {
-      padding: 0rem calc(${Dimensions.whitespace} * 2);
+
+    @media (min-width: ${Breakpoints[1440]}) {
+      padding: 0rem;
     }
   `
 };

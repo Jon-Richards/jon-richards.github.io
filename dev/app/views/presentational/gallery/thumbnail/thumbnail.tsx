@@ -29,16 +29,21 @@ function Thumbnail (props: ThumbnailProps): JSX.Element {
       css={css(STYLES.root)}
       href={href}
       onClick={(e) => {
-        e.preventDefault();
         onClick(e);
       }}
+      data-testid="gallery__thumb"
     >
       <Panel>
         <figure
           aria-label="thumbnail"
           css={css(STYLES.figure)}
         >
-          <img css={css(STYLES.image)} src={src} alt={altText} />
+          <img
+            css={css(STYLES.image)}
+            src={src}
+            alt={altText}
+            data-testid="gallery__thumb__img"
+          />
           <figcaption css={css(STYLES.caption)}>{altText}</figcaption>
         </figure>
       </Panel>

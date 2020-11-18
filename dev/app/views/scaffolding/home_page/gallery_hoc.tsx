@@ -75,7 +75,10 @@ function mapStateToProps (state: Store): StateProps {
 
 function mapDispatchToProps (): DispatchProps {
   return {
-    onClick: (path: string) => setRoute(`/portfolio/${path}`)
+    onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>, path?: string) => {
+      e.preventDefault();
+      return setRoute(`/portfolio/${path}`);
+    }
   };
 }
 

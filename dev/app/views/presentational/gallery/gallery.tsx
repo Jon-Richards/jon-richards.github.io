@@ -2,40 +2,76 @@
 
 import * as React from 'react';
 import { css, jsx } from '@emotion/core';
-import { Thumbnail, ThumbnailProps } from './thumbnail';
+import { Thumbnail } from './thumbnail';
 import { STYLES } from './styles';
 
-type ThumbnailShape = {
-  /** A unique identifier for this thumbnail. */
-  uuid: string;
-  /** The image's source url for small screens. (phones) */
-  sourceSmall: string;
-  /** The image's source url for medium screens. (tablets, low-end laptops) */
-  sourceMedium: string;
-  /** The image's source url for large screens. (freestanding monitors) */
-  sourceLarge: string;
-  /** A very short description of the project that the thumbnail represents. */
-  description: ThumbnailProps['altText'];
-  /** The destination for the thumbnail's link. */
-  href: ThumbnailProps['href'];
-};
-
-/** For computing the size of the image that will be loaded by a thumbnail. */
-type ThumbnailSize = 'SMALL' | 'MEDIUM' | 'LARGE';
-
-/** Props used by the Gallery component. */
-export interface GalleryProps {
-  /**
-   * Information about the thumbnails that should be displayed in the gallery.
-   */
-  thumbnails: ThumbnailShape[];
-  /** The size at which thumbnails should render. */
-  thumbnailSize: ThumbnailSize;
-  /** Click handler that passes the URI of the thumbnail that was clicked. */
-  onClick: (path: string) => {};
+/**
+ * Renders a gallery section with thumbnails that, when clicked, lead to a
+ * dedicated page about the piece the thumbnail depicts.
+ * @param props Required information for rendering the Gallery.
+ */
+function Gallery (props: GalleryProps): JSX.Element {
+  const { thumbnails, thumbnailSize, onClick } = props;
+  const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize, onClick);
+  return (<div css={css(STYLES.root)}>{mappedThumbs}</div>);
 }
 
-function computeThumbnailSource (
+export type GalleryProps = {
+  thumbnails: ThumbnailShape[];
+  /** The size at which all thumbnails should render. */
+  thumbnailSize: ThumbnailSize;
+  /**
+   * A method that fires whenever a thumbnail is clicked.  The URL to the
+   * thumbnail's link destination is passed as a result.
+   */
+  onClick: (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    path?: string
+  ) => void;
+}
+
+type ThumbnailShape = {
+  uuid: string;
+  sourceSmall: string;
+  sourceMedium: string;
+  sourceLarge: string;
+  description: string;
+  href: string;
+};
+
+type ThumbnailSize = 'SMALL' | 'MEDIUM' | 'LARGE';
+
+/**
+ * Maps an array of raw thumbnail data to Thumbnail components.
+ * @param thumbnails Array of raw thumbnail data to write to Thumbnail
+ * instances.
+ * @param size The size at which the thumbnails should render.
+ * @param onClick A click handler that a thumbnail can call when clicked.
+ */
+function mapThumbnails (
+  thumbnails: ThumbnailShape[],
+  size: ThumbnailSize,
+  onClick: GalleryProps['onClick']
+): JSX.Element {
+  const mapped = thumbnails.map(thumbnail => {
+    const { description, uuid, href } = thumbnail;
+    const src = computeThumbnailSourceFromSize(size, thumbnail);
+
+    return (
+      <Thumbnail
+        key={uuid}
+        src={src}
+        altText={description}
+        href={href}
+        onClick={(e) => onClick(e, href)}
+      />
+    );
+  });
+
+  return <React.Fragment>{mapped}</React.Fragment>;
+}
+
+function computeThumbnailSourceFromSize (
   size: ThumbnailSize,
   thumbnail: ThumbnailShape
 ): string {
@@ -47,41 +83,6 @@ function computeThumbnailSource (
   default:
     return thumbnail.sourceSmall;
   }
-}
-
-function mapThumbnails (
-  thumbnails: ThumbnailShape[],
-  size: ThumbnailSize,
-  onClick: GalleryProps['onClick']
-): JSX.Element {
-  const mapped = thumbnails.map(thumbnail => {
-    const {
-      description,
-      uuid,
-      href
-    } = thumbnail;
-
-    const src = computeThumbnailSource(size, thumbnail);
-
-    return (
-      <Thumbnail
-        key={uuid}
-        src={src}
-        altText={description}
-        href={href}
-        onClick={() => onClick(href)}
-      />
-    );
-  });
-
-  return <React.Fragment>{mapped}</React.Fragment>;
-}
-
-function Gallery (props: GalleryProps): JSX.Element {
-  const { thumbnails, thumbnailSize, onClick } = props;
-  const mappedThumbs = mapThumbnails(thumbnails, thumbnailSize, onClick);
-
-  return (<div css={css(STYLES.root)}>{mappedThumbs}{mappedThumbs}</div>);
 }
 
 const GALLERY_MEMO = React.memo<GalleryProps>(Gallery);

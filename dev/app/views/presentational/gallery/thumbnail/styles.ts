@@ -4,19 +4,16 @@ import { Dimensions } from 'Config/styles/dimensions';
 /** Styles for the Thumbnails component. */
 export const STYLES = {
   root: `
-    display: flex;
     width: 100%;
     height: auto;
     padding: 0rem;
-    margin: calc(${Dimensions.whitespace} / 2);
-  
+
     @media (min-width: ${Breakpoints[720]}) {
-      display: inline-flex;
-      width: calc(50% - 2rem);
-    }
-  
-    @media (min-width: ${Breakpoints[1440]}) {
-      width: calc(33% - 2rem);
+      transition: all 0.2s ease-in-out;
+      transform-origin: 50% 50%;
+      &:hover, &:active, &:focus, &:focus-within {
+        transform: scale(1.1, 1.1);
+      }
     }
   `,
   figure: `
