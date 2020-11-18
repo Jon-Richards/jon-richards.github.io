@@ -1,16 +1,45 @@
+import * as React from 'react';
 import { Gallery, GalleryProps } from 'Views/presentational/gallery';
 import { connect } from 'react-redux';
 import { Store } from 'Store/index';
 import { setRoute } from 'Action_creators/set_route';
+import { Breakpoints } from 'Config/styles/breakpoints';
 
 type Projects = Store['portfolio']['projects'];
-type MatchingMediaQueries = Store['browser']['matching_media_queries'];
+type StateProps = Pick<GalleryProps, 'thumbnails'>;
+type DispatchProps = Pick<GalleryProps, 'thumbnailClickHandler'>;
 
-type StateProps = Pick<GalleryProps, 'thumbnailSize' | 'thumbnails'>;
+function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
+  return projects.map(project => {
+    const {
+      display_title: description,
+      url_title: href,
+      thumb_device_small,
+      thumb_device_medium,
+      thumb_device_large,
+    } = project;
 
-type DispatchProps = Pick<GalleryProps, 'onClick'>;
-
-type ThumbnailSize = GalleryProps['thumbnailSize'];
+    return {
+      sources: [
+        {
+          source: convertNullToEmptyString(thumb_device_small),
+          mediaQuery: `(min-width: ${Breakpoints[480]})`
+        },
+        {
+          source: convertNullToEmptyString(thumb_device_medium),
+          mediaQuery: `(min-width: ${Breakpoints[720]})`
+        },
+        {
+          source: convertNullToEmptyString(thumb_device_large),
+          mediaQuery: `(min-width: ${Breakpoints[1440]})`
+        },
+      ],
+      fallbackSource: convertNullToEmptyString(thumb_device_small),
+      altText: description,
+      href,
+    };
+  });
+}
 
 function convertNullToEmptyString(value: null | string): string {
   if (value === null) {
@@ -20,59 +49,26 @@ function convertNullToEmptyString(value: null | string): string {
   return value;
 }
 
-function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
-  return projects.map(project => {
-    const {
-      uuid,
-      display_title: description,
-      url_title: href,
-      thumb_device_small,
-      thumb_device_medium,
-      thumb_device_large,
-    } = project;
-
-    const sourceSmall = convertNullToEmptyString(thumb_device_small);
-    const sourceMedium = convertNullToEmptyString(thumb_device_medium);
-    const sourceLarge = convertNullToEmptyString(thumb_device_large);
-
-    return {
-      uuid,
-      description,
-      sourceSmall,
-      sourceMedium,
-      sourceLarge,
-      href,
-    };
-  });
-}
-
-function computeThumbnailSize(queries: MatchingMediaQueries): ThumbnailSize {
-  const mapped = queries.map(query => query.id);
-  if (mapped.includes('1080')) {
-    return 'LARGE';
-  } else if (mapped.includes('480')) {
-    return 'MEDIUM';
-  } else {
-    return 'SMALL';
-  }
-}
-
 function mapStateToProps(state: Store): StateProps {
   return {
-    thumbnails: mapProjectsToThumbnails(state.portfolio.projects),
-    thumbnailSize: computeThumbnailSize(state.browser.matching_media_queries),
+    thumbnails: mapProjectsToThumbnails(state.portfolio.projects)
   };
 }
 
 function mapDispatchToProps(): DispatchProps {
   return {
-    onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>, path?: string) => {
+    thumbnailClickHandler: (
+      e: React.MouseEvent<HTMLElement,
+      MouseEvent>, path?: string
+    ) => {
       e.preventDefault();
       return setRoute(`/portfolio/${path}`);
     },
   };
 }
 
-const GALLERY_HOC = connect(mapStateToProps, mapDispatchToProps())(Gallery);
+const galleryMemo = React.memo<GalleryProps>(Gallery);
+
+const GALLERY_HOC = connect(mapStateToProps, mapDispatchToProps())(galleryMemo);
 
 export { GALLERY_HOC as GalleryHOC };

@@ -25,22 +25,23 @@ export const STYLES = {
     margin: 0rem;
     vertical-align: top;
   `,
-  image: `
-    display: inline-flex;
-    width: 100%;
-    height: auto;
-  
+  picture: `
+    flex: 0 0 100%;
+    
     @media (min-width: ${Breakpoints[480]}) {
-      width: 50%;
+      flex: 1 0 50%;
     }
   `,
-  caption: `
-    display: inline-flex;
+  image: `
     width: 100%;
+    height: auto;
+  `,
+  caption: `
+    flex: 0 0 100%;
     padding: ${Dimensions.whitespace};
   
     @media (min-width: ${Breakpoints[480]}) {
-      width: 50%;
+      flex: 0 1 50%;
     }
   `,
 };

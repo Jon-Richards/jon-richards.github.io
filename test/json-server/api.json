@@ -7,9 +7,9 @@
                 "display_title": "1 in X",
                 "url_title": "1_in_X",
                 "description": "A web app for making inhuman statistics more personal.",
-                "thumb_device_small": "http://localhost:3004/img/thumb_320x320.jpg",
-                "thumb_device_medium": "http://localhost:3004/img/thumb_500x500.jpg",
-                "thumb_device_large": "http://localhost:3004/img/thumb_500x500.jpg",
+                "thumb_device_small": "http://localhost:3004/img/thumb_480x480.jpg",
+                "thumb_device_medium": "http://localhost:3004/img/thumb_360x360.jpg",
+                "thumb_device_large": "http://localhost:3004/img/thumb_320x320.jpg",
                 "tools": [
                     "angular",
                     "photoshop"
@@ -21,9 +21,9 @@
                 "display_title": "Sketchbook",
                 "url_title": "sketchbook",
                 "description": "A place for displaying work of an entirely different kind.",
-                "thumb_device_small": "http://localhost:3004/img/thumb_320x320.jpg",
-                "thumb_device_medium": "http://localhost:3004/img/thumb_500x500.jpg",
-                "thumb_device_large": "http://localhost:3004/img/thumb_500x500.jpg",
+                "thumb_device_small": "http://localhost:3004/img/thumb_480x480.jpg",
+                "thumb_device_medium": "http://localhost:3004/img/thumb_360x360.jpg",
+                "thumb_device_large": "http://localhost:3004/img/thumb_320x320.jpg",
                 "tools": [
                     "angular",
                     "php",

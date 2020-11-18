@@ -16,7 +16,6 @@ export const STYLES = {
     position: relative;
     width: 100%;
     max-width: 80rem;
-    border: thin solid #00f;
     margin: 0rem auto;
     padding: 0rem calc(${Dimensions.whitespace} / 2);
     height: auto;
