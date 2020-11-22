@@ -10,14 +10,28 @@ interface Project {
   url_title: string;
   /** A description of the project. */
   description: string;
-  /** Path to the Project's thumbnail for small device sizes. */
-  thumb_device_small: string | null;
-  /** Path to the Project's thumbnail for medium device sizes. */
-  thumb_device_medium: string | null;
-  /** Path to the Project's thumbnail for large device sizes. */
-  thumb_device_large: string | null;
+  /** All images associated with the project. */
+  images: Image[];
   /** Array of UUID's corresponding to the tools used to create the project. */
   tools: string[] | null;
+}
+
+/** An image that appears in the Portfolio. */
+type Image = {
+  /** The id of the image. */
+  id: number;
+  /** A unique identifier for the image. */
+  uuid: string;
+  /** The kind of image, e.g. "thumbnail" or "banner". */
+  category: string;
+  /** The width (in pixels) of the image file. */
+  width: number;
+  /** The height (in pixels) of the image file. */
+  height: number;
+  /** A description of the image. */
+  description: string;
+  /** A path to the image's source file. */
+  source: string;
 }
 
 /** Shape of a single Tool in the Portfolio store. */

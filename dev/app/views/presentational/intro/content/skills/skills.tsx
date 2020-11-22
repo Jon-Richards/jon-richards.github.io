@@ -5,11 +5,6 @@ import { css, jsx } from '@emotion/core';
 import { STYLES } from './styles';
 import { Skill, SkillProps } from './skill/skill';
 
-type SkillsProps = {
-  /** Array of skill filters. */
-  skills: SkillProps[];
-};
-
 /**
  * Renders a filterable list of skills.
  *
@@ -28,7 +23,7 @@ type SkillsProps = {
  *      ]}
  * />
  */
-function Skills(props: SkillsProps): JSX.Element {
+export function Skills(props: SkillsProps): JSX.Element {
   const { skills } = props;
 
   return (
@@ -39,6 +34,11 @@ function Skills(props: SkillsProps): JSX.Element {
     </div>
   );
 }
+
+export type SkillsProps = {
+  /** Array of skill filters. */
+  skills: SkillProps[];
+};
 
 function mapSkills(skills: SkillProps[]): React.ReactFragment {
   if (skills.length) {
@@ -54,7 +54,3 @@ function mapSkills(skills: SkillProps[]): React.ReactFragment {
   }
   return <React.Fragment></React.Fragment>;
 }
-
-const skillsMemo = React.memo<SkillsProps>(Skills);
-
-export { skillsMemo as Skills, SkillsProps };

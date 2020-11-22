@@ -5,17 +5,8 @@ import { css, jsx } from '@emotion/core';
 import { STYLES } from './styles';
 import { Skills, SkillsProps } from './skills';
 
-type ContentProps = {
-  /** The intro title. */
-  title: React.ReactFragment;
-  /** The subtitle. */
-  subtitle: React.ReactFragment;
-  /** A list of skills. */
-  skills: SkillsProps['skills'];
-};
-
 /** Renders the content for the intro section. */
-function Content(props: ContentProps) {
+export function Content(props: ContentProps) {
   const { title, subtitle, skills } = props;
 
   return (
@@ -33,6 +24,11 @@ function Content(props: ContentProps) {
   );
 }
 
-const contentMemo = React.memo<ContentProps>(Content);
-
-export { contentMemo as Content, ContentProps };
+export type ContentProps = {
+  /** The intro title. */
+  title: React.ReactFragment;
+  /** The subtitle. */
+  subtitle: React.ReactFragment;
+  /** A list of skills. */
+  skills: SkillsProps['skills'];
+};

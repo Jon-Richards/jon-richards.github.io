@@ -14,7 +14,10 @@ export function Gallery(props: GalleryProps): JSX.Element {
 
   return (
     <div css={css(STYLES.root)}>
-      <Thumbnails data={thumbnails} clickHandler={thumbnailClickHandler} />
+      <Thumbnails
+        data={thumbnails}
+        clickHandler={thumbnailClickHandler}
+      />
     </div>
   );
 }

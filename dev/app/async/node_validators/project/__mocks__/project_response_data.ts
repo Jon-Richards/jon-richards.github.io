@@ -19,9 +19,7 @@ export function projectResponseData(
     display_title: `Project Title ${stubUUID}`,
     url_title: `project-title-${stubUUID}`,
     description: `Project description for project: ${stubUUID}`,
-    thumb_device_small: null,
-    thumb_device_medium: null,
-    thumb_device_large: null,
+    images: [],
     tools: [],
     ...data,
   };

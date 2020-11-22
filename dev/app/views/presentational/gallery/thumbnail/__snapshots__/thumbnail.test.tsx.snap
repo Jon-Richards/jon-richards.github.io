@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The gallery component. Should match the snapshot. 1`] = `
-.emotion-6 {
+.emotion-8 {
+  display: inline-block;
   width: 100%;
   height: auto;
   padding: 0rem;
+  margin: 0rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 @media (min-width:720px) {
-  .emotion-6 {
+  .emotion-8 {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     -webkit-transform-origin: 50% 50%;
@@ -16,17 +20,24 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
     transform-origin: 50% 50%;
   }
 
-  .emotion-6:hover,
-  .emotion-6:active,
-  .emotion-6:focus,
-  .emotion-6:focus-within {
+  .emotion-8:hover,
+  .emotion-8:active,
+  .emotion-8:focus,
+  .emotion-8:focus-within {
     -webkit-transform: scale(1.1,1.1);
     -ms-transform: scale(1.1,1.1);
     transform: scale(1.1,1.1);
   }
 }
 
-.emotion-5 {
+.emotion-2 {
+  width: 100%;
+  height: auto;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+.emotion-1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -42,7 +53,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
 }
 
-.emotion-4 {
+.emotion-0 {
   display: block;
   width: 100%;
   height: 100%;
@@ -52,101 +63,83 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
 }
 
-.emotion-3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  padding: 0rem;
-  margin: 0rem;
-  vertical-align: top;
-}
-
-.emotion-1 {
-  -webkit-flex: 0 0 100%;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
-}
-
-@media (min-width:480px) {
-  .emotion-1 {
-    -webkit-flex: 1 0 50%;
-    -ms-flex: 1 0 50%;
-    flex: 1 0 50%;
-  }
-}
-
-.emotion-0 {
-  width: 100%;
-  height: auto;
-}
-
-.emotion-2 {
-  -webkit-flex: 0 0 100%;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
+.emotion-7 {
   padding: 2rem;
 }
 
-@media (min-width:480px) {
-  .emotion-2 {
-    -webkit-flex: 0 1 50%;
-    -ms-flex: 0 1 50%;
-    flex: 0 1 50%;
-  }
+.emotion-3 {
+  font-size: 1.2rem;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.emotion-4 {
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: hsla(48,7%,70%,1);
 }
 
 <a
-  class="emotion-6"
+  class="emotion-8"
   data-testid="gallery__thumb"
   href="www.google.com"
 >
   <div
-    class="emotion-5"
+    class="emotion-2"
   >
     <div
-      class="emotion-4"
+      class="emotion-1"
     >
-      <figure
-        aria-label="thumbnail"
-        class="emotion-3"
+      <div
+        class="emotion-0"
       >
-        <picture
-          class="emotion-1"
-        >
+        <picture>
           <source
-            data-testid="gallery__thumb__picture-source"
-            media="min-width(720px)"
-            srcset="test_large.jpg"
+            data-testid="picture__source"
+            media="min-width(320px)"
+            srcset="test_small.jpg"
           />
           <source
-            data-testid="gallery__thumb__picture-source"
+            data-testid="picture__source"
             media="min-width(480px)"
             srcset="test_medium.jpg"
           />
           <source
-            data-testid="gallery__thumb__picture-source"
-            media="min-width(320px)"
-            srcset="test_small.jpg"
+            data-testid="picture__source"
+            media="min-width(720px)"
+            srcset="test_large.jpg"
           />
           <img
-            alt="A test image."
-            class="emotion-0"
-            data-testid="gallery__thumb__img"
+            alt="Test 1 - A test image."
             src="test.jpg"
           />
         </picture>
-        <figcaption
-          class="emotion-2"
+      </div>
+    </div>
+  </div>
+  <div
+    class="emotion-7"
+  >
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-0"
+      >
+        <h3
+          class="emotion-3"
+        >
+          Test 1
+        </h3>
+        <p
+          class="emotion-4"
         >
           A test image.
-        </figcaption>
-      </figure>
+        </p>
+      </div>
     </div>
   </div>
 </a>

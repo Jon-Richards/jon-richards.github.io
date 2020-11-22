@@ -4,7 +4,7 @@ exports[`The Skills component. Should match the snapshot. 1`] = `
 <li
   key="277d793d-1585-4870-9200-acee39522bd4"
 >
-  <Memo(Skill)
+  <Skill
     displayLabel="Foo"
     isCore={true}
     uuid="277d793d-1585-4870-9200-acee39522bd4"
@@ -13,7 +13,7 @@ exports[`The Skills component. Should match the snapshot. 1`] = `
 <li
   key="66b58521-fab3-432e-8ab1-63f3041297ec"
 >
-  <Memo(Skill)
+  <Skill
     displayLabel="Bar"
     isCore={true}
     uuid="66b58521-fab3-432e-8ab1-63f3041297ec"
@@ -22,7 +22,7 @@ exports[`The Skills component. Should match the snapshot. 1`] = `
 <li
   key="6ff752ab-f9b7-4f25-bcc4-c2bed53ea6d3"
 >
-  <Memo(Skill)
+  <Skill
     displayLabel="Baz"
     isCore={true}
     uuid="6ff752ab-f9b7-4f25-bcc4-c2bed53ea6d3"

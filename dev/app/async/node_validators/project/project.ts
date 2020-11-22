@@ -4,9 +4,9 @@
  * from the API.
  */
 
+import { ImageValidator, ImageResponseData } from '../image';
 import {
   NodeValidator,
-  isURIString,
   isUUID,
   notEmpty,
   isInteger,
@@ -24,12 +24,8 @@ export interface ProjectResponseData {
   url_title: string;
   /** The project's description. */
   description: string;
-  /** The project's thumbnail for small devices. */
-  thumb_device_small: string | null;
-  /** The project's thumbnail for medium devices. */
-  thumb_device_medium: string | null;
-  /** The project's thumbnail for large devices. */
-  thumb_device_large: string | null;
+  /** Images associated with the project. */
+  images: ImageResponseData[];
   /** An array of tool UUID's used by the project. */
   tools: string[] | null;
 }
@@ -91,29 +87,12 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const thumb_device_small = this.validate(
-      'thumb_device_small',
-      project.thumb_device_small,
-      [notEmpty, isURIString],
-      true,
-      ''
-    );
-
-    const thumb_device_medium = this.validate(
-      'thumb_device_medium',
-      project.thumb_device_medium,
-      [notEmpty, isURIString],
-      true,
-      ''
-    );
-
-    const thumb_device_large = this.validate(
-      'thumb_device_large',
-      project.thumb_device_large,
-      [notEmpty, isURIString],
-      true,
-      ''
-    );
+    const images = Array.isArray(project.tools)
+      ? project.images
+        .map(image => new ImageValidator(image))
+        .filter(image => image.hasErrors() === false)
+        .map(image => image.data)
+      : [];
 
     const tools = Array.isArray(project.tools)
       ? project.tools
@@ -127,9 +106,7 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
       display_title,
       url_title,
       description,
-      thumb_device_small,
-      thumb_device_medium,
-      thumb_device_large,
+      images,
       tools,
     };
   }

@@ -6,20 +6,8 @@ import { Content, ContentProps } from './content';
 import { css, jsx } from '@emotion/core';
 import { STYLES } from './styles';
 
-/** Props needed to instantiate the Intro component. */
-type Props = {
-  /** The intro title. */
-  title: React.ReactFragment;
-  /** The subtitle. */
-  subtitle: React.ReactFragment;
-  /** An array of skills. */
-  skills: ContentProps['skills'];
-  /** An optional theme with which to render the intro.  Defaults to "PANEL" */
-  theme?: 'PANEL' | 'COPY';
-};
-
 /** Renders the introduction section. */
-function Intro(props: Props): JSX.Element {
+export function Intro(props: IntroProps): JSX.Element {
   const { title, subtitle, skills, theme = 'PANEL' } = props;
 
   return (
@@ -37,6 +25,14 @@ function Intro(props: Props): JSX.Element {
   );
 }
 
-const introMemo = React.memo<Props>(Intro);
-
-export { introMemo as Intro, Props as IntroProps };
+/** Props needed to instantiate the Intro component. */
+export type IntroProps = {
+  /** The intro title. */
+  title: React.ReactFragment;
+  /** The subtitle. */
+  subtitle: React.ReactFragment;
+  /** An array of skills. */
+  skills: ContentProps['skills'];
+  /** An optional theme with which to render the intro.  Defaults to "PANEL" */
+  theme?: 'PANEL' | 'COPY';
+};

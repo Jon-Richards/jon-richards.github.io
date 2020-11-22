@@ -1,16 +1,9 @@
-import { ProjectValidator } from '../project';
+import { ProjectValidator } from './project';
+import { ImageResponseData } from '../image';
 import { v4 as uuid } from 'uuid';
 import { projectResponseData } from './__mocks__/project_response_data';
 
 describe('The Project node validator class.', () => {
-  // it(`Should replace an invalid id with an empty string.`, () => {
-  //   const project = new ProjectValidator({
-  //     ...MOCKED_PROJECT_RESPONSE_DATA,
-  //     id: (undefined as unknown) as number,
-  //   });
-  //   expect(project.data.id).toBe(0);
-  // });
-
   it('Should store an error when an invalid property is passed.', () => {
     const project = new ProjectValidator(
       projectResponseData({
@@ -100,64 +93,15 @@ describe('The Project node validator class.', () => {
     expect(project.data.description).toBe(testURLTitle);
   });
 
-  it('Should handle an invalid small thumb url when supplied.', () => {
+  it('Should discard invalid images.', () => {
     const project = new ProjectValidator(
       projectResponseData({
-        thumb_device_small: (false as unknown) as string,
-      }),
-    );
-    expect(project.data.thumb_device_small).toBe('');
-    expect(project.getErrors().get('thumb_device_small')).toBeDefined();
-  });
-
-  it('Should store a valid small thumb url when supplied.', () => {
-    const testThumbUrl = 'test_thumb_url';
-    const project = new ProjectValidator(
-      projectResponseData({
-        thumb_device_small: testThumbUrl,
-      }),
-    );
-    expect(project.data.thumb_device_small).toBe(testThumbUrl);
-  });
-
-  it('Should handle an invalid medium thumb url when supplied.', () => {
-    const project = new ProjectValidator(
-      projectResponseData({
-        thumb_device_medium: (false as unknown) as string,
-      }),
-    );
-    expect(project.data.thumb_device_medium).toBe('');
-    expect(project.getErrors().get('thumb_device_medium')).toBeDefined();
-  });
-
-  it('Should store a valid medium thumb url when supplied.', () => {
-    const testThumbUrl = 'test_thumb_url';
-    const project = new ProjectValidator(
-      projectResponseData({
-        thumb_device_medium: testThumbUrl,
-      }),
-    );
-    expect(project.data.thumb_device_medium).toBe(testThumbUrl);
-  });
-
-  it('Should handle an invalid large thumb url when supplied.', () => {
-    const project = new ProjectValidator(
-      projectResponseData({
-        thumb_device_large: (false as unknown) as string,
-      }),
-    );
-    expect(project.data.thumb_device_large).toBe('');
-    expect(project.getErrors().get('thumb_device_large')).toBeDefined();
-  });
-
-  it('Should store a valid large thumb url when supplied.', () => {
-    const testThumbUrl = 'test_thumb_url';
-    const project = new ProjectValidator(
-      projectResponseData({
-        thumb_device_large: testThumbUrl,
-      }),
-    );
-    expect(project.data.thumb_device_large).toBe(testThumbUrl);
+        images: [
+          'banana' as unknown as ImageResponseData
+        ]
+      })
+    )
+    expect(project.data.images.length).toBe(0);
   });
 
   it('Should discard empty tools.', () => {

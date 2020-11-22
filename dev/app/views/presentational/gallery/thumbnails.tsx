@@ -4,14 +4,15 @@ import { v4 as uuid } from 'uuid';
 
 export function Thumbnails(props: ThumbnailsProps): JSX.Element {
   const mapped = props.data.map(thumbnail => {
-    const { sources, fallbackSource, altText, href } = thumbnail;
+    const { sources, fallbackSource, title, description, href } = thumbnail;
 
     return (
       <Thumbnail
         key={uuid()}
         sources={sources}
         fallbackSource={fallbackSource}
-        altText={altText}
+        title={title}
+        description={description}
         href={href}
         onClick={e => props.clickHandler(e, href)}
       />

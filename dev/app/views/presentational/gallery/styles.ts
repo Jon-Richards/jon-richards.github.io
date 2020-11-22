@@ -13,12 +13,16 @@ export const STYLES = {
     column-gap: ${Dimensions.whitespace};
     row-gap: ${Dimensions.whitespace};
 
-    @media (min-width: ${Breakpoints[720]}) {
+    @media (min-width: ${Breakpoints[480]}) {
       grid-template-columns: 1fr 1fr;
     }
 
-    @media (min-width: ${Breakpoints[1440]}) {
+    @media (min-width: ${Breakpoints[1080]}) {
       grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (min-width: ${Breakpoints[1440]}) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   `,
 };

@@ -15,14 +15,12 @@ type Props = React.PropsWithChildren<Record<string, unknown>>;
  *   <!-- child content -->
  * </Panel>
  */
-function Panel(props: Props): JSX.Element {
+export function Panel(props: Props): JSX.Element {
   return (
     <div css={css(STYLES.frame)}>
-      <div css={css(STYLES.content)}>{props.children}</div>
+      <div css={css(STYLES.content)}>
+        {props.children}
+      </div>
     </div>
   );
 }
-
-const panelMemo = React.memo<Props>(Panel);
-
-export { panelMemo as Panel };

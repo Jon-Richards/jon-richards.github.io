@@ -5,6 +5,7 @@ export type MediaQueryIds =
   | '375'
   | '480'
   | '720'
+  | '900'
   | '1080'
   | '1440';
 
@@ -22,6 +23,7 @@ export const MEDIA_QUERIES: MediaQuery[] = [
   { id: '375', query: '(min-width: 375px)' },
   { id: '480', query: '(min-width: 480px)' },
   { id: '720', query: '(min-width: 720px)' },
+  { id: '900', query: '(min-width: 900px)' },
   { id: '1080', query: '(min-width: 1080px)' },
   { id: '1440', query: '(min-width: 1440px)' },
 ];
