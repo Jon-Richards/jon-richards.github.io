@@ -1,4 +1,4 @@
-import { MQTMediaQuery } from 'Lib/ts/media_query_tracker';
+import { MQTMediaQuery } from 'Lib/media_query_tracker';
 
 /** Media query ID's used by the application. */
 export type MediaQueryIds =

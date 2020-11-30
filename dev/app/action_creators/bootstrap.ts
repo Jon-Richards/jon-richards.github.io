@@ -6,7 +6,7 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { PublishPortfolio } from '../store/portfolio';
 import { Store } from '../store';
-import { MediaQueryTracker } from 'Lib/ts/media_query_tracker';
+import { MediaQueryTracker } from 'Lib/media_query_tracker';
 import { UpdateStatus } from '../store/application';
 import { getOverview } from '../async/requests';
 import { UpdateMatchingMediaQueries } from '../store/browser';
@@ -22,11 +22,13 @@ function updateStatus(): UpdateStatus {
 
 function publishPortfolio(
   projects: PublishPortfolio['projects'],
+  images: PublishPortfolio['images'],
   tools: PublishPortfolio['tools']
 ): PublishPortfolio {
   return {
     type: 'PORTFOLIO__PUBLISH_PORTFOLIO',
     projects,
+    images,
     tools,
   };
 }
@@ -77,8 +79,8 @@ export function bootstrap(): ThunkAction<
     return new Promise((resolve, reject) => {
       getOverview().then(resp => {
         if (resp.getErrors().size > 0) reject('Invalid Overview data.');
-        const { projects, tools } = resp.data;
-        return dispatch(publishPortfolio(projects, tools));
+        const { projects, images, tools } = resp.data;
+        return dispatch(publishPortfolio(projects, images, tools));
       });
       resolve();
     })

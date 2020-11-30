@@ -10,7 +10,7 @@ import {
   isUUID,
   notEmpty,
   isBoolean,
-} from '../../../lib/ts/node_validator';
+} from '../../../lib/node_validator';
 
 /** Shape of a single tool node as recieved by the API. */
 export interface ToolResponseData {

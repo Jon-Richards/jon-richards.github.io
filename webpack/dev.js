@@ -20,7 +20,6 @@ const output_stats = {
   timings: false
 };
 
-
 module.exports = env => {
   return {    
     entry: {

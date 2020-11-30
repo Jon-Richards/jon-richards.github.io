@@ -4,18 +4,24 @@ import { connect } from 'react-redux';
 import { Store } from 'Store/index';
 import { setRoute } from 'Action_creators/set_route';
 import { Breakpoints } from 'Config/styles/breakpoints';
+import { buildThumbnailSource } from './thumbnail_presenter';
+import { findProjectThumbnails } from './gallery_presenter';
 
 type Projects = Store['portfolio']['projects'];
+type Images = Store['portfolio']['images'];
 type StateProps = Pick<GalleryProps, 'thumbnails'>;
 type DispatchProps = Pick<GalleryProps, 'thumbnailClickHandler'>;
 
-function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
+function mapProjectsToThumbnails(
+  projects: Projects,
+  images: Images
+): StateProps['thumbnails'] {
   return projects.map(project => {
+    const thumbnails = findProjectThumbnails(project, images);
     const {
       display_title,
       description,
-      url_title: href,
-      images
+      url_title: href
     } = project;
 
     return {
@@ -26,20 +32,18 @@ function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
        * media query would always be used to determine Thumbnail's source.
        */
       sources: [
-        {
-          source: convertNullToEmptyString(thumb_device_large),
-          mediaQuery: `(min-width: ${Breakpoints[1440]})`
-        },
-        {
-          source: convertNullToEmptyString(thumb_device_medium),
-          mediaQuery: `(min-width: ${Breakpoints[720]})`
-        },
-        {
-          source: convertNullToEmptyString(thumb_device_small),
-          mediaQuery: `(min-width: ${Breakpoints[480]})`
-        }
+        buildThumbnailSource(
+          `(min-width: ${Breakpoints[1440]})`,
+          320,
+          thumbnails
+        ),
+        buildThumbnailSource(
+          `(min-width: ${Breakpoints[720]})`,
+          480,
+          thumbnails
+        ),
       ],
-      fallbackSource: convertNullToEmptyString(thumb_device_small),
+      fallbackSource: buildThumbnailSource('', 480, thumbnails).source,
       title: display_title,
       description,
       href,
@@ -47,17 +51,10 @@ function mapProjectsToThumbnails(projects: Projects): StateProps['thumbnails'] {
   });
 }
 
-function convertNullToEmptyString(value: null | string): string {
-  if (value === null) {
-    console.error(new TypeError('Invalid thumbnail source.'));
-    return '';
-  }
-  return value;
-}
-
 function mapStateToProps(state: Store): StateProps {
+  const { projects, images } = state.portfolio;
   return {
-    thumbnails: mapProjectsToThumbnails(state.portfolio.projects)
+    thumbnails: mapProjectsToThumbnails(projects, images)
   };
 }
 

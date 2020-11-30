@@ -21,13 +21,15 @@ describe('The gallery component.', () => {
       {
         sources: [],
         fallbackSource: 'test.jpg',
-        altText: 'a thumbnail',
+        title: 'Thumbnail',
+        description: 'a thumbnail',
         href: 'www.google.com',
       },
       {
         sources: [],
         fallbackSource: 'test.jpg',
-        altText: 'a thumbnail',
+        title: 'Thumbnail',
+        description: 'a thumbnail',
         href: 'www.google.com',
       },
     ];

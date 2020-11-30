@@ -5,6 +5,7 @@
 
 import { OverviewValidator } from './../overview';
 import { projectResponseData } from '../project/__mocks__/project_response_data';
+import { imageResponseData } from '../image/__mocks__/image_response_data';
 import { toolResponseData } from '../tool/__mocks__/tool_response_data';
 import { overviewResponseData } from './__mocks__/overview_response_data';
 
@@ -25,7 +26,7 @@ describe('The OverviewValidator class.', () => {
   it('Registers an error when a duplicate tool is found.', () => {
     const tool = toolResponseData();
     const tools = [tool, tool];
-    const data = overviewResponseData(undefined, tools);
+    const data = overviewResponseData(undefined, undefined, tools);
     const validator = new OverviewValidator(data);
     expect(validator.getErrors().size).toBe(1);
   });
@@ -35,7 +36,7 @@ describe('The OverviewValidator class.', () => {
     const projects = [project, project, project];
     const tool = toolResponseData();
     const tools = [tool, tool, tool];
-    const data = overviewResponseData(projects, tools);
+    const data = overviewResponseData(projects, undefined, tools);
     const validator = new OverviewValidator(data);
     expect(validator.getErrors().size).toBe(2);
   });
@@ -50,12 +51,22 @@ describe('The OverviewValidator class.', () => {
     expect(validator.data.projects.length).toBe(1);
   });
 
+  it('Discards images with errors.', () => {
+    const imageWithError = imageResponseData({
+      id: ('banana' as unknown) as number,
+    });
+    const images = [imageResponseData(), imageWithError];
+    const data = overviewResponseData(undefined, images);
+    const validator = new OverviewValidator(data);
+    expect(validator.data.images.length).toBe(1);
+  });
+
   it('Discards tools with errors.', () => {
     const toolWithError = toolResponseData({
       id: ('banana' as unknown) as number,
     });
     const tools = [toolResponseData(), toolWithError];
-    const data = overviewResponseData(undefined, tools);
+    const data = overviewResponseData(undefined, undefined, tools);
     const validator = new OverviewValidator(data);
     expect(validator.data.tools.length).toBe(1);
   });

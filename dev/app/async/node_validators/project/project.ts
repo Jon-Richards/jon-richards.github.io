@@ -4,13 +4,12 @@
  * from the API.
  */
 
-import { ImageValidator, ImageResponseData } from '../image';
 import {
   NodeValidator,
   isUUID,
   notEmpty,
   isInteger,
-} from '../../../lib/ts/node_validator';
+} from '../../../lib/node_validator';
 
 /** Shape of a single portfolio project JSON node as recieved by the API. */
 export interface ProjectResponseData {
@@ -25,7 +24,7 @@ export interface ProjectResponseData {
   /** The project's description. */
   description: string;
   /** Images associated with the project. */
-  images: ImageResponseData[];
+  images: string[];
   /** An array of tool UUID's used by the project. */
   tools: string[] | null;
 }
@@ -87,11 +86,12 @@ export class ProjectValidator extends NodeValidator<ProjectResponseData> {
       ''
     );
 
-    const images = Array.isArray(project.tools)
+    const images = Array.isArray(project.images)
       ? project.images
-        .map(image => new ImageValidator(image))
-        .filter(image => image.hasErrors() === false)
-        .map(image => image.data)
+        .map(image =>
+          this.validate('images', image, [notEmpty, isUUID], false, '')
+        )
+        .filter(image => typeof image === 'string' && notEmpty(image))
       : [];
 
     const tools = Array.isArray(project.tools)

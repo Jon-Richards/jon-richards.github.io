@@ -1,4 +1,4 @@
-import { Color } from 'Lib/ts/color';
+import { Color } from 'Lib/color';
 
 /**
  * A single color swatch as used by this project.

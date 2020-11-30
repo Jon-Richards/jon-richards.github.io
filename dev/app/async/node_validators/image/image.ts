@@ -4,7 +4,7 @@ import {
   isInteger,
   isUUID,
   notEmpty
-} from '../../../lib/ts/node_validator';
+} from '../../../lib/node_validator';
 
 /** Shape of a single image node as received by the API. */
 export interface ImageResponseData {

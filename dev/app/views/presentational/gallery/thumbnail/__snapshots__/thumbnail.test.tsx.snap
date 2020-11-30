@@ -11,33 +11,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   text-decoration: none;
 }
 
-@media (min-width:720px) {
-  .emotion-8 {
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-  }
-
-  .emotion-8:hover,
-  .emotion-8:active,
-  .emotion-8:focus,
-  .emotion-8:focus-within {
-    -webkit-transform: scale(1.1,1.1);
-    -ms-transform: scale(1.1,1.1);
-    transform: scale(1.1,1.1);
-  }
-}
-
-.emotion-2 {
-  width: 100%;
-  height: auto;
-  padding: 0rem;
-  margin: 0rem;
-}
-
-.emotion-1 {
+.emotion-7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -53,7 +27,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
 }
 
-.emotion-0 {
+.emotion-6 {
   display: block;
   width: 100%;
   height: 100%;
@@ -63,23 +37,48 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
 }
 
-.emotion-7 {
-  padding: 2rem;
+.emotion-5 {
+  position: relative;
 }
 
-.emotion-3 {
-  font-size: 1.2rem;
-  font-family: "Open Sans",sans-serif;
-  font-weight: 400;
-  margin-bottom: 0;
+.emotion-1 {
+  width: 100%;
+  height: auto;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+.emotion-0 {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .emotion-4 {
-  font-size: 1rem;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  margin: 0rem;
+  visibility: hidden;
+}
+
+.emotion-2 {
+  color: hsla(48,7%,86%,1);
+  margin-bottom: calc(2rem / 2);
+  font-size: 1.2rem;
   font-family: "Open Sans",sans-serif;
   font-weight: 400;
-  line-height: 1.4rem;
-  color: hsla(48,7%,70%,1);
+}
+
+.emotion-3 {
+  font-size: 1rem;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 300;
+  line-height: 1.6rem;
+  color: hsla(48,7%,86%,1);
 }
 
 <a
@@ -88,57 +87,54 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   href="www.google.com"
 >
   <div
-    class="emotion-2"
-  >
-    <div
-      class="emotion-1"
-    >
-      <div
-        class="emotion-0"
-      >
-        <picture>
-          <source
-            data-testid="picture__source"
-            media="min-width(320px)"
-            srcset="test_small.jpg"
-          />
-          <source
-            data-testid="picture__source"
-            media="min-width(480px)"
-            srcset="test_medium.jpg"
-          />
-          <source
-            data-testid="picture__source"
-            media="min-width(720px)"
-            srcset="test_large.jpg"
-          />
-          <img
-            alt="Test 1 - A test image."
-            src="test.jpg"
-          />
-        </picture>
-      </div>
-    </div>
-  </div>
-  <div
     class="emotion-7"
   >
     <div
-      class="emotion-1"
+      class="emotion-6"
     >
       <div
-        class="emotion-0"
+        class="emotion-5"
       >
-        <h3
-          class="emotion-3"
+        <div
+          class="emotion-1"
         >
-          Test 1
-        </h3>
-        <p
+          <picture>
+            <source
+              data-testid="picture__source"
+              media="min-width(320px)"
+              srcset="test_small.jpg"
+            />
+            <source
+              data-testid="picture__source"
+              media="min-width(480px)"
+              srcset="test_medium.jpg"
+            />
+            <source
+              data-testid="picture__source"
+              media="min-width(720px)"
+              srcset="test_large.jpg"
+            />
+            <img
+              alt="Test 1 - A test image."
+              class="emotion-0"
+              src="test.jpg"
+            />
+          </picture>
+        </div>
+        <div
           class="emotion-4"
         >
-          A test image.
-        </p>
+          <h3
+            class="emotion-2"
+          >
+            Test 1
+          </h3>
+          <p
+            class="emotion-3"
+          >
+            A test image.
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -6,14 +6,17 @@
 import {
   NodeValidator,
   filterByDuplicateProperty,
-} from '../../../lib/ts/node_validator';
+} from '../../../lib/node_validator';
 import { ProjectValidator, ProjectResponseData } from '../project';
+import { ImageValidator, ImageResponseData } from '../image';
 import { ToolValidator, ToolResponseData } from '../tool';
 
 /** The raw response body of an Overview response. */
 export interface OverviewResponseData {
   /** Array of projects that should appear in the portfolio. */
   projects: ProjectResponseData[];
+  /** Array of images used in the projects. */
+  images: ImageResponseData[];
   /** Array of tools used to build portfolio projects. */
   tools: ToolResponseData[];
 }
@@ -27,6 +30,7 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
     super();
     this.data = {
       projects: this.validateProjects(responseBody.projects),
+      images: this.validateImages(responseBody.images),
       tools: this.validateTools(responseBody.tools),
     };
   }
@@ -65,6 +69,38 @@ export class OverviewValidator extends NodeValidator<OverviewResponseData> {
       console.warn(`Found duplicate Project with uuid: ${project.data.uuid}.`);
     }
     this.addError('projects', `Duplicate with uuid: ${project.data.uuid}.`);
+  }
+
+  /**
+   * Creates an array of Image entities based on the raw "images" field of an
+   * OverviewResponseShape. Image are then validated and any invalid entities
+   * are discarded.
+   * @param imagesBody An array of raw image response data to validate.
+   * @return An array of image data that has been validated within the context
+   * of other images.
+   */
+  private validateImages(
+    imagesBody: ImageResponseData[]
+  ): OverviewResponseData['images'] {
+    const mappedImages = imagesBody.map(image => new ImageValidator(image));
+    const validImages = mappedImages.filter(image =>
+      image.getErrors().size === 0
+    );
+    const uniqueTools = filterByDuplicateProperty(
+      validImages,
+      image => image.data.uuid,
+      image => this.handleDuplicateImage(image)
+    );
+    return uniqueTools.map(image => image.data);
+  }
+
+  /**
+   * Handles error registration when a duplicate tool is found.
+   * @param tool The tool that was a duplicate.
+   */
+  private handleDuplicateImage(image: ImageValidator): void {
+    console.warn(`Found duplicate image with uuid: ${image.data.uuid}.`);
+    this.addError('images', `Duplicate with uuid: ${image.data.uuid}.`);
   }
 
   /**

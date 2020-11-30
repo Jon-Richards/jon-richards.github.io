@@ -10,8 +10,8 @@ interface Project {
   url_title: string;
   /** A description of the project. */
   description: string;
-  /** All images associated with the project. */
-  images: Image[];
+  /** Array of references to images used by this project. */
+  images: string[];
   /** Array of UUID's corresponding to the tools used to create the project. */
   tools: string[] | null;
 }
@@ -57,6 +57,11 @@ type Tool = {
 export interface PortfolioStore {
   /** A complete array of portfolio projects displayed by the application. */
   projects: Project[];
+  /**
+   * A complete array of images that appear in the portfolio, including hero
+   * shots, thumbnails, etc.
+   */
+  images: Image[];
   /** A complete array of the tools used to build projects in the portfolio. */
   tools: Tool[];
 }

@@ -16,6 +16,7 @@ import { PublishPortfolio } from './interfaces/actions';
 export const PORTFOLIO_REDUCER: Reducer<PortfolioStore, PublishPortfolio> = (
   state = {
     projects: [],
+    images: [],
     tools: [],
   },
   action
@@ -26,6 +27,7 @@ export const PORTFOLIO_REDUCER: Reducer<PortfolioStore, PublishPortfolio> = (
       return {
         ...state,
         projects: action.projects,
+        images: action.images,
         tools: action.tools,
       };
     default:

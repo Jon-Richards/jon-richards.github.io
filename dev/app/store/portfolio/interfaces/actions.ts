@@ -6,6 +6,11 @@ export interface PublishPortfolio
   extends Action<'PORTFOLIO__PUBLISH_PORTFOLIO'> {
   /** An array of projects that will overwrite those in the Portfolio store. */
   projects: PortfolioStore['projects'];
+  /**
+   * An array of images from heros to thumbnails used by the projects in the
+   * portfolio.
+   */
+  images: PortfolioStore['images'];
   /** An array of tools that will overwrite those in the Portfolio store. */
   tools: PortfolioStore['tools'];
 }

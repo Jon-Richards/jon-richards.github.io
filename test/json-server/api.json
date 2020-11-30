@@ -8,42 +8,10 @@
                 "url_title": "1_in_X",
                 "description": "A web app for making inhuman statistics more personal.",
                 "images": [
-                    {
-                        "id": 1,
-                        "uuid": "9caf3ada-2ce9-11eb-adc1-0242ac120002", 
-                        "category": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 2,
-                        "uuid": "9caf3d14-2ce9-11eb-adc1-0242ac120002", 
-                        "category": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 3,
-                        "uuid": "1c583cf0-2cea-11eb-adc1-0242ac120002", 
-                        "category": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 4,
-                        "uuid": "1c58431c-2cea-11eb-adc1-0242ac120002", 
-                        "category": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    }
+                    "d8e5c2a3-b28f-4dc0-a330-f80db3dae13f",
+                    "167bf8a9-b556-42eb-ba85-aa05c64bcdca",
+                    "b23d1002-03e6-4526-af07-8e1bf9edd218",
+                    "04c40c01-864a-4141-96ee-155d7a384c39"
                 ],
                 "tools": [
                     "angular",
@@ -57,48 +25,54 @@
                 "url_title": "sketchbook",
                 "description": "A place for displaying work of an entirely different kind.",
                 "images": [
-                    {
-                        "id": 1,
-                        "uuid": "9caf3ada-2ce9-11eb-adc1-0242ac120002", 
-                        "type": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 2,
-                        "uuid": "9caf3d14-2ce9-11eb-adc1-0242ac120002", 
-                        "type": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 3,
-                        "uuid": "1c583cf0-2cea-11eb-adc1-0242ac120002", 
-                        "type": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    },
-                    {
-                        "id": 4,
-                        "uuid": "1c58431c-2cea-11eb-adc1-0242ac120002", 
-                        "type": "thumbnail",
-                        "width": 400,
-                        "height": 400,
-                        "description": "A description for this image.",
-                        "source": "http://localhost:3004/img/thumb_320x320.jpg"
-                    }
+                    "d8e5c2a3-b28f-4dc0-a330-f80db3dae13f",
+                    "167bf8a9-b556-42eb-ba85-aa05c64bcdca",
+                    "b23d1002-03e6-4526-af07-8e1bf9edd218",
+                    "04c40c01-864a-4141-96ee-155d7a384c39"
                 ],
                 "tools": [
                     "angular",
                     "php",
                     "illustrator"
                 ]
+            }
+        ],
+        "images": [
+            {
+                "id": 1,
+                "uuid": "d8e5c2a3-b28f-4dc0-a330-f80db3dae13f", 
+                "category": "thumbnail",
+                "width": 320,
+                "height": 320,
+                "description": "A description for this image.",
+                "source": "http://localhost:3004/img/thumb_320x320.jpg"
+            },
+            {
+                "id": 2,
+                "uuid": "167bf8a9-b556-42eb-ba85-aa05c64bcdca", 
+                "category": "thumbnail",
+                "width": 480,
+                "height": 480,
+                "description": "A description for this image.",
+                "source": "http://localhost:3004/img/thumb_480x480.jpg"
+            },
+            {
+                "id": 3,
+                "uuid": "b23d1002-03e6-4526-af07-8e1bf9edd218", 
+                "category": "thumbnail",
+                "width": 500,
+                "height": 500,
+                "description": "A description for this image.",
+                "source": "http://localhost:3004/img/thumb_500x500.jpg"
+            },
+            {
+                "id": 4,
+                "uuid": "04c40c01-864a-4141-96ee-155d7a384c39", 
+                "category": "thumbnail",
+                "width": 768,
+                "height": 769,
+                "description": "A description for this image.",
+                "source": "http://localhost:3004/img/thumb_768x768.jpg"
             }
         ],
         "tools": [

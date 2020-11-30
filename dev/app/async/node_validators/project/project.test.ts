@@ -97,7 +97,7 @@ describe('The Project node validator class.', () => {
     const project = new ProjectValidator(
       projectResponseData({
         images: [
-          'banana' as unknown as ImageResponseData
+          false as unknown as string
         ]
       })
     )
