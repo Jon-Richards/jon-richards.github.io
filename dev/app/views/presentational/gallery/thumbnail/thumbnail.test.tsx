@@ -45,4 +45,96 @@ describe('The gallery component.', () => {
     test_1.find('[data-testid="gallery__thumb"]').simulate('click');
     expect(mockHandler).toBeCalledTimes(1);
   });
+
+  it('Should change focus state on focus.', () => {
+    const sources: ThumbnailProps['sources'] = [
+      { mediaQuery: 'min-width(320px)', source: 'test_small.jpg' },
+    ];
+    const test_1 = shallow(
+      <Thumbnail
+        sources={sources}
+        fallbackSource="test.jpg"
+        title="Test 1"
+        description="A test image."
+        href="www.google.com"
+        onClick={() => {}}
+      />
+    );
+    let focused = test_1.find('[data-test-hasfocus=true]');
+    expect(focused.length).toBe(0);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('focus');
+
+    focused = test_1.find('[data-test-hasfocus=true]');
+    expect(focused.length).toBe(1);
+  });
+
+  it('Should change focus state on blur.', () => {
+    const sources: ThumbnailProps['sources'] = [
+      { mediaQuery: 'min-width(320px)', source: 'test_small.jpg' },
+    ];
+    const test_1 = shallow(
+      <Thumbnail
+        sources={sources}
+        fallbackSource="test.jpg"
+        title="Test 1"
+        description="A test image."
+        href="www.google.com"
+        onClick={() => {}}
+      />
+    );
+    const focused = '[data-test-hasfocus=true]';
+    expect(test_1.find(focused).length).toBe(0);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('focus');
+    expect(test_1.find(focused).length).toBe(1);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('blur');
+    expect(test_1.find(focused).length).toBe(0);
+  });
+
+  it('Should change focus state on mouse enter.', () => {
+    const sources: ThumbnailProps['sources'] = [
+      { mediaQuery: 'min-width(320px)', source: 'test_small.jpg' },
+    ];
+    const test_1 = shallow(
+      <Thumbnail
+        sources={sources}
+        fallbackSource="test.jpg"
+        title="Test 1"
+        description="A test image."
+        href="www.google.com"
+        onClick={() => {}}
+      />
+    );
+    const focused = '[data-test-hasfocus=true]';
+    expect(test_1.find(focused).length).toBe(0);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('mouseenter');
+    expect(test_1.find(focused).length).toBe(1);
+  });
+
+  it('Should change focus state on mouse leave.', () => {
+    const sources: ThumbnailProps['sources'] = [
+      { mediaQuery: 'min-width(320px)', source: 'test_small.jpg' },
+    ];
+    const test_1 = shallow(
+      <Thumbnail
+        sources={sources}
+        fallbackSource="test.jpg"
+        title="Test 1"
+        description="A test image."
+        href="www.google.com"
+        onClick={() => {}}
+      />
+    );
+    const focused = '[data-test-hasfocus=true]';
+    expect(test_1.find(focused).length).toBe(0);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('mouseenter');
+    expect(test_1.find(focused).length).toBe(1);
+
+    test_1.find('[data-testid="gallery__thumb"]').simulate('mouseleave');
+    expect(test_1.find(focused).length).toBe(0);
+  });
 });

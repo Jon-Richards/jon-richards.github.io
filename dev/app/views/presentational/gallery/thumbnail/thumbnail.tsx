@@ -4,7 +4,7 @@ import * as React from 'react';
 import { jsx } from '@emotion/core';
 import { STYLES } from './styles';
 import { Panel } from 'Views/presentational/panel';
-import { Picture, PictureProps } from 'Views/presentational/picture';
+import { Picture } from 'Views/presentational/picture';
 
 /** A single thumbnail. */
 export function Thumbnail(props: ThumbnailProps): JSX.Element {
@@ -23,10 +23,13 @@ export function Thumbnail(props: ThumbnailProps): JSX.Element {
       onBlur={() => setHasFocus(false)}
       onMouseLeave={() => setHasFocus(false)}
       data-testid="gallery__thumb"
+      data-test-hasfocus={hasFocus}
     >
       <Panel>
         <div css={STYLES.content}>
-          <div css={[STYLES.front, hasFocus && STYLES.frontWithFocus]}>
+          <div
+            css={[STYLES.front, hasFocus && STYLES.frontWithFocus]}
+          >
             <Picture
               sources={sources}
               defaultSource={fallbackSource}
@@ -51,7 +54,7 @@ export function Thumbnail(props: ThumbnailProps): JSX.Element {
 /** Shape of a single thumbnail. */
 export type ThumbnailProps = {
   /** An array of sources and the min-width at which they should be loaded. */
-  sources: PictureProps['sources'];
+  sources: Source[];
   /** The fallback source for browsers that don't support the picture tag. */
   fallbackSource: string;
   /** The piece's title. */
@@ -66,3 +69,9 @@ export type ThumbnailProps = {
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ): void;
 };
+
+/** A picture source and media query. */
+type Source = {
+  mediaQuery: string;
+  source: string;
+}

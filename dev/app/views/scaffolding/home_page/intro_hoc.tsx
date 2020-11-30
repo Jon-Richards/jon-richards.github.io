@@ -3,12 +3,17 @@ import { Intro, IntroProps } from 'Views/presentational/intro';
 import { connect } from 'react-redux';
 import { Store } from 'Store/index';
 
-type Tools = Store['portfolio']['tools'];
+type Tool = {
+  uuid: string;
+  display_title: string;
+  is_core: boolean;
+};
+
 type MatchingMediaQueries = Store['browser']['matching_media_queries'];
 
 type StateProps = Pick<IntroProps, 'skills' | 'subtitle' | 'theme' | 'title'>;
 
-function mapToolsToSkills(tools: Tools): StateProps['skills'] {
+function mapToolsToSkills(tools: Tool[]): StateProps['skills'] {
   return tools.map(tool => ({
     displayLabel: tool.display_title,
     uuid: tool.uuid,

@@ -43,9 +43,7 @@ function findImageForPreferredWidth(
   images: Image[],
   preferredWidth: number
 ): Image {
-  if (images.length < 1) {
-    throw RangeError('Length of images array must be at least 1.');
-  }
+  validateImagePool(images);
   const sorted = sortImagesByWidth(images);
   for (const image of sorted) {
     if (image.width >= preferredWidth) {
@@ -53,6 +51,12 @@ function findImageForPreferredWidth(
     }
   }
   return sorted[0];
+}
+
+function validateImagePool(images: Image[]) {
+  if (images.length < 1) {
+    throw RangeError('Length of images array must be at least 1.');
+  }
 }
 
 /**

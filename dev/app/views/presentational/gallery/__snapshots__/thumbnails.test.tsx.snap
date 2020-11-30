@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The gallery component. Should match the snapshot. 1`] = `
+exports[`The Thumbnails component. Should match the snapshot. 1`] = `
 .emotion-8 {
   display: inline-block;
   width: 100%;
@@ -85,7 +85,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   class="emotion-8"
   data-test-hasfocus="false"
   data-testid="gallery__thumb"
-  href="www.google.com"
+  href="https://www.google.com"
 >
   <div
     class="emotion-7"
@@ -102,23 +102,23 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
           <picture>
             <source
               data-testid="picture__source"
-              media="min-width(320px)"
-              srcset="test_small.jpg"
+              media="(min-width: 300)"
+              srcset="./image_3.jpg"
             />
             <source
               data-testid="picture__source"
-              media="min-width(480px)"
-              srcset="test_medium.jpg"
+              media="(min-width: 200)"
+              srcset="./image_2.jpg"
             />
             <source
               data-testid="picture__source"
-              media="min-width(720px)"
-              srcset="test_large.jpg"
+              media="(min-width: 100)"
+              srcset="./image_1.jpg"
             />
             <img
-              alt="Test 1 - A test image."
+              alt="A thumbnail - A brief description."
               class="emotion-0"
-              src="test.jpg"
+              src="./bogus.jpg"
             />
           </picture>
         </div>
@@ -128,12 +128,12 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
           <h3
             class="emotion-2"
           >
-            Test 1
+            A thumbnail
           </h3>
           <p
             class="emotion-3"
           >
-            A test image.
+            A brief description.
           </p>
         </div>
       </div>
