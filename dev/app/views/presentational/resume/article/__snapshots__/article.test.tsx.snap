@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The ResumeArticle component. Should match the snapshot. 1`] = `
+exports[`The Article component. Should match the snapshot. 1`] = `
 .emotion-4 {
   display: block;
   margin: 0;
@@ -48,7 +48,7 @@ exports[`The ResumeArticle component. Should match the snapshot. 1`] = `
 
 <article
   class="emotion-4"
-  data-testid="resume-article"
+  data-testid="article"
 >
   <div
     class="emotion-3"
@@ -61,12 +61,12 @@ exports[`The ResumeArticle component. Should match the snapshot. 1`] = `
       >
         <h3
           class="emotion-0"
-          data-testid="resume-article__title"
+          data-testid="article__title"
         >
           My Article
         </h3>
         <div
-          data-testid="resume-article__children"
+          data-testid="article__children"
         >
           <p
             data-testid="test-content"

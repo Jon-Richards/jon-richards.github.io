@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { ResumeArticle } from './resume_article';
+import { Article } from './article';
 import { render } from 'enzyme';
 
-describe('The ResumeArticle component.', () => {
+describe('The Article component.', () => {
   it('Should match the snapshot.', () => {
     const wrapper = render(
-      <ResumeArticle title="My Article">
+      <Article title="My Article">
         <p data-testid="test-content">Test Content.</p>
-      </ResumeArticle>
+      </Article>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -15,12 +15,12 @@ describe('The ResumeArticle component.', () => {
 
   it('Should render with the supplied title.', () => {
     const wrapper = render(
-      <ResumeArticle title="My Article">
+      <Article title="My Article">
         <p>Test Content.</p>
-      </ResumeArticle>
+      </Article>
     );
 
-    const testHook = '[data-testid="resume-article__title"]'
+    const testHook = '[data-testid="article__title"]'
 
     expect(wrapper.find(testHook).length).toBe(1);
     expect(wrapper.find(testHook).html()).toBe('My Article');
@@ -28,12 +28,12 @@ describe('The ResumeArticle component.', () => {
 
   it('Renders with the supplied child content.', () => {
     const wrapper = render(
-      <ResumeArticle title="My Article">
+      <Article title="My Article">
         <p>Test Content.</p>
-      </ResumeArticle>
+      </Article>
     );
 
-    const testHook = '[data-testid="resume-article__children"]'
+    const testHook = '[data-testid="article__children"]'
 
     expect(wrapper.find(testHook).length).toBe(1);
     expect(wrapper.find(testHook).html()).toBe('<p>Test Content.</p>');

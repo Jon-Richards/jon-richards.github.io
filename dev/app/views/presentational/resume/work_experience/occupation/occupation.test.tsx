@@ -4,9 +4,9 @@ import { Occupation, OccupationProps } from './occupation';
 
 describe('The Occupation component.', () => {
   it('Matches the snapshot.', () => {
-    const responsabilities: OccupationProps['responsabilities'] = [
-      { id: 'one', text: 'Foo' },
-      { id: 'two', text: 'Bar' },
+    const responsibilities: OccupationProps['responsibilities'] = [
+      { id: 'one', description: 'Foo' },
+      { id: 'two', description: 'Bar' },
     ]
 
     const wrapper = render(
@@ -16,7 +16,7 @@ describe('The Occupation component.', () => {
           organization="Some Organization"
           startDate="Jan 1, 2021"
           endDate="Dec 31, 2021"
-          responsabilities={responsabilities}
+          responsibilities={responsibilities}
         />
       </dl>
     );
@@ -25,9 +25,15 @@ describe('The Occupation component.', () => {
   });
 
   it('Renders a responsibility for each on provided', () => {
-    const responsabilities: OccupationProps['responsabilities'] = [
-      { id: 'one', text: 'Foo' },
-      { id: 'two', text: 'Bar' },
+    const responsibilities: OccupationProps['responsibilities'] = [
+      {
+        id: 'one',
+        description: <p data-testid="occupation__responsibility">Foo</p>
+      },
+      {
+        id: 'two',
+        description: <p data-testid="occupation__responsibility">Bar</p>
+      },
     ]
 
     const wrapper = render(
@@ -37,7 +43,7 @@ describe('The Occupation component.', () => {
           organization="Some Organization"
           startDate="Jan 1, 2021"
           endDate="Dec 31, 2021"
-          responsabilities={responsabilities}
+          responsibilities={responsibilities}
         />
       </dl>
     );

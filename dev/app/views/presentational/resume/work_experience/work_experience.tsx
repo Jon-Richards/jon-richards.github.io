@@ -1,36 +1,23 @@
 import * as React from 'react';
 import { Occupation } from './occupation';
-import { ResumeArticle } from 'Views/presentational/resume_article';
+import { Occupation as IOccupation } from '../interfaces/occupation';
+import { Article } from 'Views/presentational/resume/article';
 
 export function WorkExperience(props: WorkExperienceProps): JSX.Element {
   return (
-    <ResumeArticle title="Work Experience">
+    <Article title="Work Experience">
       <dl title="Work Experience">
         {mapOccupations(props.occupations)}
       </dl>
-    </ResumeArticle>
+    </Article>
   );
 }
 
 export type WorkExperienceProps = {
-  occupations: WorkOccupation[];
+  occupations: IOccupation[];
 }
 
-export type WorkOccupation = {
-  id: string;
-  jobTitle: string;
-  organization: string;
-  startDate: string;
-  endDate: string;
-  responsabilities: responsibility[];
-}
-
-export type responsibility = {
-  id: string;
-  text: string;
-};
-
-function mapOccupations(occupations: WorkOccupation[]): JSX.Element {
+function mapOccupations(occupations: IOccupation[]): JSX.Element {
   const jobs = occupations.map(occupation => {
     return (
       <Occupation
@@ -39,7 +26,7 @@ function mapOccupations(occupations: WorkOccupation[]): JSX.Element {
         startDate={occupation.startDate}
         endDate={occupation.endDate}
         organization={occupation.organization}
-        responsabilities={occupation.responsabilities}
+        responsibilities={occupation.responsibilities}
       />
     );
   });

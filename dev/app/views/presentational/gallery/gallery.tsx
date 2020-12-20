@@ -13,12 +13,12 @@ export function Gallery(props: GalleryProps): JSX.Element {
   const { thumbnails, thumbnailClickHandler } = props;
 
   return (
-    <div css={css(STYLES.root)}>
+    <section css={css(STYLES.root)}>
       <Thumbnails
         data={thumbnails}
         clickHandler={thumbnailClickHandler}
       />
-    </div>
+    </section>
   );
 }
 

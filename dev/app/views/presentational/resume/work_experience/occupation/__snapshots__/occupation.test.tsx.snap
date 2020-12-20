@@ -8,13 +8,13 @@ exports[`The Occupation component. Matches the snapshot. 1`] = `
   margin-bottom: calc(2rem / 2);
 }
 
-.emotion-5 {
+.emotion-6 {
   padding-bottom: calc(2rem * 0.5);
   margin-bottom: 2rem;
   border-bottom: thin solid hsla(48,7%,30%,1);
 }
 
-.emotion-5:last-of-type {
+.emotion-6:last-of-type {
   border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -38,9 +38,12 @@ exports[`The Occupation component. Matches the snapshot. 1`] = `
   border-bottom: thin dotted hsla(48,7%,30%,1);
 }
 
+.emotion-5 {
+  list-style-type: circle;
+}
+
 .emotion-3 {
   display: list-item;
-  list-style-type: circle;
   font-family: "Open Sans",sans-serif;
   font-weight: 400;
   line-height: 1.6rem;
@@ -62,7 +65,7 @@ exports[`The Occupation component. Matches the snapshot. 1`] = `
     Sr. UI Developer
   </dt>
   <dd
-    class="emotion-5"
+    class="emotion-6"
     data-testid="occupation__job-description"
   >
     <p
@@ -75,16 +78,17 @@ exports[`The Occupation component. Matches the snapshot. 1`] = `
     >
       Jan 1, 2021 - Dec 31, 2021
     </p>
-    <ul>
+    <ul
+      class="emotion-5"
+      title="Responsibilities"
+    >
       <li
         class="emotion-3"
-        data-testid="occupation__responsibility"
       >
         Foo
       </li>
       <li
         class="emotion-3"
-        data-testid="occupation__responsibility"
       >
         Bar
       </li>

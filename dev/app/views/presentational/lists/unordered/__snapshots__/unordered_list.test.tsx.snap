@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The OrderedList component. Should match the snapshot. 1`] = `
+.emotion-2 {
+  list-style-type: circle;
+}
+
+.emotion-0 {
+  display: list-item;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  line-height: 1.6rem;
+  padding-left: 0.5rem;
+  margin-left: 2rem;
+  margin-bottom: calc(2rem / 2);
+}
+
+.emotion-0::before {
+  right: 1rem;
+  opacity: 0.5;
+}
+
+<ul
+  class="emotion-2"
+  title="An Ordered List."
+>
+  <li
+    class="emotion-0"
+  >
+    Item one
+  </li>
+  <li
+    class="emotion-0"
+  >
+    Item one
+  </li>
+</ul>
+`;

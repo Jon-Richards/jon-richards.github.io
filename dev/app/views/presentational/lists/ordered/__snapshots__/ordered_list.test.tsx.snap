@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The OrderedList component. Should match the snapshot. 1`] = `
+<ol
+  title="An Ordered List."
+>
+  <li>
+    Item one
+  </li>
+  <li>
+    Item one
+  </li>
+</ol>
+`;

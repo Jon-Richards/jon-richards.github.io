@@ -31,7 +31,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
   }
 }
 
-<div
+<section
   class="emotion-0"
 />
 `;
