@@ -118,6 +118,7 @@ exports[`The Thumbnails component. Should match the snapshot. 1`] = `
             <img
               alt="A thumbnail - A brief description."
               class="emotion-0"
+              loading="lazy"
               src="./bogus.jpg"
             />
           </picture>

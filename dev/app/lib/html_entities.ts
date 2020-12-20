@@ -17,3 +17,9 @@ export const NBSP: string = String.fromCharCode(160);
  * @see http://www.fileformat.info/info/unicode/char/2011/index.htm
  */
 export const NBHP: string = String.fromCharCode(8209);
+
+/**
+ * Bullet
+ * @see https://www.fileformat.info/info/unicode/char/2022/index.htm
+ */
+export const BULL: string = String.fromCharCode(2022);

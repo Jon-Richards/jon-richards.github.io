@@ -21,6 +21,7 @@ export function Picture(props: PictureProps): JSX.Element {
         `}
         src={defaultSource}
         alt={altText}
+        loading="lazy"
       />
     </picture>
   );

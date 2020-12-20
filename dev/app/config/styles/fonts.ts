@@ -39,6 +39,12 @@ export class Fonts {
           extraBold: 800,
         },
       },
+      italic: {
+        name: 'italic',
+        weights: {
+          regular: 400
+        }
+      }
     },
   };
 }

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ResumeArticle component. Should match the snapshot. 1`] = `
+.emotion-4 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.emotion-3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 1px;
+  margin: 0rem;
+  overflow: hidden;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,30%,1), hsla(0,0%,10%,1), hsla(0,0%,17%,1) );
+  box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
+}
+
+.emotion-2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
+}
+
+.emotion-1 {
+  padding: 2rem;
+}
+
+.emotion-0 {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+<article
+  class="emotion-4"
+  data-testid="resume-article"
+>
+  <div
+    class="emotion-3"
+  >
+    <div
+      class="emotion-2"
+    >
+      <div
+        class="emotion-1"
+      >
+        <h3
+          class="emotion-0"
+          data-testid="resume-article__title"
+        >
+          My Article
+        </h3>
+        <div
+          data-testid="resume-article__children"
+        >
+          <p
+            data-testid="test-content"
+          >
+            Test Content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+`;

@@ -26,6 +26,7 @@ exports[`The Sources component. Should match the snapshot. 1`] = `
   <img
     alt="A picture."
     class="emotion-0"
+    loading="lazy"
     src="test_medium.jpg"
   />
 </picture>

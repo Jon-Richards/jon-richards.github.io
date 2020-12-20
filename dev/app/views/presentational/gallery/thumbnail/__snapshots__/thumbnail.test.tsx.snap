@@ -118,6 +118,7 @@ exports[`The gallery component. Should match the snapshot. 1`] = `
             <img
               alt="Test 1 - A test image."
               class="emotion-0"
+              loading="lazy"
               src="test.jpg"
             />
           </picture>

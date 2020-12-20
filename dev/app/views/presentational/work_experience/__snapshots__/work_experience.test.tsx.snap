@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The WorkExperience component. Should match the snapshot. 1`] = `
+.emotion-10 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.emotion-9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 1px;
+  margin: 0rem;
+  overflow: hidden;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,30%,1), hsla(0,0%,10%,1), hsla(0,0%,17%,1) );
+  box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
+}
+
+.emotion-8 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
+}
+
+.emotion-7 {
+  padding: 2rem;
+}
+
+.emotion-0 {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.emotion-1 {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: calc(2rem / 2);
+}
+
+.emotion-6 {
+  padding-bottom: calc(2rem * 0.5);
+  margin-bottom: 2rem;
+  border-bottom: thin solid hsla(48,7%,30%,1);
+}
+
+.emotion-6:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.emotion-2 {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.emotion-3 {
+  display: inline-block;
+  font-family: "Open Sans",sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: hsla(0,0%,70%,1);
+  padding-bottom: calc(2rem / 2);
+  margin-bottom: calc(2rem / 2);
+  border-bottom: thin dotted hsla(48,7%,30%,1);
+}
+
+.emotion-4 {
+  display: list-item;
+  list-style-type: circle;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  line-height: 1.6rem;
+  padding-left: 0.5rem;
+  margin-left: 2rem;
+  margin-bottom: calc(2rem / 2);
+}
+
+.emotion-4::before {
+  right: 1rem;
+  opacity: 0.5;
+}
+
+<article
+  class="emotion-10"
+  data-testid="resume-article"
+>
+  <div
+    class="emotion-9"
+  >
+    <div
+      class="emotion-8"
+    >
+      <div
+        class="emotion-7"
+      >
+        <h3
+          class="emotion-0"
+          data-testid="resume-article__title"
+        >
+          Work Experience
+        </h3>
+        <div
+          data-testid="resume-article__children"
+        >
+          <dl
+            title="Work Experience"
+          >
+            <dt
+              class="emotion-1"
+              data-testid="occupation__job-title"
+            >
+              Sr. UI Developer
+            </dt>
+            <dd
+              class="emotion-6"
+              data-testid="occupation__job-description"
+            >
+              <p
+                class="emotion-2"
+              >
+                Some Org.
+              </p>
+              <p
+                class="emotion-3"
+              >
+                Jan 1, 2021 - Dec 31, 2021
+              </p>
+              <ul>
+                <li
+                  class="emotion-4"
+                  data-testid="occupation__responsibility"
+                >
+                  Developed component libraries.
+                </li>
+                <li
+                  class="emotion-4"
+                  data-testid="occupation__responsibility"
+                >
+                  Maintained legacy code.
+                </li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+`;
