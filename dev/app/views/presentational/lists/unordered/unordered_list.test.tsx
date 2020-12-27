@@ -16,4 +16,19 @@ describe('The OrderedList component.', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('Should render one list item for each element in the items array.', () => {
+    const wrapper = render(
+      <UnorderedList
+        title="An Ordered List."
+        items={[
+          { id: 'one', content: 'Item one' },
+          { id: 'two', content: 'Item one' }
+        ]}
+      />
+    );
+    const testHook = '[data-testid="unordered-list__item"]';
+
+    expect(wrapper.find(testHook).length).toBe(2);
+  });
 });

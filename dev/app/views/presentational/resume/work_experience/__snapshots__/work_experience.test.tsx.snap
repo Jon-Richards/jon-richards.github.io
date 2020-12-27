@@ -149,15 +149,18 @@ exports[`The WorkExperience component. Should match the snapshot. 1`] = `
               </p>
               <ul
                 class="emotion-6"
+                data-testid="unordered-list"
                 title="Responsibilities"
               >
                 <li
                   class="emotion-4"
+                  data-testid="unordered-list__item"
                 >
                   Developed component libraries.
                 </li>
                 <li
                   class="emotion-4"
+                  data-testid="unordered-list__item"
                 >
                   Maintained legacy code.
                 </li>

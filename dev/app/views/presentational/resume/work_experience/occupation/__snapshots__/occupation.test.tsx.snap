@@ -80,15 +80,18 @@ exports[`The Occupation component. Matches the snapshot. 1`] = `
     </p>
     <ul
       class="emotion-5"
+      data-testid="unordered-list"
       title="Responsibilities"
     >
       <li
         class="emotion-3"
+        data-testid="unordered-list__item"
       >
         Foo
       </li>
       <li
         class="emotion-3"
+        data-testid="unordered-list__item"
       >
         Bar
       </li>

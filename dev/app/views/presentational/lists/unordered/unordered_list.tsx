@@ -9,7 +9,7 @@ import { STYLES } from './styles';
 export function UnorderedList(props: UnorderedListProps): JSX.Element {
   const items = mapItems(props.items);
   return (
-    <ul title={props.title} css={STYLES.list}>
+    <ul title={props.title} data-testid="unordered-list" css={STYLES.list}>
       {items}
     </ul>
   )
@@ -19,7 +19,7 @@ export type UnorderedListProps = List<ListItem>;
 
 function mapItems(items: ListItem[]): JSX.Element {
   const result = items.map(item => (
-    <li key={item.id} css={STYLES.item}>
+    <li key={item.id} data-testid="unordered-list__item" css={STYLES.item}>
       {item.content}
     </li>
   ));

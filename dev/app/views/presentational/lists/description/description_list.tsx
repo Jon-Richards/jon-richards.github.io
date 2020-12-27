@@ -16,18 +16,18 @@ type DescriptionListProps = List<DescriptionListItem>;
 function mapItems(items: DescriptionListItem[]): JSX.Element {
   const result = items.map(item => {
     if (item.type === 'TERM') {
-      return createDescriptionTerm(item);
+      return createTerm(item);
     } else {
-      return createDescriptionListItem(item);
+      return createDescription(item);
     }
   });
   return <React.Fragment>{result}</React.Fragment>
 }
 
-function createDescriptionTerm(item: DescriptionListItem): JSX.Element {
+function createTerm(item: DescriptionListItem): JSX.Element {
   return <dt key={item.id}>{item.content}</dt>
 }
 
-function createDescriptionListItem(item: DescriptionListItem): JSX.Element {
+function createDescription(item: DescriptionListItem): JSX.Element {
   return <dd key={item.id}>{item.content}</dd>
 }

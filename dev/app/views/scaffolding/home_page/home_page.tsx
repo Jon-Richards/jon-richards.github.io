@@ -59,7 +59,15 @@ export class HomePage extends React.PureComponent<Props, never> {
             { id: 'seven', name: 'Symfony' },
           ]}
           practices={[]}
-          languages={[]}
+          languages={[
+            { id: 'one', name: 'TypeScript' },
+            { id: 'one', name: 'JavaScript' },
+            { id: 'three', name: 'HTML' },
+            { id: 'four', name: 'CSS' },
+            { id: 'five', name: 'C#' },
+            { id: 'six', name: 'C++' },
+            { id: 'seven', name: 'ActionScript' }
+          ]}
         />
       </div>
     );
