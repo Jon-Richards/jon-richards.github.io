@@ -11,6 +11,8 @@ import {
   notEmpty,
   isBoolean,
 } from '../../../lib/node_validator';
+import { ToolCategory } from './interfaces/tool_category';
+import { validateToolCategory } from './validate_tool_category';
 
 /** Shape of a single tool node as recieved by the API. */
 export interface ToolResponseData {
@@ -29,6 +31,8 @@ export interface ToolResponseData {
    * look for directly.
    */
   is_core: boolean;
+  /** The kind of tool. */
+  category: ToolCategory;
 }
 
 /**
@@ -82,6 +86,14 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       this.validate('is_core', String(tool.is_core), [isBoolean], false, ''),
     );
 
+    const category: ToolResponseData['category'] = this.validate(
+      'category',
+      tool.category,
+      [notEmpty, validateToolCategory],
+      false,
+      'LIBRARY'
+    );
+
     this.data = {
       id,
       uuid,
@@ -89,6 +101,7 @@ export class ToolValidator extends NodeValidator<ToolResponseData> {
       filterable_value,
       logo,
       is_core,
+      category,
     };
   }
 }

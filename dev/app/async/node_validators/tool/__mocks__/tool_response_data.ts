@@ -20,6 +20,7 @@ export function toolResponseData(
     filterable_value: `tool-${stubUUID}`,
     logo: `logo-${stubUUID}`,
     is_core: Math.floor(Math.random() * 2) === 0,
+    category: 'LANGUAGE',
     ...data,
   };
 }

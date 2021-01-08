@@ -61,7 +61,7 @@ export class HomePage extends React.PureComponent<Props, never> {
           practices={[]}
           languages={[
             { id: 'one', name: 'TypeScript' },
-            { id: 'one', name: 'JavaScript' },
+            { id: 'two', name: 'JavaScript' },
             { id: 'three', name: 'HTML' },
             { id: 'four', name: 'CSS' },
             { id: 'five', name: 'C#' },

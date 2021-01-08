@@ -82,7 +82,8 @@
                 "display_title": "TypeScript",
                 "filterable_value": "typescript",
                 "logo": "foo",
-                "is_core": true
+                "is_core": true,
+                "category": "LANGUAGE"
             },
             {
                 "id": 2,
@@ -90,7 +91,8 @@
                 "display_title": "React",
                 "filterable_value": "react",
                 "logo": "bar",
-                "is_core": true
+                "is_core": true,
+                "category": "LIBRARY"
             },
             {
                 "id": 3,
@@ -98,7 +100,8 @@
                 "display_title": "CSS / SASS",
                 "filterable_value": "css_sass",
                 "logo": "bar",
-                "is_core": true
+                "is_core": true,
+                "category": "LANGUAGE"
             },
             {
                 "id": 4,
@@ -106,7 +109,8 @@
                 "display_title": "Photoshop",
                 "filterable_value": "photoshop",
                 "logo": "bar",
-                "is_core": false
+                "is_core": false,
+                "category": "SOFTWARE"
             },
             {
                 "id": 5,
@@ -114,7 +118,8 @@
                 "display_title": "Illustrator",
                 "filterable_value": "illustrator",
                 "logo": "bar",
-                "is_core": false
+                "is_core": false,
+                "category": "SOFTWARE"
             },
             {
                 "id": 6,
@@ -122,7 +127,8 @@
                 "display_title": "Angular",
                 "filterable_value": "angular",
                 "logo": "bar",
-                "is_core": true
+                "is_core": true,
+                "category": "FRAMEWORK"
             }
         ]
     }

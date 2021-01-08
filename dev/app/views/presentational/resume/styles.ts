@@ -10,7 +10,7 @@ export const STYLES = {
     column-gap: ${Dimensions.whitespace};
     row-gap: ${Dimensions.whitespace};
 
-    @media (min-width: ${Breakpoints[480]}) {
+    @media (min-width: ${Breakpoints[720]}) {
       grid-template-columns: 1fr 1fr;
     }
 
