@@ -106,7 +106,7 @@
     "ts-loader": "^5.2.0",
     "typescript": "^3.9.7",
     "uuid": "^3.4.0",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.4.0",
