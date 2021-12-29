@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Practices component. Should match the snapshot. 1`] = `
+.emotion-7 {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.emotion-6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 1px;
+  margin: 0rem;
+  overflow: hidden;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,30%,1), hsla(0,0%,10%,1), hsla(0,0%,17%,1) );
+  box-shadow: 0.4rem 0.8rem 2rem 0rem hsla(0,0%,0%,0.5);
+}
+
+.emotion-5 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  background-color: hsla(0,0%,14%,1);
+  background-image: linear-gradient( 170deg, hsla(0,0%,14%,1), hsla(0,0%,8%,1) );
+}
+
+.emotion-4 {
+  padding: 2rem;
+}
+
+.emotion-0 {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.emotion-3 {
+  list-style-type: circle;
+}
+
+.emotion-1 {
+  display: list-item;
+  font-family: "Open Sans",sans-serif;
+  font-weight: 400;
+  line-height: 1.6rem;
+  padding-left: 0.5rem;
+  margin-left: 2rem;
+  margin-bottom: calc(2rem / 2);
+}
+
+.emotion-1::before {
+  right: 1rem;
+  opacity: 0.5;
+}
+
+<article
+  class="emotion-7"
+  data-testid="article"
+>
+  <div
+    class="emotion-6"
+  >
+    <div
+      class="emotion-5"
+    >
+      <div
+        class="emotion-4"
+      >
+        <h3
+          class="emotion-0"
+          data-testid="article__title"
+        >
+          Practices
+        </h3>
+        <div
+          data-testid="article__children"
+        >
+          <ul
+            class="emotion-3"
+            data-testid="unordered-list"
+            title="Practices"
+          >
+            <li
+              class="emotion-1"
+              data-testid="unordered-list__item"
+            >
+              OOP
+            </li>
+            <li
+              class="emotion-1"
+              data-testid="unordered-list__item"
+            >
+              Agile
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+`;

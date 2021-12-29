@@ -9,7 +9,7 @@ export function Languages(props: LanguagesProps) {
 
   return (
     <Article title={title}>
-      <UnorderedList title={title}  items={items} />
+      <UnorderedList title={title} items={items} />
     </Article>
   );
 }
@@ -24,3 +24,4 @@ function mapLanguagesToListItems(languages: Language[]): ListItem[] {
     content: language.name
   }));
 }
+
