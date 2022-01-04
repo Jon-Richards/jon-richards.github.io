@@ -1,7 +1,0 @@
-node_modules/
-config/
-.vscode/
-dist/
-test/
-dev/views/lib/templates/
-*.md
