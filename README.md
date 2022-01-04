@@ -24,7 +24,7 @@ $ npm install
 ```
 Project
  |- src \\ Source code
- |- dist \\ Production code and assets
+ |- public \\ Production code and assets
  |- test \\ Test data and analytics
 ```
 
@@ -41,9 +41,13 @@ Run the dev server:
 $ npm start
 ```
 
-Run code quality audits (watches the src directory for changes):
+Run code quality audits:
 ```
 $ npm run validate
+
+or
+
+$ npm run validate:watch // watches for changes
 ```
 
 Build for production:
