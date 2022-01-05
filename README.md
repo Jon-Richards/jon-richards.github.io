@@ -26,6 +26,7 @@ Project
  |- src \\ Source code
  |- public \\ Production code and assets
  |- test \\ Test data and analytics
+ |- scripts \\ Helper scripts
 ```
 
 <a id="running-the-project"></a>
@@ -53,6 +54,11 @@ $ npm run validate:watch // watches for changes
 Build for production:
 ```
 $ npm run build:prod
+```
+
+Build CSS:
+```
+$ npm run build-css
 ```
 
 Run tests:

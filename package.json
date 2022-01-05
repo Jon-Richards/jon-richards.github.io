@@ -8,6 +8,7 @@
     "start": "node ./server.ts",
     "build:dev": "esbuild ./src/index.ts --outfile=./public/assets/index.js --bundle --sourcemap --watch",
     "build:prod": "npm run validate && esbuild ./src/index.ts --outfile=./public/assets/index.js --bundle --minify",
+    "build-css": "npx ts-node ./scripts/build_sass.ts",
     "lint": "eslint ./src/**/* || true",
     "typecheck": "tsc ./src/index.ts --noEmit",
     "validate": "eslint ./src/**/* && tsc ./src/index.ts --noEmit",
@@ -34,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "babel": "^6.23.0",
+    "chalk": "^4.1.2",
     "esbuild": "^0.14.10",
     "eslint": "^8.6.0",
     "eslint-plugin-jsdoc": "^37.5.1",
@@ -42,6 +44,7 @@
     "jest-puppeteer": "^6.0.3",
     "nodemon": "^2.0.15",
     "puppeteer": "^13.0.1",
+    "sass": "^1.45.2",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4"
