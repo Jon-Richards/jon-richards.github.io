@@ -6,13 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server.ts",
-    "build:dev": "esbuild ./src/index.ts --outfile=./public/assets/index.js --bundle --sourcemap --watch",
-    "build:prod": "npm run validate && esbuild ./src/index.ts --outfile=./public/assets/index.js --bundle --minify",
-    "build-css": "npx ts-node ./scripts/build_sass.ts",
-    "lint": "eslint ./src/**/* || true",
-    "typecheck": "tsc ./src/index.ts --noEmit",
-    "validate": "eslint ./src/**/* && tsc ./src/index.ts --noEmit",
-    "validate:watch": "nodemon --exec \"eslint ./src/**/* && tsc ./src/index.ts --noEmit\"",
+    "build:dev": "npx webpack --config=./webpack.config.js --mode=development",
+    "build:prod": "npx webpack --config=./webpack.config.js --mode=production",
     "test": "jest"
   },
   "repository": {
@@ -33,21 +28,25 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^14.16.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
     "babel": "^6.23.0",
-    "chalk": "^4.1.2",
-    "esbuild": "^0.14.10",
+    "css-loader": "^6.5.1",
     "eslint": "^8.6.0",
-    "eslint-plugin-jsdoc": "^37.5.1",
+    "eslint-webpack-plugin": "^3.1.1",
     "express": "^4.17.2",
     "jest": "^27.4.5",
     "jest-puppeteer": "^6.0.3",
+    "lit": "^2.1.1",
+    "mini-css-extract-plugin": "^2.5.2",
     "nodemon": "^2.0.15",
     "puppeteer": "^13.0.1",
     "sass": "^1.45.2",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
-  },
-  "dependencies": {}
+    "typescript": "^4.5.4",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.1"
+  }
 }
