@@ -1,10 +1,10 @@
 import './core.scss';
-import { BaseComponentConfig } from './components';
-import { registerHelloWorldElement } from './components';
+import { CustomElementConfig } from './custom_elements';
+import { registerHelloWorldElement } from './custom_elements';
 
-const componentConfig: BaseComponentConfig = {
-  stylesPath: '/assets/core.scss'
+const elementConfig: CustomElementConfig = {
+  stylesPath: '/assets/core.css'
 };
 
-registerHelloWorldElement(componentConfig);
+registerHelloWorldElement(elementConfig);
 

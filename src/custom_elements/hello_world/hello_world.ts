@@ -1,8 +1,8 @@
 import { LitElement, html } from 'lit';
-import { BaseComponentConfig } from '../utils';
+import { CustomElementConfig } from '../utils';
 import CSS from './hello_world.scss';
 
-function helloWorldFactory(options: BaseComponentConfig) {
+function helloWorldFactory(options: CustomElementConfig) {
   return class HelloWorld extends LitElement {
     render() {
       return html`
@@ -20,7 +20,7 @@ function helloWorldFactory(options: BaseComponentConfig) {
   }
 }
 
-export function registerHelloWorldElement(options: BaseComponentConfig) {
+export function registerHelloWorldElement(options: CustomElementConfig) {
   customElements.define('hello-world', helloWorldFactory(options));
 }
 

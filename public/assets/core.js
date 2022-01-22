@@ -10,16 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/components/hello_world/hello_world.scss":
-/*!*****************************************************!*\
-  !*** ./src/components/hello_world/hello_world.scss ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"message\":\"message-_HYwS\"});\n\n//# sourceURL=webpack://jon-richards_github/./src/components/hello_world/hello_world.scss?");
-
-/***/ }),
-
 /***/ "./src/core.scss":
 /*!***********************!*\
   !*** ./src/core.scss ***!
@@ -30,33 +20,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/components/hello_world/hello_world.ts":
-/*!***************************************************!*\
-  !*** ./src/components/hello_world/hello_world.ts ***!
-  \***************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ "./src/custom_elements/hello_world/hello_world.scss":
+/*!**********************************************************!*\
+  !*** ./src/custom_elements/hello_world/hello_world.scss ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst hello_world_scss_1 = __importDefault(__webpack_require__(/*! ./hello_world.scss */ \"./src/components/hello_world/hello_world.scss\"));\r\nfunction helloWorldFactory(options) {\r\n    return class HelloWorld extends lit_1.LitElement {\r\n        render() {\r\n            return (0, lit_1.html) `\n        <style>\n          @import \"${options.stylesPath}\";\n        </style>\n        <div class=${hello_world_scss_1.default.message}>\n          Hello from lit!\n          <p>\n            ${hello_world_scss_1.default.message}\n          </p>\n        </div>\n      `;\r\n        }\r\n    };\r\n}\r\nfunction registerHelloWorldElement(options) {\r\n    customElements.define('hello-world', helloWorldFactory(options));\r\n}\r\nexports.registerHelloWorldElement = registerHelloWorldElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/components/hello_world/hello_world.ts?");
-
-/***/ }),
-
-/***/ "./src/components/hello_world/index.ts":
-/*!*********************************************!*\
-  !*** ./src/components/hello_world/index.ts ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nvar hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/components/hello_world/hello_world.ts\");\r\nObject.defineProperty(exports, \"registerHelloWorldElement\", ({ enumerable: true, get: function () { return hello_world_1.registerHelloWorldElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/components/hello_world/index.ts?");
-
-/***/ }),
-
-/***/ "./src/components/index.ts":
-/*!*********************************!*\
-  !*** ./src/components/index.ts ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nvar hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/components/hello_world/index.ts\");\r\nObject.defineProperty(exports, \"registerHelloWorldElement\", ({ enumerable: true, get: function () { return hello_world_1.registerHelloWorldElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/components/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"message\":\"message-eaz5Z\"});\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/hello_world/hello_world.scss?");
 
 /***/ }),
 
@@ -66,7 +36,37 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
   \*********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! ./core.scss */ \"./src/core.scss\");\r\nconst components_1 = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\r\nconst componentConfig = {\r\n    stylesPath: '/assets/core.scss'\r\n};\r\n(0, components_1.registerHelloWorldElement)(componentConfig);\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/core.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n__webpack_require__(/*! ./core.scss */ \"./src/core.scss\");\r\nconst custom_elements_1 = __webpack_require__(/*! ./custom_elements */ \"./src/custom_elements/index.ts\");\r\nconst elementConfig = {\r\n    stylesPath: '/assets/core.css'\r\n};\r\n(0, custom_elements_1.registerHelloWorldElement)(elementConfig);\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/core.ts?");
+
+/***/ }),
+
+/***/ "./src/custom_elements/hello_world/hello_world.ts":
+/*!********************************************************!*\
+  !*** ./src/custom_elements/hello_world/hello_world.ts ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst hello_world_scss_1 = __importDefault(__webpack_require__(/*! ./hello_world.scss */ \"./src/custom_elements/hello_world/hello_world.scss\"));\r\nfunction helloWorldFactory(options) {\r\n    return class HelloWorld extends lit_1.LitElement {\r\n        render() {\r\n            return (0, lit_1.html) `\n        <style>\n          @import \"${options.stylesPath}\";\n        </style>\n        <div class=${hello_world_scss_1.default.message}>\n          Hello from lit!\n          <p>\n            ${hello_world_scss_1.default.message}\n          </p>\n        </div>\n      `;\r\n        }\r\n    };\r\n}\r\nfunction registerHelloWorldElement(options) {\r\n    customElements.define('hello-world', helloWorldFactory(options));\r\n}\r\nexports.registerHelloWorldElement = registerHelloWorldElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/hello_world/hello_world.ts?");
+
+/***/ }),
+
+/***/ "./src/custom_elements/hello_world/index.ts":
+/*!**************************************************!*\
+  !*** ./src/custom_elements/hello_world/index.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nvar hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/custom_elements/hello_world/hello_world.ts\");\r\nObject.defineProperty(exports, \"registerHelloWorldElement\", ({ enumerable: true, get: function () { return hello_world_1.registerHelloWorldElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/hello_world/index.ts?");
+
+/***/ }),
+
+/***/ "./src/custom_elements/index.ts":
+/*!**************************************!*\
+  !*** ./src/custom_elements/index.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHelloWorldElement = void 0;\r\nvar hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/custom_elements/hello_world/index.ts\");\r\nObject.defineProperty(exports, \"registerHelloWorldElement\", ({ enumerable: true, get: function () { return hello_world_1.registerHelloWorldElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/index.ts?");
 
 /***/ }),
 
