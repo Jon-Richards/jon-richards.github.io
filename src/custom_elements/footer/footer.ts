@@ -13,7 +13,7 @@ const footer: ElementFactory = () => class Footer extends Ele {
   `;
 }
 
-export const registerFooterElement: ElementRegistrar = (opts) => {
+export const registerFooterElement: ElementRegistrar = opts => {
   customElements.define('jr-footer', footer(opts));
 }
 

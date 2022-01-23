@@ -1,0 +1,2 @@
+export { registerHeaderElement } from './header';
+

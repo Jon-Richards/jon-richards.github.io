@@ -30,6 +30,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/custom_elements/header/header.scss":
+/*!************************************************!*\
+  !*** ./src/custom_elements/header/header.scss ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\"header\":\"header-iYZzH\"});\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/header/header.scss?");
+
+/***/ }),
+
 /***/ "./src/custom_elements/hello_world/hello_world.scss":
 /*!**********************************************************!*\
   !*** ./src/custom_elements/hello_world/hello_world.scss ***!
@@ -66,7 +76,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
   \**********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerFooterElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst utils_1 = __webpack_require__(/*! ../utils */ \"./src/custom_elements/utils/index.ts\");\r\nconst footer_scss_1 = __importDefault(__webpack_require__(/*! ./footer.scss */ \"./src/custom_elements/footer/footer.scss\"));\r\nconst footer = () => class Footer extends lit_1.LitElement {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.render = () => (0, lit_1.html) `\r\n    ${utils_1.withStylesheet}\r\n    <footer class=${footer_scss_1.default.footer}>\r\n      <p>\r\n        I am the footer!\r\n      </p>\r\n    </footer>\r\n  `;\r\n    }\r\n};\r\nconst registerFooterElement = (opts) => {\r\n    customElements.define('jr-footer', footer(opts));\r\n};\r\nexports.registerFooterElement = registerFooterElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/footer/footer.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerFooterElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst utils_1 = __webpack_require__(/*! ../utils */ \"./src/custom_elements/utils/index.ts\");\r\nconst footer_scss_1 = __importDefault(__webpack_require__(/*! ./footer.scss */ \"./src/custom_elements/footer/footer.scss\"));\r\nconst footer = () => class Footer extends lit_1.LitElement {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.render = () => (0, lit_1.html) `\r\n    ${utils_1.withStylesheet}\r\n    <footer class=${footer_scss_1.default.footer}>\r\n      <p>\r\n        I am the footer!\r\n      </p>\r\n    </footer>\r\n  `;\r\n    }\r\n};\r\nconst registerFooterElement = opts => {\r\n    customElements.define('jr-footer', footer(opts));\r\n};\r\nexports.registerFooterElement = registerFooterElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/footer/footer.ts?");
 
 /***/ }),
 
@@ -77,6 +87,26 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerFooterElement = void 0;\r\nvar footer_1 = __webpack_require__(/*! ./footer */ \"./src/custom_elements/footer/footer.ts\");\r\nObject.defineProperty(exports, \"registerFooterElement\", ({ enumerable: true, get: function () { return footer_1.registerFooterElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/footer/index.ts?");
+
+/***/ }),
+
+/***/ "./src/custom_elements/header/header.ts":
+/*!**********************************************!*\
+  !*** ./src/custom_elements/header/header.ts ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHeaderElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst utils_1 = __webpack_require__(/*! ../utils */ \"./src/custom_elements/utils/index.ts\");\r\nconst header_scss_1 = __importDefault(__webpack_require__(/*! ./header.scss */ \"./src/custom_elements/header/header.scss\"));\r\nconst header = () => class Header extends lit_1.LitElement {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.render = () => (0, lit_1.html) `\n    ${utils_1.withStylesheet}\n    <header class=${header_scss_1.default.header}>\n      I am the header!\n    </header>\n  `;\r\n    }\r\n};\r\nconst registerHeaderElement = opts => {\r\n    customElements.define('jr-header', header(opts));\r\n};\r\nexports.registerHeaderElement = registerHeaderElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/header/header.ts?");
+
+/***/ }),
+
+/***/ "./src/custom_elements/header/index.ts":
+/*!*********************************************!*\
+  !*** ./src/custom_elements/header/index.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerHeaderElement = void 0;\r\nvar header_1 = __webpack_require__(/*! ./header */ \"./src/custom_elements/header/header.ts\");\r\nObject.defineProperty(exports, \"registerHeaderElement\", ({ enumerable: true, get: function () { return header_1.registerHeaderElement; } }));\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/header/index.ts?");
 
 /***/ }),
 
@@ -106,7 +136,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
   \**************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerCustomElements = void 0;\r\nconst root_1 = __webpack_require__(/*! ./root */ \"./src/custom_elements/root/index.ts\");\r\nconst footer_1 = __webpack_require__(/*! ./footer */ \"./src/custom_elements/footer/index.ts\");\r\nconst hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/custom_elements/hello_world/index.ts\");\r\nfunction registerCustomElements(options) {\r\n    (0, root_1.registerRootElement)(options);\r\n    (0, footer_1.registerFooterElement)(options);\r\n    (0, hello_world_1.registerHelloWorldElement)(options);\r\n}\r\nexports.registerCustomElements = registerCustomElements;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/index.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerCustomElements = void 0;\r\nconst root_1 = __webpack_require__(/*! ./root */ \"./src/custom_elements/root/index.ts\");\r\nconst header_1 = __webpack_require__(/*! ./header */ \"./src/custom_elements/header/index.ts\");\r\nconst footer_1 = __webpack_require__(/*! ./footer */ \"./src/custom_elements/footer/index.ts\");\r\nconst hello_world_1 = __webpack_require__(/*! ./hello_world */ \"./src/custom_elements/hello_world/index.ts\");\r\nfunction registerCustomElements(options) {\r\n    (0, root_1.registerRootElement)(options);\r\n    (0, header_1.registerHeaderElement)(options);\r\n    (0, footer_1.registerFooterElement)(options);\r\n    (0, hello_world_1.registerHelloWorldElement)(options);\r\n}\r\nexports.registerCustomElements = registerCustomElements;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/index.ts?");
 
 /***/ }),
 
@@ -126,7 +156,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
   \******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerRootElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst utils_1 = __webpack_require__(/*! ../utils */ \"./src/custom_elements/utils/index.ts\");\r\nconst root_scss_1 = __importDefault(__webpack_require__(/*! ./root.scss */ \"./src/custom_elements/root/root.scss\"));\r\nconst root = () => class Root extends lit_1.LitElement {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.render = () => (0, lit_1.html) `\r\n    ${utils_1.withStylesheet}\r\n    <div class=${root_scss_1.default.root}>\r\n      <div class=${root_scss_1.default.content}>\r\n        <hello-world></hello-world>\r\n      </div>\r\n      <div>\r\n        <jr-footer></jr-footer>\r\n      </div>\r\n    </div>\r\n  `;\r\n    }\r\n};\r\nconst registerRootElement = opts => {\r\n    customElements.define('jr-root', root(opts));\r\n};\r\nexports.registerRootElement = registerRootElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/root/root.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.registerRootElement = void 0;\r\nconst lit_1 = __webpack_require__(/*! lit */ \"./node_modules/lit/index.js\");\r\nconst utils_1 = __webpack_require__(/*! ../utils */ \"./src/custom_elements/utils/index.ts\");\r\nconst root_scss_1 = __importDefault(__webpack_require__(/*! ./root.scss */ \"./src/custom_elements/root/root.scss\"));\r\nconst root = () => class Root extends lit_1.LitElement {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.render = () => (0, lit_1.html) `\r\n    ${utils_1.withStylesheet}\r\n    <div class=${root_scss_1.default.root}>\r\n      <div class=${root_scss_1.default.content}>\r\n        <jr-header></jr-header>\r\n        <hello-world></hello-world>\r\n      </div>\r\n      <div>\r\n        <jr-footer></jr-footer>\r\n      </div>\r\n    </div>\r\n  `;\r\n    }\r\n};\r\nconst registerRootElement = opts => {\r\n    customElements.define('jr-root', root(opts));\r\n};\r\nexports.registerRootElement = registerRootElement;\r\n\n\n//# sourceURL=webpack://jon-richards_github/./src/custom_elements/root/root.ts?");
 
 /***/ }),
 
