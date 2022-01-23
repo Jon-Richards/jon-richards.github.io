@@ -1,0 +1,2 @@
+export { registerRootElement } from './root';
+

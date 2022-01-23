@@ -1,0 +1,2 @@
+export { registerFooterElement } from './footer';
+
