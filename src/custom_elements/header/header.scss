@@ -1,4 +1,29 @@
+@use '../utils';
+
+utils.$element: 'header';
+
 .header {
-  background-color: #f00;
+  utils.$selector: 'header';
+  background-color: utils.color(background, 1);
+  @include utils.prop('border-bottom', 'thin solid #{utils.color(content, 1)}');
+  display: flex;
+  flex-wrap: wrap;
+  @include utils.font(heading, 700);
+  justify-content: space-between;
+}
+
+.title {
+  padding: 1rem;
+}
+
+.nav {
+  padding: 1rem;
+}
+
+.navList {
+}
+
+.navList__item {
+
 }
 

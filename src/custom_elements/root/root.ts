@@ -8,7 +8,7 @@ const root: ElementFactory = () => class Root extends LitElement {
     <div class=${CSS.root}>
       <div class=${CSS.content}>
         <jr-header></jr-header>
-        <hello-world></hello-world>
+        <jr-project-gallery></jr-project-gallery>
       </div>
       <div>
         <jr-footer></jr-footer>

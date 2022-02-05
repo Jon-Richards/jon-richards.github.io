@@ -1,6 +1,8 @@
+@use '../utils';
+
 .root {
-  background-color: #333;
-  color: #fff;
+  background-color: utils.color(background, 1);
+  color: utils.color(content, 1);
   display: flex;
   flex-direction: column;
   height: auto;
@@ -10,6 +12,5 @@
 
 .content {
   flex-grow: 1;
-  background-color: #aaa;
 }
 

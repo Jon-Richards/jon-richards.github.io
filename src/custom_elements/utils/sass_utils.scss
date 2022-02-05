@@ -1,0 +1,85 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use '../../design_token.scss';
+
+$element: '';
+$selector: '';
+
+/**
+ * Generates a CSS property with a namespaced custom property hook and a default
+ * value.
+ *
+ * @param {string} $property The name of the property to generate.
+ * @param {any} $value The fallback value.
+ */
+@mixin prop($property, $value) {
+  #{$property}: var(--jr-#{$element}__#{$selector}_#{$property}, #{$value});
+}
+
+/**
+ * Gets a color from the design token.
+ *
+ * @param {string} $context The color context from which to get the color.
+ * @param {number} $swatch The swatch number from the context palette.
+ * @return {color} The correspoding color value from the design token.
+ */
+@function color($context, $swatch) {
+  $colors: map.get(design_token.$token, colors);
+  $_context: map.get($colors, $context);
+  $result: map.get($_context, $swatch);
+  @return $result;
+};
+
+/**
+ * Generates the necessary properties for a font-family in the design token,
+ * including namespaced css custom property hooks for each generated property.
+ *
+ * @param {string} $context The context in which to search the design token for
+ * the font.
+ * @param {number} $weight The desired font weight.
+ * @param {style} $ The desired font style.
+ */
+@mixin font($context, $weight, $style: regular) {
+  $fonts: map.get(design_token.$token, fonts);
+  $context: map.get($fonts, $context);
+
+  $weights: map.get($context, weights);
+  @if (null == list.index($weights, $weight)) {
+    @error 'Invalid weight.';
+  }
+
+  $styles: map.get($context, styles);
+  @if (null == list.index($styles, $style)) {
+    @error 'Invalid style.';
+  }
+
+  font-family: var(
+    --jr-#{$element}__#{$selector}_font-family,
+    string.unquote(map.get($context, family))
+  );
+  font-weight: var(
+    --jr-#{$element}__#{$selector}_font-weight,
+    $weight
+  );
+  font-style: var(
+    --jr-#{$element}__#{$selector}_font-style,
+    $style
+  );
+}
+
+/**
+ * Generates a media query for a designated breakpoint as the minimum width.
+ * Only style guide approved breakpoints are accepted.
+ * @param {number} $breakpoint The breakpoint query to generate.
+ */
+@mixin breakpoint ($breakpoint) {
+  @if (null == index((375, 480, 768, 960, 1080, 1280), $breakpoint)) {
+    @error 'Unknown breakpoint value.';
+  }
+
+  @media (min-width: #{$breakpoint}px) {
+    @content;
+  }
+}
+

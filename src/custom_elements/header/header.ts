@@ -6,7 +6,12 @@ const header: ElementFactory = () => class Header extends LitElement {
   render = () => html`
     ${withStylesheet}
     <header class=${CSS.header}>
-      I am the header!
+      <h2 class=${CSS.title}>Jon Richards</h2>
+      <nav class=${CSS.nav}>
+        <ol class=${CSS.navList}>
+          <li class=${CSS.navList__item}>Home</li>
+        </ol>
+      </nav>
     </header>
   `;
 }

@@ -1,0 +1,28 @@
+@use 'sass:map';
+
+$token: (
+  colors: (
+    background: (
+      1: #000
+    ),
+    content: (
+      1: #aaa
+    ),
+    interactive: (
+      1: #fff
+    )
+  ),
+  fonts: (
+    copy: (
+      family: "'Playfair Display', serif",
+      weights: (400),
+      styles: ('regular')
+    ),
+    heading: (
+      family: "'PT Sans', sans-serif",
+      weights: (700),
+      styles: ('regular')
+    )
+  )
+);
+

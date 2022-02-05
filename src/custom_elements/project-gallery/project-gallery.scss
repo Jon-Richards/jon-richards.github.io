@@ -1,0 +1,24 @@
+@use '../utils';
+utils.$element: 'project-gallery';
+
+.gallery {
+  utils.$selector: 'gallery';
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include utils.prop('background-color', #003);
+}
+
+.piece {
+  utils.$selector: 'piece';
+  @include utils.prop('background-color', utils.color(background, 1));
+  height: auto;
+  max-width: 30rem;
+  min-height: 5rem;
+  width: 100%;
+  @include utils.prop('width', 100%);
+  @include utils.prop('color', utils.color(content, 1));
+  @include utils.font(copy, 400);
+  font-size: 2rem;
+}
+
