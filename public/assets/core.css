@@ -1,5 +1,254 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}table{border-collapse:collapse;border-spacing:0}*,*::before,*::after{box-sizing:border-box}jr-project-gallery{--jr-project-gallery__piece_background-color: #f00;--jr-project-gallery__piece_color: #fff}
-.i2ylUu82{background-color:#000;color:#aaa;display:flex;flex-direction:column;height:auto;justify-content:space-between;min-height:100vh}.GnnNUdIb{flex-grow:1}
-.iYZzHHQo{background-color:#000;border-bottom:var(--jr-header__header_border-bottom, thin solid #aaa);display:flex;flex-wrap:wrap;font-family:var(--jr-header__header_font-family, 'PT Sans', sans-serif);font-weight:var(--jr-header__header_font-weight, 700);font-style:var(--jr-header__header_font-style, regular);justify-content:space-between}.MXoCCu4y{padding:1rem}.YCAKMX7H{padding:1rem}
-._db45GRN{display:flex;flex-wrap:wrap;justify-content:space-between;background-color:var(--jr-project-gallery__gallery_background-color, #003)}.Yblbplnb{background-color:var(--jr-project-gallery__piece_background-color, #000);height:auto;max-width:30rem;min-height:5rem;width:100%;width:var(--jr-project-gallery__piece_width, 100%);color:var(--jr-project-gallery__piece_color, #aaa);font-family:var(--jr-project-gallery__piece_font-family, 'Playfair Display', serif);font-weight:var(--jr-project-gallery__piece_font-weight, 400);font-style:var(--jr-project-gallery__piece_font-style, regular);font-size:2rem}
-.vDZUIVMY{background-color:#333;color:#fff;min-height:12rem;padding:1rem;border-top:thin solid #aaa}
+/*!****************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/core.scss ***!
+  \****************************************************************************************************************************************************************/
+/**
+ * Styles in this file are not fingerprinted and will apply to the root DOM
+ * context and any custom element that imports a stylesheet that includes the
+ * contents of this file.
+ */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+jr-project-gallery {
+  --jr-project-gallery__piece_background-color: #f00;
+  --jr-project-gallery__piece_color: #fff;
+}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/custom_elements/root/root.scss ***!
+  \*************************************************************************************************************************************************************************************/
+/**
+ * Generates a CSS property with a namespaced custom property hook and a default
+ * value.
+ *
+ * @param {string} $property The name of the property to generate.
+ * @param {any} $value The fallback value.
+ */
+/**
+ * Gets a color from the design token.
+ *
+ * @param {string} $context The color context from which to get the color.
+ * @param {number} $swatch The swatch number from the context palette.
+ * @return {color} The correspoding color value from the design token.
+ */
+/**
+ * Generates the necessary properties for a font-family in the design token,
+ * including namespaced css custom property hooks for each generated property.
+ *
+ * @param {string} $context The context in which to search the design token for
+ * the font.
+ * @param {number} $weight The desired font weight.
+ * @param {style} $ The desired font style.
+ */
+/**
+ * Generates a media query for a designated breakpoint as the minimum width.
+ * Only style guide approved breakpoints are accepted.
+ * @param {number} $breakpoint The breakpoint query to generate.
+ */
+.root-i2ylU {
+  background-color: #000;
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.content-GnnNU {
+  flex-grow: 1;
+}
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/custom_elements/header/header.scss ***!
+  \*****************************************************************************************************************************************************************************************/
+/**
+ * Generates a CSS property with a namespaced custom property hook and a default
+ * value.
+ *
+ * @param {string} $property The name of the property to generate.
+ * @param {any} $value The fallback value.
+ */
+/**
+ * Gets a color from the design token.
+ *
+ * @param {string} $context The color context from which to get the color.
+ * @param {number} $swatch The swatch number from the context palette.
+ * @return {color} The correspoding color value from the design token.
+ */
+/**
+ * Generates the necessary properties for a font-family in the design token,
+ * including namespaced css custom property hooks for each generated property.
+ *
+ * @param {string} $context The context in which to search the design token for
+ * the font.
+ * @param {number} $weight The desired font weight.
+ * @param {style} $ The desired font style.
+ */
+/**
+ * Generates a media query for a designated breakpoint as the minimum width.
+ * Only style guide approved breakpoints are accepted.
+ * @param {number} $breakpoint The breakpoint query to generate.
+ */
+.header-iYZzH {
+  background-color: #000;
+  border-bottom: var(--jr-header__header_border-bottom, thin solid #aaa);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--jr-header__header_font-family, 'PT Sans', sans-serif);
+  font-weight: var(--jr-header__header_font-weight, 700);
+  font-style: var(--jr-header__header_font-style, regular);
+  justify-content: space-between;
+}
+
+.title-MXoCC {
+  padding: 1rem;
+}
+
+.nav-YCAKM {
+  padding: 1rem;
+}
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/custom_elements/project-gallery/project-gallery.scss ***!
+  \***********************************************************************************************************************************************************************************************************/
+/**
+ * Generates a CSS property with a namespaced custom property hook and a default
+ * value.
+ *
+ * @param {string} $property The name of the property to generate.
+ * @param {any} $value The fallback value.
+ */
+/**
+ * Gets a color from the design token.
+ *
+ * @param {string} $context The color context from which to get the color.
+ * @param {number} $swatch The swatch number from the context palette.
+ * @return {color} The correspoding color value from the design token.
+ */
+/**
+ * Generates the necessary properties for a font-family in the design token,
+ * including namespaced css custom property hooks for each generated property.
+ *
+ * @param {string} $context The context in which to search the design token for
+ * the font.
+ * @param {number} $weight The desired font weight.
+ * @param {style} $ The desired font style.
+ */
+/**
+ * Generates a media query for a designated breakpoint as the minimum width.
+ * Only style guide approved breakpoints are accepted.
+ * @param {number} $breakpoint The breakpoint query to generate.
+ */
+.gallery-_db45 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: var(--jr-project-gallery__gallery_background-color, #003);
+}
+
+.piece-Yblbp {
+  background-color: var(--jr-project-gallery__piece_background-color, #000);
+  height: auto;
+  max-width: 30rem;
+  min-height: 5rem;
+  width: 100%;
+  width: var(--jr-project-gallery__piece_width, 100%);
+  color: var(--jr-project-gallery__piece_color, #aaa);
+  font-family: var(--jr-project-gallery__piece_font-family, 'Playfair Display', serif);
+  font-weight: var(--jr-project-gallery__piece_font-weight, 400);
+  font-style: var(--jr-project-gallery__piece_font-style, regular);
+  font-size: 2rem;
+}
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/custom_elements/footer/footer.scss ***!
+  \*****************************************************************************************************************************************************************************************/
+/**
+ * Generates a CSS property with a namespaced custom property hook and a default
+ * value.
+ *
+ * @param {string} $property The name of the property to generate.
+ * @param {any} $value The fallback value.
+ */
+/**
+ * Gets a color from the design token.
+ *
+ * @param {string} $context The color context from which to get the color.
+ * @param {number} $swatch The swatch number from the context palette.
+ * @return {color} The correspoding color value from the design token.
+ */
+/**
+ * Generates the necessary properties for a font-family in the design token,
+ * including namespaced css custom property hooks for each generated property.
+ *
+ * @param {string} $context The context in which to search the design token for
+ * the font.
+ * @param {number} $weight The desired font weight.
+ * @param {style} $ The desired font style.
+ */
+/**
+ * Generates a media query for a designated breakpoint as the minimum width.
+ * Only style guide approved breakpoints are accepted.
+ * @param {number} $breakpoint The breakpoint query to generate.
+ */
+.footer-vDZUI {
+  background-color: #333;
+  color: #fff;
+  min-height: 12rem;
+  padding: 1rem;
+  border-top: thin solid #aaa;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29yZS5jc3MiLCJtYXBwaW5ncyI6Ijs7O0FBQUE7Ozs7RUFBQTtBQU1BOzs7Q0FBQTtBQUtBOzs7Ozs7Ozs7Ozs7O0VBYUU7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBREY7O0FBR0E7QUFDQTs7RUFFRTtBQUFGOztBQUVBO0VBQ0U7QUFDRjs7QUFDQTtFQUNFO0FBRUY7O0FBQUE7RUFDRTtBQUdGOztBQURBOztFQUVFO0VBQ0E7QUFJRjs7QUFGQTtFQUNFO0VBQ0E7QUFLRjs7QUFGQTtFQUNFO0FBS0Y7O0FBRkE7RUFDRTtFQUNBO0FBS0YsQzs7OztBQzFEQTs7Ozs7O0VBQUE7QUFXQTs7Ozs7O0VBQUE7QUFjQTs7Ozs7Ozs7RUFBQTtBQXFDQTs7OztFQUFBO0FDcEVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUEyQkY7O0FBeEJBO0VBQ0U7QUEyQkYsQzs7OztBRGhDQTs7Ozs7O0VBQUE7QUFXQTs7Ozs7O0VBQUE7QUFjQTs7Ozs7Ozs7RUFBQTtBQXFDQTs7OztFQUFBO0FFbEVBO0VBRUU7RUZVQTtFRVJBO0VBQ0E7RUYrQ0E7RUFJQTtFQUlBO0VFckRBO0FBMEJGOztBQXZCQTtFQUNFO0FBMEJGOztBQXZCQTtFQUNFO0FBMEJGLEM7Ozs7QUZyQ0E7Ozs7OztFQUFBO0FBV0E7Ozs7OztFQUFBO0FBY0E7Ozs7Ozs7O0VBQUE7QUFxQ0E7Ozs7RUFBQTtBR25FQTtFQUVFO0VBQ0E7RUFDQTtFSFNBO0FHaUJGOztBQXRCQTtFSEtFO0VHRkE7RUFDQTtFQUNBO0VBQ0E7RUhEQTtFQUFBO0VBd0NBO0VBSUE7RUFJQTtFRzNDQTtBQTBCRixDOzs7O0FIdkNBOzs7Ozs7RUFBQTtBQVdBOzs7Ozs7RUFBQTtBQWNBOzs7Ozs7OztFQUFBO0FBcUNBOzs7O0VBQUE7QUlwRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBMkJGLEMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9qb24tcmljaGFyZHNfZ2l0aHViLy4vc3JjL2NvcmUuc2NzcyIsIndlYnBhY2s6Ly9qb24tcmljaGFyZHNfZ2l0aHViLy4vc3JjL2N1c3RvbV9lbGVtZW50cy91dGlscy9zYXNzX3V0aWxzLnNjc3MiLCJ3ZWJwYWNrOi8vam9uLXJpY2hhcmRzX2dpdGh1Yi8uL3NyYy9jdXN0b21fZWxlbWVudHMvcm9vdC9yb290LnNjc3MiLCJ3ZWJwYWNrOi8vam9uLXJpY2hhcmRzX2dpdGh1Yi8uL3NyYy9jdXN0b21fZWxlbWVudHMvaGVhZGVyL2hlYWRlci5zY3NzIiwid2VicGFjazovL2pvbi1yaWNoYXJkc19naXRodWIvLi9zcmMvY3VzdG9tX2VsZW1lbnRzL3Byb2plY3QtZ2FsbGVyeS9wcm9qZWN0LWdhbGxlcnkuc2NzcyIsIndlYnBhY2s6Ly9qb24tcmljaGFyZHNfZ2l0aHViLy4vc3JjL2N1c3RvbV9lbGVtZW50cy9mb290ZXIvZm9vdGVyLnNjc3MiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBTdHlsZXMgaW4gdGhpcyBmaWxlIGFyZSBub3QgZmluZ2VycHJpbnRlZCBhbmQgd2lsbCBhcHBseSB0byB0aGUgcm9vdCBET01cbiAqIGNvbnRleHQgYW5kIGFueSBjdXN0b20gZWxlbWVudCB0aGF0IGltcG9ydHMgYSBzdHlsZXNoZWV0IHRoYXQgaW5jbHVkZXMgdGhlXG4gKiBjb250ZW50cyBvZiB0aGlzIGZpbGUuXG4gKi9cblxuLyogaHR0cDovL21leWVyd2ViLmNvbS9lcmljL3Rvb2xzL2Nzcy9yZXNldC9cbiAgIHYyLjAgfCAyMDExMDEyNlxuICAgTGljZW5zZTogbm9uZSAocHVibGljIGRvbWFpbilcbiovXG5cbmh0bWwsIGJvZHksIGRpdiwgc3BhbiwgYXBwbGV0LCBvYmplY3QsIGlmcmFtZSxcbmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYsIHAsIGJsb2NrcXVvdGUsIHByZSxcbmEsIGFiYnIsIGFjcm9ueW0sIGFkZHJlc3MsIGJpZywgY2l0ZSwgY29kZSxcbmRlbCwgZGZuLCBlbSwgaW1nLCBpbnMsIGtiZCwgcSwgcywgc2FtcCxcbnNtYWxsLCBzdHJpa2UsIHN0cm9uZywgc3ViLCBzdXAsIHR0LCB2YXIsXG5iLCB1LCBpLCBjZW50ZXIsXG5kbCwgZHQsIGRkLCBvbCwgdWwsIGxpLFxuZmllbGRzZXQsIGZvcm0sIGxhYmVsLCBsZWdlbmQsXG50YWJsZSwgY2FwdGlvbiwgdGJvZHksIHRmb290LCB0aGVhZCwgdHIsIHRoLCB0ZCxcbmFydGljbGUsIGFzaWRlLCBjYW52YXMsIGRldGFpbHMsIGVtYmVkLFxuZmlndXJlLCBmaWdjYXB0aW9uLCBmb290ZXIsIGhlYWRlciwgaGdyb3VwLFxubWVudSwgbmF2LCBvdXRwdXQsIHJ1YnksIHNlY3Rpb24sIHN1bW1hcnksXG50aW1lLCBtYXJrLCBhdWRpbywgdmlkZW8ge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG4gIGJvcmRlcjogMDtcbiAgZm9udC1zaXplOiAxMDAlO1xuICBmb250OiBpbmhlcml0O1xuICB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7XG59XG4vKiBIVE1MNSBkaXNwbGF5LXJvbGUgcmVzZXQgZm9yIG9sZGVyIGJyb3dzZXJzICovXG5hcnRpY2xlLCBhc2lkZSwgZGV0YWlscywgZmlnY2FwdGlvbiwgZmlndXJlLFxuZm9vdGVyLCBoZWFkZXIsIGhncm91cCwgbWVudSwgbmF2LCBzZWN0aW9uIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5ib2R5IHtcbiAgbGluZS1oZWlnaHQ6IDE7XG59XG5vbCwgdWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xufVxuYmxvY2txdW90ZSwgcSB7XG4gIHF1b3Rlczogbm9uZTtcbn1cbmJsb2NrcXVvdGU6YmVmb3JlLCBibG9ja3F1b3RlOmFmdGVyLFxucTpiZWZvcmUsIHE6YWZ0ZXIge1xuICBjb250ZW50OiAnJztcbiAgY29udGVudDogbm9uZTtcbn1cbnRhYmxlIHtcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAgYm9yZGVyLXNwYWNpbmc6IDA7XG59XG5cbiosICo6OmJlZm9yZSwgKjo6YWZ0ZXIge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuXG5qci1wcm9qZWN0LWdhbGxlcnkge1xuICAtLWpyLXByb2plY3QtZ2FsbGVyeV9fcGllY2VfYmFja2dyb3VuZC1jb2xvcjogI2YwMDtcbiAgLS1qci1wcm9qZWN0LWdhbGxlcnlfX3BpZWNlX2NvbG9yOiAjZmZmO1xufVxuXG4iLCJAdXNlICdzYXNzOm1hcCc7XG5AdXNlICdzYXNzOmxpc3QnO1xuQHVzZSAnc2FzczpzdHJpbmcnO1xuQHVzZSAnLi4vLi4vZGVzaWduX3Rva2VuLnNjc3MnO1xuXG4kZWxlbWVudDogJyc7XG4kc2VsZWN0b3I6ICcnO1xuXG4vKipcbiAqIEdlbmVyYXRlcyBhIENTUyBwcm9wZXJ0eSB3aXRoIGEgbmFtZXNwYWNlZCBjdXN0b20gcHJvcGVydHkgaG9vayBhbmQgYSBkZWZhdWx0XG4gKiB2YWx1ZS5cbiAqXG4gKiBAcGFyYW0ge3N0cmluZ30gJHByb3BlcnR5IFRoZSBuYW1lIG9mIHRoZSBwcm9wZXJ0eSB0byBnZW5lcmF0ZS5cbiAqIEBwYXJhbSB7YW55fSAkdmFsdWUgVGhlIGZhbGxiYWNrIHZhbHVlLlxuICovXG5AbWl4aW4gcHJvcCgkcHJvcGVydHksICR2YWx1ZSkge1xuICAjeyRwcm9wZXJ0eX06IHZhcigtLWpyLSN7JGVsZW1lbnR9X18jeyRzZWxlY3Rvcn1fI3skcHJvcGVydHl9LCAjeyR2YWx1ZX0pO1xufVxuXG4vKipcbiAqIEdldHMgYSBjb2xvciBmcm9tIHRoZSBkZXNpZ24gdG9rZW4uXG4gKlxuICogQHBhcmFtIHtzdHJpbmd9ICRjb250ZXh0IFRoZSBjb2xvciBjb250ZXh0IGZyb20gd2hpY2ggdG8gZ2V0IHRoZSBjb2xvci5cbiAqIEBwYXJhbSB7bnVtYmVyfSAkc3dhdGNoIFRoZSBzd2F0Y2ggbnVtYmVyIGZyb20gdGhlIGNvbnRleHQgcGFsZXR0ZS5cbiAqIEByZXR1cm4ge2NvbG9yfSBUaGUgY29ycmVzcG9kaW5nIGNvbG9yIHZhbHVlIGZyb20gdGhlIGRlc2lnbiB0b2tlbi5cbiAqL1xuQGZ1bmN0aW9uIGNvbG9yKCRjb250ZXh0LCAkc3dhdGNoKSB7XG4gICRjb2xvcnM6IG1hcC5nZXQoZGVzaWduX3Rva2VuLiR0b2tlbiwgY29sb3JzKTtcbiAgJF9jb250ZXh0OiBtYXAuZ2V0KCRjb2xvcnMsICRjb250ZXh0KTtcbiAgJHJlc3VsdDogbWFwLmdldCgkX2NvbnRleHQsICRzd2F0Y2gpO1xuICBAcmV0dXJuICRyZXN1bHQ7XG59O1xuXG4vKipcbiAqIEdlbmVyYXRlcyB0aGUgbmVjZXNzYXJ5IHByb3BlcnRpZXMgZm9yIGEgZm9udC1mYW1pbHkgaW4gdGhlIGRlc2lnbiB0b2tlbixcbiAqIGluY2x1ZGluZyBuYW1lc3BhY2VkIGNzcyBjdXN0b20gcHJvcGVydHkgaG9va3MgZm9yIGVhY2ggZ2VuZXJhdGVkIHByb3BlcnR5LlxuICpcbiAqIEBwYXJhbSB7c3RyaW5nfSAkY29udGV4dCBUaGUgY29udGV4dCBpbiB3aGljaCB0byBzZWFyY2ggdGhlIGRlc2lnbiB0b2tlbiBmb3JcbiAqIHRoZSBmb250LlxuICogQHBhcmFtIHtudW1iZXJ9ICR3ZWlnaHQgVGhlIGRlc2lyZWQgZm9udCB3ZWlnaHQuXG4gKiBAcGFyYW0ge3N0eWxlfSAkIFRoZSBkZXNpcmVkIGZvbnQgc3R5bGUuXG4gKi9cbkBtaXhpbiBmb250KCRjb250ZXh0LCAkd2VpZ2h0LCAkc3R5bGU6IHJlZ3VsYXIpIHtcbiAgJGZvbnRzOiBtYXAuZ2V0KGRlc2lnbl90b2tlbi4kdG9rZW4sIGZvbnRzKTtcbiAgJGNvbnRleHQ6IG1hcC5nZXQoJGZvbnRzLCAkY29udGV4dCk7XG5cbiAgJHdlaWdodHM6IG1hcC5nZXQoJGNvbnRleHQsIHdlaWdodHMpO1xuICBAaWYgKG51bGwgPT0gbGlzdC5pbmRleCgkd2VpZ2h0cywgJHdlaWdodCkpIHtcbiAgICBAZXJyb3IgJ0ludmFsaWQgd2VpZ2h0Lic7XG4gIH1cblxuICAkc3R5bGVzOiBtYXAuZ2V0KCRjb250ZXh0LCBzdHlsZXMpO1xuICBAaWYgKG51bGwgPT0gbGlzdC5pbmRleCgkc3R5bGVzLCAkc3R5bGUpKSB7XG4gICAgQGVycm9yICdJbnZhbGlkIHN0eWxlLic7XG4gIH1cblxuICBmb250LWZhbWlseTogdmFyKFxuICAgIC0tanItI3skZWxlbWVudH1fXyN7JHNlbGVjdG9yfV9mb250LWZhbWlseSxcbiAgICBzdHJpbmcudW5xdW90ZShtYXAuZ2V0KCRjb250ZXh0LCBmYW1pbHkpKVxuICApO1xuICBmb250LXdlaWdodDogdmFyKFxuICAgIC0tanItI3skZWxlbWVudH1fXyN7JHNlbGVjdG9yfV9mb250LXdlaWdodCxcbiAgICAkd2VpZ2h0XG4gICk7XG4gIGZvbnQtc3R5bGU6IHZhcihcbiAgICAtLWpyLSN7JGVsZW1lbnR9X18jeyRzZWxlY3Rvcn1fZm9udC1zdHlsZSxcbiAgICAkc3R5bGVcbiAgKTtcbn1cblxuLyoqXG4gKiBHZW5lcmF0ZXMgYSBtZWRpYSBxdWVyeSBmb3IgYSBkZXNpZ25hdGVkIGJyZWFrcG9pbnQgYXMgdGhlIG1pbmltdW0gd2lkdGguXG4gKiBPbmx5IHN0eWxlIGd1aWRlIGFwcHJvdmVkIGJyZWFrcG9pbnRzIGFyZSBhY2NlcHRlZC5cbiAqIEBwYXJhbSB7bnVtYmVyfSAkYnJlYWtwb2ludCBUaGUgYnJlYWtwb2ludCBxdWVyeSB0byBnZW5lcmF0ZS5cbiAqL1xuQG1peGluIGJyZWFrcG9pbnQgKCRicmVha3BvaW50KSB7XG4gIEBpZiAobnVsbCA9PSBpbmRleCgoMzc1LCA0ODAsIDc2OCwgOTYwLCAxMDgwLCAxMjgwKSwgJGJyZWFrcG9pbnQpKSB7XG4gICAgQGVycm9yICdVbmtub3duIGJyZWFrcG9pbnQgdmFsdWUuJztcbiAgfVxuXG4gIEBtZWRpYSAobWluLXdpZHRoOiAjeyRicmVha3BvaW50fXB4KSB7XG4gICAgQGNvbnRlbnQ7XG4gIH1cbn1cblxuIiwiQHVzZSAnLi4vdXRpbHMnO1xyXG5cclxuLnJvb3Qge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHV0aWxzLmNvbG9yKGJhY2tncm91bmQsIDEpO1xyXG4gIGNvbG9yOiB1dGlscy5jb2xvcihjb250ZW50LCAxKTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgaGVpZ2h0OiBhdXRvO1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBtaW4taGVpZ2h0OiAxMDB2aDtcclxufVxyXG5cclxuLmNvbnRlbnQge1xyXG4gIGZsZXgtZ3JvdzogMTtcclxufVxyXG5cclxuIiwiQHVzZSAnLi4vdXRpbHMnO1xuXG51dGlscy4kZWxlbWVudDogJ2hlYWRlcic7XG5cbi5oZWFkZXIge1xuICB1dGlscy4kc2VsZWN0b3I6ICdoZWFkZXInO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB1dGlscy5jb2xvcihiYWNrZ3JvdW5kLCAxKTtcbiAgQGluY2x1ZGUgdXRpbHMucHJvcCgnYm9yZGVyLWJvdHRvbScsICd0aGluIHNvbGlkICN7dXRpbHMuY29sb3IoY29udGVudCwgMSl9Jyk7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgQGluY2x1ZGUgdXRpbHMuZm9udChoZWFkaW5nLCA3MDApO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG5cbi50aXRsZSB7XG4gIHBhZGRpbmc6IDFyZW07XG59XG5cbi5uYXYge1xuICBwYWRkaW5nOiAxcmVtO1xufVxuXG4ubmF2LWxpc3Qge1xufVxuXG4ubmF2LWxpc3RfX2l0ZW0ge1xufVxuXG4iLCJAdXNlICcuLi91dGlscyc7XG51dGlscy4kZWxlbWVudDogJ3Byb2plY3QtZ2FsbGVyeSc7XG5cbi5nYWxsZXJ5IHtcbiAgdXRpbHMuJHNlbGVjdG9yOiAnZ2FsbGVyeSc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBAaW5jbHVkZSB1dGlscy5wcm9wKCdiYWNrZ3JvdW5kLWNvbG9yJywgIzAwMyk7XG59XG5cbi5waWVjZSB7XG4gIHV0aWxzLiRzZWxlY3RvcjogJ3BpZWNlJztcbiAgQGluY2x1ZGUgdXRpbHMucHJvcCgnYmFja2dyb3VuZC1jb2xvcicsIHV0aWxzLmNvbG9yKGJhY2tncm91bmQsIDEpKTtcbiAgaGVpZ2h0OiBhdXRvO1xuICBtYXgtd2lkdGg6IDMwcmVtO1xuICBtaW4taGVpZ2h0OiA1cmVtO1xuICB3aWR0aDogMTAwJTtcbiAgQGluY2x1ZGUgdXRpbHMucHJvcCgnd2lkdGgnLCAxMDAlKTtcbiAgQGluY2x1ZGUgdXRpbHMucHJvcCgnY29sb3InLCB1dGlscy5jb2xvcihjb250ZW50LCAxKSk7XG4gIEBpbmNsdWRlIHV0aWxzLmZvbnQoY29weSwgNDAwKTtcbiAgZm9udC1zaXplOiAycmVtO1xufVxuXG4iLCJAdXNlICcuLi91dGlscyc7XG5cbi5mb290ZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xuICBjb2xvcjogI2ZmZjtcbiAgbWluLWhlaWdodDogMTJyZW07XG4gIHBhZGRpbmc6IDFyZW07XG4gIGJvcmRlci10b3A6IHRoaW4gc29saWQgdXRpbHMuY29sb3IoY29udGVudCwgMSk7XG59XG5cbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/

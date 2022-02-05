@@ -1,6 +1,11 @@
-export const header: string;
-export const title: string;
-export const nav: string;
-export const navList: string;
-export const navList__item: string;
+interface Styles {
+  'header': string;
+  'title': string;
+  'nav': string;
+  'nav-list': string;
+  'nav-list__item': string;
+}
+
+declare const CSS: Styles;
+export default CSS;
 

@@ -5,11 +5,11 @@ import CSS from './header.scss';
 const header: ElementFactory = () => class Header extends LitElement {
   render = () => html`
     ${withStylesheet}
-    <header class=${CSS.header}>
-      <h2 class=${CSS.title}>Jon Richards</h2>
-      <nav class=${CSS.nav}>
-        <ol class=${CSS.navList}>
-          <li class=${CSS.navList__item}>Home</li>
+    <header class=${CSS['header']}>
+      <h2 class=${CSS['title']}>Jon Richards</h2>
+      <nav class=${CSS['nav']}>
+        <ol class=${CSS['nav-list']}>
+          <li class=${CSS['nav-list__item']}>Home</li>
         </ol>
       </nav>
     </header>

@@ -8,7 +8,7 @@ module.exports = (env, argv) => ({
   entry: {
     core: path.resolve(__dirname, 'src', 'core.ts')
   },
-  devtool: 'eval',
+  devtool: argv.mode === 'development' ? 'inline-source-map' : false,
   module: {
     rules: [
       {
@@ -37,7 +37,8 @@ module.exports = (env, argv) => ({
           {
             loader: 'sass-loader',
             options: {
-              warnRuleAsWarning: true
+              warnRuleAsWarning: true,
+              sourceMap: true
             },
           },
         ]
