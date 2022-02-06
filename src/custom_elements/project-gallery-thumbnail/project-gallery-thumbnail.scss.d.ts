@@ -1,6 +1,5 @@
 interface Styles {
-  'root': string,
-  'gallery': string;
+  'thumbnail': string;
 }
 
 declare const CSS: Styles;

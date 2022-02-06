@@ -4,10 +4,10 @@ utils.$element: 'footer';
 
 .footer {
   utils.$selector: 'footer';
-  @include utils.prop('background-color', utils.color(background, 1));
+  @include utils.prop('background-color', utils.color(background, 2));
+  @include utils.prop('border-top', 'thin solid #{utils.color(background, 3)}');
   @include utils.prop('color', utils.color(content, 1));
   min-height: 12rem;
   padding: 1rem 0;
-  @include utils.prop('border-top', 'thin solid #{utils.color(background, 2)}');
 }
 

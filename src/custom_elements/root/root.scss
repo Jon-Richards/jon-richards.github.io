@@ -1,6 +1,9 @@
 @use '../utils';
 
+utils.$element: 'root';
+
 .root {
+  utils.$selector: 'root';
   background-color: utils.color(background, 1);
   color: utils.color(content, 1);
   display: flex;

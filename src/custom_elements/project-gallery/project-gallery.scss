@@ -1,24 +1,25 @@
 @use '../utils';
 utils.$element: 'project-gallery';
 
-.gallery {
-  utils.$selector: 'gallery';
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  @include utils.prop('background-color', utils.color(background, 1));
+.root {
+  utils.$selector: 'root';
+  --jr-content-block__block_padding: 1rem 0;
+  @include utils.breakpoint(375) {
+    --jr-content-block__block_padding: 1rem;
+  }
 }
 
-.piece {
-  utils.$selector: 'piece';
-  @include utils.prop('background-color', utils.color(background, 1));
-  height: auto;
-  max-width: 30rem;
-  min-height: 5rem;
-  width: 100%;
-  @include utils.prop('width', 100%);
-  @include utils.prop('color', utils.color(content, 1));
-  @include utils.font(copy, 400);
-  font-size: 2rem;
+.gallery {
+  utils.$selector: 'gallery';
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: 1fr;
+  @include utils.breakpoint(768) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include utils.breakpoint(1080) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 

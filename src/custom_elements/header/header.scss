@@ -4,11 +4,6 @@ utils.$element: 'header';
 
 .header {
   utils.$selector: 'header';
-  background-color: utils.color(background, 1);
-  @include utils.prop(
-    'border-bottom',
-    'thin solid #{utils.color(background, 2)}'
-  );
   display: flex;
   justify-content: center;
 }

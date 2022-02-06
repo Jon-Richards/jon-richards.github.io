@@ -3,9 +3,10 @@
 utils.$element: 'content-block';
 
 .block {
+  utils.$selector: 'block';
   margin: 0 auto;
   max-width: 1280px;
-  padding: 0 1rem;
+  @include utils.prop(padding, '0 1rem');
   width: 100%;
 }
 

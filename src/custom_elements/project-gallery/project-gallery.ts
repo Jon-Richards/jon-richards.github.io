@@ -2,20 +2,24 @@ import { LitElement, html } from 'lit';
 import { ElementFactory, ElementRegistrar, withStylesheet } from '../utils';
 import CSS from './project-gallery.scss';
 
+/* eslint max-lines-per-function: "off" */
 const projectGalleryElement: ElementFactory = () => {
   return class ProjectGallery extends LitElement {
     render = () => html`
       ${withStylesheet}
-      <jr-content-block>
-        <div class=${CSS['gallery']}>
-          <div class=${CSS['piece']}>
-            test
+      <div class=${CSS['root']}>
+        <jr-content-block>
+          <div class=${CSS['gallery']}>
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
+            <jr-project-gallery-thumbnail></jr-project-gallery-thumbnail />
           </div>
-          <div class=${CSS['piece']}>
-            test
-          </div>
-        </div>
-      </jr-content-block>
+        </jr-content-block>
+      </div>
     `;
   }
 }

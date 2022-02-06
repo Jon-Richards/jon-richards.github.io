@@ -24,19 +24,22 @@ const headerNavigation: ElementFactory = () => {
             <jr-header-navigation-link
               data-href="#projects"
               data-text="Projects"
-            />
+            >
+            </jr-header-navigation-link>
           </li>
           <li class=${CSS['nav-list__item']}>
             <jr-header-navigation-link
               data-href="#about"
               data-text="About"
-            />
+            >
+            </jr-header-navigation-link>
           </li>
           <li class=${CSS['nav-list__item']}>
             <jr-header-navigation-link
               data-href="#contact"
               data-text="Contact"
-            />
+            >
+            </jr-header-navigation-link>
           </li>
         </ol>
       </nav>

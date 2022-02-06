@@ -3,9 +3,9 @@
 $token: (
   colors: (
     background: (
-      1: #000,
+      1: #222,
       2: #333,
-      3: #555
+      3: #444
     ),
     content: (
       1: #eee,
@@ -18,6 +18,11 @@ $token: (
   fonts: (
     copy: (
       family: "'Playfair Display', serif",
+      weights: (400),
+      styles: ('regular')
+    ),
+    info: (
+      family: "'PT Sans', sans-serif",
       weights: (400),
       styles: ('regular')
     ),
