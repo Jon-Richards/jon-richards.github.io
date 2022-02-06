@@ -6,9 +6,11 @@ const footer: ElementFactory = () => class Footer extends Ele {
   render = () => html`
     ${withStylesheet}
     <footer class=${CSS.footer}>
-      <p>
-        I am the footer!
-      </p>
+      <jr-content-block>
+        <p>
+          I am the footer!
+        </p>
+      </jr-content-block>
     </footer>
   `;
 }

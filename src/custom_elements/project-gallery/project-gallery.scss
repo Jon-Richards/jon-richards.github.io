@@ -6,7 +6,7 @@ utils.$element: 'project-gallery';
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  @include utils.prop('background-color', #003);
+  @include utils.prop('background-color', utils.color(background, 1));
 }
 
 .piece {

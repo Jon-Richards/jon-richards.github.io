@@ -6,12 +6,12 @@ const header: ElementFactory = () => class Header extends LitElement {
   render = () => html`
     ${withStylesheet}
     <header class=${CSS['header']}>
-      <h2 class=${CSS['title']}>Jon Richards</h2>
-      <nav class=${CSS['nav']}>
-        <ol class=${CSS['nav-list']}>
-          <li class=${CSS['nav-list__item']}>Home</li>
-        </ol>
-      </nav>
+      <jr-content-block>
+        <div class=${CSS['content']}>
+          <h2 class=${CSS['title']}>Jon Richards</h2>
+          <jr-header-navigation></jr-header-navigation>
+        </div>
+      </jr-content-block>
     </header>
   `;
 }

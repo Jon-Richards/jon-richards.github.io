@@ -1,0 +1,10 @@
+@use '../utils';
+
+utils.$element: 'header-navigation-link';
+
+.link {
+  utils.$selector: 'link';
+  @include utils.prop('color', utils.color(interactive, 1));
+  text-decoration: none;
+}
+

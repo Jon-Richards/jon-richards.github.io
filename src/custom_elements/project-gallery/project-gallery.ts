@@ -6,14 +6,16 @@ const projectGalleryElement: ElementFactory = () => {
   return class ProjectGallery extends LitElement {
     render = () => html`
       ${withStylesheet}
-      <div class=${CSS['gallery']}>
-        <div class=${CSS['piece']}>
-          test
+      <jr-content-block>
+        <div class=${CSS['gallery']}>
+          <div class=${CSS['piece']}>
+            test
+          </div>
+          <div class=${CSS['piece']}>
+            test
+          </div>
         </div>
-        <div class=${CSS['piece']}>
-          test
-        </div>
-      </div>
+      </jr-content-block>
     `;
   }
 }
