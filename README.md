@@ -3,10 +3,22 @@
 A lean front-end for my GitHub portfolio.
 
 ## Table Of Contents
+- [TODO](#todo)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Running The Project](#running-the-project)
+
+<a id="todo"></a>
+Since Feb 6, 2022:
+- [ ] Add relevant calls for Github API
+- [ ] Come up with solution for overriding inaccurate data, e.g. which language
+      a given project is based around.
+- [ ] Continue fleshing out project gallery.
+- [ ] Add about section.
+- [ ] Finish off header navigation.
+- [ ] Find an icon set.
+- [ ] Finish footer.
 
 <a id="prerequisites"></a>
 ## Prerequisites
@@ -42,23 +54,9 @@ Run the dev server:
 $ npm start
 ```
 
-Run code quality audits:
-```
-$ npm run validate
-
-or
-
-$ npm run validate:watch // watches for changes
-```
-
 Build for production:
 ```
 $ npm run build:prod
-```
-
-Build CSS:
-```
-$ npm run build-css
 ```
 
 Run tests:
