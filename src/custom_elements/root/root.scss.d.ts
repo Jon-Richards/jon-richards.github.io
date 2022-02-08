@@ -1,2 +1,8 @@
-export const root:string;
-export const content:string;
+interface Styles {
+  'root': string;
+  'content': string;
+}
+
+declare const CSS: Styles;
+export default CSS;
+

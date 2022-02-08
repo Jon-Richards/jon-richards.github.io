@@ -1,3 +1,7 @@
+/**
+ * Fetches the projects and returns a resolved Promise with the request
+ * response.
+ */
 export async function getProjects() {
   const response = await fetch(
     'https://api.github.com/users/jon-richards/repos',
@@ -5,6 +9,6 @@ export async function getProjects() {
       method: 'GET'
     }
   );
-  console.log(response);
+  return Promise.resolve(response);
 }
 

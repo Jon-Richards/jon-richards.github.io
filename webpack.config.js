@@ -15,7 +15,7 @@ module.exports = (env, argv) => ({
         test: /\.ts$/,
         use: [
           {
-            loader: 'ts-loader'
+            loader: 'ts-loader',
           }
         ]
       },
@@ -58,7 +58,15 @@ module.exports = (env, argv) => ({
     new Dotenv()
   ],
   resolve: {
-    extensions: ['.ts', '.scss']
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.json',
+      '.css',
+      '.scss',
+      '.html'
+    ]
   },
   stats: {
     assets: true,

@@ -29,6 +29,7 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^14.16.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "ajv": "^8.10.0",
     "babel": "^6.23.0",
     "css-loader": "^6.5.1",
     "dotenv-webpack": "^7.0.3",
@@ -52,7 +53,5 @@
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.1",
     "xstate": "^4.29.0"
-  },
-  "dependencies": {
   }
 }
