@@ -26,7 +26,10 @@ function buildResponseStub(data?: Partial<Response>) {
     info: {
       name: 'Jon',
       title: 'Engineer'
-    }
+    },
+    projects: [
+      { name: 'foo', url: 'www.google.com', description: 'A project' }
+    ],
   };
   responseStub = { ...validStub, ...data };
 }

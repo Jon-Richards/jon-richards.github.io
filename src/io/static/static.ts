@@ -6,7 +6,12 @@ export interface Response {
   info: {
     name: string;
     title: string;
-  }
+  },
+  projects: Array<{
+    name: string;
+    url: string;
+    description: string;
+  }>;
 }
 
 const ResponseSchema: JSONSchemaType<Response> = {
@@ -21,9 +26,22 @@ const ResponseSchema: JSONSchemaType<Response> = {
       required: ['name', 'title'],
       additionalProperties: false,
     },
+    projects: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          name: { type: 'string' },
+          url: { type: 'string' },
+          description: { type: 'string' },
+        },
+        required: ['name', 'url', 'description'],
+        additionalProperties: false,
+      },
+    },
   },
-  required: ['info'],
-  additionalProperties: true
+  required: ['info', 'projects'],
+  additionalProperties: false
 }
 
 const validate = ajv.compile<Response>(ResponseSchema);

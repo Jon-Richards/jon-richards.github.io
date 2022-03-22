@@ -2,6 +2,13 @@
   "info": {
     "name": "Jon Richards",
     "title": "Software Engineer"
-  }
+  },
+  "projects": [
+    {
+      "name": "Test Project",
+      "url": "www.google.com",
+      "description": "A test project"
+    }
+  ]
 }
 
