@@ -1,49 +1,8 @@
-import Ajv, { JSONSchemaType } from 'ajv';
+import Ajv from 'ajv';
+import { Response } from './types';
+import { ResponseSchema } from './schema';
 
 const ajv = new Ajv({ allErrors: true });
-
-export interface Response {
-  info: {
-    name: string;
-    title: string;
-  },
-  projects: Array<{
-    name: string;
-    url: string;
-    description: string;
-  }>;
-}
-
-const ResponseSchema: JSONSchemaType<Response> = {
-  type: 'object',
-  properties: {
-    info: {
-      type: 'object',
-      properties: {
-        name: { type: 'string' },
-        title: { type: 'string' },
-      },
-      required: ['name', 'title'],
-      additionalProperties: false,
-    },
-    projects: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          name: { type: 'string' },
-          url: { type: 'string' },
-          description: { type: 'string' },
-        },
-        required: ['name', 'url', 'description'],
-        additionalProperties: false,
-      },
-    },
-  },
-  required: ['info', 'projects'],
-  additionalProperties: false
-}
-
 const validate = ajv.compile<Response>(ResponseSchema);
 
 /**
@@ -54,13 +13,13 @@ export async function getStatic(): Promise<Response> {
     method: 'GET'
   })
   .then(response => response.json())
-  .then(json => validateRepsonse(json));
+  .then(json => validateResponse(json));
 }
 
 /**
  * Validates the json payload recieved from the endpoint.
  */
-function validateRepsonse(json: Response): Promise<Response> {
+function validateResponse(json: Response): Promise<Response> {
   const valid = validate(json);
   if (valid === true) {
     return Promise.resolve(json);

@@ -1,4 +1,5 @@
-import { getStatic, Response } from './static';
+import { getStatic } from './static';
+import { Response } from './types';
 
 /**
  * Mocks the browser's fetch api to return a JSON response equal to the
